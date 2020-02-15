@@ -1,0 +1,13 @@
+ColumnLimit: 100
+IndentWidth: 4
+BreakInheritanceList: BeforeColon
+BreakConstructorInitializers: BeforeComma
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: None
+ConstructorInitializerIndentWidth: 4
+MaxEmptyLinesToKeep: 2
+BreakBeforeBraces: Allman
+FixNamespaceComments: false
+NamespaceIndentation: All
+SpacesBeforeTrailingComments: 1
+AccessModifierOffset: -4

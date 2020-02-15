@@ -1,0 +1,21 @@
+@startuml
+
+class AL5DJointAngle {
+    + from_pwm(pwm)
+    + from_degrees(degrees)
+    + from_radians(radians)
+    + get_in_pwm(min_pwm, max_pwm)
+}
+
+class AL5D
+
+AL5D -> "1" Communicator
+Joint <- AL5D
+
+AL5D <-- AL5DDecorator
+Joint <-- AL5DJointDecorator
+AL5DJointDecorator <. AL5DDecorator
+AL5DJointAngle <.. Joint
+AL5DJointAngle <.. AL5D
+
+@enduml

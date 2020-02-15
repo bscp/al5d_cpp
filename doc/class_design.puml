@@ -1,0 +1,46 @@
+@startuml
+
+namespace al5d {
+    class AL5D {
+        + move_to(pulse_width)
+        + move_to(angle)
+        + stop()
+    }
+    
+    class JointConfig {
+        - board_channel
+        - min_pulse_width
+        - max_pulse_width
+        - min_degrees
+        - max_degrees
+    }
+    
+    class Communicator {
+        + //transmit(message)//
+        + //receive() : message//
+    }
+    
+    class Joint {
+        - min_pulse_width
+        - max_pulse_width
+        - min_degrees
+        - max_degrees
+        - board_channel
+        + get_command(pulse_width)
+        + get_command(angle)
+    }
+    
+    AL5D -> "1" Communicator
+    AL5D --> "*" Joint
+    Joint ..> JointConfig
+    AL5D <|-- AL5D5D
+    AL5D <|-- AL5D6D
+    AL5D5D ..> AL5D5DConfig
+    AL5D6D ..> AL5D6DConfig
+    AL5D5DConfig -> "5" JointConfig
+    JointConfig "6" <- AL5D6DConfig
+    Joint <. AL5D6D
+    AL5D5D .> Joint
+}
+
+@enduml
