@@ -2,6 +2,9 @@
 #ifndef AL5D_CPP_JOINTCONFIG_HPP
 #define AL5D_CPP_JOINTCONFIG_HPP
 
+// SYSTEM INCLUDES
+#include <vector>
+
 // PROJECT INCLUDES
 #include <al5d_cpp/types.hpp>
 
@@ -9,8 +12,12 @@ namespace al5d
 {
     struct JointConfig
     {
-        JointConfig(BoardChannel boardChannel, PulseWidth minPulseWidth, PulseWidth maxPulseWidth,
-                    const Degrees &min_degrees, const Degrees &max_degrees);
+        JointConfig(
+            BoardChannel boardChannel,
+            PulseWidth minPulseWidth,
+            PulseWidth maxPulseWidth,
+            const Degrees &min_degrees,
+            const Degrees &max_degrees);
 
         BoardChannel board_channel;
         PulseWidth min_pulse_width;
@@ -18,6 +25,8 @@ namespace al5d
         Degrees min_degrees;
         Degrees max_degrees;
     };
+    
+    typedef std::vector<JointConfig> JointConfigs;
 }
 
 #endif // AL5D_CPP_JOINTCONFIG_HPP

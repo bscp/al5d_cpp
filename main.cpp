@@ -1,24 +1,27 @@
 
 // PROJECT INCLUDES
-#include <al5d_cpp/AL5D6D.hpp>
-#include <al5d_cpp/AL5D6DConfig.hpp>
+#include <al5d_cpp/AL5D.hpp>
+#include <al5d_cpp/Duration.hpp>
 
 int main()
 {
-    al5d::AL5D6DConfig config;
-    config.base_joint_config = al5d::JointConfig(0, 500, 2500, -90, 90);
-    config.shoulder_joint_config = al5d::JointConfig(1, 500, 2500, -90, 90);
-    config.elbow_joint_config = al5d::JointConfig(2, 500, 2500, -90, 90);
-    config.wrist_joint_config = al5d::JointConfig(3, 500, 2500, -90, 90);
-    config.gripper_joint_config = al5d::JointConfig(4, 500, 2500, -90, 90);
-    config.wrist_rotate_joint_config = al5d::JointConfig(5, 500, 2500, -90, 90);
+    std::string serial_port = "/dev/ttyUSB0";
+    long serial_baudrate = 9600;
     
-    al5d::AL5D6D al5d6d("/dev/ttyUSB0", config);
-
-    al5d6d.move_to_degrees({
-        {al5d::JOINT_BASE, 90},
-        {al5d::JOINT_SHOULDER, 90},
-    });
-
-    al5d6d.stop();
+    auto robot = al5d::AL5D::from_default_config();
+    robot.connect(serial_port, serial_baudrate);
+    
+    const al5d::JointTypeAngles join_type_angles = {
+        robot.joint_angle_from_degrees(al5d::JOINT_BASE, -90),
+        robot.joint_angle_from_degrees(al5d::JOINT_BASE, 0),
+        robot.joint_angle_from_degrees(al5d::JOINT_BASE, 90),
+        robot.joint_angle_from_pulse_width(al5d::JOINT_SHOULDER, 1500),
+    };
+    
+    auto move_duration = al5d::Duration::from_milliseconds(2300);
+    
+    robot.start_moving_joints(join_type_angles);
+    robot.start_moving_joints(join_type_angles, move_duration);
+    
+    robot.do_emergency_stop();
 }

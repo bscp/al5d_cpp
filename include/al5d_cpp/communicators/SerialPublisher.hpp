@@ -68,7 +68,7 @@
 //
 //        void open(const SerialConfig &capabilities);
 //
-//        void transmit(const std::string &message);
+//        void transmit_command(const std::string &message);
 //
 //        char receive();
 //
