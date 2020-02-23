@@ -11,8 +11,8 @@ namespace al5d
     void log_error(const std::string &line);
 }
 
-#define LOG_INFO log_info
-#define LOG_DEBUG log_debug
-#define LOG_ERROR log_debug
+#define LOG_INFO al5d::log_info
+#define LOG_DEBUG al5d::log_debug
+#define LOG_ERROR al5d::log_error
 
 #endif // AL5D_CPP_LOGGING_HPP

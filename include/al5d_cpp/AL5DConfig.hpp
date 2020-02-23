@@ -4,6 +4,7 @@
 
 // SYSTEM INCLUDES
 #include <vector>
+#include <string>
 
 // PROJECT INCLUDES
 #include <al5d_cpp/JointConfig.hpp>
@@ -13,9 +14,14 @@ namespace al5d
 {
     struct AL5DConfig
     {
-        std::vector<JointConfig> joint_configs;
+        const std::string serial_port;
+        const long serial_baudrate;
+        const JointConfigs joint_configs;
 
-        explicit AL5DConfig(std::vector<JointConfig> jointConfigs);
+        AL5DConfig(
+            std::string &serial_port,
+            long serial_baudrate,
+            JointConfigs &joint_configs);
     };
 }
 

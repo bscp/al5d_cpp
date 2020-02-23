@@ -4,26 +4,37 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/communicators/ConsoleCommunicator.hpp>
+#include <al5d_cpp/AL5D_logging.hpp>
 
 namespace al5d
 {
-    /* static */ AL5D AL5D::from_default_config()
+    /*static*/ AL5DPtr AL5D::as_pointer()
     {
-        log_constructing();
-        return AL5D(AL5D::__get_default_config());
+        return AL5D::as_pointer(AL5D::get_default_config());
+    }
+    
+    
+    /*static*/ AL5DPtr AL5D::as_pointer(const AL5DConfig& config)
+    {
+        return std::make_shared<AL5D>(config);
     }
 
     
-    /*static*/ AL5DConfig AL5D::__get_default_config()
+    /*static*/ AL5DConfig AL5D::get_default_config()
     {
-        return AL5DConfig({
+        std::string serial_port = "dev/ttyUSB0";
+        long serial_baudrate = 9600;
+        
+        JointConfigs joint_configs = {
             JointConfig({0, 500, 2500, -90,  90}), // BASE_JOINT
             JointConfig({1, 500, 2500, -30,  90}), // SHOULDER_JOINT
             JointConfig({2, 500, 2500,   0, 135}), // ELBOW_JOINT
             JointConfig({3, 500, 2500, -90,  90}), // WRIST_JOINT
             JointConfig({4, 500, 2500, -90,  90}), // WRIST_ROTATE_JOINT
             JointConfig({5, 500, 2500,   0,   1}), // GRIPPER_JOINT
-        });
+        };
+        
+        return AL5DConfig(serial_port, serial_baudrate, joint_configs);
     }
 
 

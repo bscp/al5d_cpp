@@ -5,6 +5,7 @@
 // SYSTEM INCLUDES
 #include <cstdint>
 #include <vector>
+#include <memory>
 
 // PROJECT INCLUDES
 #include <al5d_cpp/Communicator.hpp>
@@ -17,11 +18,20 @@
 
 namespace al5d
 {
+    class AL5D;
+    typedef std::shared_ptr<AL5D> AL5DPtr;
+    
     class AL5D
     {
     public:
-        static AL5D from_default_config();
+        static AL5DPtr as_pointer();
+    
+        static AL5DPtr as_pointer(
+            const AL5DConfig& config);
         
+        explicit AL5D(
+            const AL5DConfig& al5d_config);
+    
         virtual ~AL5D();
         
         JointTypeAngle joint_angle_from_degrees(
@@ -62,10 +72,7 @@ namespace al5d
             const;
         
     private:
-        static AL5DConfig __get_default_config();
-        
-        explicit AL5D(
-            const AL5DConfig& al5d_config);
+        static AL5DConfig get_default_config();
     
         Joints __construct_joints(
             const JointConfigs &joints_configs)
@@ -106,45 +113,6 @@ namespace al5d
         const Joints joints;
         CommunicatorPtr communicator_ptr;
     };
-    
-     void log_moving_joint(
-        const JointTypeAngle &joint_type_angle);
-    
-     void log_moving_joint(
-        const JointTypeAngle &joint_type_angle,
-        const Duration &duration);
-    
-     void log_moving_joints(
-        const JointTypeAngles &joint_type_angles);
-    
-     void log_moving_joints(
-        const JointTypeAngles &joint_type_angles,
-        const Duration &duration);
-    
-     std::string get_moving_joint_log(
-        const JointTypeAngle &joint_type_angle);
-    
-     std::string get_moving_joint_log(
-        const JointTypeAngle &joint_type_angle,
-        const Duration &duration);
-    
-     std::string get_connecting_log(
-        const std::string &serial_port,
-        long serial_baudrate);
-    
-     void log_connecting(
-        const std::string &serial_port,
-        long serial_baudrate);
-    
-     void log_constructing();
-    
-    void log_emergency_stop();
-    
-    void log_no_serial_connection();
-    
-     void log_disconnecting();
-    
-     std::string get_disconnecting_log();
 }
 
 #endif // AL5D_CPP_AL5D_HPP
