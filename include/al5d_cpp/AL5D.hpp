@@ -8,13 +8,13 @@
 #include <memory>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/Communicator.hpp>
+#include <al5d_cpp/AL5DConfig.hpp>
+#include <al5d_cpp/Duration.hpp>
 #include <al5d_cpp/Joint.hpp>
 #include <al5d_cpp/JointType.hpp>
 #include <al5d_cpp/JointTypeAngle.hpp>
+#include <al5d_cpp/communicators/Communicator.hpp>
 #include <al5d_cpp/communicators/SerialCommunicator.hpp>
-#include <al5d_cpp/AL5DConfig.hpp>
-#include <al5d_cpp/Duration.hpp>
 
 namespace al5d
 {
@@ -49,6 +49,9 @@ namespace al5d
             long serial_baudrate);
     
         void disconnect();
+    
+        bool connection_established()
+            const;
         
         void start_moving_joints(
             const JointTypeAngles &joint_type_angles)
@@ -82,7 +85,7 @@ namespace al5d
             const Command &command)
             const;
 
-        const Joint &__get_joint(
+        const Joint &get_joint(
             const JointType &joint_type)
             const;
         

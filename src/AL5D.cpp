@@ -47,7 +47,7 @@ namespace al5d
     
     AL5D::~AL5D()
     {
-        disconnect(); // for logging purposes
+        disconnect(); // only so that it gets logged
     }
 
 
@@ -70,7 +70,7 @@ namespace al5d
         long serial_baudrate)
     {
         log_connecting(serial_port, serial_baudrate);
-        communicator_ptr = std::make_shared<ConsoleCommunicator>();
+        communicator_ptr = ConsoleCommunicator::as_pointer();
     }
 
 
@@ -93,15 +93,22 @@ namespace al5d
     void AL5D::validate_connection()
         const
     {
-        if (communicator_ptr == nullptr)
+        if (!connection_established())
         {
             log_no_serial_connection();
-            throw std::invalid_argument("No serial connection established");
+            throw std::invalid_argument("No connection connection established");
         }
+    }
+    
+    
+    bool AL5D::connection_established()
+        const
+    {
+        return communicator_ptr != nullptr;
     }
 
 
-    const Joint &AL5D::__get_joint(
+    const Joint &AL5D::get_joint(
         const JointType &joint_type)
         const
     {
@@ -127,16 +134,20 @@ namespace al5d
     }
     
     
-    void AL5D::start_moving_joints(const JointTypeAngles &joint_type_angles,
-                                   const Duration &move_duration) const
+    void AL5D::start_moving_joints(
+        const JointTypeAngles &joint_type_angles,
+        const Duration &move_duration)
+        const
     {
         log_moving_joints(joint_type_angles, move_duration);
         transmit_command(get_move_command(joint_type_angles, move_duration));
     }
     
     
-    void AL5D::start_moving_joint(const JointTypeAngle &joint_type_angle,
-                                  const Duration &move_duration) const
+    void AL5D::start_moving_joint(
+        const JointTypeAngle &joint_type_angle,
+        const Duration &move_duration)
+        const
     {
         log_moving_joint(joint_type_angle, move_duration);
         transmit_command(get_move_command(joint_type_angle, move_duration));
@@ -153,7 +164,7 @@ namespace al5d
         {
             const auto &joint_type = joint_type_angle.joint_type;
             const auto &joint_angle = joint_type_angle.joint_angle;
-            const auto &joint = __get_joint(joint_type);
+            const auto &joint = get_joint(joint_type);
             command += joint.get_move_command(joint_angle);
         }
         
@@ -178,7 +189,7 @@ namespace al5d
     {
         const auto &joint_type = joint_type_angle.joint_type;
         const auto &joint_angle = joint_type_angle.joint_angle;
-        const auto &joint = __get_joint(joint_type);
+        const auto &joint = get_joint(joint_type);
         return joint.get_move_command(joint_angle);
     }
     
@@ -199,7 +210,7 @@ namespace al5d
         int degrees)
         const
     {
-        const auto& joint = __get_joint(joint_type);
+        const auto& joint = get_joint(joint_type);
         const auto joint_angle = joint.get_angle_from_degrees(degrees);
         return {joint_type, joint_angle};
     }
@@ -210,7 +221,7 @@ namespace al5d
         int pulse_width)
         const
     {
-        const auto& joint = __get_joint(joint_type);
+        const auto& joint = get_joint(joint_type);
         const auto joint_angle = joint.get_angle_from_pulse_width(pulse_width);
         return {joint_type, joint_angle};
     }

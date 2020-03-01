@@ -1,31 +1,63 @@
+// TODO : remove the next comment:
+// GREAT EXAMPLES: https://github.com/fedetft/serial-port
 
 #ifndef AL5D_CPP_SERIALCOMMUNICATOR_HPP
-#define AL5D_CPP_SERIALCOMMUNICATOR_HPP
+#define	AL5D_CPP_SERIALCOMMUNICATOR_HPP
 
 // SYSTEM INCLUDES
 #include <string>
 
+// 3TH PARTY INCLUDES
+#include <boost/asio.hpp>
+
 // PROJECT INCLUDES
-#include <al5d_cpp/Communicator.hpp>
+#include <al5d_cpp/communicators/Communicator.hpp>
 
 namespace al5d
 {
-    typedef std::string SerialPort;
+    typedef boost::asio::serial_port_base::stop_bits::type StopBitsType;
+    typedef boost::asio::serial_port_base::parity::type ParityType;
+    typedef boost::asio::serial_port_base::flow_control::type FlowControlType;
     
-    enum SerialBaud
-    {
-        BAUD_9600,
-    };
+    typedef std::string SerialPort;
+    typedef boost::asio::serial_port_base::stop_bits StopBits;
+    typedef boost::asio::serial_port_base::parity Parity;
+    typedef boost::asio::serial_port_base::flow_control FlowControl;
+    typedef boost::asio::serial_port_base::baud_rate BaudRate;
+    typedef boost::asio::serial_port_base::character_size CharacterSize;
     
     class SerialCommunicator : public Communicator
     {
     public:
-        SerialCommunicator(SerialPort serialPort, SerialBaud serialBaud);
+        static CommunicatorPtr as_pointer(
+            const std::string &serial_port);
+        
+        explicit SerialCommunicator(
+            const std::string &serial_port);
+        
+        void set_baud_rate(
+            const BaudRate& baud_rate);
+        
+        void set_parity(
+            const ParityType& parity_type);
+        
+        void set_flow_control(
+            const FlowControlType& flow_control_type);
+        
+        void set_stop_bits(
+            const StopBitsType& stop_bits_type);
+        
+        void set_character_size(
+            const CharacterSize& character_size);
+        
+        void transmit(
+            const std::string& message)
+            final;
 
-        virtual ~SerialCommunicator() = default;
-    
-        void transmit(const std::string& message) final;
+    private:
+        boost::asio::serial_port serial;
+        boost::asio::io_service io;
     };
 }
 
-#endif // AL5D_CPP_SERIALCOMMUNICATOR_HPP
+#endif	/* AL5D_CPP_SERIALCOMMUNICATOR_HPP */

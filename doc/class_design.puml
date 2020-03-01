@@ -3,7 +3,7 @@
 namespace al5d {
     class AL5D {
         + move_to(pulse_width)
-        + move_to(angle)
+        + move_to(joint_angle)
         + stop()
     }
     
@@ -16,7 +16,7 @@ namespace al5d {
     }
     
     class Communicator {
-        + //transmit(message)//
+        + //transmit_command(message)//
         + //receive() : message//
     }
     
@@ -27,7 +27,7 @@ namespace al5d {
         - max_degrees
         - board_channel
         + get_command(pulse_width)
-        + get_command(angle)
+        + get_command(joint_angle)
     }
     
     AL5D -> "1" Communicator

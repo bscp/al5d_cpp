@@ -42,7 +42,7 @@ namespace al5d
         const JointAngle& joint_angle)
         const
     {
-        __validate_pulse_width(joint_angle);
+        validate_pulse_width(joint_angle);
         return __create_move_command(joint_angle);
     }
     
@@ -59,14 +59,14 @@ namespace al5d
     
     JointAngle Joint::get_angle_from_degrees(Degrees degrees) const
     {
-        __validate_degrees(degrees);
+        validate_degrees(degrees);
         return (degrees - min_degrees) * convert_ratio + min_pulse_width;
     }
     
     
     JointAngle Joint::get_angle_from_pulse_width(PulseWidth pulse_width) const
     {
-        __validate_pulse_width(pulse_width);
+        validate_pulse_width(pulse_width);
         return pulse_width;
     }
     
@@ -89,7 +89,7 @@ namespace al5d
     }
     
     
-    void Joint::__validate_pulse_width(PulseWidth pulse_width) const
+    void Joint::validate_pulse_width(PulseWidth pulse_width) const
     {
         if (!__can_reach_pulse_width(pulse_width))
         {
@@ -99,7 +99,7 @@ namespace al5d
     }
     
     
-    void Joint::__validate_degrees(Degrees degrees) const
+    void Joint::validate_degrees(Degrees degrees) const
     {
         if (!__can_reach_degrees(degrees))
         {

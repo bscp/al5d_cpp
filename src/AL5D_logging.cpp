@@ -15,7 +15,7 @@ namespace al5d
     
     void log_no_serial_connection()
     {
-        LOG_ERROR("No serial connection established");
+        LOG_ERROR("No connection connection established");
     }
     
     
@@ -73,9 +73,10 @@ namespace al5d
         const std::string &serial_port,
         long serial_baudrate)
     {
-        const auto type_string = "PORT='" + serial_port + "'";
-        const auto angle_string = "BAUD='" + std::to_string(serial_baudrate) + "'";
-        return "CONNECTING_SERIAL :: " + type_string + " " + angle_string;
+        const std::string method_string = "Method='SERIAL'";
+        const std::string port_string = "Port='" + serial_port + "'";
+        const std::string angle_string = "Baud='" + std::to_string(serial_baudrate) + "'";
+        return "CONNECTING :: " + method_string + " " + port_string + " " + angle_string;
     }
     
     
@@ -88,8 +89,8 @@ namespace al5d
     std::string get_moving_joint_log(
         const JointTypeAngle &joint_type_angle)
     {
-        const auto type_string = "TYPE='" + std::to_string(joint_type_angle.joint_type) + "'";
-        const auto angle_string = "ANGLE='" + std::to_string(joint_type_angle.joint_angle) + "pwm'";
+        const auto type_string = "Type='" + std::to_string(joint_type_angle.joint_type) + "'";
+        const auto angle_string = "Angle='" + std::to_string(joint_type_angle.joint_angle) + "pwm'";
         return "MOVING_JOINT :: " + type_string + " " + angle_string;
     }
     
@@ -99,6 +100,6 @@ namespace al5d
         const Duration &duration)
     {
         auto log = get_moving_joint_log(joint_type_angle);
-        return log + " DURATION='" + std::to_string(duration.in_milliseconds()) + "ms'";
+        return log + " Duration='" + std::to_string(duration.in_milliseconds()) + "ms'";
     }
 }

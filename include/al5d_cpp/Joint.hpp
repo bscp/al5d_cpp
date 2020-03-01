@@ -50,11 +50,11 @@ namespace al5d
             const PulseWidth &pulse_width)
             const;
         
-        void __validate_degrees(
+        void validate_degrees(
             Degrees degrees)
             const;
         
-        void __validate_pulse_width(
+        void validate_pulse_width(
             PulseWidth pulse_width)
             const;
     
