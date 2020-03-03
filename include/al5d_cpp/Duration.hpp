@@ -7,7 +7,7 @@ namespace al5d
     class Duration
     {
     private:
-        using Milliseconds = int;
+        using Milliseconds = long;
         using Seconds = double;
         
     public:

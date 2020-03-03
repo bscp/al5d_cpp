@@ -2,20 +2,26 @@
 // HEADER INCLUDE
 #include <al5d_cpp/communicators/SerialCommunicator.hpp>
 
+// SYSTEM INCLUDES
+#include <iostream> // TODO : remove
+
 namespace al5d
 {
     /*static*/ CommunicatorPtr SerialCommunicator::as_pointer(
-        const SerialPort &serial_port)
+        const SerialPort &serial_port,
+        const BaudRate &serial_baud)
     {
-        return std::make_shared<SerialCommunicator>(serial_port);
+        return std::make_shared<SerialCommunicator>(serial_port, serial_baud);
     }
     
     
     SerialCommunicator::SerialCommunicator(
-        const SerialPort &serial_port)
-        : serial(io, serial_port)
-        , io()
+        const SerialPort &serial_port,
+        const BaudRate &serial_baud)
+        : io()
+        , serial(io, serial_port)
     {
+        set_baud_rate(serial_baud);
     }
 
 
@@ -57,6 +63,7 @@ namespace al5d
     void SerialCommunicator::transmit(
         const std::string &message)
     {
+        std::cout << message << "\n";
         boost::asio::write(serial, boost::asio::buffer(message.c_str(), message.size()));
     }
 }

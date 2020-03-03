@@ -14,13 +14,9 @@ namespace al5d
 {
     struct AL5DConfig
     {
-        const std::string serial_port;
-        const long serial_baudrate;
         const JointConfigs joint_configs;
 
-        AL5DConfig(
-            std::string &serial_port,
-            long serial_baudrate,
+        explicit AL5DConfig(
             JointConfigs &joint_configs);
     };
 }

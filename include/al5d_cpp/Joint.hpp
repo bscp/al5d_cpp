@@ -17,38 +17,30 @@ namespace al5d
     class Joint
     {
     public:
-        static Joint from_config(
+        explicit Joint(
             const JointConfig &joint_config);
-        
-        virtual ~Joint() = default;
     
-        std::string get_move_command(
-            const JointAngle& joint_angle)
-            const;
-        
-        JointAngle get_angle_from_degrees(
-            Degrees degrees)
-            const;
-    
-        JointAngle get_angle_from_pulse_width(
-            PulseWidth pulse_width)
-            const;
-        
-    private:
         Joint(
             BoardChannel board_channel,
             PulseWidth min_pulse_width,
             PulseWidth max_pulse_width,
             Degrees min_degrees,
             Degrees max_degrees);
-        
-        bool __can_reach_degrees(
-            const Degrees &degrees)
+        virtual ~Joint() = default;
+    
+        std::string get_move_command(
+            const JointAngle& joint_angle)
             const;
         
-        bool __can_reach_pulse_width(
-            const PulseWidth &pulse_width)
+        JointAngle angle_from_degrees(
+            Degrees degrees)
             const;
+    
+        JointAngle angle_from_pulse_width(
+            PulseWidth pulse_width)
+            const;
+        
+    private:
         
         void validate_degrees(
             Degrees degrees)
@@ -58,7 +50,15 @@ namespace al5d
             PulseWidth pulse_width)
             const;
     
-        std::string __create_move_command(
+        bool can_reach_degrees(
+            const Degrees &degrees)
+            const;
+    
+        bool can_reach_pulse_width(
+            const PulseWidth &pulse_width)
+            const;
+    
+        std::string create_move_command(
             const JointAngle &joint_angle)
             const;
         

@@ -10,14 +10,14 @@
 
 namespace al5d
 {
-    /*static*/ Joint Joint::from_config(const JointConfig &joint_config)
-    {
-        return Joint(
+    Joint::Joint(const JointConfig &joint_config)
+        : Joint(
             joint_config.board_channel,
             joint_config.min_pulse_width,
             joint_config.max_pulse_width,
             joint_config.min_degrees,
-            joint_config.max_degrees);
+            joint_config.max_degrees)
+    {
     }
     
     
@@ -43,11 +43,11 @@ namespace al5d
         const
     {
         validate_pulse_width(joint_angle);
-        return __create_move_command(joint_angle);
+        return create_move_command(joint_angle);
     }
     
     
-    std::string Joint::__create_move_command(
+    std::string Joint::create_move_command(
         const JointAngle& joint_angle)
         const
     {
@@ -57,21 +57,21 @@ namespace al5d
     }
     
     
-    JointAngle Joint::get_angle_from_degrees(Degrees degrees) const
+    JointAngle Joint::angle_from_degrees(Degrees degrees) const
     {
         validate_degrees(degrees);
-        return (degrees - min_degrees) * convert_ratio + min_pulse_width;
+        return JointAngle((degrees - min_degrees) * convert_ratio + min_pulse_width);
     }
     
     
-    JointAngle Joint::get_angle_from_pulse_width(PulseWidth pulse_width) const
+    JointAngle Joint::angle_from_pulse_width(PulseWidth pulse_width) const
     {
         validate_pulse_width(pulse_width);
         return pulse_width;
     }
     
     
-    bool Joint::__can_reach_pulse_width(const PulseWidth &pulse_width) const
+    bool Joint::can_reach_pulse_width(const PulseWidth &pulse_width) const
     {
         bool above_lower_bound = min_pulse_width <= pulse_width;
         bool below_upper_bound = pulse_width <= max_pulse_width;
@@ -80,7 +80,7 @@ namespace al5d
     }
     
     
-    bool Joint::__can_reach_degrees(const Degrees &degrees) const
+    bool Joint::can_reach_degrees(const Degrees &degrees) const
     {
         bool above_lower_bound = min_degrees <= degrees;
         bool below_upper_bound = degrees <= max_degrees;
@@ -91,7 +91,7 @@ namespace al5d
     
     void Joint::validate_pulse_width(PulseWidth pulse_width) const
     {
-        if (!__can_reach_pulse_width(pulse_width))
+        if (!can_reach_pulse_width(pulse_width))
         {
             LOG_ERROR("pulse_width out of range");
             throw std::invalid_argument("pulse_width out of range");
@@ -101,7 +101,7 @@ namespace al5d
     
     void Joint::validate_degrees(Degrees degrees) const
     {
-        if (!__can_reach_degrees(degrees))
+        if (!can_reach_degrees(degrees))
         {
             LOG_ERROR("degrees out of range");
             throw std::invalid_argument("degrees out of range");

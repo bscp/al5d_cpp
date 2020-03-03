@@ -15,6 +15,9 @@
 #include <al5d_cpp/JointTypeAngle.hpp>
 #include <al5d_cpp/communicators/Communicator.hpp>
 #include <al5d_cpp/communicators/SerialCommunicator.hpp>
+#include <al5d_cpp/Timer.hpp>
+
+#define DURATION 3000 // in milliseconds
 
 namespace al5d
 {
@@ -34,42 +37,45 @@ namespace al5d
     
         virtual ~AL5D();
         
-        JointTypeAngle joint_angle_from_degrees(
+        JointTypeAngle angle_from_degrees(
             JointType joint_type,
-            int degrees)
+            Degrees  degrees)
             const;
 
-        JointTypeAngle joint_angle_from_pulse_width(
+        JointTypeAngle angle_from_pulse_width(
             JointType joint_type,
-            int pulse_width)
+            PulseWidth pulse_width)
             const;
     
         void connect(
-            const std::string &serial_port,
-            long serial_baudrate);
+            const SerialPort &serial_port,
+            const BaudRate &serial_baud);
     
         void disconnect();
     
-        bool connection_established()
+        bool is_connected()
             const;
         
-        void start_moving_joints(
-            const JointTypeAngles &joint_type_angles)
+        bool is_moving()
             const;
+        
+        void move_to(
+            const JointTypeAngles &joint_type_angles);
+//            const;
     
-        void start_moving_joint(
-            const JointTypeAngle &joint_type_angle)
-            const;
+        void move_to(
+            const JointTypeAngle &joint_type_angle);
+//            const;
     
-        void start_moving_joints(
+        void move_to(
             const JointTypeAngles &joint_type_angles,
-            const Duration &move_duration)
-            const;
+            const Duration &move_duration);
+//            const;
     
-        void start_moving_joint(
+        void move_to(
             const JointTypeAngle &joint_type_angle,
-            const Duration &move_duration)
-            const;
+            const Duration &move_duration);
+//            const;
     
         void do_emergency_stop()
             const;
@@ -77,9 +83,12 @@ namespace al5d
     private:
         static AL5DConfig get_default_config();
     
-        Joints __construct_joints(
+        Joints construct_joints(
             const JointConfigs &joints_configs)
             const;
+        
+        void start_timer(
+            long duration);
         
         void transmit_command(
             const Command &command)
@@ -107,7 +116,7 @@ namespace al5d
             const JointTypeAngle &joint_type_angle)
             const;
         
-        std::string __get_emergency_stop_command()
+        std::string get_emergency_stop_command()
             const;
     
         void validate_connection()
@@ -115,6 +124,7 @@ namespace al5d
         
         const Joints joints;
         CommunicatorPtr communicator_ptr;
+        TimerPtr timer_ptr;
     };
 }
 

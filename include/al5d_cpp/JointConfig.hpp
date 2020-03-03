@@ -13,9 +13,9 @@ namespace al5d
     struct JointConfig
     {
         JointConfig(
-            const BoardChannel boardChannel,
-            const PulseWidth minPulseWidth,
-            const PulseWidth maxPulseWidth,
+            const BoardChannel& boardChannel,
+            const PulseWidth& minPulseWidth,
+            const PulseWidth& maxPulseWidth,
             const Degrees &min_degrees,
             const Degrees &max_degrees);
 

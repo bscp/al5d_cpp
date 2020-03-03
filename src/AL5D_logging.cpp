@@ -20,10 +20,10 @@ namespace al5d
     
     
     void log_connecting(
-        const std::string& serial_port,
-        long serial_baudrate)
+        const SerialPort &serial_port,
+        const BaudRate &serial_baud_rate)
     {
-        LOG_INFO(get_connecting_log(serial_port, serial_baudrate));
+        LOG_INFO(get_connecting_log(serial_port, serial_baud_rate));
     }
     
     
@@ -70,12 +70,12 @@ namespace al5d
     
     
     std::string get_connecting_log(
-        const std::string &serial_port,
-        long serial_baudrate)
+        const SerialPort &serial_port,
+        const BaudRate &serial_baud_rate)
     {
         const std::string method_string = "Method='SERIAL'";
         const std::string port_string = "Port='" + serial_port + "'";
-        const std::string angle_string = "Baud='" + std::to_string(serial_baudrate) + "'";
+        const std::string angle_string = "Baud='" + std::to_string(serial_baud_rate.value()) + "'";
         return "CONNECTING :: " + method_string + " " + port_string + " " + angle_string;
     }
     

@@ -28,12 +28,12 @@ namespace al5d
         const Duration &duration);
     
     std::string get_connecting_log(
-        const std::string &serial_port,
-        long serial_baudrate);
+        const SerialPort &serial_port,
+        const BaudRate &serial_baud_rate);
     
     void log_connecting(
-        const std::string &serial_port,
-        long serial_baudrate);
+        const SerialPort &serial_port,
+        const BaudRate &serial_baud_rate);
     
     void log_emergency_stop();
     

@@ -30,10 +30,12 @@ namespace al5d
     {
     public:
         static CommunicatorPtr as_pointer(
-            const std::string &serial_port);
+            const SerialPort &serial_port,
+            const BaudRate &serial_baud=BaudRate(9600));
         
         explicit SerialCommunicator(
-            const std::string &serial_port);
+            const SerialPort &serial_port,
+            const BaudRate &serial_baud);
         
         void set_baud_rate(
             const BaudRate& baud_rate);
@@ -55,8 +57,8 @@ namespace al5d
             final;
 
     private:
-        boost::asio::serial_port serial;
         boost::asio::io_service io;
+        boost::asio::serial_port serial;
     };
 }
 

@@ -22,9 +22,6 @@ namespace al5d
     
     /*static*/ AL5DConfig AL5D::get_default_config()
     {
-        std::string serial_port = "dev/ttyUSB0";
-        long serial_baudrate = 9600;
-        
         JointConfigs joint_configs = {
             JointConfig({0, 500, 2500, -90,  90}), // BASE_JOINT
             JointConfig({1, 500, 2500, -30,  90}), // SHOULDER_JOINT
@@ -34,12 +31,12 @@ namespace al5d
             JointConfig({5, 500, 2500,   0,   1}), // GRIPPER_JOINT
         };
         
-        return AL5DConfig(serial_port, serial_baudrate, joint_configs);
+        return AL5DConfig(joint_configs);
     }
 
 
     AL5D::AL5D(const AL5DConfig& al5d_config)
-        : joints(__construct_joints(al5d_config.joint_configs))
+        : joints(construct_joints(al5d_config.joint_configs))
         , communicator_ptr(nullptr)
     {
     }
@@ -51,13 +48,13 @@ namespace al5d
     }
 
 
-    Joints AL5D::__construct_joints(const JointConfigs& joints_configs) const
+    Joints AL5D::construct_joints(const JointConfigs& joints_configs) const
     {
         Joints constructed_joints;
         
         for (const auto& joint_config : joints_configs)
         {
-            const auto joint = Joint::from_config(joint_config);
+            const auto joint = Joint(joint_config);
             constructed_joints.push_back(joint);
         }
         
@@ -66,11 +63,11 @@ namespace al5d
 
 
     void AL5D::connect(
-        const std::string &serial_port,
-        long serial_baudrate)
+        const SerialPort &serial_port,
+        const BaudRate &serial_baud)
     {
-        log_connecting(serial_port, serial_baudrate);
-        communicator_ptr = ConsoleCommunicator::as_pointer();
+        log_connecting(serial_port, serial_baud);
+        communicator_ptr = SerialCommunicator::as_pointer(serial_port, serial_baud);
     }
 
 
@@ -93,7 +90,7 @@ namespace al5d
     void AL5D::validate_connection()
         const
     {
-        if (!connection_established())
+        if (!is_connected())
         {
             log_no_serial_connection();
             throw std::invalid_argument("No connection connection established");
@@ -101,10 +98,21 @@ namespace al5d
     }
     
     
-    bool AL5D::connection_established()
+    bool AL5D::is_connected()
         const
     {
         return communicator_ptr != nullptr;
+    }
+    
+    
+    bool AL5D::is_moving() const
+    {
+        if (timer_ptr == nullptr)
+        {
+            return false;
+        }
+        
+        return timer_ptr->has_elapsed();
     }
 
 
@@ -116,41 +124,47 @@ namespace al5d
     }
     
     
-    void AL5D::start_moving_joints(
+    void AL5D::start_timer(long duration)
+    {
+        timer_ptr = Timer::as_pointer(duration);
+    }
+    
+    
+    void AL5D::move_to(
         const JointTypeAngles &joint_type_angles)
-        const
     {
         log_moving_joints(joint_type_angles);
         transmit_command(get_move_command(joint_type_angles));
+        start_timer(DURATION);
     }
 
 
-    void AL5D::start_moving_joint(
+    void AL5D::move_to(
         const JointTypeAngle &joint_type_angle)
-        const
     {
         log_moving_joint(joint_type_angle);
         transmit_command(get_move_command(joint_type_angle));
+        start_timer(DURATION);
     }
     
     
-    void AL5D::start_moving_joints(
+    void AL5D::move_to(
         const JointTypeAngles &joint_type_angles,
         const Duration &move_duration)
-        const
     {
         log_moving_joints(joint_type_angles, move_duration);
         transmit_command(get_move_command(joint_type_angles, move_duration));
+        start_timer(move_duration.in_milliseconds());
     }
     
     
-    void AL5D::start_moving_joint(
+    void AL5D::move_to(
         const JointTypeAngle &joint_type_angle,
         const Duration &move_duration)
-        const
     {
         log_moving_joint(joint_type_angle, move_duration);
         transmit_command(get_move_command(joint_type_angle, move_duration));
+        start_timer(move_duration.in_milliseconds());
     }
     
     
@@ -178,7 +192,7 @@ namespace al5d
         const
     {
         Command command = get_move_command(joint_type_angles);
-        command += "S" + std::to_string(move_duration.in_milliseconds());
+        command += "T" + std::to_string(move_duration.in_milliseconds());
         return command;
     }
     
@@ -201,28 +215,28 @@ namespace al5d
     {
         const auto command = get_move_command(joint_type_angle);
         const auto milliseconds = move_duration.in_milliseconds();
-        return command + "S" + std::to_string(milliseconds);
+        return command + "T" + std::to_string(milliseconds);
     }
     
     
-    JointTypeAngle AL5D::joint_angle_from_degrees(
+    JointTypeAngle AL5D::angle_from_degrees(
         JointType joint_type,
-        int degrees)
+        Degrees degrees)
         const
     {
         const auto& joint = get_joint(joint_type);
-        const auto joint_angle = joint.get_angle_from_degrees(degrees);
+        const auto joint_angle = joint.angle_from_degrees(degrees);
         return {joint_type, joint_angle};
     }
     
     
-    JointTypeAngle AL5D::joint_angle_from_pulse_width(
+    JointTypeAngle AL5D::angle_from_pulse_width(
         JointType joint_type,
-        int pulse_width)
+        PulseWidth  pulse_width)
         const
     {
         const auto& joint = get_joint(joint_type);
-        const auto joint_angle = joint.get_angle_from_pulse_width(pulse_width);
+        const auto joint_angle = joint.angle_from_pulse_width(pulse_width);
         return {joint_type, joint_angle};
     }
     
@@ -230,11 +244,11 @@ namespace al5d
     void AL5D::do_emergency_stop() const
     {
         log_emergency_stop();
-        transmit_command(__get_emergency_stop_command());
+        transmit_command(get_emergency_stop_command());
     }
     
     
-    std::string AL5D::__get_emergency_stop_command() const
+    std::string AL5D::get_emergency_stop_command() const
     {
         return "STOP";
     }
