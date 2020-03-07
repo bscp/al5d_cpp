@@ -17,7 +17,7 @@ namespace al5d
         const JointConfigs joint_configs;
 
         explicit AL5DConfig(
-            JointConfigs &joint_configs);
+            JointConfigs joint_configs);
     };
 }
 

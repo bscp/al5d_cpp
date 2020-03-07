@@ -9,10 +9,20 @@
 
 int main()
 {
+    al5d::JointConfigs joint_configs = {
+        al5d::JointConfig({0, 500, 2500, -90,  90}), // BASE_JOINT
+        al5d::JointConfig({1, 500, 2500, -30,  90}), // SHOULDER_JOINT
+        al5d::JointConfig({2, 500, 2500,   0, 135}), // ELBOW_JOINT
+        al5d::JointConfig({3, 500, 2500, -90,  90}), // WRIST_JOINT
+        al5d::JointConfig({4, 500, 2500, -90,  90}), // WRIST_ROTATE_JOINT
+        al5d::JointConfig({5, 500, 2500,   0,   1}), // GRIPPER_JOINT
+    };
+    
+    al5d::AL5DConfig al5d_config(joint_configs);
+    auto robot_ptr = al5d::AL5D::as_pointer(al5d_config);
+    
     al5d::SerialPort serial_port("/dev/ttyUSB0");
     al5d::BaudRate serial_baud(9600);
-
-    auto robot_ptr = al5d::AL5D::as_pointer();
     robot_ptr->connect(serial_port, serial_baud);
 
     const al5d::JointTypeAngles join_type_angles = {

@@ -2,45 +2,46 @@
 
 namespace al5d {
     class AL5D {
-        + move_to(pulse_width)
-        + move_to(joint_angle)
-        + stop()
+        - joints : Joint[]
+        - communicator : Communicator
+        + {static} as_pointer(config : AL5DConfig) : AL5D*
+        + angle_from_degrees(joint : JointType, degrees : Integer16) : JointTypeAngle
+        + angle_from_pulse_width(joint : JointType, pulse_width : Integer16) : JointTypeAngle
+        + connect(port : String, baud : Integer16) : void
+        + disconnect() : void
     }
-    
-    class JointConfig {
-        - board_channel
-        - min_pulse_width
-        - max_pulse_width
-        - min_degrees
-        - max_degrees
-    }
-    
-    class Communicator {
-        + //transmit_command(message)//
-        + //receive() : message//
-    }
-    
+
     class Joint {
-        - min_pulse_width
-        - max_pulse_width
-        - min_degrees
-        - max_degrees
-        - board_channel
-        + get_command(pulse_width)
-        + get_command(joint_angle)
+        - board_channel : Integer8
+        - min_pulse_width : Integer16
+        - max_pulse_width : Integer16
+        - min_degrees : Integer16
+        - max_degrees : Integer16
+        + get_angle_from_degrees(degrees : Integer16) : void
     }
-    
-    AL5D -> "1" Communicator
-    AL5D --> "*" Joint
-    Joint ..> JointConfig
-    AL5D <|-- AL5D5D
-    AL5D <|-- AL5D6D
-    AL5D5D ..> AL5D5DConfig
-    AL5D6D ..> AL5D6DConfig
-    AL5D5DConfig -> "5" JointConfig
-    JointConfig "6" <- AL5D6DConfig
-    Joint <. AL5D6D
-    AL5D5D .> Joint
+
+    class AL5DConfig {
+        - joint_configs : JointConfig[]
+    }
+
+    class JointConfig {
+        - board_channel : Integer8
+        - min_pulse_width : Integer16
+        - max_pulse_width : Integer16
+        - min_degrees : Integer16
+        - max_degrees : Integer16
+    }
+
+    class Communicator {
+        + transmit(message : String) : void
+    }
+
+    AL5D -> Joint
+    Communicator <- AL5D
+    Communicator <|-- SerialCommunicator
+    AL5D -> AL5DConfig
+    Joint -> JointConfig
+    AL5DConfig --> JointConfig
 }
 
 @enduml

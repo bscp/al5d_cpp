@@ -27,8 +27,6 @@ namespace al5d
     class AL5D
     {
     public:
-        static AL5DPtr as_pointer();
-    
         static AL5DPtr as_pointer(
             const AL5DConfig& config);
         
@@ -48,8 +46,8 @@ namespace al5d
             const;
     
         void connect(
-            const SerialPort &serial_port,
-            const BaudRate &serial_baud);
+            const SerialPort& serial_port,
+            const BaudRate& serial_baud);
     
         void disconnect();
     
@@ -81,8 +79,6 @@ namespace al5d
             const;
         
     private:
-        static AL5DConfig get_default_config();
-    
         Joints construct_joints(
             const JointConfigs &joints_configs)
             const;

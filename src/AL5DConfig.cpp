@@ -5,7 +5,7 @@
 namespace al5d
 {
     AL5DConfig::AL5DConfig(
-        JointConfigs &joint_configs)
+        JointConfigs joint_configs)
         : joint_configs(std::move(joint_configs))
     {
     }

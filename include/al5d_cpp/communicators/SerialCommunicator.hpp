@@ -12,20 +12,10 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/communicators/Communicator.hpp>
+#include <al5d_cpp/types.hpp>
 
 namespace al5d
 {
-    typedef boost::asio::serial_port_base::stop_bits::type StopBitsType;
-    typedef boost::asio::serial_port_base::parity::type ParityType;
-    typedef boost::asio::serial_port_base::flow_control::type FlowControlType;
-    
-    typedef std::string SerialPort;
-    typedef boost::asio::serial_port_base::stop_bits StopBits;
-    typedef boost::asio::serial_port_base::parity Parity;
-    typedef boost::asio::serial_port_base::flow_control FlowControl;
-    typedef boost::asio::serial_port_base::baud_rate BaudRate;
-    typedef boost::asio::serial_port_base::character_size CharacterSize;
-    
     class SerialCommunicator : public Communicator
     {
     public:
