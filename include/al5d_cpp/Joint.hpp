@@ -67,6 +67,8 @@ namespace al5d
         PulseWidth max_pulse_width;
         Degrees min_degrees;
         Degrees max_degrees;
+        Degrees lowest_degrees;
+        Degrees highest_degrees;
         
         long degrees_range;
         long pulse_width_range;

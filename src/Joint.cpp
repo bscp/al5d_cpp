@@ -32,6 +32,8 @@ namespace al5d
         , min_degrees(min_degrees)
         , max_degrees(max_degrees)
     {
+        lowest_degrees = min_degrees <= max_degrees ? min_degrees : max_degrees;
+        highest_degrees = min_degrees <= max_degrees ? max_degrees : min_degrees;
         degrees_range = max_degrees - min_degrees;
         pulse_width_range = max_pulse_width - min_pulse_width;
         convert_ratio = double(pulse_width_range) / double(degrees_range);
@@ -82,8 +84,8 @@ namespace al5d
     
     bool Joint::can_reach_degrees(const Degrees &degrees) const
     {
-        bool above_lower_bound = min_degrees <= degrees;
-        bool below_upper_bound = degrees <= max_degrees;
+        bool above_lower_bound = lowest_degrees <= degrees;
+        bool below_upper_bound = degrees <= highest_degrees;
         return above_lower_bound && below_upper_bound;
         // return min_degrees <= degrees <= max_degrees; // TODO : not working
     }
