@@ -1,5 +1,4 @@
-// TODO : remove the next comment:
-// GREAT EXAMPLES: https://github.com/fedetft/serial-port
+// USED EXAMPLES: https://github.com/fedetft/serial-port
 
 #ifndef AL5D_CPP_SERIALCOMMUNICATOR_HPP
 #define	AL5D_CPP_SERIALCOMMUNICATOR_HPP

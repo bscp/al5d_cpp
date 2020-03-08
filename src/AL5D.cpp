@@ -95,7 +95,7 @@ namespace al5d
             return false;
         }
         
-        return timer_ptr->has_elapsed();
+        return !timer_ptr->has_elapsed();
     }
     
     

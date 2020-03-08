@@ -10,9 +10,9 @@
 
 namespace al5d
 {
-    typedef uint16_t PulseWidth; // TODO : limit to 0 to 2500 : make indistinguishable type
-    typedef uint8_t BoardChannel; // TODO : validate if in range of ssc32u channels
-    typedef int16_t Degrees; // TODO : limit to -360 to 360
+    typedef uint16_t PulseWidth;
+    typedef uint8_t BoardChannel;
+    typedef int16_t Degrees;
     
     typedef boost::asio::serial_port_base::stop_bits::type StopBitsType;
     typedef boost::asio::serial_port_base::parity::type ParityType;

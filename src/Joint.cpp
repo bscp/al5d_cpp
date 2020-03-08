@@ -78,7 +78,6 @@ namespace al5d
         bool above_lower_bound = min_pulse_width <= pulse_width;
         bool below_upper_bound = pulse_width <= max_pulse_width;
         return above_lower_bound && below_upper_bound;
-        // return min_pulse_width <= pulse_width <= max_pulse_width; // TODO : not working
     }
     
     
@@ -87,7 +86,6 @@ namespace al5d
         bool above_lower_bound = lowest_degrees <= degrees;
         bool below_upper_bound = degrees <= highest_degrees;
         return above_lower_bound && below_upper_bound;
-        // return min_degrees <= degrees <= max_degrees; // TODO : not working
     }
     
     

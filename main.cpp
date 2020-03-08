@@ -3,9 +3,6 @@
 #include <al5d_cpp/AL5D.hpp>
 #include <al5d_cpp/Duration.hpp>
 #include <al5d_cpp/communicators/SerialCommunicator.hpp>
-#include <al5d_cpp/Timer.hpp> // TODO : remove
-#include <iostream> // TODO : remove
-#include <string> // TODO : remove
 
 int main()
 {

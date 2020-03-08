@@ -3,7 +3,7 @@
 #include <al5d_cpp/communicators/SerialCommunicator.hpp>
 
 // SYSTEM INCLUDES
-#include <iostream> // TODO : remove
+#include <iostream>
 
 namespace al5d
 {
@@ -63,7 +63,7 @@ namespace al5d
     void SerialCommunicator::transmit(
         const std::string &message)
     {
-        std::cout << message << "\n";
+        std::cout << "TRANSMITTING :: " << message << "\n";
         boost::asio::write(serial, boost::asio::buffer(message.c_str(), message.size()));
     }
 }
