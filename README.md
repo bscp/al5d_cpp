@@ -9,4 +9,4 @@
 ## Usage
 
 1. place <code>find_package(al5d_cpp REQUIRED)</code> into the CMakeLists.txt file of your project.
-1. Now you can include headers like <code>#include <cpp_patterns/...></code>
+1. Now you can include headers like <code>#include <al5d_cpp/...></code>
