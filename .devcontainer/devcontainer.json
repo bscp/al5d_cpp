@@ -15,6 +15,8 @@
 		"ms-vscode.cpptools",
 		// "ms-vscode.cmake-tools",
 		"twxs.cmake",
+		"hbenl.vscode-test-explorer",
+		"matepek.vscode-catch2-test-adapter",
 	]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
