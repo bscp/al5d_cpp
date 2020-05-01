@@ -1,9 +1,7 @@
 # al5d_cpp
 
-This repository provides a library which allows you to execute low level functionality on the Lynxmotion AL5D robot arm.
-
-To discover all capabilities of this library, take a look at the <code>examples</code> directory. An incomplete list of provided functionality is:
-* Move specific joints to an pwm angle.
+This repository provides a library which allows you to execute low level functionality on the Lynxmotion AL5D robot arm. To discover all capabilities of this library, take a look at the <code>examples</code> directory. An incomplete list of provided functionality is:
+* Move specific joints to an angle in pwm.
 * Move specific joints to an angle in degree.
 * Perform an emergency stop.
 
