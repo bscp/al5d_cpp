@@ -1,0 +1,39 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "scripts/build.sh Debug",
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true  // sets ${defaultBuildTask}
+            }
+        },
+        {
+            "label": "Test",
+            "type": "shell",
+            "command": "scripts/test.sh",
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": true  // sets ${defaultTestTask}
+            }
+        },
+        {
+            "label": "Install",
+            "type": "shell",
+            "command": "scripts/install.sh",
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+        }
+    ]
+}
