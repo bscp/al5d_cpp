@@ -20,7 +20,7 @@ ARG USER_GID=$USER_UID
 RUN apt-get update \
     #
     # Install C++ tools
-    && apt-get -y install build-essential cmake cppcheck valgrind libboost-all-dev libgtest-dev \
+    && apt-get -y install build-essential cmake cppcheck valgrind libboost-all-dev \
     #
     # [Optional] Update UID/GID if needed
     && if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then \
@@ -33,6 +33,13 @@ RUN apt-get update \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
+
+# Install the Google test framework
+RUN git clone -q https://github.com/google/googletest.git /googletest \
+  && mkdir -p /googletest/build \
+  && cd /googletest/build \
+  && cmake .. && make && make install \
+  && cd / && rm -rf /googletest
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog

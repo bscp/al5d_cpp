@@ -1,2 +1,2 @@
 
-add_subdirectory(unit_tests)
+ADD_SUBDIRECTORY(unit_tests)

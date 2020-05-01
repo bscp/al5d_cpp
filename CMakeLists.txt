@@ -1,4 +1,5 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.7)
+
 PROJECT(al5d_cpp
         VERSION 0.0.1
         LANGUAGES CXX)
@@ -11,9 +12,7 @@ ADD_COMPILE_OPTIONS(
 FIND_PACKAGE(Boost REQUIRED COMPONENTS
         system)
 
-INCLUDE_DIRECTORIES(
-        include
-        SYSTEM)
+INCLUDE_DIRECTORIES(include)
 
 INCLUDE(GNUInstallDirs)
 
@@ -78,4 +77,9 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME}_app
 # ----------------------------------------
 
 ADD_SUBDIRECTORY(tests)
+
+# ----------------------------------------
+# EXAMPLE TARGETS
+# ----------------------------------------
+
 ADD_SUBDIRECTORY(examples)
