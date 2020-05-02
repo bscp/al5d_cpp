@@ -10,7 +10,7 @@
 namespace al5d
 {
     template <typename BaseType>
-    class StatefullRobot : public BaseType, public ICommunicator
+    class StatefullRobot : public BaseType
     {
     public:
         typedef typename BaseType::Config Config;

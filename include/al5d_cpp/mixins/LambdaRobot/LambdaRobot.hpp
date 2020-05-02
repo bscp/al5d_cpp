@@ -5,9 +5,6 @@
 #include <functional>
 #include <string>
 
-// PROJECT INCLUDES
-#include <al5d_cpp/interfaces/ICommunicator.hpp>
-
 
 namespace al5d
 {
@@ -23,7 +20,7 @@ namespace al5d
 
 
     template <typename BaseType>
-    class LambdaRobot : public BaseType, public ICommunicator
+    class LambdaRobot : public BaseType
     {
     public:
         typedef LambdaRobotConfig<BaseType> Config;

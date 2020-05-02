@@ -5,7 +5,7 @@
 namespace al5d
 {
     template <typename BaseType>
-    class LoggingRobot : public BaseType, public ICommunicator
+    class LoggingRobot : public BaseType
     {
     public:
         typedef typename BaseType::Config Config;
