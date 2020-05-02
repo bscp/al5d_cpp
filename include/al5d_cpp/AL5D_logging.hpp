@@ -1,7 +1,8 @@
 #ifndef AL5D_CPP_AL5D_LOGGING_HPP
 #define AL5D_CPP_AL5D_LOGGING_HPP
 
-#include <al5d_cpp/AL5D.hpp>
+// PROJECT INCLUDES
+#include <al5d_cpp/base/AL5DBase.hpp>
 
 
 namespace al5d

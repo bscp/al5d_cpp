@@ -5,16 +5,23 @@
 #include <al5d_cpp/base/AL5DBase.hpp>
 #include <al5d_cpp/Duration.hpp>
 
-// ROBOT MIXIN INCLUDES
+// MIXIN INCLUDES
+#include <al5d_cpp/mixins/LoggingRobot.hpp>
 #include <al5d_cpp/robot_mixins/SerialRobot.hpp>
 #include <al5d_cpp/robot_mixins/LambdaRobot.hpp>
 
 
 namespace al5d
 {
-    typedef SerialRobot<AL5DBase> AL5D;
-    typedef LambdaRobot<AL5DBase> LambdaAL5D;
-    // typedef SerialRobot<Logging<Statefull<AL5DBase>>> AL5D // TODO : implement mixins
+    // GeneralMixins
+    typedef LoggingRobot<AL5DBase> LoggingAL5D;
+    // typedef StatefullRobot<AL5DBase> AL5D; // TODO : implement this
+
+    // SerialRobot
+    typedef SerialRobot<LoggingAL5D> AL5D;
+
+    // LambdaRobot
+    typedef LambdaRobot<LoggingAL5D> LambdaAL5D;
 }
 
 

@@ -1,9 +1,6 @@
 // HEADER INCLUDE
 #include <al5d_cpp/base/AL5DBase.hpp>
 
-// PROJECT INCLUDES
-#include <al5d_cpp/AL5D_logging.hpp>
-
 
 namespace al5d
 {   
@@ -22,7 +19,9 @@ namespace al5d
     }
     
     
-    Joints AL5DBase::construct_joints(const JointConfigs& joints_configs) const
+    Joints AL5DBase::construct_joints(
+        const JointConfigs& joints_configs)
+        const
     {
         Joints constructed_joints;
         
@@ -43,7 +42,8 @@ namespace al5d
     }
     
     
-    bool AL5DBase::is_moving() const
+    bool AL5DBase::is_moving()
+        const
     {
         if (timer_ptr == nullptr)
         {
@@ -62,7 +62,8 @@ namespace al5d
     }
     
     
-    void AL5DBase::start_timer(long duration)
+    void AL5DBase::start_timer(
+        long duration)
     {
         timer_ptr = Timer::as_pointer(duration);
     }
@@ -71,7 +72,6 @@ namespace al5d
     void AL5DBase::move_to(
         const JointTypeAngles &joint_type_angles)
     {
-        log_moving_joints(joint_type_angles);
         transmit_command(get_move_command(joint_type_angles));
         start_timer(DURATION);
     }
@@ -80,7 +80,6 @@ namespace al5d
     void AL5DBase::move_to(
         const JointTypeAngle &joint_type_angle)
     {
-        log_moving_joint(joint_type_angle);
         transmit_command(get_move_command(joint_type_angle));
         start_timer(DURATION);
     }
@@ -90,7 +89,6 @@ namespace al5d
         const JointTypeAngles &joint_type_angles,
         const Duration &move_duration)
     {
-        log_moving_joints(joint_type_angles, move_duration);
         transmit_command(get_move_command(joint_type_angles, move_duration));
         start_timer(move_duration.in_milliseconds());
     }
@@ -100,7 +98,6 @@ namespace al5d
         const JointTypeAngle &joint_type_angle,
         const Duration &move_duration)
     {
-        log_moving_joint(joint_type_angle, move_duration);
         transmit_command(get_move_command(joint_type_angle, move_duration));
         start_timer(move_duration.in_milliseconds());
     }
@@ -108,7 +105,7 @@ namespace al5d
     
     Command AL5DBase::get_move_command(
         const JointTypeAngles &joint_type_angles)
-    const
+        const
     {
         Command command;
         
@@ -127,7 +124,7 @@ namespace al5d
     Command AL5DBase::get_move_command(
         const JointTypeAngles &joint_type_angles,
         const Duration &move_duration)
-    const
+        const
     {
         Command command = get_move_command(joint_type_angles);
         command += "T" + std::to_string(move_duration.in_milliseconds());
@@ -137,7 +134,7 @@ namespace al5d
     
     Command AL5DBase::get_move_command(
         const JointTypeAngle &joint_type_angle)
-    const
+        const
     {
         const auto &joint_type = joint_type_angle.joint_type;
         const auto &joint_angle = joint_type_angle.joint_angle;
@@ -149,7 +146,7 @@ namespace al5d
     Command AL5DBase::get_move_command(
         const JointTypeAngle &joint_type_angle,
         const Duration &move_duration)
-    const
+        const
     {
         const auto command = get_move_command(joint_type_angle);
         const auto milliseconds = move_duration.in_milliseconds();
@@ -160,7 +157,7 @@ namespace al5d
     JointTypeAngle AL5DBase::angle_from_degrees(
         JointType joint_type,
         Degrees degrees)
-    const
+        const
     {
         const auto& joint = get_joint(joint_type);
         const auto joint_angle = joint.angle_from_degrees(degrees);
@@ -171,7 +168,7 @@ namespace al5d
     JointTypeAngle AL5DBase::angle_from_pulse_width(
         JointType joint_type,
         PulseWidth  pulse_width)
-    const
+        const
     {
         const auto& joint = get_joint(joint_type);
         const auto joint_angle = joint.angle_from_pulse_width(pulse_width);
@@ -181,13 +178,13 @@ namespace al5d
     
     void AL5DBase::do_emergency_stop()
     {
-        log_emergency_stop();
         auto command = get_emergency_stop_command();
         transmit_command(command);
     }
     
     
-    std::string AL5DBase::get_emergency_stop_command() const
+    std::string AL5DBase::get_emergency_stop_command()
+        const
     {
         return "STOP";
     }
