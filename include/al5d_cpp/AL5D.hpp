@@ -6,8 +6,8 @@
 #include <al5d_cpp/Duration.hpp>
 
 // ROBOT MIXIN INCLUDES
-#include <al5d_cpp/mixins/SerialRobot.hpp>
-#include <al5d_cpp/mixins/LambdaRobot.hpp>
+#include <al5d_cpp/robot_mixins/SerialRobot.hpp>
+#include <al5d_cpp/robot_mixins/LambdaRobot.hpp>
 
 
 namespace al5d
