@@ -12,17 +12,12 @@
 #include <al5d_cpp/base/JointType.hpp>
 #include <al5d_cpp/base/JointTypeAngle.hpp>
 #include <al5d_cpp/interfaces/ICommunicator.hpp>
-#include <al5d_cpp/Timer.hpp>
 #include <al5d_cpp/base/JointConfig.hpp>
 #include <al5d_cpp/base/AL5DBaseConfig.hpp>
-
-#define DURATION 3000 // in milliseconds
 
 
 namespace al5d
 {
-    
-
     class AL5DBase : public ICommunicator
     {
     public:
@@ -38,10 +33,6 @@ namespace al5d
         JointTypeAngle angle_from_pulse_width(
             JointType joint_type,
             PulseWidth pulse_width)
-            const;
-
-        
-        bool is_moving()
             const;
         
         void move_to(
@@ -65,18 +56,17 @@ namespace al5d
         void do_emergency_stop();
         
     protected:
+
         explicit AL5DBase(
             const AL5DBaseConfig& config);
 
         virtual void transmit(const std::string& message) = 0;
 
     private:
+    
         Joints construct_joints(
             const JointConfigs &joints_configs)
             const;
-        
-        void start_timer(
-            long duration);
         
         void transmit_command(
             const Command &command);
@@ -107,7 +97,6 @@ namespace al5d
             const;
         
         const Joints joints;
-        TimerPtr timer_ptr; // TODO : implement as mixin ?
     };
 }
 

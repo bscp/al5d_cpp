@@ -7,6 +7,7 @@
 
 // MIXIN INCLUDES
 #include <al5d_cpp/mixins/LoggingRobot/LoggingRobot.hpp>
+#include <al5d_cpp/mixins/StatefullRobot/StatefullRobot.hpp>
 #include <al5d_cpp/mixins/SerialRobot/SerialRobot.hpp>
 #include <al5d_cpp/mixins/LambdaRobot/LambdaRobot.hpp>
 
@@ -14,14 +15,14 @@
 namespace al5d
 {
     // GeneralMixins
-    typedef LoggingRobot<AL5DBase> LoggingAL5D;
-    // typedef StatefullRobot<AL5DBase> AL5D; // TODO : implement this
+    typedef StatefullRobot<AL5DBase> StatefullAL5D;
+    typedef LoggingRobot<StatefullAL5D> LoggingStatefullAL5D;
 
     // SerialRobot
-    typedef SerialRobot<LoggingAL5D> AL5D;
+    typedef SerialRobot<LoggingStatefullAL5D> AL5D;
 
     // LambdaRobot
-    typedef LambdaRobot<LoggingAL5D> LambdaAL5D;
+    typedef LambdaRobot<LoggingStatefullAL5D> LambdaAL5D;
 }
 
 

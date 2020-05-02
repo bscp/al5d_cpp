@@ -7,7 +7,6 @@ namespace al5d
     AL5DBase::AL5DBase(
         const AL5DBaseConfig& config)
         : joints(construct_joints(config.joint_configs))
-        , timer_ptr()
     {
     }
     
@@ -42,18 +41,6 @@ namespace al5d
     }
     
     
-    bool AL5DBase::is_moving()
-        const
-    {
-        if (timer_ptr == nullptr)
-        {
-            return false;
-        }
-        
-        return !timer_ptr->has_elapsed();
-    }
-    
-    
     const Joint &AL5DBase::get_joint(
         const JointType &joint_type)
     const
@@ -62,18 +49,10 @@ namespace al5d
     }
     
     
-    void AL5DBase::start_timer(
-        long duration)
-    {
-        timer_ptr = Timer::as_pointer(duration);
-    }
-    
-    
     void AL5DBase::move_to(
         const JointTypeAngles &joint_type_angles)
     {
         transmit_command(get_move_command(joint_type_angles));
-        start_timer(DURATION);
     }
     
     
@@ -81,7 +60,6 @@ namespace al5d
         const JointTypeAngle &joint_type_angle)
     {
         transmit_command(get_move_command(joint_type_angle));
-        start_timer(DURATION);
     }
     
     
@@ -90,7 +68,6 @@ namespace al5d
         const Duration &move_duration)
     {
         transmit_command(get_move_command(joint_type_angles, move_duration));
-        start_timer(move_duration.in_milliseconds());
     }
     
     
@@ -99,7 +76,6 @@ namespace al5d
         const Duration &move_duration)
     {
         transmit_command(get_move_command(joint_type_angle, move_duration));
-        start_timer(move_duration.in_milliseconds());
     }
     
     
