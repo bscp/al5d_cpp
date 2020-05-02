@@ -12,7 +12,7 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/interfaces/ICommunicator.hpp>
-#include <al5d_cpp/types.hpp>
+#include <al5d_cpp/base/types.hpp>
 
 
 namespace al5d

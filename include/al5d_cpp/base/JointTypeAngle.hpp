@@ -6,8 +6,8 @@
 #include <vector>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/JointAngle.hpp>
-#include <al5d_cpp/JointType.hpp>
+#include <al5d_cpp/base/JointAngle.hpp>
+#include <al5d_cpp/base/JointType.hpp>
 
 namespace al5d
 {

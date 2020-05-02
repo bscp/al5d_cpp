@@ -1,6 +1,6 @@
 
 // HEADER INCLUDE
-#include <al5d_cpp/JointConfig.hpp>
+#include <al5d_cpp/base/JointConfig.hpp>
 
 namespace al5d
 {

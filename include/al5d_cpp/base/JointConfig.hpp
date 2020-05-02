@@ -6,7 +6,7 @@
 #include <vector>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/types.hpp>
+#include <al5d_cpp/base/types.hpp>
 
 namespace al5d
 {

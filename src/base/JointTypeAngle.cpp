@@ -1,6 +1,6 @@
 
 // HEADER INCLUDE
-#include <al5d_cpp/JointTypeAngle.hpp>
+#include <al5d_cpp/base/JointTypeAngle.hpp>
 
 namespace al5d
 {

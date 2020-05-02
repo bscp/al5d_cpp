@@ -1,6 +1,6 @@
 
 // HEADER INCLUDE
-#include <al5d_cpp/AL5DBase.hpp>
+#include <al5d_cpp/base/AL5DBase.hpp>
 
 // PROJECT INCLUDES
 #include <al5d_cpp/AL5D_logging.hpp>

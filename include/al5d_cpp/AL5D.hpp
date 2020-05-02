@@ -2,7 +2,7 @@
 #define AL5D_CPP_AL5D_HPP
 
 // PROJECT INCLUDES
-#include <al5d_cpp/AL5DBase.hpp>
+#include <al5d_cpp/base/AL5DBase.hpp>
 #include <al5d_cpp/Duration.hpp>
 
 // Robot mixins

@@ -8,13 +8,13 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/Duration.hpp>
-#include <al5d_cpp/Joint.hpp>
-#include <al5d_cpp/JointType.hpp>
-#include <al5d_cpp/JointTypeAngle.hpp>
+#include <al5d_cpp/base/Joint.hpp>
+#include <al5d_cpp/base/JointType.hpp>
+#include <al5d_cpp/base/JointTypeAngle.hpp>
 #include <al5d_cpp/interfaces/ICommunicator.hpp>
 #include <al5d_cpp/Timer.hpp>
-#include <al5d_cpp/JointConfig.hpp>
-#include <al5d_cpp/AL5DBaseConfig.hpp>
+#include <al5d_cpp/base/JointConfig.hpp>
+#include <al5d_cpp/base/AL5DBaseConfig.hpp>
 
 #define DURATION 3000 // in milliseconds
 

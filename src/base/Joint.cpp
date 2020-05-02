@@ -1,6 +1,6 @@
 
 // HEADER INCLUDE
-#include <al5d_cpp/Joint.hpp>
+#include <al5d_cpp/base/Joint.hpp>
 
 // SYSTEM INCLUDES
 #include <stdexcept>
