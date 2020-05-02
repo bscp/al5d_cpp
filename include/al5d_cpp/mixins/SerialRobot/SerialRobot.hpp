@@ -5,7 +5,6 @@
 
 // SYSTEM INCLUDES
 #include <string>
-#include <iostream> // TODO : move to LoggingRobot mixin
 
 // 3TH PARTY INCLUDES
 #include <boost/asio.hpp>

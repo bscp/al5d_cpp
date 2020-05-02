@@ -11,6 +11,13 @@ namespace al5d
     {
         LOG_INFO("EMERGENCY_STOP");
     }
+
+    
+    void log_transmit_command(
+        const std::string& command)
+    {
+        LOG_INFO("TRANSMITTING :: " + command);
+    }
     
     
     void log_no_serial_connection()

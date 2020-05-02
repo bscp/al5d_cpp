@@ -43,6 +43,9 @@ namespace al5d
     void log_disconnecting();
     
     std::string get_disconnecting_log();
+
+    void log_transmit_command(
+        const std::string& command);
 }
 
 

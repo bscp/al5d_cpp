@@ -30,6 +30,9 @@ namespace al5d
             const Duration &move_duration);
 
         void do_emergency_stop();
+    
+        void transmit_command(
+            const Command &command);
     };
 }
 

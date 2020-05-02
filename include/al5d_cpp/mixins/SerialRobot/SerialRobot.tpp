@@ -59,7 +59,6 @@ namespace al5d
     void SerialRobot<BaseType>::transmit(
         const std::string& message)
     {
-        std::cout << "TRANSMITTING :: " << message << "\n"; // TODO : move to mixin
         boost::asio::write(serial, boost::asio::buffer(message.c_str(), message.size()));
     }
 }
