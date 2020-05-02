@@ -23,32 +23,29 @@ namespace al5d
 
 
     template <typename BaseType>
-    class LambdaRobot : public BaseType, ICommunicator
+    class LambdaRobot : public BaseType, public ICommunicator
     {
     public:
         typedef LambdaRobotConfig<BaseType> Config;
 
-        LambdaRobot(
-            const Config& config)
-            : BaseType(config)
-            , on_trasmit_fn(config.on_transmit_fn)
-        {
-        }
+        explicit LambdaRobot(
+            const Config& config);
 
         virtual ~LambdaRobot() = default;
     
     protected:
+
         void transmit( // overrides ICommunicator
             const std::string& message)
-            final
-        {
-            on_trasmit_fn(message);
-        }
+            final;
 
     private:
+
         OnTransmitFn on_trasmit_fn;
     };
 }
 
+
+#include "LambdaRobot.tpp"
 
 #endif // AL5D_CPP_LAMBDAROBOT_HPP

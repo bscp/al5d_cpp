@@ -33,64 +33,42 @@ namespace al5d
         typedef SerialRobotConfig<BaseType> Config;
        
         explicit SerialRobot(
-            const Config &config)
-            : BaseType(config)
-            , io()
-            , serial(io, config.serial_port)
-        {
-            set_baud_rate(config.serial_baud);
-        }
+            const Config &config);
         
 
         void set_baud_rate(
-            const BaudRate& baud_rate)
-        {
-            serial.set_option(baud_rate);
-        }
+            const BaudRate& baud_rate);
         
 
         void set_parity(
-            const ParityType& parity_type)
-        {
-            serial.set_option(Parity(parity_type));
-        }
+            const ParityType& parity_type);
         
 
         void set_flow_control(
-            const FlowControlType& flow_control_type)
-        {
-            serial.set_option(FlowControl(flow_control_type));
-        }
+            const FlowControlType& flow_control_type);
         
 
         void set_stop_bits(
-            const StopBitsType& stop_bits_type)
-        {
-            serial.set_option(StopBits(stop_bits_type));
-        }
+            const StopBitsType& stop_bits_type);
         
 
         void set_character_size(
-            const CharacterSize& character_size)
-        {
-            serial.set_option(character_size);
-        }
+            const CharacterSize& character_size);
 
     protected:
+
         void transmit( // overrides ICommunicator
             const std::string& message)
-            final
-        {
-            std::cout << "TRANSMITTING :: " << message << "\n";
-            boost::asio::write(serial, boost::asio::buffer(message.c_str(), message.size()));
-        }
-
+            final;
 
     private:
+
         boost::asio::io_service io;
         boost::asio::serial_port serial;
     };
 }
 
+
+#include "SerialRobot.tpp"
 
 #endif	/* AL5D_CPP_SERIALROBOT_HPP */
