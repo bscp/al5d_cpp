@@ -1,36 +1,29 @@
 
 // HEADER INCLUDE
-#include <al5d_cpp/AL5D.hpp>
+#include <al5d_cpp/AL5DBase.hpp>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/communicators/ConsoleCommunicator.hpp>
 #include <al5d_cpp/AL5D_logging.hpp>
 
+
 namespace al5d
-{
-    /*static*/ AL5DPtr AL5D::as_pointer(
-        const AL5DConfig& config)
-    {
-        return std::make_shared<AL5D>(config);
-    }
-    
-    
-    AL5D::AL5D(
-        const AL5DConfig& al5d_config)
-        : joints(construct_joints(al5d_config.joint_configs))
-        , communicator_ptr(nullptr)
+{   
+    AL5DBase::AL5DBase(
+        const AL5DBaseConfig& config)
+        : joints(construct_joints(config.joint_configs))
         , timer_ptr()
     {
     }
     
     
-    AL5D::~AL5D()
+    AL5DBase::~AL5DBase()
     {
-        disconnect(); // only so that it gets logged
+        // only so that it gets logged
+        // communicator_ptr->disconnect(); // TODO : implement interface
     }
     
     
-    Joints AL5D::construct_joints(const JointConfigs& joints_configs) const
+    Joints AL5DBase::construct_joints(const JointConfigs& joints_configs) const
     {
         Joints constructed_joints;
         
@@ -44,51 +37,14 @@ namespace al5d
     }
     
     
-    void AL5D::connect(
-        const SerialPort& serial_port,
-        const BaudRate& serial_baud)
-    {
-        log_connecting(serial_port, serial_baud);
-        communicator_ptr = ConsoleCommunicator::as_pointer();
-//        communicator_ptr = SerialCommunicator::as_pointer(serial_port, serial_baud);
-    }
-    
-    
-    void AL5D::disconnect()
-    {
-        log_disconnecting();
-        communicator_ptr = nullptr;
-    }
-    
-    
-    void AL5D::transmit_command(
+    void AL5DBase::transmit_command(
         const Command &command)
-    const
     {
-        validate_connection();
-        communicator_ptr->transmit(command + "\r");
+        transmit(command + "\r");
     }
     
     
-    void AL5D::validate_connection()
-    const
-    {
-        if (!is_connected())
-        {
-            log_no_serial_connection();
-            throw std::invalid_argument("No connection connection established");
-        }
-    }
-    
-    
-    bool AL5D::is_connected()
-    const
-    {
-        return communicator_ptr != nullptr;
-    }
-    
-    
-    bool AL5D::is_moving() const
+    bool AL5DBase::is_moving() const
     {
         if (timer_ptr == nullptr)
         {
@@ -99,7 +55,7 @@ namespace al5d
     }
     
     
-    const Joint &AL5D::get_joint(
+    const Joint &AL5DBase::get_joint(
         const JointType &joint_type)
     const
     {
@@ -107,13 +63,13 @@ namespace al5d
     }
     
     
-    void AL5D::start_timer(long duration)
+    void AL5DBase::start_timer(long duration)
     {
         timer_ptr = Timer::as_pointer(duration);
     }
     
     
-    void AL5D::move_to(
+    void AL5DBase::move_to(
         const JointTypeAngles &joint_type_angles)
     {
         log_moving_joints(joint_type_angles);
@@ -122,7 +78,7 @@ namespace al5d
     }
     
     
-    void AL5D::move_to(
+    void AL5DBase::move_to(
         const JointTypeAngle &joint_type_angle)
     {
         log_moving_joint(joint_type_angle);
@@ -131,7 +87,7 @@ namespace al5d
     }
     
     
-    void AL5D::move_to(
+    void AL5DBase::move_to(
         const JointTypeAngles &joint_type_angles,
         const Duration &move_duration)
     {
@@ -141,7 +97,7 @@ namespace al5d
     }
     
     
-    void AL5D::move_to(
+    void AL5DBase::move_to(
         const JointTypeAngle &joint_type_angle,
         const Duration &move_duration)
     {
@@ -151,7 +107,7 @@ namespace al5d
     }
     
     
-    Command AL5D::get_move_command(
+    Command AL5DBase::get_move_command(
         const JointTypeAngles &joint_type_angles)
     const
     {
@@ -169,7 +125,7 @@ namespace al5d
     }
     
     
-    Command AL5D::get_move_command(
+    Command AL5DBase::get_move_command(
         const JointTypeAngles &joint_type_angles,
         const Duration &move_duration)
     const
@@ -180,7 +136,7 @@ namespace al5d
     }
     
     
-    Command AL5D::get_move_command(
+    Command AL5DBase::get_move_command(
         const JointTypeAngle &joint_type_angle)
     const
     {
@@ -191,7 +147,7 @@ namespace al5d
     }
     
     
-    Command AL5D::get_move_command(
+    Command AL5DBase::get_move_command(
         const JointTypeAngle &joint_type_angle,
         const Duration &move_duration)
     const
@@ -202,7 +158,7 @@ namespace al5d
     }
     
     
-    JointTypeAngle AL5D::angle_from_degrees(
+    JointTypeAngle AL5DBase::angle_from_degrees(
         JointType joint_type,
         Degrees degrees)
     const
@@ -213,7 +169,7 @@ namespace al5d
     }
     
     
-    JointTypeAngle AL5D::angle_from_pulse_width(
+    JointTypeAngle AL5DBase::angle_from_pulse_width(
         JointType joint_type,
         PulseWidth  pulse_width)
     const
@@ -224,14 +180,15 @@ namespace al5d
     }
     
     
-    void AL5D::do_emergency_stop() const
+    void AL5DBase::do_emergency_stop()
     {
         log_emergency_stop();
-        transmit_command(get_emergency_stop_command());
+        auto command = get_emergency_stop_command();
+        transmit_command(command);
     }
     
     
-    std::string AL5D::get_emergency_stop_command() const
+    std::string AL5DBase::get_emergency_stop_command() const
     {
         return "STOP";
     }
