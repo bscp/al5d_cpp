@@ -12,18 +12,6 @@
             "cwd": "${workspaceFolder}",
             "externalConsole": false,
             "MIMode": "gdb"
-        },
-        {
-            "name": "unit_tests",
-            "type": "cppdbg",
-            "preLaunchTask": "${defaultBuildTask}",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/tests/unit_tests/al5d_cpp_unit_test",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "externalConsole": false,
-            "MIMode": "gdb"
         }
     ]
 }

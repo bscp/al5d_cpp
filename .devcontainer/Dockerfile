@@ -20,7 +20,7 @@ ARG USER_GID=$USER_UID
 RUN apt-get update \
     #
     # Install C++ tools
-    && apt-get -y install build-essential cmake cppcheck valgrind libboost-all-dev \
+    && apt-get -y install build-essential cmake cppcheck valgrind libboost-all-dev plantuml \
     #
     # [Optional] Update UID/GID if needed
     && if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then \
