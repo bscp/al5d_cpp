@@ -18,6 +18,7 @@
 		"hbenl.vscode-test-explorer",
 		"matepek.vscode-catch2-test-adapter",
 		"jebbs.plantuml"
+		"gruntfuggly.todo-tree"
 	]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
