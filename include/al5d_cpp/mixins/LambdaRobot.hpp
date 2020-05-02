@@ -3,6 +3,7 @@
 
 // SYSTEM INCLUDES
 #include <functional>
+#include <string>
 
 // PROJECT INCLUDES
 #include <al5d_cpp/interfaces/ICommunicator.hpp>
@@ -10,33 +11,42 @@
 
 namespace al5d
 {
-    typedef std::function<void(const std::string&)> TransmitLambda;
+    typedef std::function<void(const std::string&)> OnTransmitFn;
+
 
     template <typename BaseType>
-    class LambdaCommunicator : public BaseType, ICommunicator
+    class LambdaRobotConfig : public BaseType::Config
     {
     public:
-        LambdaCommunicator(
-            const typename BaseType::Config& config,
-            TransmitLambda transmit_lambda)
+        OnTransmitFn on_transmit_fn;
+    };
+
+
+    template <typename BaseType>
+    class LambdaRobot : public BaseType, ICommunicator
+    {
+    public:
+        typedef LambdaRobotConfig<BaseType> Config;
+
+        LambdaRobot(
+            const Config& config)
             : BaseType(config)
-            , transmit_lambda(transmit_lambda)
+            , on_trasmit_fn(config.on_transmit_fn)
         {
         }
 
-
-        virtual ~LambdaCommunicator() = default;
+        virtual ~LambdaRobot() = default;
     
     protected:
         void transmit( // overrides ICommunicator
             const std::string& message)
             final
         {
-            transmit_lambda(message);
+            on_trasmit_fn(message);
         }
 
     private:
-        TransmitLambda transmit_lambda;
+        OnTransmitFn on_trasmit_fn;
     };
 }
 

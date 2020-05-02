@@ -7,14 +7,13 @@
 
 // Robot mixins
 #include <al5d_cpp/mixins/SerialRobot.hpp>
-#include <al5d_cpp/mixins/ConsoleRobot.hpp>
 #include <al5d_cpp/mixins/LambdaRobot.hpp>
 
 
 namespace al5d
 {
     typedef SerialRobot<AL5DBase> AL5D;
-    typedef ConsoleRobot<AL5DBase> ConsoleAL5D;
+    typedef LambdaRobot<AL5DBase> LambdaAL5D;
     // typedef SerialRobot<Logging<Statefull<AL5DBase>>> AL5D // TODO : implement mixins
 }
 
