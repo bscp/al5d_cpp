@@ -1,4 +1,3 @@
-
 // HEADER INCLUDE
 #include <al5d_cpp/base/AL5DBase.hpp>
 

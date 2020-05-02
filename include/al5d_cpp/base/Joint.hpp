@@ -1,4 +1,3 @@
-
 #ifndef AL5D_CPP_JOINT_HPP
 #define AL5D_CPP_JOINT_HPP
 
@@ -9,6 +8,7 @@
 // PROJECT INCLUDES
 #include <al5d_cpp/base/JointConfig.hpp>
 #include <al5d_cpp/base/JointAngle.hpp>
+
 
 namespace al5d
 {
@@ -77,5 +77,6 @@ namespace al5d
     
     typedef std::vector<Joint> Joints;
 }
+
 
 #endif // AL5D_CPP_JOINT_HPP

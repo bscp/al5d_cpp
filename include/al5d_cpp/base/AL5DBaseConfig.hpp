@@ -1,8 +1,6 @@
 #ifndef AL5D_CPP_AL5DBASECONFIG_HPP
 #define AL5D_CPP_AL5DBASECONFIG_HPP
 
-// TODO : fix all include guards
-
 // SYSTEM INCLUDES
 #include <vector>
 #include <string>

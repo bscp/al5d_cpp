@@ -1,7 +1,7 @@
 // USED THESE EXAMPLES: https://github.com/fedetft/serial-port
 
-#ifndef AL5D_CPP_SERIALCOMMUNICATOR_HPP
-#define	AL5D_CPP_SERIALCOMMUNICATOR_HPP
+#ifndef AL5D_CPP_SERIALROBOT_HPP
+#define	AL5D_CPP_SERIALROBOT_HPP
 
 // SYSTEM INCLUDES
 #include <string>
@@ -93,4 +93,4 @@ namespace al5d
 }
 
 
-#endif	/* AL5D_CPP_SERIALCOMMUNICATOR_HPP */
+#endif	/* AL5D_CPP_SERIALROBOT_HPP */

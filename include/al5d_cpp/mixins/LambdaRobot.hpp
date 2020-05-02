@@ -1,5 +1,5 @@
-#ifndef AL5D_CPP_CallbackCommunicator_HPP
-#define AL5D_CPP_CallbackCommunicator_HPP
+#ifndef AL5D_CPP_LAMBDAROBOT_HPP
+#define AL5D_CPP_LAMBDAROBOT_HPP
 
 // SYSTEM INCLUDES
 #include <functional>
@@ -51,4 +51,4 @@ namespace al5d
 }
 
 
-#endif // AL5D_CPP_CallbackCommunicator_HPP
+#endif // AL5D_CPP_LAMBDAROBOT_HPP

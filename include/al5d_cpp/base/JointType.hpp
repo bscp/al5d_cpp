@@ -1,6 +1,6 @@
-
 #ifndef AL5D_CPP_JOINTTYPE_HPP
 #define AL5D_CPP_JOINTTYPE_HPP
+
 
 namespace al5d
 {
@@ -14,5 +14,6 @@ namespace al5d
         JOINT_WRIST_ROTATE,
     };
 }
+
 
 #endif // AL5D_CPP_JOINTTYPE_HPP

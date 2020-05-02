@@ -1,8 +1,8 @@
-
 #ifndef AL5D_CPP_AL5D_LOGGING_HPP
 #define AL5D_CPP_AL5D_LOGGING_HPP
 
 #include <al5d_cpp/AL5D.hpp>
+
 
 namespace al5d
 {
@@ -43,5 +43,6 @@ namespace al5d
     
     std::string get_disconnecting_log();
 }
+
 
 #endif // AL5D_CPP_AL5D_LOGGING_HPP

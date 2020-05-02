@@ -27,9 +27,6 @@ namespace al5d
     {
     public:
         typedef AL5DBaseConfig Config;
-        
-        explicit AL5DBase( // TODO : set as protected
-            const AL5DBaseConfig& config);
     
         virtual ~AL5DBase();
         
@@ -68,6 +65,9 @@ namespace al5d
         void do_emergency_stop();
         
     protected:
+        explicit AL5DBase(
+            const AL5DBaseConfig& config);
+
         virtual void transmit(const std::string& message) = 0;
 
     private:

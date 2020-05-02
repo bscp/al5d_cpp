@@ -5,7 +5,7 @@
 #include <al5d_cpp/base/AL5DBase.hpp>
 #include <al5d_cpp/Duration.hpp>
 
-// Robot mixins
+// ROBOT MIXIN INCLUDES
 #include <al5d_cpp/mixins/SerialRobot.hpp>
 #include <al5d_cpp/mixins/LambdaRobot.hpp>
 

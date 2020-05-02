@@ -1,10 +1,10 @@
-
 #ifndef AL5D_CPP_TIMER_HPP
 #define AL5D_CPP_TIMER_HPP
 
 // SYSTEM INCLUDES
 #include <chrono>
 #include <memory>
+
 
 namespace al5d
 {
@@ -32,5 +32,6 @@ namespace al5d
         const long duration;
     };
 }
+
 
 #endif // AL5D_CPP_TIMER_HPP

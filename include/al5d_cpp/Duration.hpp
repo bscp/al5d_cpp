@@ -1,6 +1,6 @@
-
 #ifndef AL5D_CPP_DURATION_HPP
 #define AL5D_CPP_DURATION_HPP
+
 
 namespace al5d
 {
@@ -30,5 +30,6 @@ namespace al5d
         Milliseconds milliseconds;
     };
 }
+
 
 #endif // AL5D_CPP_DURATION_HPP

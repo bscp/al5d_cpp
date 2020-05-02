@@ -1,4 +1,3 @@
-
 #ifndef AL5D_CPP_JOINTCONFIG_HPP
 #define AL5D_CPP_JOINTCONFIG_HPP
 
@@ -7,6 +6,7 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/base/types.hpp>
+
 
 namespace al5d
 {
@@ -28,5 +28,6 @@ namespace al5d
     
     typedef std::vector<JointConfig> JointConfigs;
 }
+
 
 #endif // AL5D_CPP_JOINTCONFIG_HPP

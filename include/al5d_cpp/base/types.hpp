@@ -1,4 +1,3 @@
-
 #ifndef AL5D_CPP_TYPES_HPP
 #define AL5D_CPP_TYPES_HPP
 
@@ -7,6 +6,7 @@
 
 // 3TH PARTY INCLUDES
 #include <boost/asio.hpp>
+
 
 namespace al5d
 {
@@ -25,5 +25,6 @@ namespace al5d
     typedef boost::asio::serial_port_base::baud_rate BaudRate;
     typedef boost::asio::serial_port_base::character_size CharacterSize;
 }
+
 
 #endif // AL5D_CPP_TYPES_HPP

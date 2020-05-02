@@ -1,9 +1,9 @@
-
 // HEADER INCLUDE
 #include <al5d_cpp/AL5D_logging.hpp>
 
 // PROJECT INCLUDES
 #include <al5d_cpp/logging.hpp>
+
 
 namespace al5d
 {
