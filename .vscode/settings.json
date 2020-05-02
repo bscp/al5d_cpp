@@ -1,2 +1,7 @@
 {
+    "files.associations": {
+        ".tpp": "cpp",
+        ".cpp": "cpp",
+        ".hpp": "cpp"
+    }
 }
