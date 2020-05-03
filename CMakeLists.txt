@@ -10,6 +10,7 @@ ADD_COMPILE_OPTIONS(
         -std=c++14 -Wall -Wconversion -Wextra)
 
 FIND_PACKAGE(Boost REQUIRED COMPONENTS
+        thread
         system)
 
 INCLUDE_DIRECTORIES(include)
