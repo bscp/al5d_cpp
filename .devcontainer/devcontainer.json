@@ -1,4 +1,7 @@
 // For details see: https://aka.ms/vscode-remote/devcontainer.json
+// TODO : add code snippets for creating new hpp/tpp/cpp files
+// TODO : add code generation to generate code for unimplemented functions
+// TODO : add code generation to generate code for unimplemented constructors
 {
 	"name": "C++",
 	"dockerFile": "Dockerfile",
