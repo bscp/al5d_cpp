@@ -1,5 +1,3 @@
-// USED THESE EXAMPLES: https://github.com/fedetft/serial-port
-
 #ifndef AL5D_CPP_SERIALROBOT_HPP
 #define	AL5D_CPP_SERIALROBOT_HPP
 
@@ -10,20 +8,11 @@
 #include <boost/asio.hpp>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/base/types.hpp>
+#include <al5d_cpp/mixins/SerialRobot/SerialRobotConfig.hpp>
 
 
 namespace al5d
 {
-    template <typename BaseType>
-    class SerialRobotConfig : public BaseType::Config
-    {
-    public:
-        SerialPort serial_port = SerialPort("/dev/ttyUSB0");
-        BaudRate serial_baud = BaudRate(9600);
-    };
-
-
     template <typename BaseType>
     class SerialRobot : public BaseType
     {
@@ -35,23 +24,23 @@ namespace al5d
         
 
         void set_baud_rate(
-            const BaudRate& baud_rate);
+            const typename Config::SerialBaudRate& baud_rate);
         
 
         void set_parity(
-            const ParityType& parity_type);
+            const typename Config::SerialParityType& parity_type);
         
 
         void set_flow_control(
-            const FlowControlType& flow_control_type);
+            const typename Config::SerialFlowControlType& flow_control_type);
         
 
         void set_stop_bits(
-            const StopBitsType& stop_bits_type);
+            const typename Config::SerialStopBitsType& stop_bits_type);
         
 
         void set_character_size(
-            const CharacterSize& character_size);
+            const typename Config::SerialCharacterSize& character_size);
 
     protected:
 

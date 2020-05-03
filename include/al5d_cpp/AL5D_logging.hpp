@@ -28,14 +28,6 @@ namespace al5d
         const JointTypeAngle &joint_type_angle,
         const Duration &duration);
     
-    std::string get_connecting_log(
-        const SerialPort &serial_port,
-        const BaudRate &serial_baud_rate);
-    
-    void log_connecting(
-        const SerialPort &serial_port,
-        const BaudRate &serial_baud_rate);
-    
     void log_emergency_stop();
     
     void log_no_serial_connection();
