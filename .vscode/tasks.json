@@ -4,7 +4,7 @@
         {
             "label": "Build",
             "type": "shell",
-            "command": "scripts/build.sh Debug",
+            "command": "scripts/build.sh -m rebuild -t Debug",
             "options": {
                 "cwd": "${workspaceRoot}"
             },
@@ -12,6 +12,15 @@
             "group": {
                 "kind": "build",
                 "isDefault": true  // sets ${defaultBuildTask}
+            }
+        },
+        {
+            "label": "Specific build",
+            "type": "shell",
+            "command": "scripts/build.sh -m ${input:build_method} -t ${input:build_type}",
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${workspaceRoot}"
             }
         },
         {
@@ -34,6 +43,20 @@
             "options": {
                 "cwd": "${workspaceRoot}"
             },
+        }
+    ],
+    "inputs": [
+        {
+            "id": "build_type",
+            "description": "Build type [release|debug]",
+            "default": "Debug",
+            "type": "promptString"
+        },
+        {
+            "id": "build_method",
+            "description": "Build method [rebuild|clean]",
+            "default": "Rebuild",
+            "type": "promptString"
         }
     ]
 }
