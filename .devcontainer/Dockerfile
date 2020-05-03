@@ -3,7 +3,8 @@
 # Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
 #-------------------------------------------------------------------------------------------------------------
 
-FROM mcr.microsoft.com/vscode/devcontainers/base:0-debian-9
+# FROM mcr.microsoft.com/vscode/devcontainers/base:0-debian-9
+FROM ubuntu:20.04
 
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
@@ -20,7 +21,7 @@ ARG USER_GID=$USER_UID
 RUN apt-get update \
     #
     # Install C++ tools
-    && apt-get -y install nano build-essential cmake cppcheck valgrind libboost-all-dev plantuml \
+    && apt-get -y install git nano build-essential cmake cppcheck valgrind libboost-all-dev plantuml \
     #
     # [Optional] Update UID/GID if needed
     && if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then \
