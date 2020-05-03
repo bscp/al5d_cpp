@@ -9,6 +9,7 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/base/types.hpp>
+#include <al5d_cpp/Serial.hpp>
 
 
 namespace al5d
@@ -17,23 +18,12 @@ namespace al5d
     class SerialRobotConfig : public BaseType::Config
     {
     public:
-        typedef boost::asio::serial_port_base::stop_bits::type StopBitsType;
-        typedef boost::asio::serial_port_base::parity::type ParityType;
-        typedef boost::asio::serial_port_base::flow_control::type FlowControlType;
-        
-        typedef std::string SerialPort;
-        typedef boost::asio::serial_port_base::stop_bits SerialStopBits;
-        typedef boost::asio::serial_port_base::parity SerialParity;
-        typedef boost::asio::serial_port_base::flow_control SerialFlowControl;
-        typedef boost::asio::serial_port_base::baud_rate SerialBaudRate;
-        typedef boost::asio::serial_port_base::character_size SerialCharacterSize;
-
-        SerialPort serial_port = SerialPort("/dev/ttyUSB0");
-        SerialBaudRate serial_baud = SerialBaudRate(9600);
-        SerialStopBits serial_stop_bits = SerialStopBits::one;
-        SerialParity serial_parity = SerialParity::none;
-        SerialFlowControl serial_flow_control = SerialFlowControl::none;
-        SerialCharacterSize serial_character_size = 8;
+        serial::Port serial_port = serial::Port("/dev/ttyUSB0");
+        serial::BaudRate serial_baud = serial::BaudRate(9600);
+        serial::StopBits serial_stop_bits = serial::StopBits::one;
+        serial::Parity serial_parity = serial::Parity::none;
+        serial::FlowControl serial_flow_control = serial::FlowControl::none;
+        serial::CharacterSize serial_character_size = 8;
     };
 }
 

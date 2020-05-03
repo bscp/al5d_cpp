@@ -4,11 +4,9 @@
 // SYSTEM INCLUDES
 #include <string>
 
-// 3TH PARTY INCLUDES
-#include <boost/asio.hpp>
-
 // PROJECT INCLUDES
 #include <al5d_cpp/mixins/SerialRobot/SerialRobotConfig.hpp>
+#include <al5d_cpp/Serial.hpp>
 
 
 namespace al5d
@@ -21,37 +19,9 @@ namespace al5d
        
         explicit SerialRobot(
             const Config &config);
-        
-
-        void set_baud_rate(
-            const typename Config::SerialBaudRate& baud_rate);
-        
-
-        void set_parity(
-            const typename Config::SerialParityType& parity_type);
-        
-
-        void set_flow_control(
-            const typename Config::SerialFlowControlType& flow_control_type);
-        
-
-        void set_stop_bits(
-            const typename Config::SerialStopBitsType& stop_bits_type);
-        
-
-        void set_character_size(
-            const typename Config::SerialCharacterSize& character_size);
-
-    protected:
-
-        void transmit( // overrides ICommunicator
-            const std::string& message)
-            override;
 
     private:
-
-        boost::asio::io_service io;
-        boost::asio::serial_port serial;
+        serial::Serial serial;
     };
 }
 

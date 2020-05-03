@@ -32,7 +32,7 @@ namespace al5d
     
     protected:
 
-        void transmit( // overrides ICommunicator
+        void transmit( 
             const std::string& message)
             override;
 
