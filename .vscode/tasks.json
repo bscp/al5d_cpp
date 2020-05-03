@@ -11,16 +11,7 @@
             "problemMatcher": [],
             "group": {
                 "kind": "build",
-                "isDefault": true  // sets ${defaultBuildTask}
-            }
-        },
-        {
-            "label": "Specific build",
-            "type": "shell",
-            "command": "scripts/build.sh -m ${input:build_method} -t ${input:build_type}",
-            "problemMatcher": [],
-            "options": {
-                "cwd": "${workspaceRoot}"
+                "isDefault": true // sets ${defaultBuildTask}
             }
         },
         {
@@ -33,7 +24,15 @@
             "problemMatcher": [],
             "group": {
                 "kind": "test",
-                "isDefault": true  // sets ${defaultTestTask}
+                "isDefault": true // sets ${defaultTestTask}
+            },
+        },
+        {
+            "label": "Assess",
+            "type": "shell",
+            "command": "scripts/assess.sh",
+            "options": {
+                "cwd": "${workspaceRoot}"
             }
         },
         {
@@ -41,7 +40,10 @@
             "type": "shell",
             "command": "scripts/install.sh",
             "options": {
-                "cwd": "${workspaceRoot}"
+                "cwd": "${workspaceRoot}",
+                "statusbar": {
+                    "hide": true
+                }
             },
         }
     ],
