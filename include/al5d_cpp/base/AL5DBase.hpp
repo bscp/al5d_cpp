@@ -11,14 +11,13 @@
 #include <al5d_cpp/base/Joint.hpp>
 #include <al5d_cpp/base/JointType.hpp>
 #include <al5d_cpp/base/JointTypeAngle.hpp>
-#include <al5d_cpp/interfaces/ICommunicator.hpp>
 #include <al5d_cpp/base/JointConfig.hpp>
 #include <al5d_cpp/base/AL5DBaseConfig.hpp>
 
 
 namespace al5d
 {
-    class AL5DBase : public ICommunicator
+    class AL5DBase
     {
     public:
         typedef AL5DBaseConfig Config;
@@ -54,18 +53,18 @@ namespace al5d
         virtual void transmit_command(
             const Command &command);
         
+        virtual void connect();
+
+        virtual void disconnect();
+
     protected:
 
         explicit AL5DBase(
             const AL5DBaseConfig& config);
 
-        void transmit(const std::string& message)
-            override                                              
-        
-        {
-            // throw "Not implemented";
-        }
-
+        virtual void transmit(
+            const std::string& message);
+            
     private:
     
         static Joints construct_joints(

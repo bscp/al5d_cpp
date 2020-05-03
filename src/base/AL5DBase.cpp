@@ -13,8 +13,7 @@ namespace al5d
     
     AL5DBase::~AL5DBase()
     {
-        // only so that it gets logged
-        // communicator_ptr->disconnect(); // TODO : implement interface
+        disconnect();
     }
     
     
@@ -30,6 +29,22 @@ namespace al5d
         }
         
         return constructed_joints;
+    }
+    
+    
+    void AL5DBase::transmit(
+        const std::string &message)
+    {
+    }
+    
+    
+    void AL5DBase::connect()
+    {
+    }
+    
+    
+    void AL5DBase::disconnect()
+    {
     }
     
     

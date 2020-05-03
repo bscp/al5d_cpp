@@ -39,6 +39,10 @@ namespace al5d
         void transmit_command(
             const Command &command)
             override;
+
+        // TODO : log connecting
+
+        // TODO : log disconnecting
     };
 }
 
