@@ -1,6 +1,9 @@
 #!/bin/bash
 
-CPPCHECK_REPORT_FILE="cppcheck_report.xml"
+CPPCHECK_REPORT_FILE="reports/cppcheck_report.xml"
+
+# Make sure reports directory exists
+mkdir reports -p
 
 # Run cppcheck
 cppcheck \
