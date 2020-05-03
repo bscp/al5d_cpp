@@ -20,7 +20,6 @@ BUILD_METHOD=${BUILD_METHOD:0:1} # take first letter
 
 # Remove current build directory on clean build
 if [ "$BUILD_METHOD" = "c" ] ; then
-    echo "Cleaning first"
     rm -rf ./build
 fi
 
