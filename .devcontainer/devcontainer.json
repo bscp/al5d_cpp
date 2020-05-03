@@ -18,7 +18,8 @@
 		"hbenl.vscode-test-explorer",
 		"matepek.vscode-catch2-test-adapter",
 		"jebbs.plantuml",
-		"gruntfuggly.todo-tree"
+		"gruntfuggly.todo-tree",
+		"actboy168.tasks"
 	],
 	"containerEnv": {
 		"color_prompt": "yes"
