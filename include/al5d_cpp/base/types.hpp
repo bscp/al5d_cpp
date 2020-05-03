@@ -10,6 +10,8 @@
 
 namespace al5d
 {
+    typedef std::string Command;
+    
     typedef uint16_t PulseWidth;
     typedef uint8_t BoardChannel;
     typedef int16_t Degrees;

@@ -34,7 +34,7 @@ namespace al5d
 
         void transmit( // overrides ICommunicator
             const std::string& message)
-            final;
+            override;
 
     private:
 

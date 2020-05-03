@@ -12,9 +12,9 @@ namespace al5d
     
     
     Timer::Timer(long duration)
-        : duration(duration)
+        : start_time(high_resolution_clock::now())
+        , duration(duration)
     {
-        start_time = high_resolution_clock::now();
     }
     
     

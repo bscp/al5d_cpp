@@ -15,14 +15,12 @@
 namespace al5d
 {
     // GeneralMixins
-    typedef StatefullRobot<AL5DBase> StatefullAL5D;
-    typedef LoggingRobot<StatefullAL5D> LoggingStatefullAL5D;
+    typedef LoggingRobot<AL5DBase> LoggingAL5D;
+    typedef StatefullRobot<LoggingAL5D> StatefullLoggingAL5D;
 
     // SerialRobot
-    typedef SerialRobot<LoggingStatefullAL5D> AL5D;
-
-    // LambdaRobot
-    typedef LambdaRobot<LoggingStatefullAL5D> LambdaAL5D;
+    typedef SerialRobot<StatefullLoggingAL5D> AL5D;
+    typedef LambdaRobot<StatefullLoggingAL5D> LambdaAL5D;
 }
 
 

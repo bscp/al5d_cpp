@@ -18,9 +18,8 @@ namespace al5d
     }
     
     
-    Joints AL5DBase::construct_joints(
+    /*static*/ Joints AL5DBase::construct_joints(
         const JointConfigs& joints_configs)
-        const
     {
         Joints constructed_joints;
         
@@ -55,7 +54,7 @@ namespace al5d
         transmit_command(get_move_command(joint_type_angles));
     }
     
-    
+
     void AL5DBase::move_to(
         const JointTypeAngle &joint_type_angle)
     {
@@ -159,8 +158,7 @@ namespace al5d
     }
     
     
-    std::string AL5DBase::get_emergency_stop_command()
-        const
+    /*static*/ Command AL5DBase::get_emergency_stop_command()
     {
         return "STOP";
     }

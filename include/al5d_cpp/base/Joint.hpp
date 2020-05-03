@@ -8,12 +8,11 @@
 // PROJECT INCLUDES
 #include <al5d_cpp/base/JointConfig.hpp>
 #include <al5d_cpp/base/JointAngle.hpp>
+#include <al5d_cpp/base/types.hpp>
 
 
 namespace al5d
-{
-    typedef std::string Command;
-    
+{   
     class Joint
     {
     public:
@@ -41,6 +40,12 @@ namespace al5d
             const;
         
     private:
+
+        Degrees get_lowest_degrees()
+            const;
+        
+        Degrees get_highest_degrees()
+            const;
         
         void validate_degrees(
             Degrees degrees)

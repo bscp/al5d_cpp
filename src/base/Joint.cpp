@@ -31,14 +31,28 @@ namespace al5d
         , max_pulse_width(max_pulse_width)
         , min_degrees(min_degrees)
         , max_degrees(max_degrees)
+        , lowest_degrees(get_lowest_degrees())
+        , highest_degrees(get_highest_degrees())
+        , degrees_range(max_degrees - min_degrees)
+        , pulse_width_range(max_pulse_width - min_pulse_width)
+        , convert_ratio(double(pulse_width_range) / double(degrees_range))
     {
-        lowest_degrees = min_degrees <= max_degrees ? min_degrees : max_degrees;
-        highest_degrees = min_degrees <= max_degrees ? max_degrees : min_degrees;
-        degrees_range = max_degrees - min_degrees;
-        pulse_width_range = max_pulse_width - min_pulse_width;
-        convert_ratio = double(pulse_width_range) / double(degrees_range);
     }
-    
+
+
+    Degrees Joint::get_lowest_degrees()
+        const
+    {
+        return min_degrees <= max_degrees ? min_degrees : max_degrees;
+    }
+
+
+    Degrees Joint::get_highest_degrees()
+        const
+    {
+        return min_degrees <= max_degrees ? max_degrees : min_degrees;
+    }
+
     
     std::string Joint::get_move_command(
         const JointAngle& joint_angle)

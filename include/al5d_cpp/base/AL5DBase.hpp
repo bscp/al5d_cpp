@@ -35,41 +35,41 @@ namespace al5d
             PulseWidth pulse_width)
             const;
         
-        void move_to(
+        virtual void move_to(
             const JointTypeAngles &joint_type_angles);
-//            const;
     
-        void move_to(
+        virtual void move_to(
             const JointTypeAngle &joint_type_angle);
-//            const;
     
-        void move_to(
+        virtual void move_to(
             const JointTypeAngles &joint_type_angles,
             const Duration &move_duration);
-//            const;
     
-        void move_to(
+        virtual void move_to(
             const JointTypeAngle &joint_type_angle,
             const Duration &move_duration);
-//            const;
     
-        void do_emergency_stop();
+        virtual void do_emergency_stop();
+        
+        virtual void transmit_command(
+            const Command &command);
         
     protected:
 
         explicit AL5DBase(
             const AL5DBaseConfig& config);
 
-        virtual void transmit(const std::string& message) = 0;
+        void transmit(const std::string& message)
+            override                                              
+        
+        {
+            // throw "Not implemented";
+        }
 
     private:
     
-        Joints construct_joints(
-            const JointConfigs &joints_configs)
-            const;
-        
-        void transmit_command(
-            const Command &command);
+        static Joints construct_joints(
+            const JointConfigs &joints_configs);
 
         const Joint &get_joint(
             const JointType &joint_type)
@@ -93,11 +93,11 @@ namespace al5d
             const JointTypeAngle &joint_type_angle)
             const;
         
-        std::string get_emergency_stop_command()
-            const;
+        static Command get_emergency_stop_command();
         
         const Joints joints;
     };
 }
+
 
 #endif // AL5D_CPP_AL5DBASE_HPP

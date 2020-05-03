@@ -59,10 +59,10 @@ namespace al5d
         log_emergency_stop();
         BaseType::do_emergency_stop();
     }
-    
+
     
     template <typename BaseType>
-    void transmit_command(
+    void LoggingRobot<BaseType>::transmit_command(
         const Command &command)
     {
         log_transmit_command(command);
