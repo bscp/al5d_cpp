@@ -1,46 +1,80 @@
-#-------------------------------------------------------------------------------------------------------------
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
-#-------------------------------------------------------------------------------------------------------------
-
-# FROM mcr.microsoft.com/vscode/devcontainers/base:0-debian-9
 FROM ubuntu:20.04
+
 
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
 
-# This Dockerfile's base image has a non-root user with sudo access. Use the "remoteUser"
-# property in devcontainer.json to use it. On Linux, the container user's GID/UIDs
-# will be updated to match your local UID/GID (when using the dockerFile property).
-# See https://aka.ms/vscode-remote/containers/non-root-user for details.
-ARG USERNAME=vscode
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
 
-# Configure apt and install packages
-RUN apt-get update \
+# Install C++ development tools
+RUN apt-get update > /dev/null 2>&1 \
+    && apt-get -y install \
     #
-    # Install C++ tools
-    && apt-get -y install git nano build-essential cmake cppcheck valgrind libboost-all-dev plantuml \
+    # GCC compiler
+    build-essential \
     #
-    # [Optional] Update UID/GID if needed
-    && if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then \
-        groupmod --gid $USER_GID $USERNAME \
-        && usermod --uid $USER_UID --gid $USER_GID $USERNAME \
-        && chown -R $USER_UID:$USER_GID /home/$USERNAME; \
-    fi \
+    # CMake for build file generation
+    cmake \
     #
-    # Clean up
-    && apt-get autoremove -y \
-    && apt-get clean -y \
-    && rm -rf /var/lib/apt/lists/*
+    # CPPCheck to detect code quality issues
+    cppcheck \
+    #
+    # Valgrind to detect memory leaks
+    valgrind \
+    #
+    # Git with nano as its text editor
+    git nano \
+    #
+    # Dont output anything but errors
+    > /dev/null 2>&1 \
+    #
+    # Clean up apt-get install files
+    && apt-get autoremove -y > /dev/null 2>&1 \
+    && apt-get clean -y > /dev/null 2>&1 \
+    && rm -rf /var/lib/apt/lists/* > /dev/null 2>&1 \
+    #
+    # Install the Google test framework
+    && git clone -q https://github.com/google/googletest.git /googletest > /dev/null 2>&1 \
+    && mkdir -p /googletest/build > /dev/null 2>&1 \
+    && (cd /googletest/build && cmake .. && make && make install > /dev/null 2>&1) \
+    #
+    # Clean up Google test framework install files
+    && rm -rf /googletest > /dev/null 2>&1
 
-# Install the Google test framework
-RUN git clone -q https://github.com/google/googletest.git /googletest \
-  && mkdir -p /googletest/build \
-  && cd /googletest/build \
-  && cmake .. && make && make install \
-  && cd / && rm -rf /googletest
+
+# Install C++ libraries
+RUN apt-get update > /dev/null 2>&1 \
+    && apt-get -y install \
+    #
+    # Boost for serial library
+    libboost-all-dev \
+    #
+    # Dont output anything but errors
+    > /dev/null 2>&1 \
+    #
+    # Clean up apt-get install files
+    && apt-get autoremove -y > /dev/null 2>&1 \
+    && apt-get clean -y > /dev/null 2>&1 \
+    && rm -rf /var/lib/apt/lists/*> /dev/null 2>&1
+
+
+# Install other development tools
+RUN apt-get update > /dev/null 2>&1 \
+    && apt-get -y install \
+    #
+    # PlantUML for UML modelling
+    plantuml \
+    #
+    # Markdown for documents
+    markdown \
+    #
+    # Dont output anything but errors
+    > /dev/null 2>&1 \
+    #
+    # Clean up apt-get install files
+    && apt-get autoremove -y > /dev/null 2>&1 \
+    && apt-get clean -y > /dev/null 2>&1 \
+    && rm -rf /var/lib/apt/lists/* > /dev/null 2>&1
+
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
