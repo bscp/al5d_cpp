@@ -19,7 +19,10 @@
 		"matepek.vscode-catch2-test-adapter",
 		"jebbs.plantuml",
 		"gruntfuggly.todo-tree"
-	]
+	],
+	"containerEnv": {
+		"color_prompt": "yes"
+	}
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
