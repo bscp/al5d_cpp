@@ -6,21 +6,19 @@
 #include <al5d_cpp/Duration.hpp>
 
 // MIXIN INCLUDES
-#include <al5d_cpp/mixins/LoggingRobot/LoggingRobot.hpp>
-#include <al5d_cpp/mixins/StatefullRobot/StatefullRobot.hpp>
-#include <al5d_cpp/mixins/SerialRobot/SerialRobot.hpp>
-#include <al5d_cpp/mixins/LambdaRobot/LambdaRobot.hpp>
+#include <al5d_cpp/traits/logging_trait/LoggingTrait.hpp>
+#include <al5d_cpp/traits/statefull_trait/StatefullTrait.hpp>
+#include <al5d_cpp/traits/serial_trait/SerialTrait.hpp>
+#include <al5d_cpp/traits/lambda_trait/LambdaTrait.hpp>
 
 
 namespace al5d
 {
-    // GeneralMixins
-    typedef LoggingRobot<AL5DBase> LoggingAL5D;
-    typedef StatefullRobot<LoggingAL5D> StatefullLoggingAL5D;
+    typedef LoggingTrait<AL5DBase> LoggingAL5D;
+    typedef StatefullTrait<LoggingAL5D> StatefullLoggingAL5D;
 
-    // SerialRobot
-    typedef SerialRobot<StatefullLoggingAL5D> AL5D;
-    typedef LambdaRobot<StatefullLoggingAL5D> LambdaAL5D;
+    typedef SerialTrait<StatefullLoggingAL5D> AL5D;
+    typedef LambdaTrait<StatefullLoggingAL5D> LambdaAL5D;
 }
 
 

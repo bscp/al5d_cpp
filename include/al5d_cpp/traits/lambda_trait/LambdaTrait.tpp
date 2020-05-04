@@ -1,11 +1,11 @@
-#ifndef AL5D_CPP_LAMBDAROBOT_TPP
-#define	AL5D_CPP_LAMBDAROBOT_TPP
+#ifndef AL5D_CPP_LAMBDATRAIT_TPP
+#define	AL5D_CPP_LAMBDATRAIT_TPP
 
 
 namespace al5d
 {
     template <typename BaseType>
-    LambdaRobot<BaseType>::LambdaRobot(
+    LambdaTrait<BaseType>::LambdaTrait(
         const Config& config)
         : BaseType(config)
         , on_trasmit_fn(config.on_transmit_fn)
@@ -14,7 +14,7 @@ namespace al5d
 
 
     template <typename BaseType>
-    void LambdaRobot<BaseType>::transmit(
+    void LambdaTrait<BaseType>::transmit(
         const std::string& message)
     {
         on_trasmit_fn(message);
@@ -22,4 +22,4 @@ namespace al5d
 }
 
 
-#endif	/* AL5D_CPP_LAMBDAROBOT_TPP */
+#endif	/* AL5D_CPP_LAMBDATRAIT_TPP */

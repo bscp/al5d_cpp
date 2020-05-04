@@ -1,31 +1,20 @@
-#ifndef AL5D_CPP_STATEFULLROBOT_HPP
-#define AL5D_CPP_STATEFULLROBOT_HPP
-
-// PROJECT INCLUDES
-#include <al5d_cpp/Timer.hpp>
-
-#define DURATION 3000 // in milliseconds
+#ifndef AL5D_CPP_LOGGINGTRAIT_HPP
+#define AL5D_CPP_LOGGINGTRAIT_HPP
 
 
 namespace al5d
 {
     template <typename BaseType>
-    class StatefullRobot : public BaseType
+    class LoggingTrait : public BaseType
     {
     public:
         typedef typename BaseType::Config Config;
 
-        explicit StatefullRobot(
+        explicit LoggingTrait(
             const Config& config);
 
-        virtual ~StatefullRobot() = default;
+        virtual ~LoggingTrait() = default;
 
-        bool is_moving()
-            const;
-        
-        void start_timer(
-            long duration);
-                
         void move_to(
             const JointTypeAngles &joint_type_angles)
             override;
@@ -43,14 +32,21 @@ namespace al5d
             const JointTypeAngle &joint_type_angle,
             const Duration &move_duration)
             override;
-    
-    private:
 
-        TimerPtr timer_ptr;
+        void do_emergency_stop()
+            override;
+
+        void transmit_command(
+            const Command &command)
+            override;
+
+        // TODO : log connecting
+
+        // TODO : log disconnecting
     };
 }
 
 
-#include "StatefullRobot.tpp"
+#include "LoggingTrait.tpp"
 
-#endif // AL5D_CPP_STATEFULLROBOT_HPP
+#endif // AL5D_CPP_LOGGINGTRAIT_HPP

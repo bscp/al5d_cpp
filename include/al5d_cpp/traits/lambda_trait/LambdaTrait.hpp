@@ -1,5 +1,5 @@
-#ifndef AL5D_CPP_LAMBDAROBOT_HPP
-#define AL5D_CPP_LAMBDAROBOT_HPP
+#ifndef AL5D_CPP_LAMBDATRAIT_HPP
+#define AL5D_CPP_LAMBDATRAIT_HPP
 
 // SYSTEM INCLUDES
 #include <functional>
@@ -12,7 +12,7 @@ namespace al5d
 
 
     template <typename BaseType>
-    class LambdaRobotConfig : public BaseType::Config
+    class LambdaTraitConfig : public BaseType::Config
     {
     public:
         OnTransmitFn on_transmit_fn;
@@ -20,15 +20,15 @@ namespace al5d
 
 
     template <typename BaseType>
-    class LambdaRobot : public BaseType
+    class LambdaTrait : public BaseType
     {
     public:
-        typedef LambdaRobotConfig<BaseType> Config;
+        typedef LambdaTraitConfig<BaseType> Config;
 
-        explicit LambdaRobot(
+        explicit LambdaTrait(
             const Config& config);
 
-        virtual ~LambdaRobot() = default;
+        virtual ~LambdaTrait() = default;
     
     protected:
 
@@ -43,6 +43,6 @@ namespace al5d
 }
 
 
-#include "LambdaRobot.tpp"
+#include "LambdaTrait.tpp"
 
-#endif // AL5D_CPP_LAMBDAROBOT_HPP
+#endif // AL5D_CPP_LAMBDATRAIT_HPP

@@ -1,5 +1,5 @@
-#ifndef AL5D_CPP_SERIALROBOT_TPP
-#define	AL5D_CPP_SERIALROBOT_TPP
+#ifndef AL5D_CPP_SERIALTRAIT_TPP
+#define	AL5D_CPP_SERIALTRAIT_TPP
 
 // SYSTEM INCLUDES
 #include <string>
@@ -8,13 +8,13 @@
 #include <boost/asio.hpp>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/mixins/SerialRobot/SerialRobotConfig.hpp>
+#include <al5d_cpp/traits/serial_trait/SerialTraitConfig.hpp>
 
 
 namespace al5d
 {
     template <typename BaseType>
-    SerialRobot<BaseType>::SerialRobot(
+    SerialTrait<BaseType>::SerialTrait(
         const Config &config)
         : BaseType(config)
         , serial(config.serial_port)
@@ -28,4 +28,4 @@ namespace al5d
 }
 
 
-#endif	/* AL5D_CPP_SERIALROBOT_TPP */
+#endif	/* AL5D_CPP_SERIALTRAIT_TPP */

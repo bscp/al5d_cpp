@@ -1,5 +1,5 @@
-#ifndef AL5D_CPP_SERIALROBOTCONFIG_HPP
-#define	AL5D_CPP_SERIALROBOTCONFIG_HPP
+#ifndef AL5D_CPP_SERIALTRAITCONFIG_HPP
+#define	AL5D_CPP_SERIALTRAITCONFIG_HPP
 
 // SYSTEM INCLUDES
 #include <string>
@@ -15,7 +15,7 @@
 namespace al5d
 {
     template <typename BaseType>
-    class SerialRobotConfig : public BaseType::Config
+    class SerialTraitConfig : public BaseType::Config
     {
     public:
         serial::Port serial_port = serial::Port("/dev/ttyUSB0");
@@ -28,4 +28,4 @@ namespace al5d
 }
 
 
-#endif	/* AL5D_CPP_SERIALROBOTCONFIG_HPP */
+#endif	/* AL5D_CPP_SERIALTRAITCONFIG_HPP */
