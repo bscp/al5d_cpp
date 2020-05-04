@@ -1,5 +1,5 @@
-#ifndef AL5D_CPP_STATEFULLTRAIT_HPP
-#define AL5D_CPP_STATEFULLTRAIT_HPP
+#ifndef AL5D_CPP_PROGRESSINGTRAIT_HPP
+#define AL5D_CPP_PROGRESSINGTRAIT_HPP
 
 // PROJECT INCLUDES
 #include <al5d_cpp/Timer.hpp>
@@ -10,15 +10,15 @@
 namespace al5d
 {
     template <typename BaseType>
-    class StatefullTrait : public BaseType
+    class ProgressingTrait : public BaseType
     {
     public:
         typedef typename BaseType::Config Config;
 
-        explicit StatefullTrait(
+        explicit ProgressingTrait(
             const Config& config);
 
-        virtual ~StatefullTrait() = default;
+        virtual ~ProgressingTrait() = default;
 
         bool is_moving()
             const;
@@ -51,6 +51,6 @@ namespace al5d
 }
 
 
-#include "StatefullTrait.tpp"
+#include "ProgressingTrait.tpp"
 
-#endif // AL5D_CPP_STATEFULLTRAIT_HPP
+#endif // AL5D_CPP_PROGRESSINGTRAIT_HPP

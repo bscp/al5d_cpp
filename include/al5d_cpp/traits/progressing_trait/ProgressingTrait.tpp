@@ -1,11 +1,11 @@
-#ifndef AL5D_CPP_STATEFULLTRAIT_TPP
-#define	AL5D_CPP_STATEFULLTRAIT_TPP
+#ifndef AL5D_CPP_PROGRESSINGTRAIT_TPP
+#define	AL5D_CPP_PROGRESSINGTRAIT_TPP
 
 
 namespace al5d
 {
     template <typename BaseType>
-    StatefullTrait<BaseType>::StatefullTrait(
+    ProgressingTrait<BaseType>::ProgressingTrait(
         const Config& config)
         : BaseType(config)
     {
@@ -13,7 +13,7 @@ namespace al5d
     
     
     template <typename BaseType>
-    void StatefullTrait<BaseType>::start_timer(
+    void ProgressingTrait<BaseType>::start_timer(
         long duration)
     {
         timer_ptr = Timer::as_pointer(duration);
@@ -21,7 +21,7 @@ namespace al5d
     
     
     template <typename BaseType>
-    bool StatefullTrait<BaseType>::is_moving()
+    bool ProgressingTrait<BaseType>::is_moving()
         const
     {
         if (timer_ptr == nullptr)
@@ -34,7 +34,7 @@ namespace al5d
     
     
     template <typename BaseType>
-    void StatefullTrait<BaseType>::move_to(
+    void ProgressingTrait<BaseType>::move_to(
         const JointTypeAngles &joint_type_angles)
     {
         BaseType::move_to(joint_type_angles);
@@ -43,7 +43,7 @@ namespace al5d
     
     
     template <typename BaseType>
-    void StatefullTrait<BaseType>::move_to(
+    void ProgressingTrait<BaseType>::move_to(
         const JointTypeAngle &joint_type_angle)
     {
         BaseType::move_to(joint_type_angle);
@@ -52,7 +52,7 @@ namespace al5d
     
     
     template <typename BaseType>
-    void StatefullTrait<BaseType>::move_to(
+    void ProgressingTrait<BaseType>::move_to(
         const JointTypeAngles &joint_type_angles,
         const Duration &move_duration)
     {
@@ -62,7 +62,7 @@ namespace al5d
     
     
     template <typename BaseType>
-    void StatefullTrait<BaseType>::move_to(
+    void ProgressingTrait<BaseType>::move_to(
         const JointTypeAngle &joint_type_angle,
         const Duration &move_duration)
     {
@@ -72,4 +72,4 @@ namespace al5d
 }
 
 
-#endif	/* AL5D_CPP_STATEFULLTRAIT_TPP */
+#endif	/* AL5D_CPP_PROGRESSINGTRAIT_TPP */
