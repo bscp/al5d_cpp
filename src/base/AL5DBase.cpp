@@ -33,7 +33,7 @@ namespace al5d
     
     
     void AL5DBase::transmit(
-        const std::string &message)
+        const std::string& /*message*/)
     {
     }
     
