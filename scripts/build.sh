@@ -1,12 +1,18 @@
 #!/bin/bash
+# This script generates build files with cmake and then
+# builds the executable. It supports a few flags they are
+# descriped below. The accepted values are noted between []
+# and separated with a |. The first one is the default.
+# -m [rebuild|cleanbuild] stands for method or build_method
+# -t [release|debug] stands for type or build_type
+# The script only looks at the first letter of the -m flag value
+# so you can write clean, cleanbuild, c, etc. It all works
 
 # Set default values
 BUILD_METHOD="REBUILD"
 BUILD_TYPE="release"
 
 # Parse specified flags
-# -m stands for method or build_method
-# -t stands for type or build_type
 while getopts m:t: option; do
     case "${option}" in
         m) BUILD_METHOD=${OPTARG};;

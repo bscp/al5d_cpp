@@ -1,7 +1,6 @@
 #!/bin/bash
-
-# Installing basically means moving library files
-# to a directory where the system is able to find it.
+# This script builds the project and then moves the result
+# to a system directory. This moving is called installing
 
 # Run a 'clean' 'release' build
 scripts/build.sh -m clean_build -t release

@@ -1,4 +1,6 @@
 #!/bin/bash
+# This script invokes all assessment scripts in the
+# assessments/ folder.
 
 # TODO : find all assesments scripts
 # TODO : run all assessments from a loop

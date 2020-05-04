@@ -1,4 +1,7 @@
 #!/bin/bash
+# This script runs cppcheck on all hpp, tpp, cpp files
+# in the project and outputs an xml report file in the
+# reports folder. Lastly it prints how many errors were found.
 
 CPPCHECK_REPORT_FILE="reports/cppcheck_report.xml"
 
