@@ -40,9 +40,9 @@ namespace al5d
             const Command &command)
             override;
 
-        // TODO : log connecting
-
-        // TODO : log disconnecting
+        // TODO : add void enable_logging()
+        // TODO : add void disable_logging()
+        // TODO : add set_log_level()
     };
 }
 

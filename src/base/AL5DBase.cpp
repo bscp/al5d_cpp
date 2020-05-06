@@ -35,11 +35,13 @@ namespace al5d
     void AL5DBase::transmit(
         const std::string& /*message*/)
     {
+        // TODO : throw no transmit happening implemented
     }
     
     
     void AL5DBase::connect()
     {
+        // TODO : throw no connect process implemented
     }
     
     
@@ -51,6 +53,7 @@ namespace al5d
     
     void AL5DBase::disconnect()
     {
+        // TODO : throw no disconnect process implemented
     }
     
     
