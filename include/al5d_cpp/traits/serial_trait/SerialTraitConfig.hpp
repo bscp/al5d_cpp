@@ -20,10 +20,10 @@ namespace al5d
     public:
         serial::Port serial_port = serial::Port("/dev/ttyUSB0");
         serial::BaudRate serial_baud = serial::BaudRate(9600);
-        serial::StopBits serial_stop_bits = serial::StopBits::one;
-        serial::Parity serial_parity = serial::Parity::none;
-        serial::FlowControl serial_flow_control = serial::FlowControl::none;
-        serial::CharacterSize serial_character_size = 8;
+        serial::StopBitsType serial_stop_bits = serial::StopBits::one;
+        serial::ParityType serial_parity = serial::Parity::none;
+        serial::FlowControlType serial_flow_control = serial::FlowControl::none;
+        serial::CharacterSize serial_character_size = serial::CharacterSize(8);
     };
 }
 

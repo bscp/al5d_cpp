@@ -19,11 +19,11 @@ namespace al5d
         : BaseType(config)
         , serial(config.serial_port)
     {
-        set_baud_rate(config.serial_baud);
-        set_parity(config.serial_parity);
-        set_flow_control(config.serial_flow_control);
-        set_stop_bits(config.serial_stop_bits);
-        set_character_size(config.serial_character_size);
+        serial.set_baud_rate(config.serial_baud);
+        serial.set_parity(config.serial_parity);
+        serial.set_flow_control(config.serial_flow_control);
+        serial.set_stop_bits(config.serial_stop_bits);
+        serial.set_character_size(config.serial_character_size);
     }
     
     

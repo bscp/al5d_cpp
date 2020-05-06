@@ -10,11 +10,11 @@
 
 int main()
 {
-    typedef al5d::LambdaAL5D Robot;
+    typedef al5d::AL5D AL5D;
 
-    Robot::Config config;
-    // config.serial_port =al5d::SerialPort("/dev/ttyUSB0");
-    // config.serial_baud = al5d::BaudRate(9600);
+    AL5D::Config config;
+    config.serial_port =serial::Port("/dev/ttyUSB0");
+    config.serial_baud = serial::BaudRate(9600);
 
     config.joint_configs = {
         al5d::JointConfig({0, 500, 2500, -90,  90}), // BASE_JOINT
@@ -25,12 +25,7 @@ int main()
         al5d::JointConfig({5, 500, 2500,   0,   1}), // GRIPPER_JOINT
     };
 
-    config.on_transmit_fn = [](const std::string& message)
-    {
-        std::cout << message << "\n";
-    };
-
-    Robot robot(config);
+    AL5D robot(config);
 
     const al5d::JointTypeAngles join_type_angles = {
         robot.angle_from_degrees(al5d::JOINT_BASE, 90),
