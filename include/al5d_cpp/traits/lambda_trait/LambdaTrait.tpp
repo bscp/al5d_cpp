@@ -19,6 +19,27 @@ namespace al5d
     {
         on_trasmit_fn(message);
     }
+    
+    
+    template <typename BaseType>
+    void LambdaTrait<BaseType>::connect()
+    {
+        // TODO : implement   
+    }
+
+
+    template <typename BaseType>
+    bool LambdaTrait<BaseType>::is_connected()
+    {
+        return true; // TODO : implement
+    }
+    
+
+    template <typename BaseType>
+    void LambdaTrait<BaseType>::disconnect()
+    {
+        // TODO : implement
+    }
 }
 
 

@@ -54,6 +54,8 @@ namespace al5d
             const Command &command);
         
         virtual void connect();
+        
+        virtual bool is_connected();
 
         virtual void disconnect();
 

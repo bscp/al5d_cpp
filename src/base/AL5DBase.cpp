@@ -43,6 +43,12 @@ namespace al5d
     }
     
     
+    bool AL5DBase::is_connected()
+    {
+        return true;
+    }
+    
+    
     void AL5DBase::disconnect()
     {
     }

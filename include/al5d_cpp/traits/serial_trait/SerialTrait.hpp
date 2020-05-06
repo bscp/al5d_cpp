@@ -19,7 +19,16 @@ namespace al5d
        
         explicit SerialTrait(
             const Config &config);
-
+            
+        void connect()
+            override;
+        
+        bool is_connected() 
+            override;
+        
+        void disconnect()
+            override;
+        
     private:
         serial::Serial serial;
     };

@@ -25,6 +25,27 @@ namespace al5d
         set_stop_bits(config.serial_stop_bits);
         set_character_size(config.serial_character_size);
     }
+    
+    
+    template <typename BaseType>
+    void SerialTrait<BaseType>::connect()
+    {
+        // TODO : implement
+    }
+    
+
+    template <typename BaseType>
+    bool SerialTrait<BaseType>::is_connected()
+    {
+        return true; // TODO : implement
+    }
+    
+
+    template <typename BaseType>
+    void SerialTrait<BaseType>::disconnect()
+    {
+        // TODO : implement
+    }
 }
 
 

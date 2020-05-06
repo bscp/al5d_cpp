@@ -29,6 +29,15 @@ namespace al5d
             const Config& config);
 
         virtual ~LambdaTrait() = default;
+            
+        void connect()
+            override;
+        
+        bool is_connected() 
+            override;
+        
+        void disconnect()
+            override;
     
     protected:
 

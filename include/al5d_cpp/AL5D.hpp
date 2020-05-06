@@ -17,7 +17,7 @@ namespace al5d
     typedef LoggingTrait<AL5DBase> LoggingAL5D;
     typedef ProgressingTrait<LoggingAL5D> ProgressingLoggingAL5D;
 
-    typedef SerialTrait<ProgressingLoggingAL5D> AL5D;
+    typedef SerialTrait<ProgressingLoggingAL5D> SerialAL5D;
     typedef LambdaTrait<ProgressingLoggingAL5D> LambdaAL5D;
 }
 
