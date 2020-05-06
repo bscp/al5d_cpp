@@ -9,16 +9,13 @@
 #include <al5d_cpp/traits/logging_trait/LoggingTrait.hpp>
 #include <al5d_cpp/traits/progressing_trait/ProgressingTrait.hpp>
 #include <al5d_cpp/traits/serial_trait/SerialTrait.hpp>
-#include <al5d_cpp/traits/lambda_trait/LambdaTrait.hpp>
 
 
 namespace al5d
 {
     typedef LoggingTrait<AL5DBase> LoggingAL5D;
     typedef ProgressingTrait<LoggingAL5D> ProgressingLoggingAL5D;
-
-    typedef SerialTrait<ProgressingLoggingAL5D> SerialAL5D;
-    typedef LambdaTrait<ProgressingLoggingAL5D> LambdaAL5D;
+    typedef SerialTrait<ProgressingLoggingAL5D> AL5D;
 }
 
 
