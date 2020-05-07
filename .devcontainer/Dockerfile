@@ -41,23 +41,7 @@ RUN apt-get update > /dev/null 2>&1 \
     && rm -rf /googletest > /dev/null 2>&1
 
 
-# Install C++ libraries
-RUN apt-get update > /dev/null 2>&1 \
-    && apt-get -y install \
-    #
-    # Boost for serial library
-    libboost-all-dev \
-    #
-    # Dont output anything but errors
-    > /dev/null 2>&1 \
-    #
-    # Clean up apt-get install files
-    && apt-get autoremove -y > /dev/null 2>&1 \
-    && apt-get clean -y > /dev/null 2>&1 \
-    && rm -rf /var/lib/apt/lists/*> /dev/null 2>&1
-
-
-# Install other development tools
+# Install development tools
 RUN apt-get update > /dev/null 2>&1 \
     && apt-get -y install \
     #
@@ -74,6 +58,27 @@ RUN apt-get update > /dev/null 2>&1 \
     && apt-get autoremove -y > /dev/null 2>&1 \
     && apt-get clean -y > /dev/null 2>&1 \
     && rm -rf /var/lib/apt/lists/* > /dev/null 2>&1
+
+
+# Install dependencies
+RUN apt-get update > /dev/null 2>&1 \
+    && apt-get -y install \
+    #
+    # Boost for serial library
+    libboost-all-dev \
+    #
+    # yaml-cpp for parsing robot config files
+    && git clone -q https://github.com/jbeder/yaml-cpp.git /yaml-cpp > /dev/null 2>&1 \
+    && mkdir -p /yaml-cpp/build > /dev/null 2>&1 \
+    && (cd /yaml-cpp/build && cmake .. -DYAML_BUILD_SHARED_LIBS=ON && make && make install > /dev/null 2>&1) \
+    #
+    # Clean up Google test framework install files
+    && rm -rf /yaml-cpp > /dev/null 2>&1 \
+    #
+    # Clean up apt-get install files
+    && apt-get autoremove -y > /dev/null 2>&1 \
+    && apt-get clean -y > /dev/null 2>&1 \
+    && rm -rf /var/lib/apt/lists/*> /dev/null 2>&1
 
 
 # Switch back to dialog for any ad-hoc use of apt-get

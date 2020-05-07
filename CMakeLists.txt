@@ -13,6 +13,8 @@ FIND_PACKAGE(Boost REQUIRED COMPONENTS
         thread
         system)
 
+FIND_PACKAGE(yaml-cpp REQUIRED)
+
 INCLUDE_DIRECTORIES(include)
 
 INCLUDE(GNUInstallDirs)
@@ -39,7 +41,9 @@ ADD_LIBRARY(${PROJECT_NAME} SHARED
         ${${PROJECT_NAME}_files})
 
 TARGET_LINK_LIBRARIES(${PROJECT_NAME}
-        ${Boost_LIBRARIES})
+        ${Boost_LIBRARIES}
+        # ${YAML_CPP_LIBRARIES}
+        yaml-cpp)
 
 # ----------------------------------------
 # LIBRARY TARGET INSTALL
