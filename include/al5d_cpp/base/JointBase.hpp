@@ -4,6 +4,7 @@
 // SYSTEM INCLUDES
 #include <string>
 #include <vector>
+#include <functional>
 
 // PROJECT INCLUDES
 #include <al5d_cpp/base/JointConfig.hpp>
@@ -12,19 +13,25 @@
 
 
 namespace al5d
-{   
+{
+    typedef std::function<void(const std::string&)>
+        Transmit;
+
     class JointBase
     {
     public:
-        explicit JointBase(
-            const JointConfig &joint_config);
+        JointBase(
+            const JointConfig &joint_config,
+            const Transmit& transmit);
     
         JointBase(
             BoardChannel board_channel,
             PulseWidth min_pulse_width,
             PulseWidth max_pulse_width,
             Degrees min_degrees,
-            Degrees max_degrees);
+            Degrees max_degrees,
+            const Transmit& transmit);
+        
         virtual ~JointBase() = default;
     
         std::string get_move_command(
@@ -78,6 +85,8 @@ namespace al5d
         long degrees_range;
         long pulse_width_range;
         double convert_ratio;
+
+        Transmit transmit;
     };
     
     typedef std::vector<JointBase> JointBases;

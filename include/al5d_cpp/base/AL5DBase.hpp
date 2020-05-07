@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <vector>
 #include <memory>
+#include <functional>
 
 // PROJECT INCLUDES
 #include <al5d_cpp/Duration.hpp>
@@ -71,7 +72,7 @@ namespace al5d
             
     private:
     
-        static JointBases construct_joints(
+        JointBases construct_joints(
             const JointConfigs &joints_configs);
 
         const JointBase &get_joint(

@@ -17,14 +17,20 @@ namespace al5d
     }
     
     
-    /*static*/ JointBases AL5DBase::construct_joints(
+    JointBases AL5DBase::construct_joints(
         const JointConfigs& joints_configs)
     {
         JointBases constructed_joints;
         
+        auto transmit_fn = [this]
+            (const std::string& message)
+        {
+            this->transmit(message);
+        };
+        
         for (const auto& joint_config : joints_configs)
         {
-            const auto joint = JointBase(joint_config);
+            const auto joint = JointBase(joint_config, transmit_fn);
             constructed_joints.push_back(joint);
         }
         

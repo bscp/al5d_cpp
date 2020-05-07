@@ -10,22 +10,26 @@
 
 namespace al5d
 {
-    JointBase::JointBase(const JointConfig &joint_config)
+    JointBase::JointBase(
+        const JointConfig &joint_config,
+        const Transmit& transmit)
         : JointBase(
             joint_config.board_channel,
             joint_config.min_pulse_width,
             joint_config.max_pulse_width,
             joint_config.min_degrees,
-            joint_config.max_degrees)
+            joint_config.max_degrees,
+            transmit)
     {
     }
     
     
     JointBase::JointBase(BoardChannel board_channel,
-                 PulseWidth min_pulse_width,
-                 PulseWidth max_pulse_width,
-                 Degrees min_degrees,
-                 Degrees max_degrees)
+        PulseWidth min_pulse_width,
+        PulseWidth max_pulse_width,
+        Degrees min_degrees,
+        Degrees max_degrees,
+        const Transmit& transmit)
         : board_channel(board_channel)
         , min_pulse_width(min_pulse_width)
         , max_pulse_width(max_pulse_width)
@@ -36,6 +40,7 @@ namespace al5d
         , degrees_range(max_degrees - min_degrees)
         , pulse_width_range(max_pulse_width - min_pulse_width)
         , convert_ratio(double(pulse_width_range) / double(degrees_range))
+        , transmit(transmit)
     {
     }
 
