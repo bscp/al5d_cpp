@@ -13,19 +13,19 @@
 
 namespace al5d
 {   
-    class Joint
+    class JointBase
     {
     public:
-        explicit Joint(
+        explicit JointBase(
             const JointConfig &joint_config);
     
-        Joint(
+        JointBase(
             BoardChannel board_channel,
             PulseWidth min_pulse_width,
             PulseWidth max_pulse_width,
             Degrees min_degrees,
             Degrees max_degrees);
-        virtual ~Joint() = default;
+        virtual ~JointBase() = default;
     
         std::string get_move_command(
             const JointAngle& joint_angle)
@@ -80,7 +80,7 @@ namespace al5d
         double convert_ratio;
     };
     
-    typedef std::vector<Joint> Joints;
+    typedef std::vector<JointBase> JointBases;
 }
 
 

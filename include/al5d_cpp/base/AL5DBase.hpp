@@ -8,7 +8,7 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/Duration.hpp>
-#include <al5d_cpp/base/Joint.hpp>
+#include <al5d_cpp/base/JointBase.hpp>
 #include <al5d_cpp/base/JointType.hpp>
 #include <al5d_cpp/base/JointTypeAngle.hpp>
 #include <al5d_cpp/base/JointConfig.hpp>
@@ -66,13 +66,15 @@ namespace al5d
 
         virtual void transmit(
             const std::string& message);
+        
+        const JointBases joints;
             
     private:
     
-        static Joints construct_joints(
+        static JointBases construct_joints(
             const JointConfigs &joints_configs);
 
-        const Joint &get_joint(
+        const JointBase &get_joint(
             const JointType &joint_type)
             const;
         
@@ -95,8 +97,6 @@ namespace al5d
             const;
         
         static Command get_emergency_stop_command();
-        
-        const Joints joints;
     };
 }
 

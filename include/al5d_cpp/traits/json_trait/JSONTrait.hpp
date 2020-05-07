@@ -8,28 +8,28 @@
 namespace al5d
 {
     template <typename BaseType>
-    class ConfigurableTrait : public BaseType
+    class JSONTrait : public BaseType
     {
     public:
 
-        typedef typename ConfigurableTrait<BaseType>::Config
+        typedef typename JSONTrait<BaseType>::Config
             Config;
 
-        static ConfigurableTrait<BaseType> from_json_file(
+        static JSONTrait<BaseType> from_json_file(
             const std::string& path);
 
-        static ConfigurableTrait<BaseType> from_json(
+        static JSONTrait<BaseType> from_json(
             const std::string& json);
 
-        explicit ConfigurableTrait(
+        explicit JSONTrait(
             const Config& config);
 
-        virtual ~ConfigurableTrait() = default;
+        virtual ~JSONTrait() = default;
         
     };
 }
 
 
-#include "ConfigurableTrait.tpp"
+#include "JSONTrait.tpp"
 
 #endif // AL5D_CPP_CONFIGURINGTRAIT_HPP

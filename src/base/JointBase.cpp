@@ -1,5 +1,5 @@
 // HEADER INCLUDE
-#include <al5d_cpp/base/Joint.hpp>
+#include <al5d_cpp/base/JointBase.hpp>
 
 // SYSTEM INCLUDES
 #include <stdexcept>
@@ -10,8 +10,8 @@
 
 namespace al5d
 {
-    Joint::Joint(const JointConfig &joint_config)
-        : Joint(
+    JointBase::JointBase(const JointConfig &joint_config)
+        : JointBase(
             joint_config.board_channel,
             joint_config.min_pulse_width,
             joint_config.max_pulse_width,
@@ -21,7 +21,7 @@ namespace al5d
     }
     
     
-    Joint::Joint(BoardChannel board_channel,
+    JointBase::JointBase(BoardChannel board_channel,
                  PulseWidth min_pulse_width,
                  PulseWidth max_pulse_width,
                  Degrees min_degrees,
@@ -40,21 +40,21 @@ namespace al5d
     }
 
 
-    Degrees Joint::get_lowest_degrees()
+    Degrees JointBase::get_lowest_degrees()
         const
     {
         return min_degrees <= max_degrees ? min_degrees : max_degrees;
     }
 
 
-    Degrees Joint::get_highest_degrees()
+    Degrees JointBase::get_highest_degrees()
         const
     {
         return min_degrees <= max_degrees ? max_degrees : min_degrees;
     }
 
     
-    std::string Joint::get_move_command(
+    std::string JointBase::get_move_command(
         const JointAngle& joint_angle)
         const
     {
@@ -63,7 +63,7 @@ namespace al5d
     }
     
     
-    std::string Joint::create_move_command(
+    std::string JointBase::create_move_command(
         const JointAngle& joint_angle)
         const
     {
@@ -73,21 +73,21 @@ namespace al5d
     }
     
     
-    JointAngle Joint::angle_from_degrees(Degrees degrees) const
+    JointAngle JointBase::angle_from_degrees(Degrees degrees) const
     {
         validate_degrees(degrees);
         return JointAngle((degrees - min_degrees) * convert_ratio + min_pulse_width);
     }
     
     
-    JointAngle Joint::angle_from_pulse_width(PulseWidth pulse_width) const
+    JointAngle JointBase::angle_from_pulse_width(PulseWidth pulse_width) const
     {
         validate_pulse_width(pulse_width);
         return pulse_width;
     }
     
     
-    bool Joint::can_reach_pulse_width(const PulseWidth &pulse_width) const
+    bool JointBase::can_reach_pulse_width(const PulseWidth &pulse_width) const
     {
         bool above_lower_bound = min_pulse_width <= pulse_width;
         bool below_upper_bound = pulse_width <= max_pulse_width;
@@ -95,7 +95,7 @@ namespace al5d
     }
     
     
-    bool Joint::can_reach_degrees(const Degrees &degrees) const
+    bool JointBase::can_reach_degrees(const Degrees &degrees) const
     {
         bool above_lower_bound = lowest_degrees <= degrees;
         bool below_upper_bound = degrees <= highest_degrees;
@@ -103,7 +103,7 @@ namespace al5d
     }
     
     
-    void Joint::validate_pulse_width(PulseWidth pulse_width) const
+    void JointBase::validate_pulse_width(PulseWidth pulse_width) const
     {
         if (!can_reach_pulse_width(pulse_width))
         {
@@ -113,7 +113,7 @@ namespace al5d
     }
     
     
-    void Joint::validate_degrees(Degrees degrees) const
+    void JointBase::validate_degrees(Degrees degrees) const
     {
         if (!can_reach_degrees(degrees))
         {

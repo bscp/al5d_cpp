@@ -1,5 +1,5 @@
 // HEADER INCLUDE
-#include <al5d_cpp/traits/configurable_trait/json_deserialize.hpp>
+#include <al5d_cpp/traits/json_trait/json_deserialize.hpp>
 
 
 namespace al5d

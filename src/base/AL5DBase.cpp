@@ -17,14 +17,14 @@ namespace al5d
     }
     
     
-    /*static*/ Joints AL5DBase::construct_joints(
+    /*static*/ JointBases AL5DBase::construct_joints(
         const JointConfigs& joints_configs)
     {
-        Joints constructed_joints;
+        JointBases constructed_joints;
         
         for (const auto& joint_config : joints_configs)
         {
-            const auto joint = Joint(joint_config);
+            const auto joint = JointBase(joint_config);
             constructed_joints.push_back(joint);
         }
         
@@ -64,7 +64,7 @@ namespace al5d
     }
     
     
-    const Joint &AL5DBase::get_joint(
+    const JointBase &AL5DBase::get_joint(
         const JointType &joint_type)
     const
     {

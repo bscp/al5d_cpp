@@ -46,6 +46,14 @@ namespace al5d
     {
         // TODO : implement
     }
+    
+
+    template <typename BaseType>
+    void SerialTrait<BaseType>::transmit(
+        const std::string& message)
+    {
+        // TODO : implement
+    }
 }
 
 

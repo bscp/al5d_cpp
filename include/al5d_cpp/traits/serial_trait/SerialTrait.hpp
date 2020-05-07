@@ -29,6 +29,10 @@ namespace al5d
         void disconnect()
             override;
         
+        void transmit(
+            const std::string& message)
+            override;
+        
     private:
         serial::Serial serial;
     };
