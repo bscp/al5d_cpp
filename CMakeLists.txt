@@ -42,7 +42,6 @@ ADD_LIBRARY(${PROJECT_NAME} SHARED
 
 TARGET_LINK_LIBRARIES(${PROJECT_NAME}
         ${Boost_LIBRARIES}
-        # ${YAML_CPP_LIBRARIES}
         yaml-cpp)
 
 # ----------------------------------------

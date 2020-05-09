@@ -9,6 +9,7 @@
 // PROJECT INCLUDES
 #include <al5d_cpp/base/JointConfig.hpp>
 #include <al5d_cpp/base/JointAngle.hpp>
+#include <al5d_cpp/base/Communicator.hpp>
 #include <al5d_cpp/base/types.hpp>
 
 
@@ -17,36 +18,30 @@ namespace al5d
     typedef std::function<void(const std::string&)>
         Transmit;
 
+
     class JointBase
     {
     public:
-        JointBase(
-            const JointConfig &joint_config,
-            const Transmit& transmit);
-    
-        JointBase(
-            BoardChannel board_channel,
-            PulseWidth min_pulse_width,
-            PulseWidth max_pulse_width,
-            Degrees min_degrees,
-            Degrees max_degrees,
-            const Transmit& transmit);
+        explicit JointBase(
+            const JointConfig &joint_config);
         
         virtual ~JointBase() = default;
+
+        void set_communicator_ptr(
+        const CommunicatorPtr& communicator_ptr);
     
-        std::string get_move_command(
-            const JointAngle& joint_angle)
-            const;
-        
-        JointAngle angle_from_degrees(
-            Degrees degrees)
-            const;
-    
-        JointAngle angle_from_pulse_width(
-            PulseWidth pulse_width)
+        void move_to(
+            const Degrees& degrees)
             const;
         
     private:
+
+        void validate_communicator_ptr()
+            const;
+
+        void transmit(
+            const std::string& message)
+            const;
 
         Degrees get_lowest_degrees()
             const;
@@ -57,21 +52,13 @@ namespace al5d
         void validate_degrees(
             Degrees degrees)
             const;
-        
-        void validate_pulse_width(
-            PulseWidth pulse_width)
-            const;
     
         bool can_reach_degrees(
             const Degrees &degrees)
             const;
-    
-        bool can_reach_pulse_width(
-            const PulseWidth &pulse_width)
-            const;
-    
-        std::string create_move_command(
-            const JointAngle &joint_angle)
+        
+        JointAngle to_pulse_width(
+            Degrees degrees)
             const;
         
         BoardChannel board_channel;
@@ -86,7 +73,7 @@ namespace al5d
         long pulse_width_range;
         double convert_ratio;
 
-        Transmit transmit;
+        CommunicatorPtr communicator_ptr;
     };
     
     typedef std::vector<JointBase> JointBases;

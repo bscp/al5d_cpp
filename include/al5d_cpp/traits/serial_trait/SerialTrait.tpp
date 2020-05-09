@@ -1,15 +1,6 @@
 #ifndef AL5D_CPP_SERIALTRAIT_TPP
 #define	AL5D_CPP_SERIALTRAIT_TPP
 
-// SYSTEM INCLUDES
-#include <string>
-
-// 3TH PARTY INCLUDES
-#include <boost/asio.hpp>
-
-// PROJECT INCLUDES
-#include <al5d_cpp/traits/serial_trait/SerialTraitConfig.hpp>
-
 
 namespace al5d
 {
@@ -53,6 +44,7 @@ namespace al5d
         const std::string& message)
     {
         // TODO : implement
+        
     }
 }
 

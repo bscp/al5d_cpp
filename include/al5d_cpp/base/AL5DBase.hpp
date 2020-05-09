@@ -11,9 +11,11 @@
 #include <al5d_cpp/Duration.hpp>
 #include <al5d_cpp/base/JointBase.hpp>
 #include <al5d_cpp/base/JointType.hpp>
-#include <al5d_cpp/base/JointTypeAngle.hpp>
 #include <al5d_cpp/base/JointConfig.hpp>
 #include <al5d_cpp/base/AL5DBaseConfig.hpp>
+#include <al5d_cpp/base/settings.hpp>
+#include <al5d_cpp/base/JointTypeAngle.hpp>
+#include <al5d_cpp/base/Communicator.hpp>
 
 
 namespace al5d
@@ -24,35 +26,18 @@ namespace al5d
         typedef AL5DBaseConfig Config;
     
         virtual ~AL5DBase();
-        
-        JointTypeAngle angle_from_degrees(
-            JointType joint_type,
-            Degrees  degrees)
-            const;
-
-        JointTypeAngle angle_from_pulse_width(
-            JointType joint_type,
-            PulseWidth pulse_width)
-            const;
-        
-        virtual void move_to(
-            const JointTypeAngles &joint_type_angles);
-    
-        virtual void move_to(
-            const JointTypeAngle &joint_type_angle);
-    
-        virtual void move_to(
-            const JointTypeAngles &joint_type_angles,
-            const Duration &move_duration);
     
         virtual void move_to(
             const JointTypeAngle &joint_type_angle,
-            const Duration &move_duration);
+            const Duration &move_duration
+                =Duration::from_milliseconds(DURATION));
     
-        virtual void do_emergency_stop();
-        
-        virtual void transmit_command(
-            const Command &command);
+        virtual void move_to(
+            const JointTypeAngles &joint_type_angles,
+            const Duration &move_duration
+                =Duration::from_milliseconds(DURATION));
+    
+        virtual void stop();
         
         virtual void connect();
         
@@ -60,44 +45,42 @@ namespace al5d
 
         virtual void disconnect();
 
+        void set_communicator_ptr(
+            const CommunicatorPtr& communicator_ptr);
+
     protected:
 
         explicit AL5DBase(
             const AL5DBaseConfig& config);
-
-        virtual void transmit(
-            const std::string& message);
         
-        const JointBases joints;
+        virtual void transmit_command(
+            const Command &command)
+            const;
+        
+        virtual void terminate_command()
+            const;
+            
+        JointBases joints;
+
+        CommunicatorPtr communicator_ptr = nullptr;
             
     private:
+
+        void validate_communicator_ptr()
+            const;
+
+        virtual void transmit(
+            const std::string& message)
+            const;
     
-        JointBases construct_joints(
+        void construct_joints(
             const JointConfigs &joints_configs);
 
         const JointBase &get_joint(
             const JointType &joint_type)
             const;
-        
-        Command get_move_command(
-            const JointTypeAngles &joint_type_angles,
-            const Duration &move_duration)
-            const;
-        
-        Command get_move_command(
-            const JointTypeAngles &joint_type_angles)
-            const;
-        
-        Command get_move_command(
-            const JointTypeAngle &joint_type_angle,
-            const Duration &move_duration)
-            const;
-        
-        Command get_move_command(
-            const JointTypeAngle &joint_type_angle)
-            const;
-        
-        static Command get_emergency_stop_command();
+
+        void set_joint_communicator_ptrs();
     };
 }
 

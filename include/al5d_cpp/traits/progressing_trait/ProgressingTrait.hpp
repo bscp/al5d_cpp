@@ -3,8 +3,7 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/Timer.hpp>
-
-#define DURATION 3000 // in milliseconds
+#include <al5d_cpp/base/settings.hpp>
 
 
 namespace al5d
@@ -25,23 +24,17 @@ namespace al5d
         
         void start_timer(
             long duration);
-                
-        void move_to(
-            const JointTypeAngles &joint_type_angles)
-            override;
-
-        void move_to(
-            const JointTypeAngle &joint_type_angle)
-            override;
 
         void move_to(
             const JointTypeAngles &joint_type_angles,
-            const Duration &move_duration)
+            const Duration &move_duration
+                =Duration::from_milliseconds(DURATION))
             override;
 
-        void move_to(
+        void move_to( // TODO : why can this be removed?
             const JointTypeAngle &joint_type_angle,
-            const Duration &move_duration)
+            const Duration &move_duration
+                =Duration::from_milliseconds(DURATION))
             override;
     
     private:

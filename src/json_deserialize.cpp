@@ -9,9 +9,9 @@ namespace al5d
         std::vector<Degrees> load_degrees_range(
             const YAML::Node &degrees_node)
         {
-            std::vector<Degrees> degrees_range(2);
-            degrees_range[0] = degrees_node[0].as<Degrees>();
-            degrees_range[1] = degrees_node[1].as<Degrees>();
+            std::vector<Degrees> degrees_range;
+            degrees_range.push_back(degrees_node[0].as<int>());
+            degrees_range.push_back(degrees_node[1].as<int>());
             return degrees_range;
         }
 
@@ -19,9 +19,9 @@ namespace al5d
         std::vector<PulseWidth> load_pulse_width_range(
             const YAML::Node &pulse_width_node)
         {
-            std::vector<PulseWidth> pulse_width_range(2);
-            pulse_width_range[0] = pulse_width_node[0].as<PulseWidth>();
-            pulse_width_range[1] = pulse_width_node[1].as<PulseWidth>();
+            std::vector<PulseWidth> pulse_width_range;
+            pulse_width_range.push_back(pulse_width_node[0].as<int>());
+            pulse_width_range.push_back(pulse_width_node[1].as<int>());
             return pulse_width_range;
         }
 
@@ -29,7 +29,7 @@ namespace al5d
         BoardChannel load_channel(
             const YAML::Node &channel_node)
         {
-            return channel_node.as<BoardChannel>();
+            return channel_node.as<int>();
         }
 
 

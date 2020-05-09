@@ -13,26 +13,6 @@ namespace al5d
         : BaseType(config)
     {
     }
-    
-    
-    template <typename BaseType>
-    void LoggingTrait<BaseType>::move_to(
-        const JointTypeAngles &joint_type_angles)
-    {
-        log_moving_joints(joint_type_angles);
-        BaseType::move_to(joint_type_angles);
-    }
-    
-    
-    template <typename BaseType>
-    void LoggingTrait<BaseType>::move_to(
-        const JointTypeAngle &joint_type_angle)
-    {
-        log_moving_joint(joint_type_angle);
-        BaseType::move_to(joint_type_angle);
-    }
-    
-    
     template <typename BaseType>
     void LoggingTrait<BaseType>::move_to(
         const JointTypeAngles &joint_type_angles,
@@ -40,16 +20,6 @@ namespace al5d
     {
         log_moving_joints(joint_type_angles, move_duration);
         BaseType::move_to(joint_type_angles, move_duration);
-    }
-    
-    
-    template <typename BaseType>
-    void LoggingTrait<BaseType>::move_to(
-        const JointTypeAngle &joint_type_angle,
-        const Duration &move_duration)
-    {
-        log_moving_joint(joint_type_angle, move_duration);
-        BaseType::move_to(joint_type_angle, move_duration);
     }
     
     

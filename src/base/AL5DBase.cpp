@@ -1,13 +1,18 @@
 // HEADER INCLUDE
 #include <al5d_cpp/base/AL5DBase.hpp>
 
+// SYSTEM INCLUDES
+#include <iostream>
+
 
 namespace al5d
 {   
     AL5DBase::AL5DBase(
         const AL5DBaseConfig& config)
-        : joints(construct_joints(config.joint_configs))
+        : joints()
+        , communicator_ptr(nullptr)
     {
+        construct_joints(config.joint_configs);
     }
     
     
@@ -17,31 +22,33 @@ namespace al5d
     }
     
     
-    JointBases AL5DBase::construct_joints(
+    void AL5DBase::construct_joints(
         const JointConfigs& joints_configs)
     {
-        JointBases constructed_joints;
-        
-        auto transmit_fn = [this]
-            (const std::string& message)
-        {
-            this->transmit(message);
-        };
-        
         for (const auto& joint_config : joints_configs)
         {
-            const auto joint = JointBase(joint_config, transmit_fn);
-            constructed_joints.push_back(joint);
+            const auto joint = JointBase(joint_config);
+            joints.push_back(joint);
         }
-        
-        return constructed_joints;
+    }
+
+
+    void AL5DBase::validate_communicator_ptr()
+        const
+    {
+        if (communicator_ptr == nullptr)
+        {
+            throw "communicator is nullptr"; // TODO : throw class
+        }
     }
     
     
     void AL5DBase::transmit(
-        const std::string& /*message*/)
+        const std::string& message)
+        const
     {
-        // TODO : throw no transmit happening implemented
+        validate_communicator_ptr();
+        communicator_ptr->transmit(message);
     }
     
     
@@ -63,10 +70,36 @@ namespace al5d
     }
     
     
+    void AL5DBase::terminate_command()
+        const
+    {
+        transmit("\r");
+    }
+    
+    
     void AL5DBase::transmit_command(
         const Command &command)
+        const
     {
-        transmit(command + "\r");
+        transmit(command);
+        terminate_command();
+    }
+
+
+    void AL5DBase::set_communicator_ptr(
+        const CommunicatorPtr& communicator_ptr)
+    {
+        this->communicator_ptr = communicator_ptr;
+        set_joint_communicator_ptrs();
+    }
+
+
+    void AL5DBase::set_joint_communicator_ptrs()
+    {
+        for (auto& joint : joints)
+        {
+            joint.set_communicator_ptr(communicator_ptr);
+        }
     }
     
     
@@ -79,16 +112,10 @@ namespace al5d
     
     
     void AL5DBase::move_to(
-        const JointTypeAngles &joint_type_angles)
+        const JointTypeAngle &joint_type_angle,
+        const Duration &move_duration)
     {
-        transmit_command(get_move_command(joint_type_angles));
-    }
-    
-
-    void AL5DBase::move_to(
-        const JointTypeAngle &joint_type_angle)
-    {
-        transmit_command(get_move_command(joint_type_angle));
+        move_to({joint_type_angle}, move_duration);
     }
     
     
@@ -96,100 +123,23 @@ namespace al5d
         const JointTypeAngles &joint_type_angles,
         const Duration &move_duration)
     {
-        transmit_command(get_move_command(joint_type_angles, move_duration));
-    }
-    
-    
-    void AL5DBase::move_to(
-        const JointTypeAngle &joint_type_angle,
-        const Duration &move_duration)
-    {
-        transmit_command(get_move_command(joint_type_angle, move_duration));
-    }
-    
-    
-    Command AL5DBase::get_move_command(
-        const JointTypeAngles &joint_type_angles)
-        const
-    {
-        Command command;
-        
         for (const auto &joint_type_angle : joint_type_angles)
         {
             const auto &joint_type = joint_type_angle.joint_type;
             const auto &joint_angle = joint_type_angle.joint_angle;
             const auto &joint = get_joint(joint_type);
-            command += joint.get_move_command(joint_angle);
+            joint.move_to(joint_angle);
         }
         
-        return command;
+        auto milliseconds = move_duration.in_milliseconds();
+        auto duration_command = "T" + std::to_string(milliseconds);
+
+        transmit_command(duration_command);
     }
     
     
-    Command AL5DBase::get_move_command(
-        const JointTypeAngles &joint_type_angles,
-        const Duration &move_duration)
-        const
+    void AL5DBase::stop()
     {
-        Command command = get_move_command(joint_type_angles);
-        command += "T" + std::to_string(move_duration.in_milliseconds());
-        return command;
-    }
-    
-    
-    Command AL5DBase::get_move_command(
-        const JointTypeAngle &joint_type_angle)
-        const
-    {
-        const auto &joint_type = joint_type_angle.joint_type;
-        const auto &joint_angle = joint_type_angle.joint_angle;
-        const auto &joint = get_joint(joint_type);
-        return joint.get_move_command(joint_angle);
-    }
-    
-    
-    Command AL5DBase::get_move_command(
-        const JointTypeAngle &joint_type_angle,
-        const Duration &move_duration)
-        const
-    {
-        const auto command = get_move_command(joint_type_angle);
-        const auto milliseconds = move_duration.in_milliseconds();
-        return command + "T" + std::to_string(milliseconds);
-    }
-    
-    
-    JointTypeAngle AL5DBase::angle_from_degrees(
-        JointType joint_type,
-        Degrees degrees)
-        const
-    {
-        const auto& joint = get_joint(joint_type);
-        const auto joint_angle = joint.angle_from_degrees(degrees);
-        return {joint_type, joint_angle};
-    }
-    
-    
-    JointTypeAngle AL5DBase::angle_from_pulse_width(
-        JointType joint_type,
-        PulseWidth  pulse_width)
-        const
-    {
-        const auto& joint = get_joint(joint_type);
-        const auto joint_angle = joint.angle_from_pulse_width(pulse_width);
-        return {joint_type, joint_angle};
-    }
-    
-    
-    void AL5DBase::do_emergency_stop()
-    {
-        auto command = get_emergency_stop_command();
-        transmit_command(command);
-    }
-    
-    
-    /*static*/ Command AL5DBase::get_emergency_stop_command()
-    {
-        return "STOP";
+        transmit_command("STOP");
     }
 }
