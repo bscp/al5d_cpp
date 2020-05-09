@@ -67,9 +67,8 @@ namespace al5d
         AL5DBaseConfig load_config(
             const YAML::Node &config_node)
         {
-            AL5DBaseConfig config;
-            config.joint_configs = load_joint_configs(config_node["joints"]);
-            return config;
+            auto joint_configs = load_joint_configs(config_node["joints"]);
+            return AL5DBaseConfig(joint_configs);
         }
     }
 

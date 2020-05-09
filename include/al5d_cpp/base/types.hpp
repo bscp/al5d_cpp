@@ -12,7 +12,7 @@ namespace al5d
     
     typedef unsigned int PulseWidth;
     typedef unsigned int BoardChannel;
-    typedef unsigned int Degrees;
+    typedef int Degrees;
 }
 
 

@@ -14,7 +14,13 @@ namespace al5d
 {
     struct AL5DBaseConfig
     {
-        JointConfigs joint_configs;
+        explicit AL5DBaseConfig(
+            JointConfigs joint_configs);
+        
+        void validate_joint_configs()
+            const;
+
+        const JointConfigs joint_configs;
     };
 }
 

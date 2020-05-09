@@ -18,12 +18,24 @@ namespace al5d
             const PulseWidth& maxPulseWidth,
             const Degrees &min_degrees,
             const Degrees &max_degrees);
+        
+        void validate_board_channel_value(
+            BoardChannel board_channel)
+            const;
+        
+        void validate_pulse_width_value(
+            PulseWidth pulse_width)
+            const;
+        
+        void validate_degrees_value(
+            Degrees degrees)
+            const;
 
-        BoardChannel board_channel;
-        PulseWidth min_pulse_width;
-        PulseWidth max_pulse_width;
-        Degrees min_degrees;
-        Degrees max_degrees;
+        const BoardChannel board_channel;
+        const PulseWidth min_pulse_width;
+        const PulseWidth max_pulse_width;
+        const Degrees min_degrees;
+        const Degrees max_degrees;
     };
     
     typedef std::vector<JointConfig> JointConfigs;
