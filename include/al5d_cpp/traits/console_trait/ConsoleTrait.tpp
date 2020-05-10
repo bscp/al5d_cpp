@@ -2,7 +2,6 @@
 #define	AL5D_CPP_CONSOLETRAIT_TPP
 
 // SYSTEM INCLUDES
-#include <string>
 #include <iostream>
 
 // PROJECT INCLUDES
@@ -13,7 +12,7 @@ namespace al5d
 {
     template <typename BaseType>
     ConsoleTrait<BaseType>::ConsoleTrait(
-        const Config &config)
+        const AL5DBaseConfig& config)
         : BaseType(config)
     {
         auto ptr = ConsoleCommunicator::as_ptr();
@@ -26,7 +25,7 @@ namespace al5d
         const
     {
         BaseType::terminate_command();
-        std::cout << std::endl; // TODO : otherwise nothing gets printed...
+        std::cout << std::endl; // otherwise nothing gets printed...
     }
 }
 

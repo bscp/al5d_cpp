@@ -11,11 +11,15 @@ namespace al5d
     class Communicator
     {
     public:
+    
         virtual void transmit(
             const std::string& message) = 0;
     
     protected:
-        Communicator() {}; // TODO : move to cpp file
+
+        Communicator()
+        {
+        }
     };
 
     typedef std::shared_ptr<Communicator> CommunicatorPtr;

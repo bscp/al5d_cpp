@@ -1,6 +1,9 @@
 #ifndef AL5D_CPP_LOGGINGTRAIT_HPP
 #define AL5D_CPP_LOGGINGTRAIT_HPP
 
+// PROJECT INCLUDES
+#include <al5d_cpp/base/AL5DBaseConfig.hpp>
+
 
 namespace al5d
 {
@@ -11,7 +14,7 @@ namespace al5d
         typedef typename BaseType::Config Config;
 
         explicit LoggingTrait(
-            const Config& config);
+            const AL5DBaseConfig& config);
 
         virtual ~LoggingTrait() = default;
 
@@ -26,10 +29,6 @@ namespace al5d
         void transmit_command(
             const Command &command)
             override;
-
-        // TODO : add void enable_logging()
-        // TODO : add void disable_logging()
-        // TODO : add set_log_level()
     };
 }
 

@@ -8,19 +8,21 @@
 // PROJECT INCLUDES
 #include <al5d_cpp/base/JointConfig.hpp>
 #include <al5d_cpp/base/types.hpp>
-
+#include <al5d_cpp/base/SerialConfig.hpp>
 
 namespace al5d
 {
     struct AL5DBaseConfig
     {
-        explicit AL5DBaseConfig(
-            JointConfigs joint_configs);
+        AL5DBaseConfig(
+            JointConfigs joint_configs,
+            SerialConfig serial_config);
         
         void validate_joint_configs()
             const;
 
         const JointConfigs joint_configs;
+        const SerialConfig serial_config;
     };
 }
 

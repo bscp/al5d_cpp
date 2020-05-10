@@ -1,12 +1,6 @@
 #ifndef AL5D_CPP_AL5DBASE_HPP
 #define AL5D_CPP_AL5DBASE_HPP
 
-// SYSTEM INCLUDES
-#include <cstdint>
-#include <vector>
-#include <memory>
-#include <functional>
-
 // PROJECT INCLUDES
 #include <al5d_cpp/Duration.hpp>
 #include <al5d_cpp/base/JointBase.hpp>
@@ -38,12 +32,6 @@ namespace al5d
                 =Duration::from_milliseconds(DURATION));
     
         virtual void stop();
-        
-        virtual void connect();
-        
-        virtual bool is_connected();
-
-        virtual void disconnect();
 
         void set_communicator_ptr(
             const CommunicatorPtr& communicator_ptr);
@@ -69,7 +57,7 @@ namespace al5d
         void validate_communicator_ptr()
             const;
 
-        virtual void transmit(
+        void transmit(
             const std::string& message)
             const;
     

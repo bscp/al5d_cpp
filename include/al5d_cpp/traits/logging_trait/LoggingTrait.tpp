@@ -9,7 +9,7 @@ namespace al5d
 {
     template <typename BaseType>
     LoggingTrait<BaseType>::LoggingTrait(
-        const Config& config)
+        const AL5DBaseConfig& config)
         : BaseType(config)
     {
     }

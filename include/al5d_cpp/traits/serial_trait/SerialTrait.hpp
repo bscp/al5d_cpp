@@ -5,8 +5,8 @@
 #include <string>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/traits/serial_trait/SerialTraitConfig.hpp>
 #include <al5d_cpp/Serial.hpp>
+#include <al5d_cpp/base/AL5DBaseConfig.hpp>
 
 
 namespace al5d
@@ -15,26 +15,20 @@ namespace al5d
     class SerialTrait : public BaseType
     {
     public:
-        typedef SerialTraitConfig<BaseType> Config;
-       
+
         explicit SerialTrait(
-            const Config &config);
-            
-        void connect()
-            override;
+            const AL5DBaseConfig& config);
         
-        bool is_connected() 
-            override;
-        
-        void disconnect()
-            override;
-        
-        void transmit(
-            const std::string& message)
-            override;
+        virtual ~SerialTrait();
         
     private:
-        serial::Serial serial;
+            
+        void connect();
+        
+        void disconnect();
+
+        serial::Port serial_port;
+        serial::BaudRate serial_baud_rate;
     };
 }
 

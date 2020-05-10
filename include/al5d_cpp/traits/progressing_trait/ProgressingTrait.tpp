@@ -6,7 +6,7 @@ namespace al5d
 {
     template <typename BaseType>
     ProgressingTrait<BaseType>::ProgressingTrait(
-        const Config& config)
+        const AL5DBaseConfig& config)
         : BaseType(config)
     {
     }

@@ -16,7 +16,9 @@ namespace al5d
         static CommunicatorPtr as_ptr();
         
         ConsoleCommunicator()
-            : Communicator() {} // TODO
+            : Communicator()
+        {
+        }
 
         void transmit(
             const std::string& message)

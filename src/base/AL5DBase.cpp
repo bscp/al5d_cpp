@@ -18,7 +18,6 @@ namespace al5d
     
     AL5DBase::~AL5DBase()
     {
-        disconnect();
     }
     
     
@@ -50,25 +49,7 @@ namespace al5d
         validate_communicator_ptr();
         communicator_ptr->transmit(message);
     }
-    
-    
-    void AL5DBase::connect()
-    {
-        // TODO : throw no connect process implemented
-    }
-    
-    
-    bool AL5DBase::is_connected()
-    {
-        return true;
-    }
-    
-    
-    void AL5DBase::disconnect()
-    {
-        // TODO : throw no disconnect process implemented
-    }
-    
+
     
     void AL5DBase::terminate_command()
         const

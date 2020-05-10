@@ -4,6 +4,9 @@
 // SYSTEM INCLUDES
 #include <string>
 
+// PROJECT INCLUDES
+#include <al5d_cpp/base/AL5DBaseConfig.hpp>
+
 
 namespace al5d
 {
@@ -11,10 +14,6 @@ namespace al5d
     class JSONTrait : public BaseType
     {
     public:
-
-        typedef typename JSONTrait<BaseType>::Config
-            Config;
-
         static JSONTrait<BaseType> from_json_file(
             const std::string& path);
 
@@ -22,7 +21,7 @@ namespace al5d
             const std::string& json);
 
         explicit JSONTrait(
-            const Config& config);
+            const AL5DBaseConfig& config);
 
         virtual ~JSONTrait() = default;
         

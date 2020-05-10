@@ -64,11 +64,37 @@ namespace al5d
         }
 
 
+        serial::BaudRate load_serial_baud_rate(
+            const YAML::Node &serial_port_node)
+        {
+            auto serial_baud_rate = serial_port_node.as<int>();
+            return serial::BaudRate(serial_baud_rate);
+        }
+
+
+        serial::Port load_serial_port(
+            const YAML::Node &serial_port_node)
+        {
+            auto serial_port = serial_port_node.as<std::string>();
+            return serial::Port(serial_port);
+        }
+
+
+        SerialConfig load_serial_config(
+            const YAML::Node &serial_config_node)
+        {
+            auto serial_port = load_serial_port(serial_config_node["port"]);
+            auto serial_baud_rate = load_serial_baud_rate(serial_config_node["baud_rate"]);
+            return SerialConfig(serial_port, serial_baud_rate);
+        }
+
+
         AL5DBaseConfig load_config(
             const YAML::Node &config_node)
         {
             auto joint_configs = load_joint_configs(config_node["joints"]);
-            return AL5DBaseConfig(joint_configs);
+            auto serial_config = load_serial_config(config_node["serial"]);
+            return AL5DBaseConfig(joint_configs, serial_config);
         }
     }
 

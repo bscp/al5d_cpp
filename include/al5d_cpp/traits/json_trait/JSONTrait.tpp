@@ -26,7 +26,7 @@ namespace al5d
 
     template <typename BaseType>
     JSONTrait<BaseType>::JSONTrait(
-        const Config& config)
+        const AL5DBaseConfig& config)
         : BaseType(config)
     {
     }

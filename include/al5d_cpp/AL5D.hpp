@@ -21,7 +21,7 @@ namespace al5d
     typedef ConsoleTrait<ProgressingAL5D> ConsoleAL5D;
     typedef SerialTrait<ProgressingAL5D> SerialAL5D;
     // typedef LambdaAL5D<ProgressingAL5D> LambdaAL5D;
-    typedef JSONTrait<ConsoleAL5D> AL5D; // should always be last
+    typedef JSONTrait<SerialAL5D> AL5D; // should always be last
 }
 
 

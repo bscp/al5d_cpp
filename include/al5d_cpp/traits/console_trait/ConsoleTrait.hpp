@@ -4,6 +4,9 @@
 // SYSTEM INCLUDES
 #include <string>
 
+// PROJECT INCLUDES
+#include <al5d_cpp/base/AL5DBaseConfig.hpp>
+
 
 namespace al5d
 {
@@ -11,10 +14,8 @@ namespace al5d
     class ConsoleTrait : public BaseType
     {
     public:
-        typedef typename BaseType::Config Config;
-       
         explicit ConsoleTrait(
-            const Config &config);
+            const AL5DBaseConfig& config);
 
         void terminate_command()
             const
