@@ -100,9 +100,9 @@ namespace al5d
 
 
     AL5DBaseConfig load_config_from_json_file(
-        const std::string& file_path)
+        const std::string& path)
     {
-        const YAML::Node config_node = YAML::LoadFile(file_path);
+        const YAML::Node config_node = YAML::LoadFile(path);
         return load_config(config_node);
     }
 

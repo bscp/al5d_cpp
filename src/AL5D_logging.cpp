@@ -20,12 +20,6 @@ namespace al5d
     }
     
     
-    void log_no_serial_connection()
-    {
-        LOG_ERROR("No connection connection established");
-    }
-    
-    
     void log_moving_joint(
         const JointTypeAngle &joint_type_angle)
     {
@@ -59,12 +53,6 @@ namespace al5d
         {
             LOG_INFO(get_moving_joint_log(joint_type_angle, duration));
         }
-    }
-    
-    
-    std::string get_disconnecting_log()
-    {
-        return "DISCONNECTING_SERIAL";
     }
     
     

@@ -30,12 +30,8 @@ namespace al5d
     
     void log_emergency_stop();
     
-    void log_no_serial_connection();
-    
     void log_disconnecting();
     
-    std::string get_disconnecting_log();
-
     void log_transmit_command(
         const std::string& command);
 }
