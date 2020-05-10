@@ -6,6 +6,7 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/logging.hpp>
+#include <al5d_cpp/exceptions/MissingCommunicator.hpp>
 
 
 namespace al5d
@@ -92,7 +93,7 @@ namespace al5d
     {
         if (communicator_ptr == nullptr)
         {
-            throw "communicator is nullptr"; // TODO : throw class
+            throw MissingCommunicator();
         }
     }
     

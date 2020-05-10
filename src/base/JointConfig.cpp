@@ -1,6 +1,11 @@
 // HEADER INCLUDE
 #include <al5d_cpp/base/JointConfig.hpp>
 
+// PROJECT INCLUDES
+#include <al5d_cpp/exceptions/InvalidBoardChannel.hpp>
+#include <al5d_cpp/exceptions/InvalidPulseWidth.hpp>
+#include <al5d_cpp/exceptions/InvalidDegrees.hpp>
+
 
 namespace al5d
 {
@@ -28,7 +33,7 @@ namespace al5d
         // BoardChannel is an unsigned type and thus always larger then zero
         if (board_channel > (BoardChannel)10)
         {
-            throw "Board channel can not be larger than 10"; // TODO : throw class and more info
+            throw InvalidBoardChannel(board_channel);
         }
     }
 
@@ -40,7 +45,7 @@ namespace al5d
         // PulseWidth is an unsigned type and thus always larger then zero
         if (pulse_width > (PulseWidth)10000)
         {
-            throw "Pulse width can not be smaller than 10000"; // TODO : throw class and more info
+            throw InvalidPulseWidth(pulse_width);
         }
     }
 
@@ -51,11 +56,11 @@ namespace al5d
     {
         if (degrees < (Degrees)-360)
         {
-            throw "Degrees can not be smaller than -360"; // TODO : throw class and more info
+            throw InvalidDegrees(degrees);
         }
         if (degrees > (Degrees)360)
         {
-            throw "Degrees can not be larger than 360"; // TODO : throw class and more info
+            throw InvalidDegrees(degrees);
         }
     }
 }

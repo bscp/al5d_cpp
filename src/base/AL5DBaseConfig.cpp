@@ -1,6 +1,9 @@
 // HEADER INCLUDE
 #include <al5d_cpp/base/AL5DBaseConfig.hpp>
 
+// PROJECT INCLUDES
+#include <al5d_cpp/exceptions/InvalidNumberOfJoints.hpp>
+
 
 namespace al5d
 {
@@ -19,7 +22,7 @@ namespace al5d
     {
         if (joint_configs.size() != 6)
         {
-            throw "Not the expected number of joints in config"; // TODO : throw as class
+            throw InvalidNumberOfJoints(joint_configs.size());
         }
     }
 }
