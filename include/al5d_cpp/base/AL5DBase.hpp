@@ -35,6 +35,9 @@ namespace al5d
 
         void set_communicator_ptr(
             const CommunicatorPtr& communicator_ptr);
+        
+        bool is_ready()
+            const;
 
     protected:
 

@@ -23,6 +23,10 @@ namespace al5d
         void transmit(
             const std::string& message)
             override;
+
+        bool is_ready()
+            const
+            override;
     };
 }
 

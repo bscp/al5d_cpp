@@ -45,6 +45,14 @@ namespace al5d
     }
     
     
+    bool AL5DBase::is_ready()
+        const
+    {
+        validate_communicator_ptr();
+        return communicator_ptr->is_ready();
+    }
+    
+    
     void AL5DBase::transmit(
         const std::string& message)
         const

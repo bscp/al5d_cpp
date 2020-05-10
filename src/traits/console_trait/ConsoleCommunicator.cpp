@@ -18,4 +18,11 @@ namespace al5d
     {
         std::cout << message;
     }
+
+    
+    bool ConsoleCommunicator::is_ready()
+        const
+    {
+        return true;
+    }
 }
