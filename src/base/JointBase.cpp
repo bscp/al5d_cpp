@@ -44,7 +44,15 @@ namespace al5d
     }
 
 
-    bool JointBase::is_type(
+    bool JointBase::has_name(
+        const JointName& name)
+        const
+    {
+        return this->name == name;
+    }
+
+
+    bool JointBase::has_type(
         const JointType &type)
         const
     {

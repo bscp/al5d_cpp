@@ -70,6 +70,10 @@ namespace al5d
         const JointBase &get_joint(
             const JointType &joint_type)
             const;
+    
+        const JointBase &get_joint(
+            const JointName& joint_name)
+            const;
 
         void set_joint_communicator_ptrs();
     };

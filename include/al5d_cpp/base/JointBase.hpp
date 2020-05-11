@@ -27,7 +27,11 @@ namespace al5d
         
         virtual ~JointBase() = default;
 
-        bool is_type(
+        bool has_name(
+            const JointName &name)
+            const;
+
+        bool has_type(
             const JointType &type)
             const;
 

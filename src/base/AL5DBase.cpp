@@ -96,17 +96,36 @@ namespace al5d
     
     
     const JointBase &AL5DBase::get_joint(
+        const JointName& joint_name)
+        const
+    {
+        // TODO : strip spaces
+        // TODO : to lowercase
+        
+        for (const auto& joint : joints)
+        {
+            if (joint.has_name(joint_name))
+            {
+                return joint;
+            }
+        }
+
+        throw "Joint not found"; // TODO : throw class
+    }
+    
+    
+    const JointBase &AL5DBase::get_joint(
         const JointType &joint_type)
         const
     {
         for (const auto& joint : joints)
         {
-            if (joint.is_type(joint_type))
+            if (joint.has_type(joint_type))
             {
                 return joint;
             }
         }
-        
+
         throw "Joint not found"; // TODO : throw class
     }
     
