@@ -32,23 +32,24 @@ namespace al5d
         return !timer_ptr->has_elapsed();
     }
     
-    
+
     template <typename BaseType>
     void ProgressingTrait<BaseType>::move_to(
-        const JointTypeAngles &joint_type_angles,
+        const JointType& joint_type,
+        const Degrees &degrees,
         const Duration &move_duration)
     {
-        BaseType::move_to(joint_type_angles, move_duration);
-        start_timer(move_duration.in_milliseconds());
+        BaseType::move_to({{joint_type, degrees}}, move_duration);
     }
-    
+
     
     template <typename BaseType>
     void ProgressingTrait<BaseType>::move_to(
-        const JointTypeAngle &joint_type_angle,
+        const JointTypeDegreesList &joint_type_degrees_list,
         const Duration &move_duration)
     {
-        move_to({joint_type_angle}, move_duration);
+        BaseType::move_to(joint_type_degrees_list, move_duration);
+        start_timer(move_duration.in_milliseconds());
     }
 }
 

@@ -11,8 +11,9 @@ int main()
     auto al5d = al5d::AL5D::from_json_file(file_path);
 
     auto move_duration = al5d::Duration::from_milliseconds(2000);
-    al5d.move_to({{al5d::JOINT_BASE, 0}}, move_duration);
+    al5d.move_to(al5d::JOINT_BASE, al5d::Degrees(90), move_duration);
+    // al5d.move_to({{al5d::JOINT_BASE, al5d::Degrees(0)}}, move_duration);
+
     std::this_thread::sleep_for(std::chrono::seconds(2));
-    
     al5d.stop();
 }

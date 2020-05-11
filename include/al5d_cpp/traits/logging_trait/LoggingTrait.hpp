@@ -19,7 +19,7 @@ namespace al5d
         virtual ~LoggingTrait() = default;
 
         void move_to(
-            const JointTypeAngles &joint_type_angles,
+            const JointTypeDegreesList &joint_type_degrees_list,
             const Duration &move_duration)
             override;
 

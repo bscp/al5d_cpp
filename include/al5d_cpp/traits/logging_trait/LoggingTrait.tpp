@@ -15,11 +15,11 @@ namespace al5d
     }
     template <typename BaseType>
     void LoggingTrait<BaseType>::move_to(
-        const JointTypeAngles &joint_type_angles,
+        const JointTypeDegreesList &joint_type_degrees_list,
         const Duration &move_duration)
     {
-        log_moving_joints(joint_type_angles, move_duration);
-        BaseType::move_to(joint_type_angles, move_duration);
+        log_moving_joints(joint_type_degrees_list, move_duration);
+        BaseType::move_to(joint_type_degrees_list, move_duration);
     }
     
     

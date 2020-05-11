@@ -13,8 +13,7 @@ namespace al5d
     class InvalidDegrees : public std::runtime_error
     {
     public:
-        explicit InvalidDegrees(
-            const Degrees& degrees);
+        explicit InvalidDegrees();
     };
 }
 

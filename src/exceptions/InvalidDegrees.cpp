@@ -6,9 +6,8 @@
 
 namespace al5d
 {
-    InvalidDegrees::InvalidDegrees(
-        const Degrees& degrees)
-        : runtime_error(std::string(MESSAGE) + std::to_string(degrees))
+    InvalidDegrees::InvalidDegrees()
+        : runtime_error(MESSAGE)
     {
     }
 }

@@ -7,10 +7,11 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/base/types/JointType.hpp>
-#include <al5d_cpp/base/types/JointAngle.hpp>
-#include <al5d_cpp/base/types/JointTypeAngle.hpp>
+#include <al5d_cpp/base/types/JointTypeDegrees.hpp>
 #include <al5d_cpp/base/types/PulseWidth.hpp>
 #include <al5d_cpp/base/types/PulseWidthRange.hpp>
+#include <al5d_cpp/base/types/Degrees.hpp>
+#include <al5d_cpp/base/types/DegreesRange.hpp>
 
 
 namespace al5d
@@ -18,7 +19,6 @@ namespace al5d
     typedef std::string Command;
     typedef std::string JointName;
     typedef unsigned int BoardChannel;
-    typedef int Degrees;
 }
 
 

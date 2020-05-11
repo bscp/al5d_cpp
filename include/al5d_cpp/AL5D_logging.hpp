@@ -8,24 +8,24 @@
 namespace al5d
 {
     void log_moving_joint(
-        const JointTypeAngle &joint_type_angle);
+        const JointTypeDegrees &joint_type_degrees);
     
     void log_moving_joint(
-        const JointTypeAngle &joint_type_angle,
+        const JointTypeDegrees &joint_type_degrees,
         const Duration &duration);
     
     void log_moving_joints(
-        const JointTypeAngles &joint_type_angles);
+        const JointTypeDegreesList &joint_type_degrees_list);
     
     void log_moving_joints(
-        const JointTypeAngles &joint_type_angles,
+        const JointTypeDegreesList &joint_type_degrees_list,
         const Duration &duration);
     
     std::string get_moving_joint_log(
-        const JointTypeAngle &joint_type_angle);
+        const JointTypeDegrees &joint_type_degrees);
     
     std::string get_moving_joint_log(
-        const JointTypeAngle &joint_type_angle,
+        const JointTypeDegrees &joint_type_degrees,
         const Duration &duration);
     
     void log_emergency_stop();

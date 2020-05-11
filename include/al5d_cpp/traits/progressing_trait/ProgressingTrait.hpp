@@ -25,15 +25,15 @@ namespace al5d
         
         void start_timer(
             long duration);
+    
+        virtual void move_to(
+            const JointType& joint_type,
+            const Degrees &degrees,
+            const Duration &move_duration
+                =Duration::from_milliseconds(DURATION));
 
         void move_to(
-            const JointTypeAngles &joint_type_angles,
-            const Duration &move_duration
-                =Duration::from_milliseconds(DURATION))
-            override;
-
-        void move_to( // TODO : why can this be removed?
-            const JointTypeAngle &joint_type_angle,
+            const JointTypeDegreesList &joint_type_degrees_list,
             const Duration &move_duration
                 =Duration::from_milliseconds(DURATION))
             override;

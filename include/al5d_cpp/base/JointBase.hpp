@@ -43,6 +43,9 @@ namespace al5d
         
     private:
 
+        double get_convert_ratio()
+            const;
+
         void validate_communicator_ptr()
             const;
 
@@ -56,27 +59,19 @@ namespace al5d
         Degrees get_highest_degrees()
             const;
         
-        void validate_degrees(
+        void validate_reachability(
             Degrees degrees)
             const;
-    
-        bool can_reach_degrees(
-            const Degrees &degrees)
-            const;
         
-        JointAngle to_pulse_width(
+        PulseWidth to_pulse_width(
             Degrees degrees)
             const;
         
         std::string name;
         JointType type;
         BoardChannel board_channel;
-        Degrees min_degrees;
-        Degrees max_degrees;
-        Degrees lowest_degrees;
-        Degrees highest_degrees;
         
-        long degrees_range;
+        DegreesRange degrees_range;
         PulseWidthRange pulse_width_range;
         double convert_ratio;
 

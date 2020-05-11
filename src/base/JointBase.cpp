@@ -16,29 +16,18 @@ namespace al5d
         : name(joint_config.name)
         , type(joint_config.type)
         , board_channel(joint_config.board_channel)
-        , min_degrees(joint_config.min_degrees)
-        , max_degrees(joint_config.max_degrees)
-        , lowest_degrees(get_lowest_degrees())
-        , highest_degrees(get_highest_degrees())
-        , degrees_range(max_degrees - min_degrees)
+        , degrees_range(joint_config.degrees_range)
         , pulse_width_range(joint_config.pulse_width_range)
-        , convert_ratio(pulse_width_range.get_difference() / double(degrees_range))
+        , convert_ratio(get_convert_ratio())
         , communicator_ptr(nullptr)
     {
     }
 
-
-    Degrees JointBase::get_lowest_degrees()
+    
+    double JointBase::get_convert_ratio()
         const
     {
-        return min_degrees <= max_degrees ? min_degrees : max_degrees;
-    }
-
-
-    Degrees JointBase::get_highest_degrees()
-        const
-    {
-        return min_degrees <= max_degrees ? max_degrees : min_degrees;
+        return pulse_width_range.get_difference() / degrees_range.get_difference();
     }
 
 
@@ -62,38 +51,33 @@ namespace al5d
         const Degrees& degrees)
         const
     {
-        validate_degrees(degrees);
+        validate_reachability(degrees);
+        auto pulse_width = to_pulse_width(degrees);
 
         std::string command("#");
         command += std::to_string(board_channel);
-        command += "P" + std::to_string(to_pulse_width(degrees));        
+        command += "P" + std::to_string(pulse_width.value);        
 
         transmit(command);
     }
     
     
-    JointAngle JointBase::to_pulse_width(Degrees degrees) const
+    PulseWidth JointBase::to_pulse_width(
+        Degrees degrees)
+        const
     {
-        validate_degrees(degrees);
-        return JointAngle((degrees - min_degrees) * convert_ratio + pulse_width_range.min.value); // TODO : shorten this line
+        validate_reachability(degrees);
+        return PulseWidth((degrees.value - degrees_range.value_1.value) * convert_ratio + pulse_width_range.min.value); // TODO : shorten this line
     }
     
     
-    void JointBase::validate_degrees(Degrees degrees) const
+    void JointBase::validate_reachability(Degrees degrees) const
     {
-        if (!can_reach_degrees(degrees))
+        if (!degrees_range.is_within_range(degrees))
         {
             LOG_ERROR("degrees out of range");
-            throw std::invalid_argument("degrees out of range");
+            throw std::invalid_argument("degrees out of range"); // TODO : throw a class
         }
-    }
-    
-    
-    bool JointBase::can_reach_degrees(const Degrees &degrees) const
-    {
-        bool above_lower_bound = lowest_degrees <= degrees;
-        bool below_upper_bound = degrees <= highest_degrees;
-        return above_lower_bound && below_upper_bound;
     }
 
 

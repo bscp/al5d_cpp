@@ -13,18 +13,14 @@ namespace al5d
         const JointType& type,
         const BoardChannel& board_channel,
         const PulseWidthRange& pulse_width_range,
-        const Degrees &min_degrees,
-        const Degrees &max_degrees)
+        const DegreesRange &degrees_range)
         : name(name)
         , type(type)
         , board_channel(board_channel)
         , pulse_width_range(pulse_width_range)
-        , min_degrees(min_degrees)
-        , max_degrees(max_degrees)
+        , degrees_range(degrees_range)
     {
         validate_board_channel_value(board_channel);
-        validate_degrees_value(min_degrees);
-        validate_degrees_value(max_degrees);
     }
 
 
@@ -36,21 +32,6 @@ namespace al5d
         if (board_channel > (BoardChannel)10)
         {
             throw InvalidBoardChannel(board_channel);
-        }
-    }
-
-
-    void JointConfig::validate_degrees_value(
-        Degrees degrees)
-        const
-    {
-        if (degrees < (Degrees)-360)
-        {
-            throw InvalidDegrees(degrees);
-        }
-        if (degrees > (Degrees)360)
-        {
-            throw InvalidDegrees(degrees);
         }
     }
 }
