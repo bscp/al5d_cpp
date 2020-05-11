@@ -5,6 +5,9 @@
 #include <cstdint>
 #include <string>
 
+// PROJECT INCLUDES
+#include <al5d_cpp/base/JointType.hpp>
+
 
 namespace al5d
 {

@@ -11,12 +11,14 @@ namespace al5d
 {
     JointConfig::JointConfig(
         const JointName& joint_name,
+        const JointType& joint_type,
         const BoardChannel& board_channel,
         const PulseWidth& min_pulse_width,
         const PulseWidth& max_pulse_width,
         const Degrees &min_degrees,
         const Degrees &max_degrees)
         : joint_name(joint_name)
+        , joint_type(joint_type)
         , board_channel(board_channel)
         , min_pulse_width(min_pulse_width)
         , max_pulse_width(max_pulse_width)

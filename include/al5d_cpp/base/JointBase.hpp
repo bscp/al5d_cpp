@@ -62,6 +62,7 @@ namespace al5d
             const;
         
         std::string joint_name;
+        JointType joint_type;
         BoardChannel board_channel;
         PulseWidth min_pulse_width;
         PulseWidth max_pulse_width;

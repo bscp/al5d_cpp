@@ -41,16 +41,17 @@ namespace al5d
 
 
         JointConfig load_joint_config(
-            const YAML::Node &joint_config_node)
+            const YAML::Node &joint_config_node,
+            size_t joint_type)
         {
-            auto name = load_joint_name(joint_config_node["name"]);
-            auto board_channel = load_board_channel(joint_config_node["board_channel"]);
+            // TODO : make a new types of the range types
             auto pulse_width_range = load_pulse_width_range(joint_config_node["pulse_width_range"]);
             auto degrees_range = load_degrees_range(joint_config_node["degrees_range"]);
             
             return JointConfig(
-                name,
-                board_channel,
+                load_joint_name(joint_config_node["name"]),
+                JointType(joint_type),
+                load_board_channel(joint_config_node["board_channel"]),
                 pulse_width_range[0],
                 pulse_width_range[1],
                 degrees_range[0],
@@ -63,9 +64,9 @@ namespace al5d
         {
             JointConfigs joint_configs;
 
-            for (auto joint_config_node : joint_configs_node)
+            for (size_t i = 0; i < joint_configs_node.size(); ++i)
             {
-                auto joint_config = load_joint_config(joint_config_node);
+                auto joint_config = load_joint_config(joint_configs_node[i], i);
                 joint_configs.push_back(joint_config);
             }
 
