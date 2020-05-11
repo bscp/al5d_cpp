@@ -27,8 +27,12 @@ namespace al5d
         
         virtual ~JointBase() = default;
 
+        bool is_type(
+            const JointType &type)
+            const;
+
         void set_communicator_ptr(
-        const CommunicatorPtr& communicator_ptr);
+            const CommunicatorPtr& communicator_ptr);
     
         void move_to(
             const Degrees& degrees)
@@ -61,8 +65,8 @@ namespace al5d
             Degrees degrees)
             const;
         
-        std::string joint_name;
-        JointType joint_type;
+        std::string name;
+        JointType type;
         BoardChannel board_channel;
         PulseWidth min_pulse_width;
         PulseWidth max_pulse_width;

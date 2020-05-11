@@ -13,8 +13,8 @@ namespace al5d
     struct JointConfig
     {
         JointConfig(
-            const JointName& joint_name,
-            const JointType& joint_type,
+            const JointName& name,
+            const JointType& type,
             const BoardChannel& board_channel,
             const PulseWidth& min_pulse_width,
             const PulseWidth& max_pulse_width,
@@ -33,8 +33,8 @@ namespace al5d
             Degrees degrees)
             const;
 
-        const JointName joint_name;
-        const JointType joint_type;
+        const JointName name;
+        const JointType type;
         const BoardChannel board_channel;
         const PulseWidth min_pulse_width, max_pulse_width;
         const Degrees min_degrees, max_degrees;
