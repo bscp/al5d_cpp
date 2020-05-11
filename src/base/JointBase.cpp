@@ -13,7 +13,8 @@ namespace al5d
 {
     JointBase::JointBase(
         const JointConfig &joint_config)
-        : board_channel(joint_config.board_channel)
+        : joint_name(joint_config.joint_name)
+        , board_channel(joint_config.board_channel)
         , min_pulse_width(joint_config.min_pulse_width)
         , max_pulse_width(joint_config.max_pulse_width)
         , min_degrees(joint_config.min_degrees)

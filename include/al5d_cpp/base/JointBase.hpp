@@ -61,6 +61,7 @@ namespace al5d
             Degrees degrees)
             const;
         
+        std::string joint_name;
         BoardChannel board_channel;
         PulseWidth min_pulse_width;
         PulseWidth max_pulse_width;

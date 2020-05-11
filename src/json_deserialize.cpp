@@ -26,7 +26,14 @@ namespace al5d
         }
 
 
-        BoardChannel load_channel(
+        JointName load_joint_name(
+            const YAML::Node &joint_name_node)
+        {
+            return joint_name_node.as<JointName>();
+        }
+
+
+        BoardChannel load_board_channel(
             const YAML::Node &channel_node)
         {
             return channel_node.as<int>();
@@ -36,12 +43,14 @@ namespace al5d
         JointConfig load_joint_config(
             const YAML::Node &joint_config_node)
         {
-            auto channel = load_channel(joint_config_node["board_channel"]);
+            auto name = load_joint_name(joint_config_node["name"]);
+            auto board_channel = load_board_channel(joint_config_node["board_channel"]);
             auto pulse_width_range = load_pulse_width_range(joint_config_node["pulse_width_range"]);
             auto degrees_range = load_degrees_range(joint_config_node["degrees_range"]);
-
+            
             return JointConfig(
-                channel,
+                name,
+                board_channel,
                 pulse_width_range[0],
                 pulse_width_range[1],
                 degrees_range[0],

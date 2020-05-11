@@ -9,7 +9,7 @@
 namespace al5d
 {
     typedef std::string Command;
-    
+    typedef std::string JointName;
     typedef unsigned int PulseWidth;
     typedef unsigned int BoardChannel;
     typedef int Degrees;

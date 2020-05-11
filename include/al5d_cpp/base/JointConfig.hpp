@@ -13,9 +13,10 @@ namespace al5d
     struct JointConfig
     {
         JointConfig(
-            const BoardChannel& boardChannel,
-            const PulseWidth& minPulseWidth,
-            const PulseWidth& maxPulseWidth,
+            const JointName& joint_name,
+            const BoardChannel& board_channel,
+            const PulseWidth& min_pulse_width,
+            const PulseWidth& max_pulse_width,
             const Degrees &min_degrees,
             const Degrees &max_degrees);
         
@@ -31,11 +32,10 @@ namespace al5d
             Degrees degrees)
             const;
 
+        const JointName joint_name;
         const BoardChannel board_channel;
-        const PulseWidth min_pulse_width;
-        const PulseWidth max_pulse_width;
-        const Degrees min_degrees;
-        const Degrees max_degrees;
+        const PulseWidth min_pulse_width, max_pulse_width;
+        const Degrees min_degrees, max_degrees;
     };
     
     typedef std::vector<JointConfig> JointConfigs;
