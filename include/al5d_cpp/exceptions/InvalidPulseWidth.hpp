@@ -13,8 +13,7 @@ namespace al5d
     class InvalidPulseWidth : public std::runtime_error
     {
     public:
-        explicit InvalidPulseWidth(
-            const PulseWidth& pulse_width);
+        InvalidPulseWidth();
     };
 }
 

@@ -16,15 +16,13 @@ namespace al5d
         : name(joint_config.name)
         , type(joint_config.type)
         , board_channel(joint_config.board_channel)
-        , min_pulse_width(joint_config.min_pulse_width)
-        , max_pulse_width(joint_config.max_pulse_width)
         , min_degrees(joint_config.min_degrees)
         , max_degrees(joint_config.max_degrees)
         , lowest_degrees(get_lowest_degrees())
         , highest_degrees(get_highest_degrees())
         , degrees_range(max_degrees - min_degrees)
-        , pulse_width_range(max_pulse_width - min_pulse_width)
-        , convert_ratio(double(pulse_width_range) / double(degrees_range))
+        , pulse_width_range(joint_config.pulse_width_range)
+        , convert_ratio(pulse_width_range.get_difference() / double(degrees_range))
         , communicator_ptr(nullptr)
     {
     }
@@ -77,7 +75,7 @@ namespace al5d
     JointAngle JointBase::to_pulse_width(Degrees degrees) const
     {
         validate_degrees(degrees);
-        return JointAngle((degrees - min_degrees) * convert_ratio + min_pulse_width);
+        return JointAngle((degrees - min_degrees) * convert_ratio + pulse_width_range.min.value); // TODO : shorten this line
     }
     
     

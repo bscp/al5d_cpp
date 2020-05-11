@@ -16,17 +16,12 @@ namespace al5d
             const JointName& name,
             const JointType& type,
             const BoardChannel& board_channel,
-            const PulseWidth& min_pulse_width,
-            const PulseWidth& max_pulse_width,
+            const PulseWidthRange& pulse_width_range,
             const Degrees &min_degrees,
             const Degrees &max_degrees);
         
         void validate_board_channel_value(
             BoardChannel board_channel)
-            const;
-        
-        void validate_pulse_width_value(
-            PulseWidth pulse_width)
             const;
         
         void validate_degrees_value(
@@ -36,7 +31,7 @@ namespace al5d
         const JointName name;
         const JointType type;
         const BoardChannel board_channel;
-        const PulseWidth min_pulse_width, max_pulse_width;
+        const PulseWidthRange pulse_width_range;
         const Degrees min_degrees, max_degrees;
     };
     

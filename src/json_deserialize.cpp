@@ -1,6 +1,9 @@
 // HEADER INCLUDE
 #include <al5d_cpp/traits/json_trait/json_deserialize.hpp>
 
+// PROJECT INCLUDES
+#include <al5d_cpp/base/types.hpp>
+
 
 namespace al5d
 {
@@ -16,13 +19,20 @@ namespace al5d
         }
 
 
-        std::vector<PulseWidth> load_pulse_width_range(
+        PulseWidth load_pulse_width(
             const YAML::Node &pulse_width_node)
         {
-            std::vector<PulseWidth> pulse_width_range;
-            pulse_width_range.push_back(pulse_width_node[0].as<int>());
-            pulse_width_range.push_back(pulse_width_node[1].as<int>());
-            return pulse_width_range;
+            auto pulse_width_value = pulse_width_node.as<PulseWidth::Value>();
+            return PulseWidth(pulse_width_value);
+        }
+
+
+        PulseWidthRange load_pulse_width_range(
+            const YAML::Node &pulse_width_range_node)
+        {
+            return PulseWidthRange(
+                load_pulse_width(pulse_width_range_node[0]),
+                load_pulse_width(pulse_width_range_node[1]));
         }
 
 
@@ -44,16 +54,14 @@ namespace al5d
             const YAML::Node &joint_config_node,
             size_t joint_type)
         {
-            // TODO : make a new types of the range types
             auto pulse_width_range = load_pulse_width_range(joint_config_node["pulse_width_range"]);
             auto degrees_range = load_degrees_range(joint_config_node["degrees_range"]);
-            
+
             return JointConfig(
                 load_joint_name(joint_config_node["name"]),
                 JointType(joint_type),
                 load_board_channel(joint_config_node["board_channel"]),
-                pulse_width_range[0],
-                pulse_width_range[1],
+                pulse_width_range,
                 degrees_range[0],
                 degrees_range[1]);
         }

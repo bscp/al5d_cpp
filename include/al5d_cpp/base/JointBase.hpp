@@ -71,15 +71,13 @@ namespace al5d
         std::string name;
         JointType type;
         BoardChannel board_channel;
-        PulseWidth min_pulse_width;
-        PulseWidth max_pulse_width;
         Degrees min_degrees;
         Degrees max_degrees;
         Degrees lowest_degrees;
         Degrees highest_degrees;
         
         long degrees_range;
-        long pulse_width_range;
+        PulseWidthRange pulse_width_range;
         double convert_ratio;
 
         CommunicatorPtr communicator_ptr;
