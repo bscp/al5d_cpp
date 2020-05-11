@@ -50,6 +50,14 @@ namespace al5d
         
         virtual void terminate_command()
             const;
+
+        const JointBase &get_joint(
+            const JointType &joint_type)
+            const;
+    
+        const JointBase &get_joint(
+            const JointName& joint_name)
+            const;
             
         JointBases joints;
 
@@ -66,14 +74,6 @@ namespace al5d
     
         void construct_joints(
             const JointConfigs &joints_configs);
-
-        const JointBase &get_joint(
-            const JointType &joint_type)
-            const;
-    
-        const JointBase &get_joint(
-            const JointName& joint_name)
-            const;
 
         void set_joint_communicator_ptrs();
     };

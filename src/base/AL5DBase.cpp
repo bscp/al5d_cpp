@@ -25,9 +25,9 @@ namespace al5d
     
     
     void AL5DBase::construct_joints(
-        const JointConfigs& joints_configs)
+        const JointConfigs& joint_configs)
     {
-        for (const auto& joint_config : joints_configs)
+        for (const auto& joint_config : joint_configs)
         {
             const auto joint = JointBase(joint_config);
             joints.push_back(joint);

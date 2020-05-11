@@ -13,7 +13,6 @@ namespace al5d
     class ProgressingTrait : public BaseType
     {
     public:
-        typedef typename BaseType::Config Config;
 
         explicit ProgressingTrait(
             const AL5DBaseConfig& config);

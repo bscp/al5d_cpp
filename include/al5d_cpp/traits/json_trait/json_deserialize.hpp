@@ -20,10 +20,10 @@ namespace al5d
     AL5DBaseConfig load_config_from_json(
         const std::string& json);
 
-    PoseConfigList load_pose_config_from_json_file(
+    PoseConfigs load_pose_configs_from_json_file(
         const std::string& path);
 
-    PoseConfigList load_pose_config_from_json(
+    PoseConfigs load_pose_configs_from_json(
         const std::string& json);
 }
 

@@ -9,6 +9,7 @@
 #include <al5d_cpp/base/configs/JointConfig.hpp>
 #include <al5d_cpp/base/types.hpp>
 #include <al5d_cpp/base/configs/SerialConfig.hpp>
+#include <al5d_cpp/base/configs/PoseConfig.hpp>
 
 
 namespace al5d
@@ -17,13 +18,15 @@ namespace al5d
     {
         AL5DBaseConfig(
             JointConfigs joint_configs,
-            SerialConfig serial_config);
+            SerialConfig serial_config,
+            PoseConfigs pose_configs={});
         
         void validate_joint_configs()
             const;
 
         const JointConfigs joint_configs;
         const SerialConfig serial_config;
+        const PoseConfigs pose_configs;
     };
 }
 

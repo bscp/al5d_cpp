@@ -54,26 +54,10 @@
       ]
     },
     {
-      "name": "park",
-      "joint_degrees": {
-        "base": 0,
-        "shoulder": -30,
-        "elbow": 135,
-        "wrist": -80,
-        "gripper": 1,
-        "wrist_rotate": 0
-      }
-    },
-    {
-      "name": "up",
-      "joint_degrees": {
-        "base": 0,
-        "shoulder": 0,
-        "elbow": 0,
-        "wrist": 0,
-        "gripper": 1,
-        "wrist_rotate": 0
-      }
+      "name": "test",
+      "joint_degrees": [
+        {"joint": "base", "degrees": 90}
+      ]
     }
   ]
 }

@@ -46,6 +46,13 @@ namespace al5d
         return this->type == type;
     }
 
+
+    JointType JointBase::get_type()
+        const
+    {
+        return type;
+    }
+
     
     void JointBase::move_to(
         const Degrees& degrees)

@@ -7,7 +7,7 @@ namespace al5d
     JointNameDegrees::JointNameDegrees(
         const std::string& joint_name,
         const Degrees& degrees)
-        : joint_name(std::move(joint_name))
+        : joint_name(joint_name)
         , degrees(degrees)
     {
     }

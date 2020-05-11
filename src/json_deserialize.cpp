@@ -112,12 +112,17 @@ namespace al5d
         }
 
 
-        AL5DBaseConfig load_config(
+        PoseName load_pose_config_joint_name(
             const YAML::Node &json_node)
         {
-            auto joint_configs = load_joint_configs(json_node["joints"]);
-            auto serial_config = load_serial_config(json_node["serial"]);
-            return AL5DBaseConfig(joint_configs, serial_config);
+            return json_node.as<JointName>();
+        }
+
+
+        Degrees load_pose_config_joint_degrees(
+            const YAML::Node &json_node)
+        {
+            return Degrees(json_node.as<Degrees::Value>());
         }
 
 
@@ -125,12 +130,12 @@ namespace al5d
             const YAML::Node &json_node)
         {
             return JointNameDegrees(
-                json_node["joint"].as<JointName>(),
-                Degrees(json_node["degrees"].as<Degrees::Value>()));
+                load_pose_config_joint_name(json_node["joint"]),
+                load_pose_config_joint_degrees(json_node["degrees"]));
         }
 
 
-        JointNameDegreesList load_pose_joint_degrees_list(
+        JointNameDegreesList load_pose_config_joint_degrees_list(
             const YAML::Node &json_node)
         {
             JointNameDegreesList joint_name_degrees_list;
@@ -145,44 +150,61 @@ namespace al5d
         }
 
 
+        PoseName load_pose_config_name(
+            const YAML::Node &json_node)
+        {
+            return json_node.as<PoseName>();
+        }
+
+
         PoseConfig load_pose_config(
             const YAML::Node &json_node)
         {
             return PoseConfig(
-                json_node["name"].as<PoseName>(),
-                load_pose_joint_degrees_list(json_node["joint_degrees"]));
+                load_pose_config_name(json_node["name"]),
+                load_pose_config_joint_degrees_list(json_node["joint_degrees"]));
         }
 
 
-        PoseConfigList load_pose_config_list(
+        PoseConfigs load_pose_config_configs(
             const YAML::Node &json_node)
         {
-            PoseConfigList pose_config_list;
+            PoseConfigs pose_configs;
 
             for (size_t i = 0; i < json_node.size(); ++i)
             {
-                auto pose_config = load_pose_config(json_node[i]);
-                pose_config_list.push_back(pose_config);
+                pose_configs.push_back(
+                    load_pose_config(json_node[i]));
             }
 
-            return pose_config_list;
+            return pose_configs;
+        }
+
+
+        AL5DBaseConfig load_config(
+            const YAML::Node &json_node)
+        {
+            return AL5DBaseConfig(
+                load_joint_configs(json_node["joints"]),
+                load_serial_config(json_node["serial"]),
+                load_pose_config_configs(json_node["poses"]));
         }
     }
 
 
-    PoseConfigList load_pose_config_from_json_file(
+    PoseConfigs load_pose_configs_from_json_file(
         const std::string& path)
     {
         const YAML::Node config_node = YAML::LoadFile(path);
-        return load_pose_config_list(config_node);
+        return load_pose_config_configs(config_node);
     }
 
 
-    PoseConfigList load_pose_config_from_json(
+    PoseConfigs load_pose_configs_from_json(
         const std::string& json)
     {
         const YAML::Node json_node = YAML::Load(json);
-        return load_pose_config_list(json_node);
+        return load_pose_config_configs(json_node);
     }
 
 

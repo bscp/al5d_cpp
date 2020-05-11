@@ -5,7 +5,7 @@
 namespace al5d
 {
     PoseConfig::PoseConfig(
-        const std::string& name,
+        const PoseName& name,
         const JointNameDegreesList& joint_name_degrees_list)
         : name(name)
         , joint_name_degrees_list(joint_name_degrees_list)

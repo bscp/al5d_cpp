@@ -30,6 +30,9 @@ namespace al5d
             const JointName &name)
             const;
 
+        JointType get_type()
+            const;
+
         bool has_type(
             const JointType &type)
             const;
