@@ -3,15 +3,13 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/base/AL5DBase.hpp>
-#include <al5d_cpp/Duration.hpp>
 
-// MIXIN INCLUDES
+// TRAIT INCLUDES
 #include <al5d_cpp/traits/logging_trait/LoggingTrait.hpp>
 #include <al5d_cpp/traits/progressing_trait/ProgressingTrait.hpp>
 #include <al5d_cpp/traits/serial_trait/SerialTrait.hpp>
 #include <al5d_cpp/traits/console_trait/ConsoleTrait.hpp>
 #include <al5d_cpp/traits/json_trait/JSONTrait.hpp>
-#include <al5d_cpp/base/JointTypeAngle.hpp>
 
 
 namespace al5d

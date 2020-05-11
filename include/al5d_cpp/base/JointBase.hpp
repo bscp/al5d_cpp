@@ -8,7 +8,6 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/base/configs/JointConfig.hpp>
-#include <al5d_cpp/base/JointAngle.hpp>
 #include <al5d_cpp/base/Communicator.hpp>
 #include <al5d_cpp/base/types.hpp>
 

@@ -6,7 +6,9 @@
 #include <string>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/base/JointType.hpp>
+#include <al5d_cpp/base/types/JointType.hpp>
+#include <al5d_cpp/base/types/JointAngle.hpp>
+#include <al5d_cpp/base/types/JointTypeAngle.hpp>
 
 
 namespace al5d
