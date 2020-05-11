@@ -1,5 +1,5 @@
 // HEADER INCLUDE
-#include <al5d_cpp/base/JointConfig.hpp>
+#include <al5d_cpp/base/configs/JointConfig.hpp>
 
 // PROJECT INCLUDES
 #include <al5d_cpp/exceptions/InvalidBoardChannel.hpp>

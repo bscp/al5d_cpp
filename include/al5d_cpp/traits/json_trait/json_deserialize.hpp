@@ -8,7 +8,7 @@
 #include <yaml-cpp/yaml.h>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/base/AL5DBaseConfig.hpp>
+#include <al5d_cpp/base/configs/AL5DBaseConfig.hpp>
 
 
 namespace al5d

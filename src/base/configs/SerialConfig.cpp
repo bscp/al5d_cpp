@@ -1,5 +1,5 @@
 // HEADER INCLUDE
-#include <al5d_cpp/base/SerialConfig.hpp>
+#include <al5d_cpp/base/configs/SerialConfig.hpp>
 
 
 namespace al5d

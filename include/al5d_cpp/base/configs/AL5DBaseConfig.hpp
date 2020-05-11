@@ -6,9 +6,10 @@
 #include <string>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/base/JointConfig.hpp>
+#include <al5d_cpp/base/configs/JointConfig.hpp>
 #include <al5d_cpp/base/types.hpp>
-#include <al5d_cpp/base/SerialConfig.hpp>
+#include <al5d_cpp/base/configs/SerialConfig.hpp>
+
 
 namespace al5d
 {

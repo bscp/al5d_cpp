@@ -5,8 +5,8 @@
 #include <al5d_cpp/Duration.hpp>
 #include <al5d_cpp/base/JointBase.hpp>
 #include <al5d_cpp/base/JointType.hpp>
-#include <al5d_cpp/base/JointConfig.hpp>
-#include <al5d_cpp/base/AL5DBaseConfig.hpp>
+#include <al5d_cpp/base/configs/JointConfig.hpp>
+#include <al5d_cpp/base/configs/AL5DBaseConfig.hpp>
 #include <al5d_cpp/base/settings.hpp>
 #include <al5d_cpp/base/JointTypeAngle.hpp>
 #include <al5d_cpp/base/Communicator.hpp>

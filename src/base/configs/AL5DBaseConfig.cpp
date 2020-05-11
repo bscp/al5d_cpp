@@ -1,5 +1,5 @@
 // HEADER INCLUDE
-#include <al5d_cpp/base/AL5DBaseConfig.hpp>
+#include <al5d_cpp/base/configs/AL5DBaseConfig.hpp>
 
 // PROJECT INCLUDES
 #include <al5d_cpp/exceptions/InvalidNumberOfJoints.hpp>

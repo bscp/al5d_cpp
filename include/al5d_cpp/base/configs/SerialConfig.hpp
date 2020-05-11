@@ -4,6 +4,7 @@
 // PROJECT INCLUDES
 #include <al5d_cpp/Serial.hpp>
 
+
 namespace al5d
 {
     struct SerialConfig
