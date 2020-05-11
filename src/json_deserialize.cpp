@@ -119,6 +119,70 @@ namespace al5d
             auto serial_config = load_serial_config(json_node["serial"]);
             return AL5DBaseConfig(joint_configs, serial_config);
         }
+
+
+        JointNameDegrees load_joint_name_degrees(
+            const YAML::Node &json_node)
+        {
+            return JointNameDegrees(
+                json_node["joint"].as<JointName>(),
+                Degrees(json_node["degrees"].as<Degrees::Value>()));
+        }
+
+
+        JointNameDegreesList load_pose_joint_degrees_list(
+            const YAML::Node &json_node)
+        {
+            JointNameDegreesList joint_name_degrees_list;
+
+            for (size_t i = 0; i < json_node.size(); ++i)
+            {
+                joint_name_degrees_list.push_back(
+                    load_joint_name_degrees(json_node[i]));
+            }
+
+            return joint_name_degrees_list;
+        }
+
+
+        PoseConfig load_pose_config(
+            const YAML::Node &json_node)
+        {
+            return PoseConfig(
+                json_node["name"].as<PoseName>(),
+                load_pose_joint_degrees_list(json_node["joint_degrees"]));
+        }
+
+
+        PoseConfigList load_pose_config_list(
+            const YAML::Node &json_node)
+        {
+            PoseConfigList pose_config_list;
+
+            for (size_t i = 0; i < json_node.size(); ++i)
+            {
+                auto pose_config = load_pose_config(json_node[i]);
+                pose_config_list.push_back(pose_config);
+            }
+
+            return pose_config_list;
+        }
+    }
+
+
+    PoseConfigList load_pose_config_from_json_file(
+        const std::string& path)
+    {
+        const YAML::Node config_node = YAML::LoadFile(path);
+        return load_pose_config_list(config_node);
+    }
+
+
+    PoseConfigList load_pose_config_from_json(
+        const std::string& json)
+    {
+        const YAML::Node json_node = YAML::Load(json);
+        return load_pose_config_list(json_node);
     }
 
 

@@ -12,12 +12,14 @@
 #include <al5d_cpp/base/types/PulseWidthRange.hpp>
 #include <al5d_cpp/base/types/Degrees.hpp>
 #include <al5d_cpp/base/types/DegreesRange.hpp>
+#include <al5d_cpp/base/types/JointNameDegrees.hpp>
 
 
 namespace al5d
 {
-    typedef std::string Command;
     typedef std::string JointName;
+    typedef std::string PoseName;
+    typedef std::string Command;
     typedef unsigned int BoardChannel;
 }
 

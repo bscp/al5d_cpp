@@ -40,5 +40,40 @@
       "pulse_width_range": [500, 2500],
       "degrees_range": [-90, 90]
     }
+  ],
+  "poses": [
+    {
+      "name": "park",
+      "joint_degrees": [
+        {"joint": "base", "degrees": 0},
+        {"joint": "shoulder", "degrees": -30},
+        {"joint": "elbow", "degrees": 120},
+        {"joint": "wrist", "degrees": 0},
+        {"joint": "gripper", "degrees": 1},
+        {"joint": "wrist_rotate", "degrees": 0}
+      ]
+    },
+    {
+      "name": "park",
+      "joint_degrees": {
+        "base": 0,
+        "shoulder": -30,
+        "elbow": 135,
+        "wrist": -80,
+        "gripper": 1,
+        "wrist_rotate": 0
+      }
+    },
+    {
+      "name": "up",
+      "joint_degrees": {
+        "base": 0,
+        "shoulder": 0,
+        "elbow": 0,
+        "wrist": 0,
+        "gripper": 1,
+        "wrist_rotate": 0
+      }
+    }
   ]
 }

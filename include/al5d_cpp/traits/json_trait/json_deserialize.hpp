@@ -9,6 +9,7 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/base/configs/AL5DBaseConfig.hpp>
+#include <al5d_cpp/base/configs/PoseConfig.hpp>
 
 
 namespace al5d
@@ -17,6 +18,12 @@ namespace al5d
         const std::string& path);
 
     AL5DBaseConfig load_config_from_json(
+        const std::string& json);
+
+    PoseConfigList load_pose_config_from_json_file(
+        const std::string& path);
+
+    PoseConfigList load_pose_config_from_json(
         const std::string& json);
 }
 
