@@ -22,7 +22,7 @@ namespace al5d
     {
         if (joint_configs.size() != 6)
         {
-            throw InvalidNumberOfJoints(joint_configs.size());
+            throw InvalidNumberOfJoints((int)joint_configs.size());
         }
     }
 }
