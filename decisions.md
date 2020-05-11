@@ -4,3 +4,4 @@
 * A big benefit in terms of testing of traits is that you can just extend your testable class instead of the production class. This way you can easilly add in test functionality while keeping your code lean
 * Move to pulse width is no longer supported because if that is what you want, you dont need this library, you can simply get away with a single function and a serial library. It simplifies things massively for this project. Because pwm and degrees are two very different things. degrees is dependend on the pwm
 * yaml-cpp returned strange values when using non standard data types like uint16_t.
+* Plain old data types are always const& if possible in case their underlaying type will be changed in the future for example for data validation.
