@@ -25,7 +25,6 @@ int main()
     al5d.move_to_pose("test1");
     al5d.move_to_pose("test1", move_duration);
 
-
-    std::this_thread::sleep_for(std::chrono::seconds(2));
+    sleep(2); // seconds
     al5d.stop();
 }
