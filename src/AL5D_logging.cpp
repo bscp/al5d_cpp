@@ -36,9 +36,9 @@ namespace al5d
     
     
     void log_moving_joints(
-        const JointTypeDegreeList &joint_type_degree_list)
+        const JointTypeDegrees &joint_type_degrees)
     {
-        for (const auto& joint_type_degree : joint_type_degree_list)
+        for (const auto& joint_type_degree : joint_type_degrees)
         {
             log_moving_joint(joint_type_degree);
         }
@@ -46,10 +46,10 @@ namespace al5d
     
     
     void log_moving_joints(
-        const JointTypeDegreeList &joint_type_degree_list,
+        const JointTypeDegrees &joint_type_degrees,
         const Duration& duration)
     {
-        for (const auto& joint_type_degree : joint_type_degree_list)
+        for (const auto& joint_type_degree : joint_type_degrees)
         {
             LOG_INFO(get_moving_joint_log(joint_type_degree, duration));
         }

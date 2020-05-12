@@ -6,9 +6,9 @@ namespace al5d
 {
     Pose::Pose(
         const PoseName& name,
-        const JointTypeDegreeList& joint_type_degree_list)
+        const JointTypeDegrees& joint_type_degrees)
         : name(name)
-        , joint_type_degree_list(joint_type_degree_list)
+        , joint_type_degrees(joint_type_degrees)
     {
     }
 }

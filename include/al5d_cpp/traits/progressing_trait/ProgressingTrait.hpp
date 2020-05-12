@@ -33,7 +33,7 @@ namespace al5d
             override;
 
         void move_to_degrees(
-            const JointTypeDegreeList &joint_type_degree_list,
+            const JointTypeDegrees &joint_type_degrees,
             const Duration &move_duration
                 =Duration::from_milliseconds(DURATION))
             override;

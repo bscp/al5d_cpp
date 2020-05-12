@@ -45,10 +45,10 @@ namespace al5d
     
     template <typename BaseType>
     void ProgressingTrait<BaseType>::move_to_degrees(
-        const JointTypeDegreeList &joint_type_degree_list,
+        const JointTypeDegrees &joint_type_degrees,
         const Duration &move_duration)
     {
-        BaseType::move_to_degrees(joint_type_degree_list, move_duration);
+        BaseType::move_to_degrees(joint_type_degrees, move_duration);
         start_timer(move_duration.in_milliseconds());
     }
 }

@@ -24,18 +24,18 @@ namespace al5d
     
     
     template <typename BaseType>
-    JointTypeDegreeList PoseTrait<BaseType>::construct_poses(
+    JointTypeDegrees PoseTrait<BaseType>::construct_poses(
         const JointNameDegrees& joint_name_degrees)
     {
-        JointTypeDegreeList joint_type_degree_list;
+        JointTypeDegrees joint_type_degrees;
 
         for (const auto& joint_name_degrees : joint_name_degrees)
         {
-            joint_type_degree_list.push_back(
+            joint_type_degrees.push_back(
                 construct_poses(joint_name_degrees));
         }
 
-        return joint_type_degree_list;
+        return joint_type_degrees;
     }
     
     
@@ -86,8 +86,8 @@ namespace al5d
         const PoseName& pose_name)
     {
         const auto& pose = get_pose(pose_name);
-        const auto& joint_type_degree_list = pose.joint_type_degree_list;
-        BaseType::move_to_degrees(joint_type_degree_list);
+        const auto& joint_type_degrees = pose.joint_type_degrees;
+        BaseType::move_to_degrees(joint_type_degrees);
     }
 
 
@@ -97,8 +97,8 @@ namespace al5d
         const Duration &move_duration)
     {
         const auto& pose = get_pose(pose_name);
-        const auto& joint_type_degree_list = pose.joint_type_degree_list;
-        BaseType::move_to_degrees(joint_type_degree_list, move_duration);
+        const auto& joint_type_degrees = pose.joint_type_degrees;
+        BaseType::move_to_degrees(joint_type_degrees, move_duration);
     }
 
 

@@ -140,10 +140,10 @@ namespace al5d
     
     
     void AL5DBase::move_to_degrees(
-        const JointTypeDegreeList &joint_type_degree_list,
+        const JointTypeDegrees &joint_type_degrees,
         const Duration &move_duration)
     {
-        for (const auto &joint_type_degree : joint_type_degree_list)
+        for (const auto &joint_type_degree : joint_type_degrees)
         {
             const auto &joint_type = joint_type_degree.joint_type;
             const auto &joint_angle = joint_type_degree.degree.value;

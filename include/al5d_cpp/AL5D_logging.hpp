@@ -15,10 +15,10 @@ namespace al5d
         const Duration &duration);
     
     void log_moving_joints(
-        const JointTypeDegreeList &joint_type_degree_list);
+        const JointTypeDegrees &joint_type_degrees);
     
     void log_moving_joints(
-        const JointTypeDegreeList &joint_type_degree_list,
+        const JointTypeDegrees &joint_type_degrees,
         const Duration &duration);
     
     std::string get_moving_joint_log(

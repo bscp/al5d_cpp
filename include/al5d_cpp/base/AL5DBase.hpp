@@ -27,7 +27,7 @@ namespace al5d
                 =Duration::from_milliseconds(DURATION));
     
         virtual void move_to_degrees(
-            const JointTypeDegreeList &joint_type_degree_list,
+            const JointTypeDegrees &joint_type_degrees,
             const Duration &move_duration
                 =Duration::from_milliseconds(DURATION));
     

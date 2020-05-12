@@ -16,10 +16,10 @@ namespace al5d
     {
         Pose(
             const PoseName& name,
-            const JointTypeDegreeList& joint_type_degree_list);
+            const JointTypeDegrees& joint_type_degrees);
         
         const PoseName name;
-        const JointTypeDegreeList joint_type_degree_list;
+        const JointTypeDegrees joint_type_degrees;
     };
 
     typedef std::vector<Pose> Poses;

@@ -19,7 +19,7 @@ namespace al5d
         virtual ~LoggingTrait() = default;
 
         // void move_to_degree( // TODO : implement all overloading methods, because its needed...
-        //     const JointTypeDegreeList &joint_type_degree_list,
+        //     const JointTypeDegrees &joint_type_degrees,
         //     const Duration &move_duration)
         //     override;
 
