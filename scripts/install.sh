@@ -3,7 +3,7 @@
 # to a system directory. This moving is called installing
 
 # Install dependencies first 
-./install_dependencies.sh
+scripts/install_dependencies.sh
 
 # Run a 'clean' 'release' build
 scripts/build.sh -m clean_build -t release

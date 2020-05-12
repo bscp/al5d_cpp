@@ -21,16 +21,37 @@ namespace al5d
         virtual ~AL5DBase();
     
         virtual void move_to_degree(
+            const JointName& joint_name,
+            const Degree &degree,
+            const Duration &move_duration);
+    
+        virtual void move_to_degree(
             const JointType& joint_type,
             const Degree &degree,
-            const Duration &move_duration
-                =Duration::from_milliseconds(DURATION));
+            const Duration &move_duration);
+            
+        virtual void move_to_degree(
+            const JointName& joint_name,
+            const Degree &degree);
+    
+        virtual void move_to_degree(
+            const JointType& joint_type,
+            const Degree &degree);
+        
+        virtual void move_to_degrees(
+            const JointNameDegrees &joint_name_degrees,
+            const Duration &move_duration);
     
         virtual void move_to_degrees(
             const JointTypeDegrees &joint_type_degrees,
-            const Duration &move_duration
-                =Duration::from_milliseconds(DURATION));
+            const Duration &move_duration);
+        
+        virtual void move_to_degrees(
+            const JointNameDegrees &joint_name_degrees);
     
+        virtual void move_to_degrees(
+            const JointTypeDegrees &joint_type_degrees);
+            
         virtual void stop();
 
         void set_communicator_ptr(
@@ -67,6 +88,15 @@ namespace al5d
 
         void validate_communicator_ptr()
             const;
+    
+        void __move_to_degree(
+            const JointBase& joint,
+            const Degree &degree,
+            const Duration &move_duration);
+    
+        void __move_to_degree(
+            const JointBase& joint,
+            const Degree &degree);
 
         void transmit(
             const std::string& message)

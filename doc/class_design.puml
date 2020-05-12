@@ -5,8 +5,8 @@ namespace al5d {
         - joints : Joint[]
         - communicator : Communicator
         + {static} as_pointer(config : AL5DConfig) : AL5D*
-        + angle_from_degrees(joint : JointType, degrees : Integer16) : JointTypeAngle
-        + angle_from_pulse_width(joint : JointType, pulse_width : Integer16) : JointTypeAngle
+        + angle_from_degrees(joint : JointType, degrees : Integer16) : JointTypeDegree
+        + angle_from_pulse_width(joint : JointType, pulse_width : Integer16) : JointTypeDegree
         + connect(port : String, baud : Integer16) : void
         + disconnect() : void
     }

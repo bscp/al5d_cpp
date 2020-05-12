@@ -21,24 +21,51 @@ namespace al5d
 
         bool is_moving()
             const;
-        
-        void start_timer(
-            long duration);
     
-        void move_to_degree(
+        virtual void move_to_degree(
+            const JointName& joint_name,
+            const Degree &degree,
+            const Duration &move_duration)
+            override;
+    
+        virtual void move_to_degree(
             const JointType& joint_type,
             const Degree &degree,
-            const Duration &move_duration
-                =Duration::from_milliseconds(DURATION))
+            const Duration &move_duration)
             override;
-
-        void move_to_degrees(
+            
+        virtual void move_to_degree(
+            const JointName& joint_name,
+            const Degree &degree)
+            override;
+    
+        virtual void move_to_degree(
+            const JointType& joint_type,
+            const Degree &degree)
+            override;
+        
+        virtual void move_to_degrees(
+            const JointNameDegrees &joint_name_degrees,
+            const Duration &move_duration)
+            override;
+    
+        virtual void move_to_degrees(
             const JointTypeDegrees &joint_type_degrees,
-            const Duration &move_duration
-                =Duration::from_milliseconds(DURATION))
+            const Duration &move_duration)
+            override;
+        
+        virtual void move_to_degrees(
+            const JointNameDegrees &joint_name_degrees)
+            override;
+    
+        virtual void move_to_degrees(
+            const JointTypeDegrees &joint_type_degrees)
             override;
     
     private:
+        
+        void start_timer(
+            const Duration &move_duration);
 
         TimerPtr timer_ptr;
     };

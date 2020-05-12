@@ -15,11 +15,12 @@ int main()
 
     // move to degree
     auto move_duration = al5d::Duration::from_milliseconds(2000);
-    al5d.move_to_degree(al5d::JOINT_BASE, al5d::Degree(90));
+    al5d.move_to_degree(al5d::JointType::JOINT_BASE, al5d::Degree(90), move_duration);
     al5d.move_to_degree(al5d::JOINT_BASE, al5d::Degree(90), move_duration);
     al5d.move_to_degrees({
         {al5d::JOINT_BASE, al5d::Degree(90)},
-        {al5d::JOINT_SHOULDER, al5d::Degree(90)}});
+        {al5d::JOINT_SHOULDER, al5d::Degree(90)}},
+        move_duration);
 
     // move to pose
     al5d.move_to_pose("test1");

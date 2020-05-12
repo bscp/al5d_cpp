@@ -10,6 +10,7 @@
 #include <al5d_cpp/base/configs/JointConfig.hpp>
 #include <al5d_cpp/base/Communicator.hpp>
 #include <al5d_cpp/base/types.hpp>
+#include <al5d_cpp/Duration.hpp>
 
 
 namespace al5d
@@ -42,6 +43,11 @@ namespace al5d
     
         void move_to(
             const Degree& degree)
+            const;
+    
+        void move_to(
+            const Degree& degree,
+            const Duration& move_duration)
             const;
         
     private:

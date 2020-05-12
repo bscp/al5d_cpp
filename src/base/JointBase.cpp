@@ -69,6 +69,16 @@ namespace al5d
     }
     
     
+    void JointBase::move_to(
+        const Degree& degree,
+        const Duration& move_duration)
+        const
+    {
+        move_to(degree);
+        transmit("T" + std::to_string(move_duration.in_milliseconds()));
+    }
+    
+    
     PulseWidth JointBase::to_pulse_width(
         Degree degree)
         const

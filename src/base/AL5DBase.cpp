@@ -130,36 +130,129 @@ namespace al5d
     }
     
     
+    void AL5DBase::stop()
+    {
+        transmit_command("STOP");
+    }
+
+
+    void AL5DBase::move_to_degree(
+        const JointName& joint_name,
+        const Degree &degree)
+    {
+        __move_to_degree(
+            get_joint(joint_name),
+            degree);
+        terminate_command();
+    }
+
+
+    void AL5DBase::move_to_degree(
+        const JointName& joint_name,
+        const Degree &degree,
+        const Duration &move_duration)
+    {
+        __move_to_degree(
+            get_joint(joint_name),
+            degree,
+            move_duration);
+        terminate_command();
+    }
+
+
+    void AL5DBase::move_to_degree(
+        const JointType& joint_type,
+        const Degree &degree)
+    {
+        __move_to_degree(
+            get_joint(joint_type),
+            degree);
+        terminate_command();
+    }
+
+
     void AL5DBase::move_to_degree(
         const JointType& joint_type,
         const Degree &degree,
         const Duration &move_duration)
     {
-        move_to_degrees({{joint_type, degree}}, move_duration);
+        __move_to_degree(
+            get_joint(joint_type),
+            degree,
+            move_duration);
+        terminate_command();
     }
-    
-    
+
+
+    void AL5DBase::__move_to_degree(
+        const JointBase& joint,
+        const Degree &degree)
+    {
+        joint.move_to(degree);
+    }
+
+
+    void AL5DBase::__move_to_degree(
+        const JointBase& joint,
+        const Degree &degree,
+        const Duration &move_duration)
+    {
+        joint.move_to(degree, move_duration);
+    }
+
+
+    void AL5DBase::move_to_degrees(
+        const JointNameDegrees &joint_name_degrees,
+        const Duration &move_duration)
+    {
+        for (const auto &joint_name_degree : joint_name_degrees)
+        {
+            __move_to_degree(
+                get_joint(joint_name_degree.joint_name),
+                joint_name_degree.degree,
+                move_duration);
+        }
+        terminate_command();
+    }
+
+
+    void AL5DBase::move_to_degrees(
+        const JointNameDegrees &joint_name_degrees)
+    {
+        for (const auto &joint_name_degree : joint_name_degrees)
+        {
+            __move_to_degree(
+                get_joint(joint_name_degree.joint_name),
+                joint_name_degree.degree);
+        }
+        terminate_command();
+    }
+
+
     void AL5DBase::move_to_degrees(
         const JointTypeDegrees &joint_type_degrees,
         const Duration &move_duration)
     {
         for (const auto &joint_type_degree : joint_type_degrees)
         {
-            const auto &joint_type = joint_type_degree.joint_type;
-            const auto &joint_angle = joint_type_degree.degree.value;
-            const auto &joint = get_joint(joint_type);
-            joint.move_to(Degree(joint_angle));
+            __move_to_degree(
+                get_joint(joint_type_degree.joint_type),
+                joint_type_degree.degree,
+                move_duration);
         }
-        
-        auto milliseconds = move_duration.in_milliseconds();
-        auto duration_command = "T" + std::to_string(milliseconds);
-
-        transmit_command(duration_command);
+        terminate_command();
     }
-    
-    
-    void AL5DBase::stop()
+
+
+    void AL5DBase::move_to_degrees(
+        const JointTypeDegrees &joint_type_degrees)
     {
-        transmit_command("STOP");
+        for (const auto &joint_type_degree : joint_type_degrees)
+        {
+            __move_to_degree(
+                get_joint(joint_type_degree.joint_type),
+                joint_type_degree.degree);
+        }
+        terminate_command();
     }
 }
