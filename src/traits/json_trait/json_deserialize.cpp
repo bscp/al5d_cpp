@@ -4,8 +4,6 @@
 // PROJECT INCLUDES
 #include <al5d_cpp/base/types.hpp>
 
-// TODO : move to json_trait folder
-
 
 namespace al5d
 {
