@@ -72,7 +72,7 @@ RUN apt-get update > /dev/null 2>&1 \
     && mkdir -p /yaml-cpp/build > /dev/null 2>&1 \
     && (cd /yaml-cpp/build && cmake .. -DYAML_BUILD_SHARED_LIBS=ON && make && make install > /dev/null 2>&1) \
     #
-    # Clean up Google test framework install files
+    # Clean up yaml-cpp framework install files
     && rm -rf /yaml-cpp > /dev/null 2>&1 \
     #
     # Clean up apt-get install files
