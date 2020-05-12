@@ -21,7 +21,7 @@ namespace al5d
             const Degrees &degrees);
     };
     
-    typedef std::vector<JointTypeDegrees> JointTypeDegreesList;
+    typedef std::vector<JointTypeDegrees> JointTypeDegreesList; // TODO : rename
 }
 
 

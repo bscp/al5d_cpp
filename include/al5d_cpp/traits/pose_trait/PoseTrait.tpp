@@ -87,7 +87,7 @@ namespace al5d
     {
         const auto& pose = get_pose(pose_name);
         const auto& joint_type_degrees_list = pose.joint_type_degrees_list;
-        BaseType::move_to(joint_type_degrees_list);
+        BaseType::move_to_degrees(joint_type_degrees_list);
     }
 
 
@@ -98,7 +98,7 @@ namespace al5d
     {
         const auto& pose = get_pose(pose_name);
         const auto& joint_type_degrees_list = pose.joint_type_degrees_list;
-        BaseType::move_to(joint_type_degrees_list, move_duration);
+        BaseType::move_to_degrees(joint_type_degrees_list, move_duration);
     }
 
 

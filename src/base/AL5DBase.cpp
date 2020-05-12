@@ -130,16 +130,16 @@ namespace al5d
     }
     
     
-    void AL5DBase::move_to(
+    void AL5DBase::move_to_degree(
         const JointType& joint_type,
-        const Degrees &degrees,
+        const Degrees &degree,
         const Duration &move_duration)
     {
-        move_to({{joint_type, degrees}}, move_duration);
+        move_to_degrees({{joint_type, degree}}, move_duration);
     }
     
     
-    void AL5DBase::move_to(
+    void AL5DBase::move_to_degrees(
         const JointTypeDegreesList &joint_type_degrees_list,
         const Duration &move_duration)
     {

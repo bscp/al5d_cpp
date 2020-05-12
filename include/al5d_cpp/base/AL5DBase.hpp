@@ -20,13 +20,13 @@ namespace al5d
     
         virtual ~AL5DBase();
     
-        virtual void move_to(
+        virtual void move_to_degree(
             const JointType& joint_type,
-            const Degrees &degrees,
+            const Degrees &degree,
             const Duration &move_duration
                 =Duration::from_milliseconds(DURATION));
     
-        virtual void move_to(
+        virtual void move_to_degrees(
             const JointTypeDegreesList &joint_type_degrees_list,
             const Duration &move_duration
                 =Duration::from_milliseconds(DURATION));

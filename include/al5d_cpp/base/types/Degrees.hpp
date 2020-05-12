@@ -1,10 +1,12 @@
 #ifndef AL5D_CPP_DEGREES_HPP
 #define AL5D_CPP_DEGREES_HPP
 
+// SYSTEM INCLUDES
+#include <vector>
 
 namespace al5d
 {
-    class Degrees
+    class Degrees // TODO : rename to Degree
     {
     public:
 
@@ -23,6 +25,8 @@ namespace al5d
             Value value)
             const;
     };
+
+    // typedef std::vector<Degree> Degrees; // TODO : uncomment
 }
 
 

@@ -13,14 +13,14 @@ namespace al5d
         : BaseType(config)
     {
     }
-    template <typename BaseType>
-    void LoggingTrait<BaseType>::move_to(
-        const JointTypeDegreesList &joint_type_degrees_list,
-        const Duration &move_duration)
-    {
-        log_moving_joints(joint_type_degrees_list, move_duration);
-        BaseType::move_to(joint_type_degrees_list, move_duration);
-    }
+    // template <typename BaseType> // TODO : fix todo in header file
+    // void LoggingTrait<BaseType>::move_to_degree(
+    //     const JointTypeDegreesList &joint_type_degrees_list,
+    //     const Duration &move_duration)
+    // {
+    //     log_moving_joints(joint_type_degrees_list, move_duration);
+    //     BaseType::move_to(joint_type_degrees_list, move_duration);
+    // }
     
     
     template <typename BaseType>

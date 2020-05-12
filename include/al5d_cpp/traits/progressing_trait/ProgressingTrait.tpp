@@ -34,21 +34,21 @@ namespace al5d
     
 
     template <typename BaseType>
-    void ProgressingTrait<BaseType>::move_to(
+    void ProgressingTrait<BaseType>::move_to_degree(
         const JointType& joint_type,
         const Degrees &degrees,
         const Duration &move_duration)
     {
-        BaseType::move_to({{joint_type, degrees}}, move_duration);
+        BaseType::move_to_degrees({{joint_type, degrees}}, move_duration);
     }
 
     
     template <typename BaseType>
-    void ProgressingTrait<BaseType>::move_to(
+    void ProgressingTrait<BaseType>::move_to_degrees(
         const JointTypeDegreesList &joint_type_degrees_list,
         const Duration &move_duration)
     {
-        BaseType::move_to(joint_type_degrees_list, move_duration);
+        BaseType::move_to_degrees(joint_type_degrees_list, move_duration);
         start_timer(move_duration.in_milliseconds());
     }
 }
