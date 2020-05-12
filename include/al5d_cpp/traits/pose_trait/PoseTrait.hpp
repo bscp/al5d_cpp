@@ -34,22 +34,6 @@ namespace al5d
         void set_poses(
             const PoseConfigs& pose_configs);
 
-        void print_poses() // TODO : remove method
-        {
-            for (const auto& pose : poses)
-            {
-                std::cout << pose.name << std::endl;
-
-                for (const auto& joint_name_degrees : pose.joint_type_degrees_list)
-                {
-                    std::cout << "(" << std::to_string(joint_name_degrees.joint_type) << ", ";
-                    std::cout << std::to_string(joint_name_degrees.degrees.value) << ")" << std::endl;
-                }
-
-                std::cout << std::endl;
-            }
-        }
-
     private:
 
         JointType construct_poses(
