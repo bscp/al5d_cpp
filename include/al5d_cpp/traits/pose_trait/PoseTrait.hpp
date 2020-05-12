@@ -39,11 +39,11 @@ namespace al5d
         JointType construct_poses(
             const JointName& joint_name);
 
-        JointTypeDegrees construct_poses(
-            const JointNameDegrees& joint_name_degrees);
+        JointTypeDegree construct_poses(
+            const JointNameDegree& joint_name_degree);
 
-        JointTypeDegreesList construct_poses(
-            const JointNameDegreesList& joint_name_degrees_list);
+        JointTypeDegreeList construct_poses(
+            const JointNameDegreeList& joint_name_degree_list);
             
         Pose construct_poses(
             const PoseConfig& pose_config);

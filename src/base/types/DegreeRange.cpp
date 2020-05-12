@@ -1,8 +1,8 @@
 // HEADER INCLUDES
-#include <al5d_cpp/base/types/DegreesRange.hpp>
+#include <al5d_cpp/base/types/DegreeRange.hpp>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/exceptions/InvalidDegreesRange.hpp>
+#include <al5d_cpp/exceptions/InvalidDegreeRange.hpp>
 
 
 namespace al5d
@@ -12,19 +12,19 @@ namespace al5d
     
     namespace
     {
-        Degrees get_lowest(
-            Degrees::Value value_1,
-            Degrees::Value value_2)
+        Degree get_lowest(
+            Degree::Value value_1,
+            Degree::Value value_2)
         {
-            return value_1 <= value_2 ? Degrees(value_1) : Degrees(value_2);
+            return value_1 <= value_2 ? Degree(value_1) : Degree(value_2);
         }
 
 
-        Degrees get_highest(
-            Degrees::Value value_1,
-            Degrees::Value value_2)
+        Degree get_highest(
+            Degree::Value value_1,
+            Degree::Value value_2)
         {
-            return value_1 <= value_2 ? Degrees(value_2) : Degrees(value_1);
+            return value_1 <= value_2 ? Degree(value_2) : Degree(value_1);
         }
     }
 
@@ -32,9 +32,9 @@ namespace al5d
     // end of private symbols
 
 
-    DegreesRange::DegreesRange(
-        const Degrees& value_1,
-        const Degrees& value_2)
+    DegreeRange::DegreeRange(
+        const Degree& value_1,
+        const Degree& value_2)
         : value_1(value_1)
         , value_2(value_2)
         , min(get_lowest(value_1.value, value_2.value))
@@ -43,18 +43,18 @@ namespace al5d
         validate();
     }
 
-    void DegreesRange::validate()
+    void DegreeRange::validate()
         const
     {
         if (min.value >= max.value)
         {
-            throw InvalidDegreesRange();
+            throw InvalidDegreeRange();
         }
     }
     
 
-    bool DegreesRange::is_within_range(
-        const Degrees& degrees)
+    bool DegreeRange::is_within_range(
+        const Degree& degrees)
         const
     {
         bool above_lower_bound = min.value <= degrees.value;
@@ -63,7 +63,7 @@ namespace al5d
     }
     
 
-    double DegreesRange::get_difference()
+    double DegreeRange::get_difference()
         const
     {
         return max.value - min.value;

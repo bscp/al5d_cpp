@@ -1,13 +1,13 @@
 // HEADER INCLUDES
-#include <al5d_cpp/base/types/Degrees.hpp>
+#include <al5d_cpp/base/types/Degree.hpp>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/exceptions/InvalidDegrees.hpp>
+#include <al5d_cpp/exceptions/InvalidDegree.hpp>
 
 
 namespace al5d
 {
-    Degrees::Degrees(
+    Degree::Degree(
         Value value)
         : value(value)
     {
@@ -15,17 +15,17 @@ namespace al5d
     }
 
 
-    void Degrees::validate(
+    void Degree::validate(
         Value value)
         const
     {
         if (value < -360)
         {
-            throw InvalidDegrees();
+            throw InvalidDegree();
         }
         if (value > 360)
         {
-            throw InvalidDegrees();
+            throw InvalidDegree();
         }
     }
 }

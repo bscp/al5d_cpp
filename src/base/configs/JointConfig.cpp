@@ -3,7 +3,7 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/exceptions/InvalidBoardChannel.hpp>
-#include <al5d_cpp/exceptions/InvalidDegrees.hpp>
+#include <al5d_cpp/exceptions/InvalidDegree.hpp>
 
 
 namespace al5d
@@ -13,12 +13,12 @@ namespace al5d
         const JointType& type,
         const BoardChannel& board_channel,
         const PulseWidthRange& pulse_width_range,
-        const DegreesRange &degrees_range)
+        const DegreeRange &degree_range)
         : name(name)
         , type(type)
         , board_channel(board_channel)
         , pulse_width_range(pulse_width_range)
-        , degrees_range(degrees_range)
+        , degree_range(degree_range)
     {
         validate_board_channel_value(board_channel);
     }

@@ -15,11 +15,11 @@ namespace al5d
     }
     // template <typename BaseType> // TODO : fix todo in header file
     // void LoggingTrait<BaseType>::move_to_degree(
-    //     const JointTypeDegreesList &joint_type_degrees_list,
+    //     const JointTypeDegreeList &joint_type_degree_list,
     //     const Duration &move_duration)
     // {
-    //     log_moving_joints(joint_type_degrees_list, move_duration);
-    //     BaseType::move_to(joint_type_degrees_list, move_duration);
+    //     log_moving_joints(joint_type_degree_list, move_duration);
+    //     BaseType::move_to(joint_type_degree_list, move_duration);
     // }
     
     

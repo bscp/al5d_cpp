@@ -22,12 +22,12 @@ namespace al5d
     
         virtual void move_to_degree(
             const JointType& joint_type,
-            const Degrees &degree,
+            const Degree &degree,
             const Duration &move_duration
                 =Duration::from_milliseconds(DURATION));
     
         virtual void move_to_degrees(
-            const JointTypeDegreesList &joint_type_degrees_list,
+            const JointTypeDegreeList &joint_type_degree_list,
             const Duration &move_duration
                 =Duration::from_milliseconds(DURATION));
     

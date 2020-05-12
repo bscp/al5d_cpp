@@ -25,14 +25,15 @@ namespace al5d
         void start_timer(
             long duration);
     
-        virtual void move_to_degree(
+        void move_to_degree(
             const JointType& joint_type,
-            const Degrees &degrees,
+            const Degree &degree,
             const Duration &move_duration
-                =Duration::from_milliseconds(DURATION));
+                =Duration::from_milliseconds(DURATION))
+            override;
 
         void move_to_degrees(
-            const JointTypeDegreesList &joint_type_degrees_list,
+            const JointTypeDegreeList &joint_type_degree_list,
             const Duration &move_duration
                 =Duration::from_milliseconds(DURATION))
             override;

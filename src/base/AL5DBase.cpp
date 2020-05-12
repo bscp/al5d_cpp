@@ -132,7 +132,7 @@ namespace al5d
     
     void AL5DBase::move_to_degree(
         const JointType& joint_type,
-        const Degrees &degree,
+        const Degree &degree,
         const Duration &move_duration)
     {
         move_to_degrees({{joint_type, degree}}, move_duration);
@@ -140,15 +140,15 @@ namespace al5d
     
     
     void AL5DBase::move_to_degrees(
-        const JointTypeDegreesList &joint_type_degrees_list,
+        const JointTypeDegreeList &joint_type_degree_list,
         const Duration &move_duration)
     {
-        for (const auto &joint_type_degrees : joint_type_degrees_list)
+        for (const auto &joint_type_degree : joint_type_degree_list)
         {
-            const auto &joint_type = joint_type_degrees.joint_type;
-            const auto &joint_angle = joint_type_degrees.degrees.value;
+            const auto &joint_type = joint_type_degree.joint_type;
+            const auto &joint_angle = joint_type_degree.degree.value;
             const auto &joint = get_joint(joint_type);
-            joint.move_to(Degrees(joint_angle));
+            joint.move_to(Degree(joint_angle));
         }
         
         auto milliseconds = move_duration.in_milliseconds();

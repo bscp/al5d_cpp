@@ -41,7 +41,7 @@ namespace al5d
             const CommunicatorPtr& communicator_ptr);
     
         void move_to(
-            const Degrees& degrees)
+            const Degree& degree)
             const;
         
     private:
@@ -56,25 +56,25 @@ namespace al5d
             const std::string& message)
             const;
 
-        Degrees get_lowest_degrees()
+        Degree get_lowest_degree()
             const;
         
-        Degrees get_highest_degrees()
+        Degree get_highest_degree()
             const;
         
         void validate_reachability(
-            Degrees degrees)
+            Degree degree)
             const;
         
         PulseWidth to_pulse_width(
-            Degrees degrees)
+            Degree degree)
             const;
         
         std::string name;
         JointType type;
         BoardChannel board_channel;
         
-        DegreesRange degrees_range;
+        DegreeRange degree_range;
         PulseWidthRange pulse_width_range;
         double convert_ratio;
 

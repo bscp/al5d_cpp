@@ -17,7 +17,7 @@ namespace al5d
             const JointType& type,
             const BoardChannel& board_channel,
             const PulseWidthRange& pulse_width_range,
-            const DegreesRange &degrees_range);
+            const DegreeRange &degree_range);
         
         void validate_board_channel_value(
             BoardChannel board_channel)
@@ -27,7 +27,7 @@ namespace al5d
         const JointType type;
         const BoardChannel board_channel;
         const PulseWidthRange pulse_width_range;
-        const DegreesRange degrees_range;
+        const DegreeRange degree_range;
     };
     
     typedef std::vector<JointConfig> JointConfigs;

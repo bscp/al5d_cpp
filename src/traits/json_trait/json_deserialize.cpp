@@ -45,20 +45,20 @@ namespace al5d
         }
 
 
-        Degrees load_degrees(
+        Degree load_degree(
             const YAML::Node &json_node)
         {
-            return Degrees(json_node.as<Degrees::Value>());
+            return Degree(json_node.as<Degree::Value>());
         }
 
 
-        DegreesRange load_degrees_range(
+        DegreeRange load_degree_range(
             const YAML::Node &json_node)
         {
             validate_size(json_node, /*size*/2);
-            return DegreesRange(
-                load_degrees(json_node[0]),
-                load_degrees(json_node[1]));
+            return DegreeRange(
+                load_degree(json_node[0]),
+                load_degree(json_node[1]));
         }
 
 
@@ -96,7 +96,7 @@ namespace al5d
         #define JOINT_NAME_KEY "name"
         #define JOINT_BOARD_CHANNEL_KEY "board_channel"
         #define JOINT_PULSE_WIDTH_RANGE_KEY "pulse_width_range"
-        #define JOINT_DEGREES_RANGE_KEY "degrees_range"
+        #define JOINT_DEGREES_RANGE_KEY "degree_range"
         JointConfig load_joint_config(
             const YAML::Node &json_node,
             size_t joint_type)
@@ -111,7 +111,7 @@ namespace al5d
                 JointType(joint_type),
                 load_board_channel(json_node[JOINT_BOARD_CHANNEL_KEY]),
                 load_pulse_width_range(json_node[JOINT_PULSE_WIDTH_RANGE_KEY]),
-                load_degrees_range(json_node[JOINT_DEGREES_RANGE_KEY]));
+                load_degree_range(json_node[JOINT_DEGREES_RANGE_KEY]));
         }
 
 
@@ -166,42 +166,42 @@ namespace al5d
         }
 
 
-        Degrees load_pose_config_joint_degrees(
+        Degree load_pose_config_joint_degree(
             const YAML::Node &json_node)
         {
-            return Degrees(json_node.as<Degrees::Value>());
+            return Degree(json_node.as<Degree::Value>());
         }
 
 
         #define POSE_CONFIG_JOINT_NAME_KEY "joint"
-        #define POSE_CONFIG_JOINT_DEGREES_KEY "degrees"
-        JointNameDegrees load_joint_name_degrees(
+        #define POSE_CONFIG_JOINT_DEGREES_KEY "degree"
+        JointNameDegree load_joint_name_degree(
             const YAML::Node &json_node)
         {
             validate_key(json_node, POSE_CONFIG_JOINT_NAME_KEY);
             validate_key(json_node, POSE_CONFIG_JOINT_DEGREES_KEY);
 
-            return JointNameDegrees(
+            return JointNameDegree(
                 load_pose_config_joint_name(
                     json_node[POSE_CONFIG_JOINT_NAME_KEY]),
-                load_pose_config_joint_degrees(
+                load_pose_config_joint_degree(
                     json_node[POSE_CONFIG_JOINT_DEGREES_KEY]));
         }
 
 
-        JointNameDegreesList load_pose_config_joint_degrees_list(
+        JointNameDegreeList load_pose_config_joint_degree_list(
             const YAML::Node &json_node)
         {
             validate_min_size(json_node, /*size*/1);
-            JointNameDegreesList joint_name_degrees_list;
+            JointNameDegreeList joint_name_degree_list;
 
             for (size_t i = 0; i < json_node.size(); ++i)
             {
-                joint_name_degrees_list.push_back(
-                    load_joint_name_degrees(json_node[i]));
+                joint_name_degree_list.push_back(
+                    load_joint_name_degree(json_node[i]));
             }
 
-            return joint_name_degrees_list;
+            return joint_name_degree_list;
         }
 
 
@@ -213,7 +213,7 @@ namespace al5d
 
 
         #define POSE_CONFIG_NAME "name"
-        #define POSE_CONFIG_JOINT_NAME_DEGREES_KEY "joint_degrees"
+        #define POSE_CONFIG_JOINT_NAME_DEGREES_KEY "joint_degree"
         PoseConfig load_pose_config(
             const YAML::Node &json_node)
         {
@@ -223,7 +223,7 @@ namespace al5d
             return PoseConfig(
                 load_pose_config_name(
                     json_node[POSE_CONFIG_NAME]),
-                load_pose_config_joint_degrees_list(
+                load_pose_config_joint_degree_list(
                     json_node[POSE_CONFIG_JOINT_NAME_DEGREES_KEY]));
         }
 
