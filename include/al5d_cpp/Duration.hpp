@@ -1,6 +1,9 @@
 #ifndef AL5D_CPP_DURATION_HPP
 #define AL5D_CPP_DURATION_HPP
 
+// TODO : move to al5d_cpp/base/types
+// TODO : include in al5d_cpp/base/types.hpp
+
 
 namespace al5d
 {

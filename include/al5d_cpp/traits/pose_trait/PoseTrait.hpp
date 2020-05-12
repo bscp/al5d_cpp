@@ -6,6 +6,7 @@
 #include <al5d_cpp/traits/pose_trait/Pose.hpp>
 #include <al5d_cpp/base/configs/PoseConfig.hpp>
 #include <al5d_cpp/base/types.hpp>
+#include <al5d_cpp/Duration.hpp>
 
 
 namespace al5d
@@ -20,7 +21,12 @@ namespace al5d
 
         virtual ~PoseTrait() = default;
 
-        void move_to_pose(const PoseName& pose_name);
+        void move_to_pose(
+            const PoseName& pose_name);
+
+        void move_to_pose(
+            const PoseName& pose_name,
+            const Duration &move_duration);
 
     private:
 
