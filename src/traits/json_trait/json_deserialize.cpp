@@ -7,6 +7,7 @@
 // PROJECT INCLUDES
 #include <al5d_cpp/base/types.hpp>
 
+#include <iostream> // TODO : remove include
 
 namespace al5d
 {
@@ -18,7 +19,9 @@ namespace al5d
         {
             if (!json_node[key])
             {
-                throw std::runtime_error("'" + key + "' does not exist in config");
+                std::string message = "'" + key + "' does not exist in config";
+                std::cout << message << std::endl;
+                throw std::runtime_error(message);
             }
         }
 
@@ -29,7 +32,9 @@ namespace al5d
         {
             if (json_node.size() != size)
             { // TODO : throw exception class
-                throw std::runtime_error("List does not have the right size");
+                std::string message = "List does not have the right size";
+                std::cout << message << std::endl;
+                throw std::runtime_error(message);
             }
         }
 
@@ -40,7 +45,9 @@ namespace al5d
         {
             if (json_node.size() < size)
             { // TODO : throw exception class
-                throw std::runtime_error("List does not have the right size");
+                std::string message = "List does not have the right size";
+                std::cout << message << std::endl;
+                throw std::runtime_error(message);
             }
         }
 
