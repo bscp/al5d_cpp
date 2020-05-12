@@ -189,19 +189,19 @@ namespace al5d
         }
 
 
-        JointNameDegreeList load_pose_config_joint_degree_list(
+        JointNameDegrees load_pose_config_joint_degree_list(
             const YAML::Node &json_node)
         {
             validate_min_size(json_node, /*size*/1);
-            JointNameDegreeList joint_name_degree_list;
+            JointNameDegrees joint_name_degrees;
 
             for (size_t i = 0; i < json_node.size(); ++i)
             {
-                joint_name_degree_list.push_back(
+                joint_name_degrees.push_back(
                     load_joint_name_degree(json_node[i]));
             }
 
-            return joint_name_degree_list;
+            return joint_name_degrees;
         }
 
 
