@@ -20,6 +20,12 @@ namespace al5d
         static JSONTrait<BaseType> from_json(
             const std::string& json);
 
+        static PoseConfigs pose_configs_from_json_file(
+            const std::string& path);
+
+        static PoseConfigs pose_configs_from_json(
+            const std::string& json);
+
         explicit JSONTrait(
             const AL5DBaseConfig& config);
 

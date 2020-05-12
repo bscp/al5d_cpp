@@ -1,0 +1,8 @@
+[
+  {
+    "name": "test2",
+    "joint_degrees": [
+      {"joint": "base", "degrees": 45}
+    ]
+  }
+]

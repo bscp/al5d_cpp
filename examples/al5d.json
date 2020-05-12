@@ -54,7 +54,7 @@
       ]
     },
     {
-      "name": "test",
+      "name": "test1",
       "joint_degrees": [
         {"joint": "base", "degrees": 90}
       ]

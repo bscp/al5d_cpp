@@ -8,9 +8,8 @@ namespace al5d
     PoseTrait<BaseType>::PoseTrait(
         const AL5DBaseConfig& config)
         : BaseType(config)
-        , poses()
+        , poses(construct_poses(config.pose_configs))
     {
-        construct_poses(config.pose_configs);
     }
     
     
@@ -51,13 +50,17 @@ namespace al5d
     
     
     template <typename BaseType>
-    void PoseTrait<BaseType>::construct_poses(
+    Poses PoseTrait<BaseType>::construct_poses(
         const PoseConfigs& pose_configs)
     {
+        Poses poses;
+
         for (const auto& pose_config : pose_configs)
         {
             poses.push_back(construct_poses(pose_config));
         }
+
+        return poses;
     }
 
 
@@ -96,6 +99,26 @@ namespace al5d
         const auto& pose = get_pose(pose_name);
         const auto& joint_type_degrees_list = pose.joint_type_degrees_list;
         BaseType::move_to(joint_type_degrees_list, move_duration);
+    }
+
+
+    template <typename BaseType>
+    void PoseTrait<BaseType>::add_poses(
+        const PoseConfigs& pose_configs)
+    {
+        for (const auto& pose_config : pose_configs)
+        {
+            poses.push_back(
+                construct_poses(pose_config));
+        }
+    }
+
+
+    template <typename BaseType>
+    void PoseTrait<BaseType>::set_poses(
+        const PoseConfigs& pose_configs)
+    {
+        poses = construct_poses(pose_configs);
     }
 }
 

@@ -25,6 +25,22 @@ namespace al5d
 
 
     template <typename BaseType>
+    /*static*/ PoseConfigs JSONTrait<BaseType>::pose_configs_from_json(
+        const std::string& json_data)
+    {
+        return al5d::load_pose_configs_from_json(json_data);
+    }
+
+
+    template <typename BaseType>
+    /*static*/ PoseConfigs JSONTrait<BaseType>::pose_configs_from_json_file(
+        const std::string& path)
+    {
+        return al5d::load_pose_configs_from_json_file(path);
+    }
+
+
+    template <typename BaseType>
     JSONTrait<BaseType>::JSONTrait(
         const AL5DBaseConfig& config)
         : BaseType(config)
