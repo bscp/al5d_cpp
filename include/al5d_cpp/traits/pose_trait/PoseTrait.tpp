@@ -1,8 +1,6 @@
 #ifndef AL5D_CPP_POSETRAIT_TPP
 #define	AL5D_CPP_POSETRAIT_TPP
 
-#include <iostream> // TODO : remove include
-
 
 namespace al5d
 {
@@ -13,18 +11,6 @@ namespace al5d
         , poses()
     {
         construct_poses(config.pose_configs);
-
-        for (const Pose& pose : poses)
-        {
-            std::cout << pose.name << std::endl;
-            
-            for (const JointTypeDegrees& type_degrees : pose.joint_type_degrees_list)
-            {
-                std::cout << "type: " << std::to_string(type_degrees.joint_type) << std::endl;
-                std::cout << "degrees: " << std::to_string(type_degrees.degrees.value) << std::endl;
-                std::cout << std::endl;
-            }
-        }
     }
     
     

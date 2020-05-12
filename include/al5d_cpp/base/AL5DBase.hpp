@@ -73,7 +73,7 @@ namespace al5d
             const;
     
         void construct_joints(
-            const JointConfigs &joints_configs);
+            const JointConfigs& joint_configs);
 
         void set_joint_communicator_ptrs();
     };

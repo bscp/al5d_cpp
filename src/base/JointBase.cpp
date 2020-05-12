@@ -74,7 +74,7 @@ namespace al5d
         const
     {
         validate_reachability(degrees);
-        return PulseWidth((degrees.value - degrees_range.value_1.value) * convert_ratio + pulse_width_range.min.value); // TODO : shorten this line
+        return PulseWidth(PulseWidth::Value((degrees.value - degrees_range.value_1.value) * convert_ratio + pulse_width_range.min.value)); // TODO : shorten this line
     }
     
     
