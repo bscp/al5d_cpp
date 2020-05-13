@@ -23,7 +23,7 @@ namespace al5d
             {
                 std::string message = std::string("'") + key + "' does not exist in config";
                 std::cout << message << std::endl;
-                throw std::runtime_error(message);
+            //     throw std::runtime_error(message); // TODO : uncomment
             }
         }
 
