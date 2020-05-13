@@ -71,10 +71,15 @@ INSTALL(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/include/
 # ----------------------------------------
 
 ADD_EXECUTABLE(${PROJECT_NAME}_app
+        # ${${PROJECT_NAME}_HDRS} # uncomment for debugging
+        # ${${PROJECT_NAME}_TPPS} # uncomment for debugging
+        # ${${PROJECT_NAME}_SRCS} # uncomment for debugging
         main.cpp)
 
 TARGET_LINK_LIBRARIES(${PROJECT_NAME}_app
-        ${PROJECT_NAME})
+        # ${Boost_LIBRARIES} # uncomment for debugging
+        # yaml-cpp) # uncomment for debugging
+        ${PROJECT_NAME}) # comment for debugging
 
 # ----------------------------------------
 # TEST TARGETS

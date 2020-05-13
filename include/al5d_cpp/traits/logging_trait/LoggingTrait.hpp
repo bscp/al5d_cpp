@@ -23,7 +23,7 @@ namespace al5d
         //     const Duration &move_duration)
         //     override;
 
-        void do_emergency_stop()
+        void stop()
             override;
 
         void transmit_command(

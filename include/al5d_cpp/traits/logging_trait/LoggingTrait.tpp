@@ -24,10 +24,10 @@ namespace al5d
     
     
     template <typename BaseType>
-    void LoggingTrait<BaseType>::do_emergency_stop()
+    void LoggingTrait<BaseType>::stop()
     {
         log_emergency_stop();
-        BaseType::do_emergency_stop();
+        BaseType::stop();
     }
 
     
