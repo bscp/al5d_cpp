@@ -295,6 +295,7 @@ namespace al5d
     AL5DBaseConfig load_config_from_json(
         const std::string& json)
     {
+        std::cout << "HELLO WORLD FOR A QUICK DEBUGGING TEST!" << std::endl;
         const YAML::Node json_node = YAML::Load(json);
         return load_config(json_node);
     }
