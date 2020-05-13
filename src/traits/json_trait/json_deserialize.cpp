@@ -17,9 +17,11 @@ namespace al5d
             const YAML::Node &json_node,
             const std::string& key)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
             if (!json_node[key])
             {
-                std::string message = "'" + key + "' does not exist in config";
+                std::string message = std::string("'") + key + "' does not exist in config";
                 std::cout << message << std::endl;
                 throw std::runtime_error(message);
             }
@@ -30,9 +32,11 @@ namespace al5d
             const YAML::Node &json_node,
             size_t size)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
             if (json_node.size() != size)
             { // TODO : throw exception class
-                std::string message = "List does not have the right size";
+                std::string message("List does not have the right size");
                 std::cout << message << std::endl;
                 throw std::runtime_error(message);
             }
@@ -43,6 +47,8 @@ namespace al5d
             const YAML::Node &json_node,
             size_t size)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
             if (json_node.size() < size)
             { // TODO : throw exception class
                 std::string message = "List does not have the right size";
@@ -55,6 +61,8 @@ namespace al5d
         Degree load_degree(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
             return Degree(json_node.as<Degree::Value>());
         }
 
@@ -62,6 +70,8 @@ namespace al5d
         DegreeRange load_degree_range(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
             validate_size(json_node, /*size*/2);
             return DegreeRange(
                 load_degree(json_node[0]),
@@ -72,6 +82,8 @@ namespace al5d
         PulseWidth load_pulse_width(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
             return PulseWidth(json_node.as<PulseWidth::Value>());
         }
 
@@ -79,6 +91,8 @@ namespace al5d
         PulseWidthRange load_pulse_width_range(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
             validate_size(json_node, /*size*/2);
             return PulseWidthRange(
                 load_pulse_width(json_node[0]),
@@ -89,6 +103,8 @@ namespace al5d
         JointName load_joint_name(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
             return json_node.as<JointName>();
         }
 
@@ -96,6 +112,8 @@ namespace al5d
         BoardChannel load_board_channel(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
             return json_node.as<BoardChannel>();
         }
 
@@ -108,6 +126,8 @@ namespace al5d
             const YAML::Node &json_node,
             size_t joint_type)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
             validate_key(json_node, JOINT_NAME_KEY);
             validate_key(json_node, JOINT_BOARD_CHANNEL_KEY);
             validate_key(json_node, JOINT_PULSE_WIDTH_RANGE_KEY);
@@ -125,6 +145,8 @@ namespace al5d
         JointConfigs load_joint_configs(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
             validate_size(json_node, /*size*/6);
             JointConfigs joint_configs;
 
@@ -141,6 +163,8 @@ namespace al5d
         serial::BaudRate load_serial_baud_rate(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
             return serial::BaudRate(json_node.as<int>());
         }
 
@@ -148,6 +172,8 @@ namespace al5d
         serial::Port load_serial_port(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
             return serial::Port(json_node.as<std::string>());
         }
 
@@ -157,6 +183,8 @@ namespace al5d
         SerialConfig load_serial_config(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
             validate_key(json_node, SERIAL_PORT_KEY);
             validate_key(json_node, SERIAL_BAUD_RATE_KEY);
 
@@ -169,6 +197,8 @@ namespace al5d
         PoseName load_pose_config_joint_name(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
             return json_node.as<JointName>();
         }
 
@@ -176,6 +206,8 @@ namespace al5d
         Degree load_pose_config_joint_degree(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
             return Degree(json_node.as<Degree::Value>());
         }
 
@@ -185,6 +217,8 @@ namespace al5d
         JointNameDegree load_joint_name_degree(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+
             validate_key(json_node, POSE_CONFIG_JOINT_NAME_KEY);
             validate_key(json_node, POSE_CONFIG_JOINT_DEGREES_KEY);
 
@@ -199,6 +233,7 @@ namespace al5d
         JointNameDegrees load_pose_config_joint_degree_list(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
             validate_min_size(json_node, /*size*/1);
             JointNameDegrees joint_name_degrees;
 
@@ -215,6 +250,8 @@ namespace al5d
         PoseName load_pose_config_name(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+    
             return json_node.as<PoseName>();
         }
 
@@ -224,6 +261,8 @@ namespace al5d
         PoseConfig load_pose_config(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+
             validate_key(json_node, POSE_CONFIG_NAME);
             validate_key(json_node, POSE_CONFIG_JOINT_NAME_DEGREES_KEY);
 
@@ -238,6 +277,7 @@ namespace al5d
         PoseConfigs load_pose_configs(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
             PoseConfigs pose_configs;
 
             for (size_t i = 0; i < json_node.size(); ++i)
@@ -256,6 +296,7 @@ namespace al5d
         AL5DBaseConfig load_config(
             const YAML::Node &json_node)
         {
+            std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
             validate_key(json_node, JOINT_CONFIGS_KEY);
             validate_key(json_node, SERIAL_CONFIG_KEY);
             validate_key(json_node, POSE_CONFIGS_KEY);
@@ -271,6 +312,7 @@ namespace al5d
     PoseConfigs load_pose_configs_from_json_file(
         const std::string& path)
     {
+        std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
         const YAML::Node config_node = YAML::LoadFile(path);
         return load_pose_configs(config_node);
     }
@@ -279,6 +321,7 @@ namespace al5d
     PoseConfigs load_pose_configs_from_json(
         const std::string& json)
     {
+        std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
         const YAML::Node json_node = YAML::Load(json);
         return load_pose_configs(json_node);
     }
@@ -287,7 +330,7 @@ namespace al5d
     AL5DBaseConfig load_config_from_json_file(
         const std::string& path)
     {
-        std::cout << "HELLO WORLD FOR A QUICK DEBUGGING TEST!" << std::endl; // TODO : remove
+        std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
         const YAML::Node config_node = YAML::LoadFile(path);
         return load_config(config_node);
     }
@@ -296,7 +339,7 @@ namespace al5d
     AL5DBaseConfig load_config_from_json(
         const std::string& json)
     {
-        std::cout << "HELLO WORLD FOR A QUICK DEBUGGING TEST!" << std::endl; // TODO : remove
+        std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
         const YAML::Node json_node = YAML::Load(json);
         return load_config(json_node);
     }

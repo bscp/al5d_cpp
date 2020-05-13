@@ -13,7 +13,8 @@ namespace al5d
     /*static*/ JSONTrait<BaseType> JSONTrait<BaseType>::from_json_file(
         const std::string& path)
     {
-        std::cout << "HELLO WORLD FOR A QUICK DEBUGGING TEST!" << std::endl; // TODO : remove
+        std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+        
         auto config = al5d::load_config_from_json_file(path);
         return JSONTrait<BaseType>(config);
     }
@@ -23,7 +24,8 @@ namespace al5d
     /*static*/ JSONTrait<BaseType> JSONTrait<BaseType>::from_json(
         const std::string& json_data)
     {
-        std::cout << "HELLO WORLD FOR A QUICK DEBUGGING TEST!" << std::endl; // TODO : remove
+        std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
+            
         auto config = al5d::load_config_from_json(json_data);
         return JSONTrait<BaseType>(config);
     }
