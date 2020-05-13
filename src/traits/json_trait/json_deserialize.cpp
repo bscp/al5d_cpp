@@ -313,8 +313,7 @@ namespace al5d
         const std::string& path)
     {
         std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
-        const YAML::Node config_node = YAML::LoadFile(path);
-        return load_pose_configs(config_node);
+        return load_pose_configs(YAML::LoadFile(path));
     }
 
 
@@ -322,8 +321,7 @@ namespace al5d
         const std::string& json)
     {
         std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
-        const YAML::Node json_node = YAML::Load(json);
-        return load_pose_configs(json_node);
+        return load_pose_configs(YAML::Load(json));
     }
 
 
@@ -331,8 +329,7 @@ namespace al5d
         const std::string& path)
     {
         std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
-        const YAML::Node config_node = YAML::LoadFile(path);
-        return load_config(config_node);
+        return load_config(YAML::LoadFile(path));
     }
 
 
@@ -340,7 +337,7 @@ namespace al5d
         const std::string& json)
     {
         std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
-        const YAML::Node json_node = YAML::Load(json);
-        return load_config(json_node);
+        std::cout << std::endl << std::endl << json << std::endl << std::endl << std::endl; // TODO : remove
+        return load_config(YAML::Load(json));
     }
 }
