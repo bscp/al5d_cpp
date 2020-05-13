@@ -58,14 +58,7 @@ namespace al5d
         const Degree& degree)
         const
     {
-        validate_reachability(degree);
-        auto pulse_width = to_pulse_width(degree);
-
-        std::string command("#");
-        command += std::to_string(board_channel);
-        command += "P" + std::to_string(pulse_width.value);        
-
-        transmit(command);
+        __transmit_degree(degree);
     }
     
     
@@ -74,8 +67,33 @@ namespace al5d
         const Duration& move_duration)
         const
     {
-        move_to(degree);
-        transmit("T" + std::to_string(move_duration.in_milliseconds()));
+        __transmit_degree(degree);
+        __transmit_move_duration(move_duration);
+    }
+    
+    
+    void JointBase::__transmit_degree(
+        const Degree& degree)
+        const
+    {
+        validate_reachability(degree);
+
+        std::string command("#" + std::to_string(board_channel));
+        command += "P" + std::to_string(to_pulse_width(degree).value);        
+
+        __transmit(command);
+    }
+    
+    
+    void JointBase::__transmit_move_duration(
+        const Duration& move_duration)
+        const
+    {
+        auto milliseconds = move_duration.in_milliseconds();
+        if (milliseconds > 0)
+        {
+            __transmit("T" + std::to_string(milliseconds));    
+        }
     }
     
     
@@ -117,7 +135,7 @@ namespace al5d
     }
     
     
-    void JointBase::transmit(
+    void JointBase::__transmit(
         const std::string& message)
         const
     {

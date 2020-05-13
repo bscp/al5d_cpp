@@ -52,14 +52,22 @@ namespace al5d
         
     private:
 
+        void __transmit_degree(
+            const Degree& degree)
+            const;
+
+        void __transmit_move_duration(
+            const Duration& duration)
+            const;
+
+        void __transmit(
+            const std::string& message)
+            const;
+
         double get_convert_ratio()
             const;
 
         void validate_communicator_ptr()
-            const;
-
-        void transmit(
-            const std::string& message)
             const;
 
         Degree get_lowest_degree()

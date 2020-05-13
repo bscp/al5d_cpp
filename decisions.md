@@ -8,3 +8,4 @@
 * Base types don't extend config types because they hold different things. Config types hold config types and base types hold other base types
 * There is no default duration as default value for the method because separate this in a overloading method allows for the possibility to leave the time command away
 * Traits dienen als modulaire blokken die aan uit gezet kunnen worden maar ze dienen vooral voor overzicht in de code en zorgen dat klassen niet te groot worden en ze zorgen ervoor dat bepaalde functionaliteit slechts van enkele methoden gebruik kan maken om de inheritance tax (coupling die ontstaat bij inheritance) zo klein mogelijk te houden.
+* De ssc32u commands worden soms in brokken verstuurd. Het kan dus zijn dat de move_duration apart wordt verstuurd van de pulsewidth en de board channel. Dit is zodat de interface flexibeler kon worden gedefinieerd en de joint zijn eigen verantwoordelijkheid om het commando te versturen kon dragen.
