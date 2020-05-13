@@ -1,9 +1,6 @@
 #ifndef AL5D_CPP_CONSOLETRAIT_HPP
 #define	AL5D_CPP_CONSOLETRAIT_HPP
 
-// SYSTEM INCLUDES
-#include <string>
-
 // PROJECT INCLUDES
 #include <al5d_cpp/base/configs/AL5DBaseConfig.hpp>
 

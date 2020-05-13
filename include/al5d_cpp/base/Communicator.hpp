@@ -15,7 +15,10 @@ namespace al5d
         virtual void transmit(
             const std::string& message) = 0;
             
-        virtual bool is_ready() const = 0;
+        virtual bool is_ready() const
+        {
+            return true; // is default
+        }
     
     protected:
 

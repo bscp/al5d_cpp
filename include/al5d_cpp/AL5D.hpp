@@ -8,6 +8,7 @@
 #include <al5d_cpp/traits/logging_trait/LoggingTrait.hpp>
 #include <al5d_cpp/traits/progressing_trait/ProgressingTrait.hpp>
 #include <al5d_cpp/traits/serial_trait/SerialTrait.hpp>
+#include <al5d_cpp/traits/lambda_trait/LambdaTrait.hpp>
 #include <al5d_cpp/traits/console_trait/ConsoleTrait.hpp>
 #include <al5d_cpp/traits/pose_trait/PoseTrait.hpp>
 #include <al5d_cpp/traits/json_trait/JSONTrait.hpp>
@@ -20,7 +21,7 @@ namespace al5d
     typedef LoggingTrait<PoseAL5D> LoggingAL5D; // TODO : gets skipped
     typedef ConsoleTrait<PoseAL5D> ConsoleAL5D;
     typedef SerialTrait<PoseAL5D> SerialAL5D;
-    // typedef LambdaAL5D<PoseAL5D> LambdaAL5D;
+    typedef LambdaTrait<PoseAL5D> LambdaAL5D;
     typedef JSONTrait<SerialAL5D> AL5D; // should always be last
 }
 
