@@ -4,8 +4,6 @@
 // PROJECT INCLUDES
 #include <al5d_cpp/traits/json_trait/json_deserialize.hpp>
 
-#include <iostream> // TODO : remove include
-
 
 namespace al5d
 {
@@ -13,8 +11,6 @@ namespace al5d
     /*static*/ JSONTrait<BaseType> JSONTrait<BaseType>::from_json_file(
         const std::string& path)
     {
-        std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
-        
         auto config = al5d::load_config_from_json_file(path);
         return JSONTrait<BaseType>(config);
     }
@@ -24,8 +20,6 @@ namespace al5d
     /*static*/ JSONTrait<BaseType> JSONTrait<BaseType>::from_json(
         const std::string& json_data)
     {
-        std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
-            
         auto config = al5d::load_config_from_json(json_data);
         return JSONTrait<BaseType>(config);
     }
