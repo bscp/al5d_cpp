@@ -19,12 +19,12 @@ namespace al5d
         {
             std::cout << __PRETTY_FUNCTION__ << std::endl; // TODO : remove
             
-            if (!json_node[key])
-            {
-                std::string message = std::string("'") + key + "' does not exist in config";
-                std::cout << message << std::endl;
+            // if (!json_node[key])
+            // {
+                // std::string message = std::string("'") + key + "' does not exist in config";
+                // std::cout << message << std::endl;
             //     throw std::runtime_error(message); // TODO : uncomment
-            }
+            // }
         }
 
 
