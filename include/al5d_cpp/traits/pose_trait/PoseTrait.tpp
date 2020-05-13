@@ -18,7 +18,7 @@ namespace al5d
         const JointNameDegree& joint_name_degree)
     {
         return JointTypeDegree(
-            BaseType::get_joint(joint_name_degree.joint_name).get_type(),
+            BaseType::get_joint_(joint_name_degree.joint_name).get_type(),
             joint_name_degree.degree);
     }
     

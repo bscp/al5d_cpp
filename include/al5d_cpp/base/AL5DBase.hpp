@@ -65,47 +65,47 @@ namespace al5d
         explicit AL5DBase(
             const AL5DBaseConfig& config);
         
-        virtual void transmit_command(
+        virtual void transmit_command_(
             const Command &command)
             const;
         
-        virtual void terminate_command()
+        virtual void tranmit_command_terminator_()
             const;
 
-        const JointBase &get_joint(
+        const JointBase &get_joint_(
             const JointType &joint_type)
             const;
     
-        const JointBase &get_joint(
+        const JointBase &get_joint_(
             const JointName& joint_name)
             const;
             
-        JointBases joints;
+        JointBases joints_;
 
-        CommunicatorPtr communicator_ptr = nullptr;
+        CommunicatorPtr communicator_ptr_ = nullptr;
             
     private:
 
-        void validate_communicator_ptr()
+        void validate_communicator_ptr__()
             const;
     
-        void __move_to_degree(
+        void move_to_degree__(
             const JointBase& joint,
             const Degree &degree,
             const Duration &move_duration);
     
-        void __move_to_degree(
+        void move_to_degree__(
             const JointBase& joint,
             const Degree &degree);
 
-        void transmit(
+        void transmit__(
             const std::string& message)
             const;
     
-        void construct_joints(
+        void construct_joints__(
             const JointConfigs& joint_configs);
 
-        void set_joint_communicator_ptrs();
+        void set_joint_communicator_ptrs__();
     };
 }
 

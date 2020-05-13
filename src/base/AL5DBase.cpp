@@ -12,10 +12,10 @@ namespace al5d
 {   
     AL5DBase::AL5DBase(
         const AL5DBaseConfig& config)
-        : joints()
-        , communicator_ptr(nullptr)
+        : joints_()
+        , communicator_ptr_(nullptr)
     {
-        construct_joints(config.joint_configs);
+        construct_joints__(config.joint_configs);
     }
     
     
@@ -24,21 +24,20 @@ namespace al5d
     }
     
     
-    void AL5DBase::construct_joints(
+    void AL5DBase::construct_joints__(
         const JointConfigs& joint_configs)
     {
         for (const auto& joint_config : joint_configs)
         {
-            const auto joint = JointBase(joint_config);
-            joints.push_back(joint);
+            joints_.push_back(JointBase(joint_config));
         }
     }
 
 
-    void AL5DBase::validate_communicator_ptr()
+    void AL5DBase::validate_communicator_ptr__()
         const
     {
-        if (communicator_ptr == nullptr)
+        if (communicator_ptr_ == nullptr)
         {
             throw MissingCommunicator();
         }
@@ -48,61 +47,61 @@ namespace al5d
     bool AL5DBase::is_ready()
         const
     {
-        validate_communicator_ptr();
-        return communicator_ptr->is_ready();
+        validate_communicator_ptr__();
+        return communicator_ptr_->is_ready();
     }
     
     
-    void AL5DBase::transmit(
+    void AL5DBase::transmit__(
         const std::string& message)
         const
     {
-        validate_communicator_ptr();
-        communicator_ptr->transmit(message);
+        validate_communicator_ptr__();
+        communicator_ptr_->transmit(message);
     }
 
     
-    void AL5DBase::terminate_command()
+    void AL5DBase::tranmit_command_terminator_()
         const
     {
-        transmit("\r");
+        transmit__("\r");
     }
     
     
-    void AL5DBase::transmit_command(
+    void AL5DBase::transmit_command_(
         const Command &command)
         const
     {
-        transmit(command);
-        terminate_command();
+        transmit__(command);
+        tranmit_command_terminator_();
     }
 
 
     void AL5DBase::set_communicator_ptr(
         const CommunicatorPtr& communicator_ptr)
     {
-        this->communicator_ptr = communicator_ptr;
-        set_joint_communicator_ptrs();
+        communicator_ptr_ = communicator_ptr;
+        set_joint_communicator_ptrs__();
     }
 
 
-    void AL5DBase::set_joint_communicator_ptrs()
+    void AL5DBase::set_joint_communicator_ptrs__()
     {
-        for (auto& joint : joints)
+        for (auto& joint : joints_)
         {
-            joint.set_communicator_ptr(communicator_ptr);
+            joint.set_communicator_ptr(communicator_ptr_);
         }
     }
     
     
-    const JointBase &AL5DBase::get_joint(
+    const JointBase &AL5DBase::get_joint_(
         const JointName& joint_name)
         const
     {
         // TODO : strip spaces
         // TODO : to lowercase
         
-        for (const auto& joint : joints)
+        for (const auto& joint : joints_)
         {
             if (joint.has_name(joint_name))
             {
@@ -114,11 +113,11 @@ namespace al5d
     }
     
     
-    const JointBase &AL5DBase::get_joint(
+    const JointBase &AL5DBase::get_joint_(
         const JointType &joint_type)
         const
     {
-        for (const auto& joint : joints)
+        for (const auto& joint : joints_)
         {
             if (joint.has_type(joint_type))
             {
@@ -132,7 +131,7 @@ namespace al5d
     
     void AL5DBase::stop()
     {
-        transmit_command("STOP");
+        transmit_command_("STOP");
     }
 
 
@@ -140,10 +139,10 @@ namespace al5d
         const JointName& joint_name,
         const Degree &degree)
     {
-        __move_to_degree(
-            get_joint(joint_name),
+        move_to_degree__(
+            get_joint_(joint_name),
             degree);
-        terminate_command();
+        tranmit_command_terminator_();
     }
 
 
@@ -152,11 +151,11 @@ namespace al5d
         const Degree &degree,
         const Duration &move_duration)
     {
-        __move_to_degree(
-            get_joint(joint_name),
+        move_to_degree__(
+            get_joint_(joint_name),
             degree,
             move_duration);
-        terminate_command();
+        tranmit_command_terminator_();
     }
 
 
@@ -164,10 +163,10 @@ namespace al5d
         const JointType& joint_type,
         const Degree &degree)
     {
-        __move_to_degree(
-            get_joint(joint_type),
+        move_to_degree__(
+            get_joint_(joint_type),
             degree);
-        terminate_command();
+        tranmit_command_terminator_();
     }
 
 
@@ -176,15 +175,15 @@ namespace al5d
         const Degree &degree,
         const Duration &move_duration)
     {
-        __move_to_degree(
-            get_joint(joint_type),
+        move_to_degree__(
+            get_joint_(joint_type),
             degree,
             move_duration);
-        terminate_command();
+        tranmit_command_terminator_();
     }
 
 
-    void AL5DBase::__move_to_degree(
+    void AL5DBase::move_to_degree__(
         const JointBase& joint,
         const Degree &degree)
     {
@@ -192,7 +191,7 @@ namespace al5d
     }
 
 
-    void AL5DBase::__move_to_degree(
+    void AL5DBase::move_to_degree__(
         const JointBase& joint,
         const Degree &degree,
         const Duration &move_duration)
@@ -207,12 +206,12 @@ namespace al5d
     {
         for (const auto &joint_name_degree : joint_name_degrees)
         {
-            __move_to_degree(
-                get_joint(joint_name_degree.joint_name),
+            move_to_degree__(
+                get_joint_(joint_name_degree.joint_name),
                 joint_name_degree.degree,
                 move_duration);
         }
-        terminate_command();
+        tranmit_command_terminator_();
     }
 
 
@@ -221,11 +220,11 @@ namespace al5d
     {
         for (const auto &joint_name_degree : joint_name_degrees)
         {
-            __move_to_degree(
-                get_joint(joint_name_degree.joint_name),
+            move_to_degree__(
+                get_joint_(joint_name_degree.joint_name),
                 joint_name_degree.degree);
         }
-        terminate_command();
+        tranmit_command_terminator_();
     }
 
 
@@ -235,12 +234,12 @@ namespace al5d
     {
         for (const auto &joint_type_degree : joint_type_degrees)
         {
-            __move_to_degree(
-                get_joint(joint_type_degree.joint_type),
+            move_to_degree__(
+                get_joint_(joint_type_degree.joint_type),
                 joint_type_degree.degree,
                 move_duration);
         }
-        terminate_command();
+        tranmit_command_terminator_();
     }
 
 
@@ -249,10 +248,10 @@ namespace al5d
     {
         for (const auto &joint_type_degree : joint_type_degrees)
         {
-            __move_to_degree(
-                get_joint(joint_type_degree.joint_type),
+            move_to_degree__(
+                get_joint_(joint_type_degree.joint_type),
                 joint_type_degree.degree);
         }
-        terminate_command();
+        tranmit_command_terminator_();
     }
 }

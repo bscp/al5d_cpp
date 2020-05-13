@@ -18,13 +18,13 @@ namespace al5d
         , board_channel(joint_config.board_channel)
         , degree_range(joint_config.degree_range)
         , pulse_width_range(joint_config.pulse_width_range)
-        , convert_ratio(get_convert_ratio())
+        , convert_ratio(calculate_convert_ratio__())
         , communicator_ptr(nullptr)
     {
     }
 
     
-    double JointBase::get_convert_ratio()
+    double JointBase::calculate_convert_ratio__()
         const
     {
         return pulse_width_range.get_difference() / degree_range.get_difference();
@@ -58,7 +58,7 @@ namespace al5d
         const Degree& degree)
         const
     {
-        __transmit_degree(degree);
+        transmit_degree__(degree);
     }
     
     
@@ -67,46 +67,46 @@ namespace al5d
         const Duration& move_duration)
         const
     {
-        __transmit_degree(degree);
-        __transmit_move_duration(move_duration);
+        transmit_degree__(degree);
+        transmit_move_duration__(move_duration);
     }
     
     
-    void JointBase::__transmit_degree(
+    void JointBase::transmit_degree__(
         const Degree& degree)
         const
     {
-        validate_reachability(degree);
+        validate_reachability__(degree);
 
         std::string command("#" + std::to_string(board_channel));
-        command += "P" + std::to_string(to_pulse_width(degree).value);        
+        command += "P" + std::to_string(to_pulse_width__(degree).value);        
 
-        __transmit(command);
+        transmit__(command);
     }
     
     
-    void JointBase::__transmit_move_duration(
+    void JointBase::transmit_move_duration__(
         const Duration& move_duration)
         const
     {
         auto milliseconds = move_duration.in_milliseconds();
         if (milliseconds > 0)
         {
-            __transmit("T" + std::to_string(milliseconds));    
+            transmit__("T" + std::to_string(milliseconds));    
         }
     }
     
     
-    PulseWidth JointBase::to_pulse_width(
+    PulseWidth JointBase::to_pulse_width__(
         Degree degree)
         const
     {
-        validate_reachability(degree);
+        validate_reachability__(degree);
         return PulseWidth(PulseWidth::Value((degree.value - degree_range.value_1.value) * convert_ratio + pulse_width_range.min.value)); // TODO : shorten this line
     }
     
     
-    void JointBase::validate_reachability(
+    void JointBase::validate_reachability__(
         Degree degree)
         const
     {
@@ -125,7 +125,7 @@ namespace al5d
     }
 
 
-    void JointBase::validate_communicator_ptr()
+    void JointBase::validate_communicator_ptr__()
         const
     {
         if (communicator_ptr == nullptr)
@@ -135,11 +135,11 @@ namespace al5d
     }
     
     
-    void JointBase::__transmit(
+    void JointBase::transmit__(
         const std::string& message)
         const
     {
-        validate_communicator_ptr();
+        validate_communicator_ptr__();
         communicator_ptr->transmit(message);
     }
 }

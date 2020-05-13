@@ -26,20 +26,6 @@ namespace al5d
             const JointConfig &joint_config);
         
         virtual ~JointBase() = default;
-
-        bool has_name(
-            const JointName &name)
-            const;
-
-        JointType get_type()
-            const;
-
-        bool has_type(
-            const JointType &type)
-            const;
-
-        void set_communicator_ptr(
-            const CommunicatorPtr& communicator_ptr);
     
         void move_to(
             const Degree& degree)
@@ -49,38 +35,46 @@ namespace al5d
             const Degree& degree,
             const Duration& move_duration)
             const;
+
+        bool has_name(
+            const JointName &name)
+            const;
+
+        bool has_type(
+            const JointType &type)
+            const;
+
+        JointType get_type()
+            const;
+
+        void set_communicator_ptr(
+            const CommunicatorPtr& communicator_ptr);
         
     private:
 
-        void __transmit_degree(
+        void validate_communicator_ptr__()
+            const;
+        
+        void validate_reachability__(
+            Degree degree)
+            const;
+
+        void transmit_degree__(
             const Degree& degree)
             const;
 
-        void __transmit_move_duration(
+        void transmit_move_duration__(
             const Duration& duration)
             const;
 
-        void __transmit(
+        void transmit__(
             const std::string& message)
             const;
 
-        double get_convert_ratio()
-            const;
-
-        void validate_communicator_ptr()
-            const;
-
-        Degree get_lowest_degree()
+        double calculate_convert_ratio__()
             const;
         
-        Degree get_highest_degree()
-            const;
-        
-        void validate_reachability(
-            Degree degree)
-            const;
-        
-        PulseWidth to_pulse_width(
+        PulseWidth to_pulse_width__(
             Degree degree)
             const;
         
