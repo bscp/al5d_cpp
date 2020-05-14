@@ -3,6 +3,7 @@
 
 // SYSTEM INCLUDES
 #include <exception>
+#include <iostream> // TODO : remove include
 
 // PROJECT INCLUDES
 #include <al5d_cpp/base/types.hpp>
@@ -145,8 +146,8 @@ namespace al5d
         }
 
 
-        #define SERIAL_PORT_KEY "port"
-        #define SERIAL_BAUD_RATE_KEY "baud_rate"
+        #define SERIAL_PORT_KEY "serial_port"
+        #define SERIAL_BAUD_RATE_KEY "serial_baud_rate"
         SerialConfig load_serial_config(
             const YAML::Node &json_node)
         {
@@ -205,7 +206,7 @@ namespace al5d
         }
 
 
-        PoseName load_pose_config_name(
+        PoseName load_pose_name(
             const YAML::Node &json_node)
         {
             return json_node.as<PoseName>();
@@ -221,7 +222,7 @@ namespace al5d
             validate_key(json_node, POSE_CONFIG_JOINT_NAME_DEGREES_KEY);
 
             return PoseConfig(
-                load_pose_config_name(
+                load_pose_name(
                     json_node[POSE_CONFIG_NAME]),
                 load_pose_config_joint_degree_list(
                     json_node[POSE_CONFIG_JOINT_NAME_DEGREES_KEY]));
@@ -243,42 +244,60 @@ namespace al5d
         }
 
 
+        #define POSES_CONFIG_KEY "poses"
+        #define START_POSE_NAME_KEY "start_pose_name"
+        #define FINISH_POSE_NAME_KEY "finish_pose_name"
+        PosingConfig load_posing_config(
+            const YAML::Node &json_node)
+        {
+            validate_key(json_node, POSES_CONFIG_KEY);
+            validate_key(json_node, START_POSE_NAME_KEY);
+            validate_key(json_node, FINISH_POSE_NAME_KEY);
+
+            return PosingConfig(
+                load_pose_configs(json_node[POSES_CONFIG_KEY]),
+                load_pose_name(json_node[START_POSE_NAME_KEY]), // TODO : make optional
+                load_pose_name(json_node[FINISH_POSE_NAME_KEY])); // TODO : make optional
+        }
+
+
         #define JOINT_CONFIGS_KEY "joints"
-        #define SERIAL_CONFIG_KEY "serial"
-        #define POSE_CONFIGS_KEY "poses"
+        #define COMMUNICATOR_CONFIG_KEY "communicator"
+        #define POSING_CONFIG_KEY "posing"
         AL5DBaseConfig load_config(
             const YAML::Node &json_node)
         {
             validate_key(json_node, JOINT_CONFIGS_KEY);
-            validate_key(json_node, SERIAL_CONFIG_KEY);
-            validate_key(json_node, POSE_CONFIGS_KEY);
+            validate_key(json_node, COMMUNICATOR_CONFIG_KEY);
+            validate_key(json_node, POSING_CONFIG_KEY);
 
             return AL5DBaseConfig(
                 load_joint_configs(json_node[JOINT_CONFIGS_KEY]),
-                load_serial_config(json_node[SERIAL_CONFIG_KEY]),
-                load_pose_configs(json_node[POSE_CONFIGS_KEY]));
+                load_serial_config(json_node[COMMUNICATOR_CONFIG_KEY]),
+                load_posing_config(json_node[POSING_CONFIG_KEY])); // TODO : make optional
         }
     }
 
 
-    PoseConfigs load_pose_configs_from_json_file(
+    PosingConfig load_posing_config_from_json_file(
         const std::string& path)
     {
-        return load_pose_configs(YAML::LoadFile(path));
+        return load_posing_config(YAML::LoadFile(path));
     }
 
 
-    PoseConfigs load_pose_configs_from_json(
+    PosingConfig load_posing_config_from_json(
         const std::string& json)
     {
-        return load_pose_configs(YAML::Load(json));
+        return load_posing_config(YAML::Load(json));
     }
 
 
     AL5DBaseConfig load_config_from_json_file(
         const std::string& path)
     {
-        return load_config(YAML::LoadFile(path));
+        auto config = load_config(YAML::LoadFile(path));
+        return config;
     }
 
 

@@ -16,7 +16,7 @@ namespace al5d
         explicit LoggingTrait(
             const AL5DBaseConfig& config);
 
-        virtual ~LoggingTrait() = default;
+        virtual ~LoggingTrait();
 
         // void move_to_degree( // TODO : implement all overloading methods, because its needed...
         //     const JointTypeDegrees &joint_type_degrees,

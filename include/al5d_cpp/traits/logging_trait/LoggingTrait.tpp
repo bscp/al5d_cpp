@@ -13,6 +13,14 @@ namespace al5d
         : BaseType(config)
     {
     }
+
+
+    template <typename BaseType>
+    LoggingTrait<BaseType>::~LoggingTrait()
+    {
+    }
+
+
     // template <typename BaseType> // TODO : fix todo in header file
     // void LoggingTrait<BaseType>::move_to_degree(
     //     const JointTypeDegrees &joint_type_degrees,

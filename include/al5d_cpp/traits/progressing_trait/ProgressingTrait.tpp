@@ -10,6 +10,12 @@ namespace al5d
         : BaseType(config)
     {
     }
+
+
+    template <typename BaseType>
+    ProgressingTrait<BaseType>::~ProgressingTrait()
+    {
+    }
     
     
     template <typename BaseType>

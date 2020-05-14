@@ -8,8 +8,18 @@ namespace al5d
     PoseTrait<BaseType>::PoseTrait(
         const AL5DBaseConfig& config)
         : BaseType(config)
-        , poses(construct_poses(config.pose_configs))
+        , poses(construct_poses(config.posing_config.pose_configs))
+        , start_pose_name(config.posing_config.start_pose_name)
+        , finish_pose_name(config.posing_config.finish_pose_name)
     {
+        move_to_start_pose();
+    }
+
+
+    template <typename BaseType>
+    PoseTrait<BaseType>::~PoseTrait()
+    {
+        move_to_finish_pose();
     }
     
     
@@ -65,6 +75,26 @@ namespace al5d
 
 
     template <typename BaseType>
+    void PoseTrait<BaseType>::move_to_start_pose()
+    {
+        if (start_pose_name != "")
+        {
+            move_to_pose(start_pose_name);
+        }
+    }
+
+
+    template <typename BaseType>
+    void PoseTrait<BaseType>::move_to_finish_pose()
+    {
+        if (finish_pose_name != "")
+        {
+            move_to_pose(finish_pose_name);
+        }
+    }
+
+
+    template <typename BaseType>
     const Pose& PoseTrait<BaseType>::get_pose(
         const PoseName& pose_name)
         const
@@ -104,9 +134,9 @@ namespace al5d
 
     template <typename BaseType>
     void PoseTrait<BaseType>::add_poses(
-        const PoseConfigs& pose_configs)
+        const PosingConfig& posing_config)
     {
-        for (const auto& pose_config : pose_configs)
+        for (const auto& pose_config : posing_config.pose_configs)
         {
             poses.push_back(
                 construct_poses(pose_config));
@@ -116,9 +146,13 @@ namespace al5d
 
     template <typename BaseType>
     void PoseTrait<BaseType>::set_poses(
-        const PoseConfigs& pose_configs)
+        const PosingConfig& posing_config)
     {
-        poses = construct_poses(pose_configs);
+        start_pose_name = posing_config.start_pose_name;
+        finish_pose_name = posing_config.finish_pose_name;
+        poses = construct_poses(posing_config.pose_configs);
+        
+        move_to_start_pose();
     }
 }
 

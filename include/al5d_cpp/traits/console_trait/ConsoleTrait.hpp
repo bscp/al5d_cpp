@@ -14,6 +14,8 @@ namespace al5d
         explicit ConsoleTrait(
             const AL5DBaseConfig& config);
 
+        virtual ~ConsoleTrait();
+
         void terminate_command()
             const
             override;

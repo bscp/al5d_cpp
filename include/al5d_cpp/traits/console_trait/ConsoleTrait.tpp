@@ -21,6 +21,12 @@ namespace al5d
 
 
     template <typename BaseType>
+    ConsoleTrait<BaseType>::~ConsoleTrait()
+    {
+    }
+
+
+    template <typename BaseType>
     void ConsoleTrait<BaseType>::terminate_command()
         const
     {

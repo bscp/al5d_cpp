@@ -20,6 +20,8 @@ namespace al5d
     public:
         explicit LambdaTrait(
             const AL5DBaseConfig& config);
+
+        virtual ~LambdaTrait();
         
         void set_transmit_fn(
             const TransmitFn& transmit_fn);

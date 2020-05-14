@@ -17,7 +17,7 @@ namespace al5d
         explicit ProgressingTrait(
             const AL5DBaseConfig& config);
 
-        virtual ~ProgressingTrait() = default;
+        virtual ~ProgressingTrait();
 
         bool is_moving()
             const;

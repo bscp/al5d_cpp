@@ -1,9 +1,6 @@
 // HEADER INCLUDE
 #include <al5d_cpp/base/AL5DBase.hpp>
 
-// SYSTEM INCLUDES
-#include <iostream>
-
 // PROJECT INCLUDES
 #include <al5d_cpp/exceptions/MissingCommunicator.hpp>
 
@@ -12,10 +9,9 @@ namespace al5d
 {   
     AL5DBase::AL5DBase(
         const AL5DBaseConfig& config)
-        : joints_()
+        : joints_(construct_joints__(config.joint_configs))
         , communicator_ptr_(nullptr)
     {
-        construct_joints__(config.joint_configs);
     }
     
     
@@ -24,13 +20,17 @@ namespace al5d
     }
     
     
-    void AL5DBase::construct_joints__(
+    JointBases AL5DBase::construct_joints__(
         const JointConfigs& joint_configs)
     {
+        JointBases join_bases;
+
         for (const auto& joint_config : joint_configs)
         {
             joints_.push_back(JointBase(joint_config));
         }
+
+        return join_bases;
     }
 
 

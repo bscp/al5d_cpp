@@ -102,7 +102,7 @@ namespace al5d
             const std::string& message)
             const;
     
-        void construct_joints__(
+        JointBases construct_joints__(
             const JointConfigs& joint_configs);
 
         void set_joint_communicator_ptrs__();

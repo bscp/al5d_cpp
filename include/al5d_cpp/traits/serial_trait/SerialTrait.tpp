@@ -21,7 +21,6 @@ namespace al5d
     template <typename BaseType>
     SerialTrait<BaseType>::~SerialTrait()
     {
-        disconnect();
     }
 
     
@@ -31,13 +30,6 @@ namespace al5d
         auto ptr = SerialCommunicator::as_ptr(serial_port, serial_baud_rate);
         BaseType::set_communicator_ptr(ptr);
         sleep(2); // TODO : needed for arduino simulator, but also for real al5d?
-    }
-    
-
-    template <typename BaseType>
-    void SerialTrait<BaseType>::disconnect()
-    {
-        BaseType::set_communicator_ptr(nullptr);
     }
 }
 

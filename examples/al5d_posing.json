@@ -1,0 +1,39 @@
+{
+  "start_pose_name": "ready",
+  "finish_pose_name": "park",
+  "poses": [
+    {
+      "name": "ready",
+      "joint_degree": [
+        {"joint": "base", "degree": 0},
+        {"joint": "shoulder", "degree": -30},
+        {"joint": "elbow", "degree": 120},
+        {"joint": "wrist", "degree": 0},
+        {"joint": "gripper", "degree": 1},
+        {"joint": "wrist_rotate", "degree": 0}
+      ]
+    },
+    {
+      "name": "park",
+      "joint_degree": [
+        {"joint": "base", "degree": 0},
+        {"joint": "shoulder", "degree": -30},
+        {"joint": "elbow", "degree": 135},
+        {"joint": "wrist", "degree": -80},
+        {"joint": "gripper", "degree": 1},
+        {"joint": "wrist_rotate", "degree": 0}
+      ]
+    },
+    {
+      "name": "up",
+      "joint_degree": [
+        {"joint": "base", "degree": 0},
+        {"joint": "shoulder", "degree": 0},
+        {"joint": "elbow", "degree": 0},
+        {"joint": "wrist", "degree": 0},
+        {"joint": "gripper", "degree": 1},
+        {"joint": "wrist_rotate", "degree": 0}
+      ]
+    }
+  ]
+}

@@ -4,7 +4,7 @@
 // PROJECT INCLUDES
 #include <al5d_cpp/base/configs/AL5DBaseConfig.hpp>
 #include <al5d_cpp/traits/pose_trait/Pose.hpp>
-#include <al5d_cpp/base/configs/PoseConfig.hpp>
+#include <al5d_cpp/base/configs/PosingConfig.hpp>
 #include <al5d_cpp/base/types.hpp>
 #include <al5d_cpp/Duration.hpp>
 
@@ -19,7 +19,7 @@ namespace al5d
         explicit PoseTrait(
             const AL5DBaseConfig& config);
 
-        virtual ~PoseTrait() = default;
+        virtual ~PoseTrait();
 
         void move_to_pose(
             const PoseName& pose_name);
@@ -29,10 +29,10 @@ namespace al5d
             const Duration &move_duration);
 
         void add_poses(
-            const PoseConfigs& pose_configs);
+            const PosingConfig& posing_config);
 
         void set_poses(
-            const PoseConfigs& pose_configs);
+            const PosingConfig& posing_config);
 
     private:
 
@@ -51,11 +51,17 @@ namespace al5d
         Poses construct_poses(
             const PoseConfigs& pose_configs);
 
+        void move_to_start_pose();
+        
+        void move_to_finish_pose();
+
         const Pose& get_pose(
             const PoseName& pose_name)
             const;
 
         Poses poses;
+        PoseName start_pose_name;
+        PoseName finish_pose_name;
     };
 }
 

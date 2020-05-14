@@ -1,9 +1,10 @@
 {
-    "serial": {
-      "port": "/dev/ttyACM0",
-      "baud_rate": 9600
-    },
-    "joints": [
+  "communicator": {
+    "type": "serial",
+    "serial_port": "/dev/ttyACM0",
+    "serial_baud_rate": 9600
+  },
+  "joints": [
     {
       "name": "base",
       "board_channel": 0,
@@ -41,23 +42,9 @@
       "degree_range": [-90, 90]
     }
   ],
-  "poses": [
-    {
-      "name": "park",
-      "joint_degree": [
-        {"joint": "base", "degree": 0},
-        {"joint": "shoulder", "degree": -30},
-        {"joint": "elbow", "degree": 120},
-        {"joint": "wrist", "degree": 0},
-        {"joint": "gripper", "degree": 1},
-        {"joint": "wrist_rotate", "degree": 0}
-      ]
-    },
-    {
-      "name": "test1",
-      "joint_degree": [
-        {"joint": "base", "degree": 90}
-      ]
-    }
-  ]
+  "posing": {
+    "start_pose_name": "",
+    "finish_pose_name": "",
+    "poses": []
+  }
 }

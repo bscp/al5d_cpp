@@ -25,8 +25,6 @@ namespace al5d
             
         void connect();
         
-        void disconnect();
-
         serial::Port serial_port;
         serial::BaudRate serial_baud_rate;
     };

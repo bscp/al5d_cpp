@@ -10,10 +10,10 @@ namespace al5d
     AL5DBaseConfig::AL5DBaseConfig(
         JointConfigs joint_configs,
         SerialConfig serial_config,
-        PoseConfigs pose_configs)
+        PosingConfig posing_config)
         : joint_configs(std::move(joint_configs))
         , serial_config(std::move(serial_config))
-        , pose_configs(std::move(pose_configs))
+        , posing_config(std::move(posing_config))
     {
         validate_joint_configs();
     }

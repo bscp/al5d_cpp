@@ -2,7 +2,6 @@
 #define AL5D_CPP_POSECONFIG_HPP
 
 // SYSTEM INCLUDES
-#include <string>
 #include <vector>
 
 // PROJECT INCLUDES
