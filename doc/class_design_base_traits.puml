@@ -1,0 +1,21 @@
+@startuml
+
+namespace al5d {
+    class ConsoleTrait<<AL5DTrait>>
+    class JSONTrait<<AL5DTrait>>
+    class LambdaTrait<<AL5DTrait>>
+    class LoggingTrait<<AL5DTrait>>
+    class PoseTrait<<AL5DTrait>>
+    class ProgressingTrait<<AL5DTrait>>
+    class SerialTrait<<AL5DTrait>>
+
+    AL5DBase <|-- ConsoleTrait
+    AL5DBase <|-- JSONTrait
+    AL5DBase <|-- LambdaTrait
+    AL5DBase <|-- LoggingTrait
+    AL5DBase <|-- PoseTrait
+    AL5DBase <|-- ProgressingTrait
+    AL5DBase <|-- SerialTrait
+}
+
+@enduml

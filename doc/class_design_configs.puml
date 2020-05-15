@@ -1,0 +1,10 @@
+@startuml
+
+namespace al5d {
+    AL5DBaseConfig --> JointConfig
+    PosingConfig --> PoseConfig
+    AL5DBaseConfig --> PosingConfig
+    AL5DBaseConfig -- SerialConfig
+}
+
+@enduml

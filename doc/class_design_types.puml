@@ -1,0 +1,12 @@
+@startuml
+
+namespace al5d {
+    Degree "2" <-- "1" DegreeRange
+    JointName "1" <-- "1" JointNameDegree
+    Degree "1" <-- "1" JointNameDegree
+    JointType "1" <-- "1" JointTypeDegree
+    Degree "1" <-- "1" JointTypeDegree
+    PulseWidth "2" <-- "1" PulseWidthRange
+}
+
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+
+interface stop_command <<ROSService>> as stop_command_2
+interface degree_command <<ROSTopic>> as degree_command_2
+interface continue_command <<ROSService>> as continue_command
+interface pose_command <<ROSTopic>> as pose_command_2
+interface scheduled_stop_command <<ROSService>>
+interface scheduled_degree_command <<ROSTopic>>
+interface scheduled_pose_command <<ROSTopic>>
+interface transmitted_command <<serial>>
+interface serialized_command <<ROSTopic>>
+
+component DemoRunner <<ROSNode>>
+component CommandSerializer <<ROSNode>>
+component CommandTransmitter <<ROSNode>>
+component CommandScheduler <<ROSNode>>
+
+note right of CommandScheduler : High level interface
+note right of CommandSerializer : Low level interface
+
+DemoRunner -- stop_command_2
+DemoRunner -- degree_command_2
+DemoRunner -- continue_command
+DemoRunner -- pose_command_2
+stop_command_2 -- CommandScheduler
+continue_command -- CommandScheduler
+pose_command_2 -- CommandScheduler
+degree_command_2 -- CommandScheduler
+CommandScheduler -- scheduled_stop_command
+CommandScheduler -- scheduled_degree_command
+CommandScheduler -- scheduled_pose_command
+CommandTransmitter -- transmitted_command
+scheduled_stop_command -- CommandSerializer
+CommandSerializer -- serialized_command
+serialized_command -up- CommandTransmitter
+scheduled_degree_command -- CommandSerializer
+scheduled_pose_command -- CommandSerializer
+
+@enduml

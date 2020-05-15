@@ -1,0 +1,15 @@
+@startuml
+
+state Running{
+    state Idling
+    state Working
+}
+
+state Halting
+
+Idling -right-> Working:1
+Working -left-> Idling:2
+Running -right-> Halting:3
+Halting -left-> Running:4
+
+@enduml

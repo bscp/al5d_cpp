@@ -1,0 +1,19 @@
+@startuml
+
+package al5d_cpp
+package al5d_ros
+package ros#gray
+package boost#gray
+package yaml_cpp#gray
+package world1_demo
+
+al5d_cpp <-- al5d_ros
+boost <-- al5d_cpp
+yaml_cpp <-- al5d_cpp
+ros <-- al5d_ros
+ros <-- world1_demo
+
+note left of al5d_cpp : Low level interface
+note left of al5d_ros : High level interface
+
+@enduml
