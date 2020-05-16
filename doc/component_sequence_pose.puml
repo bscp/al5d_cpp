@@ -1,0 +1,14 @@
+@startuml
+
+participant MoveToDegreeDemo #SkyBlue
+participant CommandScheduler #LimeGreen
+participant CommandSerializer #LimeGreen-Salmon
+participant CommandTransmitter #LimeGreen-Salmon
+
+    MoveToDegreeDemo -> CommandScheduler:pose_command
+
+    CommandScheduler -> CommandSerializer:scheduled_pose_command
+    CommandSerializer -> CommandTransmitter:serialized_command
+    CommandTransmitter ->]:transmitted_command
+
+@enduml

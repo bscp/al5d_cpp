@@ -1,0 +1,47 @@
+@startuml
+
+namespace al5d {
+
+    class AL5DBase #eee
+    class JointBase #eee
+
+    class AL5DBaseConfig <<(S,Orchid)>> {
+        + joint_configs : JointConfigs
+        + serial_config : SerialConfig
+        + posing_config : PosingConfig
+        - validate_joint_configs() : void
+    }
+
+    class JointBaseConfig <<(S,Orchid)>> {
+        + name : JointName
+        + type : JointType
+        + board_channel : BoardChannel
+        + pulse_width_range : PulseWidthRange
+        + degree_range : DegreeRange
+        - validate_board_channel_value() : void
+    }
+
+    class PoseConfig <<(S,Orchid)>> {
+        name : PoseName
+        joint_name_degrees : JointNameDegrees
+    }
+
+    class PosingConfig <<(S,Orchid)>> {
+        pose_configs : PoseConfigs
+        start_pose_name : PoseName
+        finish_pose_name : PoseName
+    }
+
+    AL5DBase ..> AL5DBaseConfig
+    JointBase ..> JointBaseConfig
+    AL5DBaseConfig "1" -> "6" JointBaseConfig
+    PosingConfig "1" <- "1" AL5DBaseConfig
+    PoseConfig "*" <- "1" PosingConfig
+}
+
+legend right
+  <b><color:Orchid>S Struct</color></b>
+  <b><color:DarkCyan>C Class</color></b>
+endlegend
+
+@enduml

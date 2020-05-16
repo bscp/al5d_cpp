@@ -1,0 +1,20 @@
+@startuml
+
+'No activation/deactivation boxes because components are concurent and are continuously running. Also when no call is made.
+
+participant MoveToDegreeDemo #SkyBlue
+participant CommandScheduler #LimeGreen
+participant CommandSerializer #LimeGreen-Salmon
+participant CommandTransmitter #LimeGreen-Salmon
+
+MoveToDegreeDemo -> CommandScheduler:pose_command_1
+CommandScheduler -> CommandSerializer:scheduled_pose_command_1
+CommandSerializer -> CommandTransmitter:command_1
+MoveToDegreeDemo -> CommandScheduler:stop_command
+MoveToDegreeDemo -> CommandScheduler:pose_command_2
+MoveToDegreeDemo -> CommandScheduler:continue_command
+MoveToDegreeDemo -> CommandScheduler:pose_command_3
+CommandScheduler -> CommandSerializer:scheduled_pose_command_3
+CommandSerializer -> CommandTransmitter:command_3
+
+@enduml

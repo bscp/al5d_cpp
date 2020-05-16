@@ -1,6 +1,8 @@
 @startuml
 
 namespace al5d {
+    class AL5DBase #eee
+    
     class JSONTrait<<AL5DTrait>>
     class PoseTrait<<AL5DTrait>>
     class ProgressingTrait<<AL5DTrait>>

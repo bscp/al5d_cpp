@@ -26,7 +26,7 @@ degree_command -- CommandScheduler
 CommandScheduler -- stop_command
 CommandScheduler -- scheduled_degree_command
 CommandScheduler -- scheduled_pose_command
-CommandTransmitter -- transmitted_command
+CommandTransmitter #-- transmitted_command
 stop_command -- CommandSerializer
 CommandSerializer -- serialized_command
 serialized_command -up- CommandTransmitter

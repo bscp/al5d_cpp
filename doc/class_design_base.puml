@@ -2,12 +2,13 @@
 
 namespace al5d {
 
-    interface Communicator {
+    class Communicator <<(I,SkyBlue)>> {
         + transmit(message : String) : void
         + is_ready() : Boolean
     }
 
     class AL5DBase {
+        + AL5DBase(al5d_base_config)
         + move_to_degree(joint_name, degree, move_duration) : void
         + move_to_degree(joint_type, degree, move_duration) : void
         + move_to_degree(joint_name, degree) : void
@@ -25,16 +26,45 @@ namespace al5d {
         # communicator_ptr__ : CommunicatorPtr
     }
 
-    Communicator <- AL5DBase
-    AL5DBase -> JointBase
+    class JointBase {
+        + JointBase(joint_base_config)
+        + move_to_degree(joint_name, degree,move_duration) : void
+        + move_to_degree(joint_type, degree, move_duration) : void
+        + move_to_degree(joint_name, degree) : void
+        + move_to_degree(joint_type, degree) : void
+        + move_to_degrees(joint_name_degrees, move_duration) : void
+        + move_to_degrees(joint_type_degrees,move_duration) : void
+        + move_to_degrees(joint_name_degrees) : void
+        + move_to_degrees(joint_type_degrees) : void
+        + stop() : void
+        + is_ready() : Boolean
+        - transmit_degree__(degree : Degree) : void
+        - transmit_move_duration__(duration : Duration) : void
+        - transmit__(message : String) : void
+        - to_pulse_width__(degree : Degree) : PulseWidth
+        - name : String
+        - type : JointType
+        - board_channel : BoardChannel
+        - degree_range : DegreeRange
+        - pulse_width_range : PulseWidthRange
+        - convert_ratio : Double
+        - communicator_ptr : CommunicatorPtr
+    }
+
+    class JointBaseConfig <<(S,Orchid)>> #eee
+    class AL5DBaseConfig <<(S,Orchid)>> #eee
+
+    Communicator "1" <- "*" JointBase
+    Communicator "1" <-- "*" AL5DBase
+    AL5DBase "1" -> "6" JointBase
     AL5DBase ..> AL5DBaseConfig
     JointBase ..> JointBaseConfig
-    AL5DBaseConfig -> JointBaseConfig
-    Communicator ..> CommunicatorConfig
-    CommunicatorConfig <- AL5DBaseConfig
-    AL5DBaseConfig --> PosingConfig
-    PosingConfig --> PoseConfig
-    CommunicatorConfig <|-- SerialConfig
 }
+
+legend right
+  <b><color:Orchid>S Struct</color></b>
+  <b><color:DarkCyan>C Class</color></b>
+  <b><color:SkyBlue>I Interface</color></b>
+endlegend
 
 @enduml

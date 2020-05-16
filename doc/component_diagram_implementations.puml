@@ -5,13 +5,11 @@ component "<u>CommandSerializer</u>" <<ROSNode>> as CommandSerializer #LimeGreen
 component "<u>CommandTransmitter</u>" <<ROSNode>> as CommandTransmitter #LimeGreen-Salmon
 
 component MoveToPosesDemo #SkyBlue
-component MoveToDegreesDemo #SkyBlue
 component MoveAndHaltDemo #SkyBlue
 component AL5DSerializer #LimeGreen-Salmon
 component AL5DTransmitter #LimeGreen-Salmon
 
 DemoRunner <|-- MoveToPosesDemo
-DemoRunner <|-- MoveToDegreesDemo
 DemoRunner <|-- MoveAndHaltDemo
 CommandSerializer <|-- AL5DSerializer
 CommandTransmitter <|-- AL5DTransmitter

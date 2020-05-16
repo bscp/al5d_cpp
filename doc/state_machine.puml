@@ -1,14 +1,20 @@
 @startuml
 
-state Running{
-    state Idling
-    state Working
+state "**Running**" as Running{
+    state "**Idling**" as Idling
+    state "**Working**" as Working
+
+    Idling:**do**: start_next_command()
+    Working:**do**: check_if_done()
+
+    [*] -right-> Idling
+    Idling -right-> Working:1
+    Working -left-> Idling:2
 }
 
-state Halting
+state "**Halting**" as Halting
 
-Idling -right-> Working:1
-Working -left-> Idling:2
+[*] -right-> Running
 Running -right-> Halting:3
 Halting -left-> Running:4
 
