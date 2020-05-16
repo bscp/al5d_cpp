@@ -183,7 +183,7 @@ namespace al5d
     }
 
 
-    void AL5DBase::move_to_degree__(
+    /*static*/ void AL5DBase::move_to_degree__(
         const JointBase& joint,
         const Degree &degree)
     {
@@ -191,7 +191,7 @@ namespace al5d
     }
 
 
-    void AL5DBase::move_to_degree__(
+    /*static*/ void AL5DBase::move_to_degree__(
         const JointBase& joint,
         const Degree &degree,
         const Duration &move_duration)

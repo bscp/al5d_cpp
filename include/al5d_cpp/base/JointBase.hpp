@@ -64,7 +64,7 @@ namespace al5d
             const;
 
         void transmit_move_duration__(
-            const Duration& duration)
+            const Duration& move_duration)
             const;
 
         void transmit__(

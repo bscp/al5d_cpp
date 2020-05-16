@@ -89,12 +89,12 @@ namespace al5d
         void validate_communicator_ptr__()
             const;
     
-        void move_to_degree__(
+        static void move_to_degree__(
             const JointBase& joint,
             const Degree &degree,
             const Duration &move_duration);
     
-        void move_to_degree__(
+        static void move_to_degree__(
             const JointBase& joint,
             const Degree &degree);
 
