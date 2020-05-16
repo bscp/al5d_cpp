@@ -2,7 +2,7 @@
 #include <al5d_cpp/base/types/PulseWidth.hpp>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/exceptions/InvalidPulseWidth.hpp>
+#include <al5d_cpp/exceptions.hpp>
 
 namespace al5d
 {

@@ -6,7 +6,7 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/logging.hpp>
-#include <al5d_cpp/exceptions/MissingCommunicator.hpp>
+#include <al5d_cpp/exceptions.hpp>
 
 
 namespace al5d
@@ -113,7 +113,7 @@ namespace al5d
         if (!degree_range.is_within_range(degree))
         {
             LOG_ERROR("degree out of range");
-            throw std::invalid_argument("degree out of range"); // TODO : throw a class
+            throw DegreeOutOfRange(degree);
         }
     }
 

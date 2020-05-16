@@ -2,7 +2,7 @@
 #define	AL5D_CPP_POSETRAIT_TPP
 
 // PROJECT INCLUDES
-#include <al5d_cpp/exceptions/InvalidPoseName.hpp>
+#include <al5d_cpp/exceptions.hpp>
 
 
 namespace al5d

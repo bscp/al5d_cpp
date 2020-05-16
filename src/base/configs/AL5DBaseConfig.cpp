@@ -2,7 +2,7 @@
 #include <al5d_cpp/base/configs/AL5DBaseConfig.hpp>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/exceptions/InvalidNumberOfJoints.hpp>
+#include <al5d_cpp/exceptions.hpp>
 
 
 namespace al5d

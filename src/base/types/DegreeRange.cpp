@@ -2,7 +2,7 @@
 #include <al5d_cpp/base/types/DegreeRange.hpp>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/exceptions/InvalidDegreeRange.hpp>
+#include <al5d_cpp/exceptions.hpp>
 
 
 namespace al5d

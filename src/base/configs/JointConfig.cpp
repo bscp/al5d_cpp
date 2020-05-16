@@ -2,8 +2,8 @@
 #include <al5d_cpp/base/configs/JointConfig.hpp>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/exceptions/InvalidBoardChannel.hpp>
-#include <al5d_cpp/exceptions/InvalidDegree.hpp>
+#include <al5d_cpp/exceptions.hpp>
+#include <al5d_cpp/exceptions.hpp>
 
 
 namespace al5d

@@ -2,7 +2,7 @@
 #include <al5d_cpp/base/AL5DBase.hpp>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/exceptions/MissingCommunicator.hpp>
+#include <al5d_cpp/exceptions.hpp>
 
 
 namespace al5d
@@ -125,7 +125,7 @@ namespace al5d
             }
         }
 
-        throw "Joint not found"; // TODO : throw class
+        throw InvalidJointType();
     }
     
     
