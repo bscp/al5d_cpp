@@ -3,7 +3,6 @@
 
 // SYSTEM INCLUDES
 #include <exception>
-#include <iostream> // TODO : remove include
 
 // PROJECT INCLUDES
 #include <al5d_cpp/base/types.hpp>
