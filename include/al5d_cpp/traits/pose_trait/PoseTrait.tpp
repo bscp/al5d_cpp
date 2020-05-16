@@ -1,6 +1,9 @@
 #ifndef AL5D_CPP_POSETRAIT_TPP
 #define	AL5D_CPP_POSETRAIT_TPP
 
+// PROJECT INCLUDES
+#include <al5d_cpp/exceptions/InvalidPoseName.hpp>
+
 
 namespace al5d
 {
@@ -107,7 +110,7 @@ namespace al5d
             }
         }
 
-        throw "Pose not found"; // TODO : throw class
+        throw InvalidPoseName(pose_name);
     }
 
 
