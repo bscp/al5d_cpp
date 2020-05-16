@@ -61,7 +61,7 @@ namespace al5d
     }
 
     
-    void AL5DBase::tranmit_command_terminator_()
+    void AL5DBase::transmit_command_terminator_()
         const
     {
         transmit__("\r");
@@ -73,7 +73,7 @@ namespace al5d
         const
     {
         transmit__(command);
-        tranmit_command_terminator_();
+        transmit_command_terminator_();
     }
 
 
@@ -142,7 +142,7 @@ namespace al5d
         move_to_degree__(
             get_joint_(joint_name),
             degree);
-        tranmit_command_terminator_();
+        transmit_command_terminator_();
     }
 
 
@@ -155,7 +155,7 @@ namespace al5d
             get_joint_(joint_name),
             degree,
             move_duration);
-        tranmit_command_terminator_();
+        transmit_command_terminator_();
     }
 
 
@@ -166,7 +166,7 @@ namespace al5d
         move_to_degree__(
             get_joint_(joint_type),
             degree);
-        tranmit_command_terminator_();
+        transmit_command_terminator_();
     }
 
 
@@ -179,7 +179,7 @@ namespace al5d
             get_joint_(joint_type),
             degree,
             move_duration);
-        tranmit_command_terminator_();
+        transmit_command_terminator_();
     }
 
 
@@ -211,7 +211,7 @@ namespace al5d
                 joint_name_degree.degree,
                 move_duration);
         }
-        tranmit_command_terminator_();
+        transmit_command_terminator_();
     }
 
 
@@ -224,7 +224,7 @@ namespace al5d
                 get_joint_(joint_name_degree.joint_name),
                 joint_name_degree.degree);
         }
-        tranmit_command_terminator_();
+        transmit_command_terminator_();
     }
 
 
@@ -239,7 +239,7 @@ namespace al5d
                 joint_type_degree.degree,
                 move_duration);
         }
-        tranmit_command_terminator_();
+        transmit_command_terminator_();
     }
 
 
@@ -252,6 +252,6 @@ namespace al5d
                 get_joint_(joint_type_degree.joint_type),
                 joint_type_degree.degree);
         }
-        tranmit_command_terminator_();
+        transmit_command_terminator_();
     }
 }

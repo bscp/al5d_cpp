@@ -69,7 +69,7 @@ namespace al5d
             const Command &command)
             const;
         
-        virtual void tranmit_command_terminator_()
+        virtual void transmit_command_terminator_()
             const;
 
         const JointBase &get_joint_(
