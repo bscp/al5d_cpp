@@ -5,7 +5,6 @@
 #include <al5d_cpp/base/AL5DBase.hpp>
 
 // TRAIT INCLUDES
-#include <al5d_cpp/traits/logging_trait/LoggingTrait.hpp>
 #include <al5d_cpp/traits/progressing_trait/ProgressingTrait.hpp>
 #include <al5d_cpp/traits/serial_trait/SerialTrait.hpp>
 #include <al5d_cpp/traits/lambda_trait/LambdaTrait.hpp>
@@ -18,7 +17,6 @@ namespace al5d
 {
     typedef ProgressingTrait<AL5DBase> ProgressingAL5D;
     typedef PoseTrait<ProgressingAL5D> PoseAL5D;
-    typedef LoggingTrait<PoseAL5D> LoggingAL5D; // TODO : gets skipped
     typedef ConsoleTrait<PoseAL5D> ConsoleAL5D;
     typedef SerialTrait<PoseAL5D> SerialAL5D;
     typedef LambdaTrait<PoseAL5D> LambdaAL5D;
