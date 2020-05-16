@@ -1,0 +1,25 @@
+@startuml
+
+component "<u>DemoRunner</u>" <<ROSNode>> as DemoRunner #SkyBlue
+component "<u>CommandSerializer</u>" <<ROSNode>> as CommandSerializer #LimeGreen-Salmon
+component "<u>CommandTransmitter</u>" <<ROSNode>> as CommandTransmitter #LimeGreen-Salmon
+
+component MoveToPosesDemo #SkyBlue
+component MoveToDegreesDemo #SkyBlue
+component MoveAndHaltDemo #SkyBlue
+component AL5DSerializer #LimeGreen-Salmon
+component AL5DTransmitter #LimeGreen-Salmon
+
+DemoRunner <|-- MoveToPosesDemo
+DemoRunner <|-- MoveToDegreesDemo
+DemoRunner <|-- MoveAndHaltDemo
+CommandSerializer <|-- AL5DSerializer
+CommandTransmitter <|-- AL5DTransmitter
+
+legend right
+  <b><color:SkyBlue>Demo application</color></b>
+  <b><color:LimeGreen>High-level interface</color></b>
+  <b><color:Salmon>Low-level interface</color></b>
+endlegend
+
+@enduml

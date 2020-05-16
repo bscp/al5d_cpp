@@ -1,0 +1,19 @@
+@startuml
+
+left to right direction
+
+actor "Robot operator" as robot_operator
+
+rectangle "**System**" <<subsystem>> {
+    (Move to pose) as move_to_pose
+    (Move to degree) as move_to_degree
+    (Halt) as halt
+    (Unhalt) as unhalt
+}
+
+robot_operator -- move_to_degree
+robot_operator -- move_to_pose
+robot_operator -- unhalt
+robot_operator -- halt
+
+@enduml

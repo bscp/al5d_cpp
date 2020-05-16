@@ -1,39 +1,42 @@
 @startuml
 
-interface stop_command <<ROSService>> as stop_command_2
-interface degree_command <<ROSTopic>> as degree_command_2
-interface continue_command <<ROSService>> as continue_command
-interface pose_command <<ROSTopic>> as pose_command_2
-interface scheduled_stop_command <<ROSService>>
-interface scheduled_degree_command <<ROSTopic>>
-interface scheduled_pose_command <<ROSTopic>>
-interface transmitted_command <<serial>>
-interface serialized_command <<ROSTopic>>
+interface halt_command <<EmptySrv>>
+interface degree_command <<DegreeCommandMsg>>
+interface unhalt_command <<EmptySrv>>
+interface pose_command <<PoseCommandMsg>>
+interface stop_command <<EmptySrv>>
+interface scheduled_degree_command <<DegreeCommandMsg>>
+interface scheduled_pose_command <<PoseCommandMsg>>
+interface transmitted_command
+interface serialized_command <<StringMsg>>
 
-component DemoRunner <<ROSNode>>
-component CommandSerializer <<ROSNode>>
-component CommandTransmitter <<ROSNode>>
-component CommandScheduler <<ROSNode>>
+component CommandScheduler <<ROSNode>> #LimeGreen
+component "<u>DemoRunner</u>" <<ROSNode>> as DemoRunner #SkyBlue
+component "<u>CommandSerializer</u>" <<ROSNode>> as CommandSerializer #LimeGreen-Salmon
+component "<u>CommandTransmitter</u>" <<ROSNode>> as CommandTransmitter #LimeGreen-Salmon
 
-note right of CommandScheduler : High level interface
-note right of CommandSerializer : Low level interface
-
-DemoRunner -- stop_command_2
-DemoRunner -- degree_command_2
-DemoRunner -- continue_command
-DemoRunner -- pose_command_2
-stop_command_2 -- CommandScheduler
-continue_command -- CommandScheduler
-pose_command_2 -- CommandScheduler
-degree_command_2 -- CommandScheduler
-CommandScheduler -- scheduled_stop_command
+DemoRunner -- halt_command
+DemoRunner -- degree_command
+DemoRunner -- unhalt_command
+DemoRunner -- pose_command
+halt_command -- CommandScheduler
+unhalt_command -- CommandScheduler
+pose_command -- CommandScheduler
+degree_command -- CommandScheduler
+CommandScheduler -- stop_command
 CommandScheduler -- scheduled_degree_command
 CommandScheduler -- scheduled_pose_command
 CommandTransmitter -- transmitted_command
-scheduled_stop_command -- CommandSerializer
+stop_command -- CommandSerializer
 CommandSerializer -- serialized_command
 serialized_command -up- CommandTransmitter
 scheduled_degree_command -- CommandSerializer
 scheduled_pose_command -- CommandSerializer
+
+legend right
+  <b><color:SkyBlue>Demo application</color></b>
+  <b><color:LimeGreen>High-level interface</color></b>
+  <b><color:Salmon>Low-level interface</color></b>
+endlegend
 
 @enduml

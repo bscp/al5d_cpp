@@ -1,19 +1,28 @@
 @startuml
 
-package al5d_cpp
-package al5d_ros
-package ros#gray
-package boost#gray
-package yaml_cpp#gray
-package world1_demo
+package al5d_cpp <<SharedLibrary>> #Salmon
+package al5d_ros <<RosPackageBundle>> #LimeGreen
+package ros #Gray
+package boost #Gray
+package yaml_cpp#Gray
+package world1_demo <<RosWorkspace>> #SkyBlue
 
 al5d_cpp <-- al5d_ros
 boost <-- al5d_cpp
 yaml_cpp <-- al5d_cpp
 ros <-- al5d_ros
 ros <-- world1_demo
+al5d_ros <- world1_demo
 
-note left of al5d_cpp : Low level interface
-note left of al5d_ros : High level interface
+note left of al5d_cpp : Implementation of the\nlow-level interface.
+note left of al5d_ros : Implementation of the\nhigh-level interface.
+note right of world1_demo : Implementation of the\ndemo application.
+
+legend right
+  <b><color:SkyBlue>Demo application</color></b>
+  <b><color:LimeGreen>High-level interface</color></b>
+  <b><color:Salmon>Low-level interface</color></b>
+  <b><color:Gray>3th Party libraries</color></b>
+endlegend
 
 @enduml

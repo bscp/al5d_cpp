@@ -1,7 +1,40 @@
 @startuml
 
 namespace al5d {
-    
+
+    interface Communicator {
+        + transmit(message : String) : void
+        + is_ready() : Boolean
+    }
+
+    class AL5DBase {
+        + move_to_degree(joint_name, degree, move_duration) : void
+        + move_to_degree(joint_type, degree, move_duration) : void
+        + move_to_degree(joint_name, degree) : void
+        + move_to_degree(joint_type, degree) : void
+        + move_to_degrees(joint_name_degrees, move_duration) : void
+        + move_to_degrees(joint_type_degrees, move_duration) : void
+        + move_to_degrees(joint_name_degrees) : void
+        + move_to_degrees(joint_type_degrees) : void
+        + stop() : void
+        + is_ready() : Boolean
+        - move_to_degree__(joint, degree, move_duration) : void
+        - move_to_degree__(joint, degree) : void
+        - transmit__(message) : void
+        # joints__ : JointBases
+        # communicator_ptr__ : CommunicatorPtr
+    }
+
+    Communicator <- AL5DBase
+    AL5DBase -> JointBase
+    AL5DBase ..> AL5DBaseConfig
+    JointBase ..> JointBaseConfig
+    AL5DBaseConfig -> JointBaseConfig
+    Communicator ..> CommunicatorConfig
+    CommunicatorConfig <- AL5DBaseConfig
+    AL5DBaseConfig --> PosingConfig
+    PosingConfig --> PoseConfig
+    CommunicatorConfig <|-- SerialConfig
 }
 
 @enduml

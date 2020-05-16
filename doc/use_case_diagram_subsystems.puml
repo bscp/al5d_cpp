@@ -1,0 +1,45 @@
+@startuml
+
+left to right direction
+
+actor "Robot operator" as robot_operator
+
+rectangle "**Demo application**" <<subsystem>> {
+    (Move to poses) as demo_move_to_poses
+    (Move to degrees) as demo_move_to_degrees
+    (Move and stop) as demo_move_and_stop
+}
+
+rectangle "**High level interface**" <<subsystem>> {
+    (Move to pose) as hl_move_to_pose
+    (Move to degree) as hl_move_to_degree
+    (Halt) as hl_halt
+    (Unhalt) as hl_unhalt
+
+    note "{Should be reached in 2.3 seconds}" as move_time_contraint_note
+
+    note "{Should finished in 0.1 seconds}" as stop_time_contraint_note
+}
+
+rectangle "**Low level interface**" <<subsystem>> {
+    (Move to pose) as ll_move_to_pose
+    (Move to degree) as ll_move_to_degree
+    (Stop robot) as ll_stop_robot
+}
+
+robot_operator -- demo_move_to_poses
+robot_operator -- demo_move_to_degrees
+robot_operator -- demo_move_and_stop
+demo_move_to_poses ..> hl_move_to_pose:<<include>>
+demo_move_to_degrees ..> hl_move_to_degree:<<include>>
+demo_move_and_stop ..> hl_move_to_pose:<<include>>
+demo_move_and_stop ..> hl_halt:<<include>>
+demo_move_and_stop ..> hl_unhalt:<<include>>
+hl_move_to_pose ..> ll_move_to_pose:<<include>>
+hl_move_to_degree ..> ll_move_to_degree:<<include>>
+hl_halt ..> ll_stop_robot:<<include>>
+move_time_contraint_note . hl_move_to_degree
+hl_move_to_pose . move_time_contraint_note
+stop_time_contraint_note . hl_halt
+
+@enduml
