@@ -10,12 +10,11 @@ namespace al5d
         Value value)
         : value(value)
     {
-        validate(value);
+        validate();
     }
 
 
-    void PulseWidth::validate(
-        Value value)
+    void PulseWidth::validate()
         const
     {
         // PulseWidth is an unsigned type and thus always larger then zero

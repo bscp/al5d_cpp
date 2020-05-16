@@ -11,12 +11,11 @@ namespace al5d
         Value value)
         : value(value)
     {
-        validate(value);
+        validate();
     }
 
 
-    void Degree::validate(
-        Value value)
+    void Degree::validate()
         const
     {
         if (value < -360)

@@ -19,8 +19,7 @@ namespace al5d
         
     private:
 
-        void validate(
-            Value value)
+        void validate()
             const;
     };
 }
