@@ -18,7 +18,7 @@ namespace al5d
     
         static CommunicatorPtr as_ptr();
         
-        LambdaCommunicator(); // TODO : set = default?
+        LambdaCommunicator();
 
         void transmit(
             const std::string& message)
