@@ -24,7 +24,7 @@ namespace al5d
     void LambdaTrait<BaseType>::set_transmit_fn(
         const TransmitFn& transmit_fn)
     {
-        auto ptr = std::dynamic_pointer_cast<LambdaCommunicator>(BaseType::communicator_ptr);
+        auto ptr = std::dynamic_pointer_cast<LambdaCommunicator>(BaseType::communicator_ptr_);
         ptr->set_transmit_fn(transmit_fn);
     }
 }
