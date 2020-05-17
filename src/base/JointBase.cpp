@@ -102,7 +102,10 @@ namespace al5d
         const
     {
         validate_reachability__(degree);
-        return PulseWidth(PulseWidth::Value((degree.value - degree_range.value_1.value) * convert_ratio + pulse_width_range.min.value)); // TODO : shorten this line
+        auto abs_deg = degree.value - degree_range.min.value;
+        auto abs_pwm = abs_deg * convert_ratio;
+        auto pwm = abs_pwm + pulse_width_range.min.value;
+        return PulseWidth(PulseWidth::Value(pwm));
     }
     
     
