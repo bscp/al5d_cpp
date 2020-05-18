@@ -166,42 +166,43 @@ namespace al5d
         }
 
 
-        Degree load_pose_config_joint_degree(
+        Angle load_pose_config_joint_angle(
             const YAML::Node &json_node)
         {
-            return Degree(json_node.as<Degree::Value>());
+            const auto degree = json_node.as<Degree::Value>();
+            return Angle::from_degree(degree);
         }
 
 
         #define POSE_CONFIG_JOINT_NAME_KEY "joint"
         #define POSE_CONFIG_JOINT_DEGREES_KEY "degree"
-        JointNameDegree load_joint_name_degree(
+        JointNameAngle load_joint_name_angle(
             const YAML::Node &json_node)
         {
             validate_key(json_node, POSE_CONFIG_JOINT_NAME_KEY);
             validate_key(json_node, POSE_CONFIG_JOINT_DEGREES_KEY);
 
-            return JointNameDegree(
+            return JointNameAngle(
                 load_pose_config_joint_name(
                     json_node[POSE_CONFIG_JOINT_NAME_KEY]),
-                load_pose_config_joint_degree(
+                load_pose_config_joint_angle(
                     json_node[POSE_CONFIG_JOINT_DEGREES_KEY]));
         }
 
 
-        JointNameDegrees load_pose_config_joint_degree_list(
+        JointNameAngles load_pose_config_joint_name_angles(
             const YAML::Node &json_node)
         {
             validate_min_size(json_node, /*size*/1);
-            JointNameDegrees joint_name_degrees;
+            JointNameAngles joint_name_angles;
 
             for (size_t i = 0; i < json_node.size(); ++i)
             {
-                joint_name_degrees.push_back(
-                    load_joint_name_degree(json_node[i]));
+                joint_name_angles.push_back(
+                    load_joint_name_angle(json_node[i]));
             }
 
-            return joint_name_degrees;
+            return joint_name_angles;
         }
 
 
@@ -223,7 +224,7 @@ namespace al5d
             return PoseConfig(
                 load_pose_name(
                     json_node[POSE_CONFIG_NAME]),
-                load_pose_config_joint_degree_list(
+                load_pose_config_joint_name_angles(
                     json_node[POSE_CONFIG_JOINT_NAME_DEGREES_KEY]));
         }
 

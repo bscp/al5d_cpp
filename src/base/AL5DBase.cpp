@@ -94,7 +94,7 @@ namespace al5d
     }
     
     
-    const JointBase &AL5DBase::get_joint_(
+    const JointBase &AL5DBase::get_joint(
         const JointName& joint_name)
         const
     {
@@ -113,7 +113,7 @@ namespace al5d
     }
     
     
-    const JointBase &AL5DBase::get_joint_(
+    const JointBase &AL5DBase::get_joint(
         const JointType &joint_type)
         const
     {
@@ -135,122 +135,51 @@ namespace al5d
     }
 
 
-    void AL5DBase::move_to_degree(
-        const JointName& joint_name,
-        const Degree &degree)
-    {
-        move_to_degree__(
-            get_joint_(joint_name),
-            degree);
-        transmit_command_terminator_();
-    }
-
-
-    void AL5DBase::move_to_degree(
-        const JointName& joint_name,
-        const Degree &degree,
+    void AL5DBase::move_to_angles(
+        const JointNameAngles &joint_name_angles,
         const Duration &move_duration)
     {
-        move_to_degree__(
-            get_joint_(joint_name),
-            degree,
-            move_duration);
-        transmit_command_terminator_();
-    }
-
-
-    void AL5DBase::move_to_degree(
-        const JointType& joint_type,
-        const Degree &degree)
-    {
-        move_to_degree__(
-            get_joint_(joint_type),
-            degree);
-        transmit_command_terminator_();
-    }
-
-
-    void AL5DBase::move_to_degree(
-        const JointType& joint_type,
-        const Degree &degree,
-        const Duration &move_duration)
-    {
-        move_to_degree__(
-            get_joint_(joint_type),
-            degree,
-            move_duration);
-        transmit_command_terminator_();
-    }
-
-
-    /*static*/ void AL5DBase::move_to_degree__(
-        const JointBase& joint,
-        const Degree &degree)
-    {
-        joint.move_to(degree);
-    }
-
-
-    /*static*/ void AL5DBase::move_to_degree__(
-        const JointBase& joint,
-        const Degree &degree,
-        const Duration &move_duration)
-    {
-        joint.move_to(degree, move_duration);
-    }
-
-
-    void AL5DBase::move_to_degrees(
-        const JointNameDegrees &joint_name_degrees,
-        const Duration &move_duration)
-    {
-        for (const auto &joint_name_degree : joint_name_degrees)
+        for (const auto &joint_name_angle : joint_name_angles)
         {
-            move_to_degree__(
-                get_joint_(joint_name_degree.joint_name),
-                joint_name_degree.degree,
-                move_duration);
+            const auto& joint = get_joint(joint_name_angle.joint_name);
+            joint.move_to_angle(joint_name_angle.angle, move_duration);
         }
         transmit_command_terminator_();
     }
 
 
-    void AL5DBase::move_to_degrees(
-        const JointNameDegrees &joint_name_degrees)
+    void AL5DBase::move_to_angles(
+        const JointNameAngles &joint_name_angles)
     {
-        for (const auto &joint_name_degree : joint_name_degrees)
+        for (const auto &joint_name_angle : joint_name_angles)
         {
-            move_to_degree__(
-                get_joint_(joint_name_degree.joint_name),
-                joint_name_degree.degree);
+            const auto& joint = get_joint(joint_name_angle.joint_name);
+            joint.move_to_angle(joint_name_angle.angle);
         }
         transmit_command_terminator_();
     }
 
 
-    void AL5DBase::move_to_degrees(
-        const JointTypeDegrees &joint_type_degrees,
+    void AL5DBase::move_to_angles(
+        const JointTypeAngles &joint_type_angles,
         const Duration &move_duration)
     {
-        for (const auto &joint_type_degree : joint_type_degrees)
+        for (const auto &joint_type_angle : joint_type_angles)
         {
-            move_to_degree__(
-                get_joint_(joint_type_degree.joint_type),
-                joint_type_degree.degree,
-                move_duration);
+            const auto& joint = get_joint(joint_type_angle.joint_type);
+            joint.move_to_angle(joint_type_angle.angle, move_duration);
         }
         transmit_command_terminator_();
     }
 
 
-    void AL5DBase::move_to_degrees(
-        const JointTypeDegrees &joint_type_degrees)
+    void AL5DBase::move_to_angles(
+        const JointTypeAngles &joint_type_angles)
     {
-        for (const auto &joint_type_degree : joint_type_degrees)
+        for (const auto &joint_type_angle : joint_type_angles)
         {
-            move_to_degree__(
-                get_joint_(joint_type_degree.joint_type),
-                joint_type_degree.degree);
+            const auto& joint = get_joint(joint_type_angle.joint_type);
+            joint.move_to_angle(joint_type_angle.angle);
         }
         transmit_command_terminator_();
     }

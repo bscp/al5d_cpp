@@ -7,12 +7,13 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/base/types/JointType.hpp>
-#include <al5d_cpp/base/types/JointTypeDegree.hpp>
+#include <al5d_cpp/base/types/JointTypeAngle.hpp>
 #include <al5d_cpp/base/types/PulseWidth.hpp>
 #include <al5d_cpp/base/types/PulseWidthRange.hpp>
 #include <al5d_cpp/base/types/Degree.hpp>
 #include <al5d_cpp/base/types/DegreeRange.hpp>
-#include <al5d_cpp/base/types/JointNameDegree.hpp>
+#include <al5d_cpp/base/types/JointNameAngle.hpp>
+#include <al5d_cpp/base/types/Angle.hpp>
 
 
 namespace al5d

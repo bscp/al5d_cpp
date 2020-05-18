@@ -7,6 +7,7 @@
 // TYPE DECLARATIONS
 typedef al5d::Duration Duration;
 typedef al5d::Degree Degree;
+typedef al5d::Angle Angle;
 
 
 int main()
@@ -19,18 +20,25 @@ int main()
 
     sleep(1); // in seconds
 
-    // move to degree
-    auto move_duration = Duration::from_ms(2000);
-    al5d.move_to_degree(al5d::JOINT_BASE, Degree(90), move_duration);
-    al5d.move_to_degrees({
-        {al5d::JOINT_BASE, Degree(90)},
-        {al5d::JOINT_SHOULDER, Degree(90)}},
-        move_duration);
+    // move multiple joints to degree
+    al5d.move_to_angles({
+        {al5d::JOINT_BASE, Angle::from_degree(90)},
+        {al5d::JOINT_SHOULDER, Angle::from_degree(90)}},
+        Duration::from_ms(2000));
+    sleep(2);
 
-    // move to pose
-    al5d.move_to_pose("ready", move_duration);
+    // move multiple joints to a named pose
+    al5d.move_to_pose("ready", Duration::from_ms(2000));
+    sleep(2);
 
-    sleep(1); // in seconds
+    // move single joint to degree
+    auto& base_joint = al5d.get_joint(al5d::JOINT_BASE); // TODO : make const
+    base_joint.move_to_angle(Angle::from_degree(90), Duration::from_ms(2000));
+    sleep(2);
 
+    // stop single joint
+    base_joint.stop();
+
+    // stop all joints
     al5d.stop();
 }

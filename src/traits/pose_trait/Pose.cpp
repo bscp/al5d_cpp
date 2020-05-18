@@ -6,9 +6,9 @@ namespace al5d
 {
     Pose::Pose(
         const PoseName& name,
-        const JointTypeDegrees& joint_type_degrees)
+        const JointTypeAngles& joint_type_angles)
         : name(name)
-        , joint_type_degrees(joint_type_degrees)
+        , joint_type_angles(joint_type_angles)
     {
     }
 }

@@ -21,45 +21,23 @@ namespace al5d
 
         bool is_moving()
             const;
-    
-        virtual void move_to_degree(
-            const JointName& joint_name,
-            const Degree &degree,
-            const Duration &move_duration)
-            override;
-    
-        virtual void move_to_degree(
-            const JointType& joint_type,
-            const Degree &degree,
-            const Duration &move_duration)
-            override;
-            
-        virtual void move_to_degree(
-            const JointName& joint_name,
-            const Degree &degree)
-            override;
-    
-        virtual void move_to_degree(
-            const JointType& joint_type,
-            const Degree &degree)
-            override;
         
-        virtual void move_to_degrees(
-            const JointNameDegrees &joint_name_degrees,
+        virtual void move_to_angles(
+            const JointNameAngles &joint_name_angles,
             const Duration &move_duration)
             override;
     
-        virtual void move_to_degrees(
-            const JointTypeDegrees &joint_type_degrees,
+        virtual void move_to_angles(
+            const JointTypeAngles &joint_type_angles,
             const Duration &move_duration)
             override;
         
-        virtual void move_to_degrees(
-            const JointNameDegrees &joint_name_degrees)
+        virtual void move_to_angles(
+            const JointNameAngles &joint_name_angles)
             override;
     
-        virtual void move_to_degrees(
-            const JointTypeDegrees &joint_type_degrees)
+        virtual void move_to_angles(
+            const JointTypeAngles &joint_type_angles)
             override;
     
     private:

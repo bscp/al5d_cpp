@@ -27,13 +27,16 @@ namespace al5d
         
         virtual ~JointBase() = default;
     
-        void move_to(
-            const Degree& degree)
+        void move_to_angle(
+            const Angle& angle)
             const;
     
-        void move_to(
-            const Degree& degree,
+        void move_to_angle(
+            const Angle& angle,
             const Duration& move_duration)
+            const;
+        
+        void stop()
             const;
 
         bool has_name(
@@ -56,11 +59,11 @@ namespace al5d
             const;
         
         void validate_reachability__(
-            Degree degree)
+            const Angle& angle)
             const;
 
-        void transmit_degree__(
-            const Degree& degree)
+        void transmit_angle__(
+            const Angle& angle)
             const;
 
         void transmit_move_duration__(
@@ -75,7 +78,7 @@ namespace al5d
             const;
         
         PulseWidth to_pulse_width__(
-            Degree degree)
+            const Angle& angle)
             const;
         
         std::string name;

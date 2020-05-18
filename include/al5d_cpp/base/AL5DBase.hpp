@@ -19,45 +19,35 @@ namespace al5d
         typedef AL5DBaseConfig Config;
     
         virtual ~AL5DBase();
-    
-        virtual void move_to_degree(
-            const JointName& joint_name,
-            const Degree &degree,
-            const Duration &move_duration);
-    
-        virtual void move_to_degree(
-            const JointType& joint_type,
-            const Degree &degree,
-            const Duration &move_duration);
-            
-        virtual void move_to_degree(
-            const JointName& joint_name,
-            const Degree &degree);
-    
-        virtual void move_to_degree(
-            const JointType& joint_type,
-            const Degree &degree);
         
-        virtual void move_to_degrees(
-            const JointNameDegrees &joint_name_degrees,
+        virtual void move_to_angles(
+            const JointNameAngles &joint_name_angles,
             const Duration &move_duration);
     
-        virtual void move_to_degrees(
-            const JointTypeDegrees &joint_type_degrees,
+        virtual void move_to_angles(
+            const JointTypeAngles &joint_type_angles,
             const Duration &move_duration);
         
-        virtual void move_to_degrees(
-            const JointNameDegrees &joint_name_degrees);
+        virtual void move_to_angles(
+            const JointNameAngles &joint_name_angles);
     
-        virtual void move_to_degrees(
-            const JointTypeDegrees &joint_type_degrees);
+        virtual void move_to_angles(
+            const JointTypeAngles &joint_type_angles);
             
         virtual void stop();
 
         void set_communicator_ptr(
             const CommunicatorPtr& communicator_ptr);
         
-        bool is_ready()
+        bool is_ready() // TODO : remove ?
+            const;
+
+        const JointBase &get_joint(
+            const JointType &joint_type)
+            const;
+    
+        const JointBase &get_joint(
+            const JointName& joint_name)
             const;
 
     protected:
@@ -71,14 +61,6 @@ namespace al5d
         
         virtual void transmit_command_terminator_()
             const;
-
-        const JointBase &get_joint_(
-            const JointType &joint_type)
-            const;
-    
-        const JointBase &get_joint_(
-            const JointName& joint_name)
-            const;
             
         JointBases joints_;
 
@@ -89,12 +71,12 @@ namespace al5d
         void validate_communicator_ptr__()
             const;
     
-        static void move_to_degree__(
+        static void move_to__(
             const JointBase& joint,
             const Degree &degree,
             const Duration &move_duration);
     
-        static void move_to_degree__(
+        static void move_to__(
             const JointBase& joint,
             const Degree &degree);
 

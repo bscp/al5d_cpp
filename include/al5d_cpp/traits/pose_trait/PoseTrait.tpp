@@ -27,28 +27,28 @@ namespace al5d
     
     
     template <typename BaseType>
-    JointTypeDegree PoseTrait<BaseType>::construct_poses(
-        const JointNameDegree& joint_name_degree)
+    JointTypeAngle PoseTrait<BaseType>::construct_poses(
+        const JointNameAngle& joint_name_angle)
     {
-        return JointTypeDegree(
-            BaseType::get_joint_(joint_name_degree.joint_name).get_type(),
-            joint_name_degree.degree);
+        return JointTypeAngle(
+            BaseType::get_joint(joint_name_angle.joint_name).get_type(),
+            joint_name_angle.angle);
     }
     
     
     template <typename BaseType>
-    JointTypeDegrees PoseTrait<BaseType>::construct_poses(
-        const JointNameDegrees& joint_name_degrees)
+    JointTypeAngles PoseTrait<BaseType>::construct_poses(
+        const JointNameAngles& joint_name_angles)
     {
-        JointTypeDegrees joint_type_degrees;
+        JointTypeAngles joint_type_angles;
 
-        for (const auto& joint_name_degrees : joint_name_degrees)
+        for (const auto& joint_name_angle : joint_name_angles)
         {
-            joint_type_degrees.push_back(
-                construct_poses(joint_name_degrees));
+            joint_type_angles.push_back(
+                construct_poses(joint_name_angle));
         }
 
-        return joint_type_degrees;
+        return joint_type_angles;
     }
     
     
@@ -58,7 +58,7 @@ namespace al5d
     {
         return Pose(
             pose_config.name,
-            construct_poses(pose_config.joint_name_degrees));
+            construct_poses(pose_config.joint_name_angles));
     }
     
     
@@ -119,8 +119,8 @@ namespace al5d
         const PoseName& pose_name)
     {
         const auto& pose = get_pose(pose_name);
-        const auto& joint_type_degrees = pose.joint_type_degrees;
-        BaseType::move_to_degrees(joint_type_degrees);
+        const auto& joint_type_angles = pose.joint_type_angles;
+        BaseType::move_to_angles(joint_type_angles);
     }
 
 
@@ -130,8 +130,8 @@ namespace al5d
         const Duration &move_duration)
     {
         const auto& pose = get_pose(pose_name);
-        const auto& joint_type_degrees = pose.joint_type_degrees;
-        BaseType::move_to_degrees(joint_type_degrees, move_duration);
+        const auto& joint_type_angles = pose.joint_type_angles;
+        BaseType::move_to_angles(joint_type_angles, move_duration);
     }
 
 
@@ -141,8 +141,7 @@ namespace al5d
     {
         for (const auto& pose_config : posing_config.pose_configs)
         {
-            poses.push_back(
-                construct_poses(pose_config));
+            poses.push_back(construct_poses(pose_config));
         }
     }
 

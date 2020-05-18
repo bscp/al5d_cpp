@@ -14,10 +14,10 @@ namespace al5d
     {
         PoseConfig(
             const PoseName& name,
-            const JointNameDegrees& joint_name_degrees);
+            const JointNameAngles& joint_name_angles);
         
         const PoseName name;
-        const JointNameDegrees joint_name_degrees;
+        const JointNameAngles joint_name_angles;
     };
 
     typedef std::vector<PoseConfig> PoseConfigs;

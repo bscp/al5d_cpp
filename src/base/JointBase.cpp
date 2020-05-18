@@ -54,34 +54,42 @@ namespace al5d
     }
 
     
-    void JointBase::move_to(
-        const Degree& degree)
+    void JointBase::move_to_angle(
+        const Angle& angle)
         const
     {
-        transmit_degree__(degree);
+        transmit_angle__(angle);
     }
     
     
-    void JointBase::move_to(
-        const Degree& degree,
+    void JointBase::move_to_angle(
+        const Angle& angle,
         const Duration& move_duration)
         const
     {
-        transmit_degree__(degree);
+        transmit_angle__(angle);
         transmit_move_duration__(move_duration);
     }
     
     
-    void JointBase::transmit_degree__(
-        const Degree& degree)
+    void JointBase::transmit_angle__(
+        const Angle& angle)
         const
     {
-        validate_reachability__(degree);
+        validate_reachability__(angle);
+        const auto angle_in_pulse_width = to_pulse_width__(angle);
 
         std::string command("#" + std::to_string(board_channel));
-        command += "P" + std::to_string(to_pulse_width__(degree).value);        
+        command += "P" + std::to_string(angle_in_pulse_width.value);        
 
         transmit__(command);
+    }
+    
+    
+    void JointBase::stop()
+        const
+    {
+        transmit__("STOP " + std::to_string(board_channel) + "\r");
     }
     
     
@@ -98,21 +106,22 @@ namespace al5d
     
     
     PulseWidth JointBase::to_pulse_width__(
-        Degree degree)
+        const Angle& angle)
         const
     {
-        validate_reachability__(degree);
-        auto abs_deg = degree.value - degree_range.min.value;
-        auto abs_pwm = abs_deg * convert_ratio;
-        auto pwm = abs_pwm + pulse_width_range.min.value;
-        return PulseWidth(PulseWidth::Value(pwm));
+        validate_reachability__(angle); // TODO : remove (if can?)
+        auto abs_degree = angle.in_degree().value - degree_range.min.value;
+        auto abs_pulse_width = abs_degree * convert_ratio;
+        auto pulse_width = abs_pulse_width + pulse_width_range.min.value;
+        return PulseWidth(pulse_width);
     }
     
     
     void JointBase::validate_reachability__(
-        Degree degree)
+        const Angle& angle)
         const
     {
+        const auto degree = angle.in_degree();
         if (!degree_range.is_within_range(degree))
         {
             LOG_ERROR("degree out of range");

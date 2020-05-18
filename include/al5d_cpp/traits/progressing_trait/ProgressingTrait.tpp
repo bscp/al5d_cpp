@@ -37,81 +37,41 @@ namespace al5d
         
         return !timer_ptr->has_elapsed();
     }
-    
 
-    template <typename BaseType>
-    void ProgressingTrait<BaseType>::move_to_degree(
-        const JointName& joint_name,
-        const Degree &degree,
-        const Duration &move_duration)
-    {
-        BaseType::move_to_degree(joint_name, degree, move_duration);
-        start_timer(move_duration);
-    }
-    
-    
-    template <typename BaseType>
-    void ProgressingTrait<BaseType>::move_to_degree(
-        const JointType& joint_type,
-        const Degree &degree,
-        const Duration &move_duration)
-    {
-        BaseType::move_to_degree(joint_type, degree, move_duration);
-        start_timer(move_duration);
-    }
-    
-        
-    template <typename BaseType>    
-    void ProgressingTrait<BaseType>::move_to_degree(
-        const JointName& joint_name,
-        const Degree &degree)
-    {
-        BaseType::move_to_degree(joint_name, degree);
-    }
-    
-    
-    template <typename BaseType>
-    void ProgressingTrait<BaseType>::move_to_degree(
-        const JointType& joint_type,
-        const Degree &degree)
-    {
-        BaseType::move_to_degree(joint_type, degree);
-    }
-    
         
     template <typename BaseType>
-    void ProgressingTrait<BaseType>::move_to_degrees(
-        const JointNameDegrees &joint_name_degrees,
+    void ProgressingTrait<BaseType>::move_to_angles(
+        const JointNameAngles &joint_name_angles,
         const Duration &move_duration)
     {
-        BaseType::move_to_degrees(joint_name_degrees, move_duration);
+        BaseType::move_to_angles(joint_name_angles, move_duration);
         start_timer(move_duration);
     }
     
     
     template <typename BaseType>
-    void ProgressingTrait<BaseType>::move_to_degrees(
-        const JointTypeDegrees &joint_type_degrees,
+    void ProgressingTrait<BaseType>::move_to_angles(
+        const JointTypeAngles &joint_type_angles,
         const Duration &move_duration)
     {
-        BaseType::move_to_degrees(joint_type_degrees, move_duration);
+        BaseType::move_to_angles(joint_type_angles, move_duration);
         start_timer(move_duration);
     }
     
 
     template <typename BaseType>
-    void ProgressingTrait<BaseType>::move_to_degrees(
-        const JointNameDegrees &joint_name_degrees)
+    void ProgressingTrait<BaseType>::move_to_angles(
+        const JointNameAngles &joint_name_angles)
     {
-        BaseType::move_to_degrees(joint_name_degrees);
+        BaseType::move_to_angles(joint_name_angles);
     }
 
     
     template <typename BaseType>
-    void ProgressingTrait<BaseType>::move_to_degrees(
-        const JointTypeDegrees &joint_type_degrees)
+    void ProgressingTrait<BaseType>::move_to_angles(
+        const JointTypeAngles &joint_type_angles)
     {
-        BaseType::move_to_degrees(joint_type_degrees);
+        BaseType::move_to_angles(joint_type_angles);
     }
 }
 

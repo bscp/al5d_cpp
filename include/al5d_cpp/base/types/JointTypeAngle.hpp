@@ -6,22 +6,22 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/base/types/JointType.hpp>
-#include <al5d_cpp/base/types/Degree.hpp>
+#include <al5d_cpp/base/types/Angle.hpp>
 
 
 namespace al5d
 {
-    struct JointTypeDegree
+    struct JointTypeAngle
     {
         const JointType joint_type;
-        const Degree degree;
+        const Angle angle;
 
-        JointTypeDegree(
+        JointTypeAngle(
             const JointType& joint_type,
-            const Degree &degree);
+            const Angle& angle);
     };
     
-    typedef std::vector<JointTypeDegree> JointTypeDegrees;
+    typedef std::vector<JointTypeAngle> JointTypeAngles;
 }
 
 
