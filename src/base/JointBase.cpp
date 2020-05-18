@@ -3,6 +3,7 @@
 
 // SYSTEM INCLUDES
 #include <stdexcept>
+#include <cmath>
 
 // PROJECT INCLUDES
 #include <al5d_cpp/logging.hpp>
@@ -110,7 +111,7 @@ namespace al5d
         const
     {
         validate_reachability__(angle); // TODO : remove (if can?)
-        auto abs_degree = angle.in_degree().value - degree_range.min.value;
+        auto abs_degree = std::abs(angle.in_degree().value - degree_range.value_1.value);
         auto abs_pulse_width = abs_degree * convert_ratio;
         auto pulse_width = abs_pulse_width + pulse_width_range.min.value;
         return PulseWidth(pulse_width);
