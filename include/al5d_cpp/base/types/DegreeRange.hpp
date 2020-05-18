@@ -8,12 +8,16 @@
 namespace al5d
 {
     class DegreeRange
-    {   
+    {
     public:
 
         DegreeRange(
             const Degree& value_1,
             const Degree& value_2);
+
+        DegreeRange(
+            const Degree::Value& value_1,
+            const Degree::Value& value_2);
 
         virtual ~DegreeRange() = default;
 

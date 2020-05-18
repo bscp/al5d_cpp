@@ -15,6 +15,10 @@ namespace al5d
             const PulseWidth& min,
             const PulseWidth& max);
 
+        PulseWidthRange(
+            const PulseWidth::Value& min,
+            const PulseWidth::Value& max);
+
         virtual ~PulseWidthRange() = default;
 
         double get_difference()

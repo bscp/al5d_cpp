@@ -43,6 +43,15 @@ namespace al5d
         validate();
     }
 
+
+    DegreeRange::DegreeRange(
+        const Degree::Value& value_1,
+        const Degree::Value& value_2)
+        : DegreeRange(Degree(value_1), Degree(value_2))
+    {
+    }
+
+
     void DegreeRange::validate()
         const
     {

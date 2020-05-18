@@ -15,6 +15,14 @@ namespace al5d
     {
         validate();
     }
+
+    
+    PulseWidthRange::PulseWidthRange(
+        const PulseWidth::Value& min,
+        const PulseWidth::Value& max)
+        : PulseWidthRange(PulseWidth(min), PulseWidth(max))
+    {
+    }
     
 
     void PulseWidthRange::validate()
