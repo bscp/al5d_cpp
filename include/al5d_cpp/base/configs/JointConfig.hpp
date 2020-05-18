@@ -10,7 +10,7 @@
 
 namespace al5d
 {
-    struct JointConfig
+    struct JointConfig // TODO : rename to JointBaseConfig
     {
         JointConfig(
             const JointName& name,
