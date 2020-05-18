@@ -4,16 +4,28 @@
 
 namespace al5d
 {
-    Duration Duration::from_milliseconds(Milliseconds milliseconds)
+    /*static*/ Duration Duration::from_milliseconds(Milliseconds milliseconds)
     {
         return Duration(milliseconds);
     }
     
     
-    Duration Duration::from_seconds(Seconds seconds)
+    /*static*/ Duration Duration::from_seconds(Seconds seconds)
     {
         auto milliseconds = Milliseconds(seconds * 1000);
         return Duration(milliseconds);
+    }
+
+
+    /*static*/ Duration Duration::from_ms(Milliseconds milliseconds)
+    {
+        return Duration::from_milliseconds(milliseconds);
+    }
+    
+    
+    /*static*/ Duration Duration::from_s(Seconds seconds)
+    {
+        return Duration::from_seconds(seconds);
     }
     
     

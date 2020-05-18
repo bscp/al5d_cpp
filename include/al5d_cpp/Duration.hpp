@@ -17,6 +17,12 @@ namespace al5d
         static Duration from_seconds(
             Seconds seconds);
 
+        static Duration from_ms(
+            Milliseconds milliseconds);
+
+        static Duration from_s(
+            Seconds seconds);
+
         virtual ~Duration() = default;
         
         Seconds in_seconds() const;
