@@ -1,0 +1,42 @@
+@startuml
+
+class Context {
+    + run_once() : void
+}
+
+interface Command {
+    + execute() : void
+}
+
+class ContextCommand {
+    + execute() : void
+}
+
+class CommandableContext {
+    + execute_pose_command() : void
+}
+
+class Controller {
+    + schedule_pose_command() : void
+}
+
+class PoseCommand {
+    + execute() : void
+}
+
+Command <|-- ContextCommand
+Context <|-- CommandableContext
+CommandableContext <- ContextCommand
+CommandableContext <|-- Controller
+Controller .> PoseCommand
+ContextCommand <|-- PoseCommand
+Command <-- CommandableContext
+State <- Context
+State <|-- ContextState
+ContextState -> CommandableContext
+ContextState <|-- IdlingState
+CommandableContext <.. IdlingState
+CommandableContext <.. PoseCommand
+IdlingState <. Controller
+
+@enduml

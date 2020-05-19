@@ -20,7 +20,7 @@ namespace al5d
 {
     typedef std::string JointName;
     typedef std::string PoseName;
-    typedef std::string Command;
+    typedef std::string ProtocolCommand;
     typedef unsigned int BoardChannel;
 }
 

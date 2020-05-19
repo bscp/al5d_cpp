@@ -71,7 +71,7 @@ namespace al5d
             const;
 
         void transmit__(
-            const std::string& message)
+            const ProtocolCommand& message)
             const;
 
         double calculate_convert_ratio__()

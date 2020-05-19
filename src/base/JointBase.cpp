@@ -149,7 +149,7 @@ namespace al5d
     
     
     void JointBase::transmit__(
-        const std::string& message)
+        const ProtocolCommand& message)
         const
     {
         validate_communicator_ptr__();

@@ -1,0 +1,42 @@
+#ifndef SRC_CONTEXTSTATE_HPP
+#define SRC_CONTEXTSTATE_HPP
+
+// SYSTEM INCLUDES
+#include <string>
+#include <memory>
+
+// PROJECT INCLUDES
+#include <al5d_cpp/controller/Controller.hpp>
+#include <al5d_cpp/controller/ContextState.hpp>
+
+
+namespace al5d
+{
+    typedef al5d::Event Event;
+    
+    class ContextState : public al5d::State
+    {
+    public:
+        virtual ~ContextState() = default;
+    
+        void do_activity() override = 0;
+    
+        void handle_event(Event event) override;
+
+    protected:
+        ContextState(
+            const std::string& state_name,
+            Controller *context_ptr);
+        
+        void log_handling_event(
+            const std::string &event_string)
+            const;
+    
+        Controller* context_ptr;
+    };
+    
+    typedef std::shared_ptr<ContextState> ContextStatePtr;
+}
+
+
+#endif // SRC_CONTEXTSTATE_HPP

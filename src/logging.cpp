@@ -19,6 +19,12 @@ namespace al5d
     }
     
     
+    void log_warning(const std::string &line)
+    {
+        std::cout << "WARNING :: " << line << "\n";
+    }
+    
+    
     void log_error(const std::string &line)
     {
         std::cout << "ERROR :: " << line << "\n";

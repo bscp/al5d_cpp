@@ -3,6 +3,8 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/base/AL5DBase.hpp>
+#include <al5d_cpp/controller/Controller.hpp>
+
 
 // TRAIT INCLUDES
 #include <al5d_cpp/traits/progressing_trait/ProgressingTrait.hpp>

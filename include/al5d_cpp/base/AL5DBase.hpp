@@ -56,7 +56,7 @@ namespace al5d
             const AL5DBaseConfig& config);
         
         virtual void transmit_command_(
-            const Command &command)
+            const ProtocolCommand &command)
             const;
         
         virtual void transmit_command_terminator_()
@@ -81,7 +81,7 @@ namespace al5d
             const Degree &degree);
 
         void transmit__(
-            const std::string& message)
+            const ProtocolCommand& message)
             const;
     
         JointBases construct_joints__(

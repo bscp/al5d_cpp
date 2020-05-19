@@ -3,42 +3,41 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/AL5D.hpp>
-
-// TYPE DECLARATIONS
-typedef al5d::Duration Duration;
-typedef al5d::Degree Degree;
-typedef al5d::Angle Angle;
+#include <al5d_cpp/controller/Controller.hpp>
 
 
 int main()
 {
-    const std::string al5d_file_path = "//workspaces//al5d_cpp//examples//al5d.json";
-    auto al5d = al5d::AL5D::from_json_file(al5d_file_path);
+    const std::string config_file = "//workspaces//al5d_cpp//examples//al5d.json";
+    auto al5d = al5d::AL5D::from_json_file(config_file);
+    al5d::Controller al5d_controller(al5d);
 
-    const std::string posing_file_path = "//workspaces//al5d_cpp//examples//al5d_posing.json";
-    al5d.set_poses(al5d::AL5D::posing_config_from_json_file(posing_file_path));
 
-    sleep(1); // in seconds
+    // move multiple joints to angles over time
+    al5d_controller.schedule_angles_command(
+        {
+            {al5d::JOINT_BASE, al5d::Angle::from_degree(90)},
+            {al5d::JOINT_SHOULDER, al5d::Angle::from_degree(90)}
+        },
+        al5d::Duration::from_ms(2000));
 
-    // move multiple joints to degree
-    al5d.move_to_angles({
-        {al5d::JOINT_BASE, Angle::from_degree(90)},
-        {al5d::JOINT_SHOULDER, Angle::from_degree(90)}},
-        Duration::from_ms(2000));
-    sleep(2);
 
-    // move multiple joints to a named pose
-    al5d.move_to_pose("ready", Duration::from_ms(2000));
-    sleep(2);
+    // move to a named pose
+    al5d_controller.schedule_pose_command(
+        "ready", al5d::Duration::from_ms(2000));
 
-    // move single joint to degree
-    auto& base_joint = al5d.get_joint(al5d::JOINT_BASE); // TODO : make const
-    base_joint.move_to_angle(Angle::from_degree(90), Duration::from_ms(2000));
-    sleep(2);
 
-    // stop single joint
-    base_joint.stop();
+    // move single joint to angle over time
+    al5d_controller.schedule_angle_command(
+        {al5d::JOINT_BASE, al5d::Angle::from_degree(90)},
+        al5d::Duration::from_ms(2000));
 
-    // stop all joints
-    al5d.stop();
+
+    while (true)
+    {
+        al5d_controller.run_once();
+    }
+
+
+    return 0;    
 }

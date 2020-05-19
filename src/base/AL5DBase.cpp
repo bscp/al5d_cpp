@@ -53,7 +53,7 @@ namespace al5d
     
     
     void AL5DBase::transmit__(
-        const std::string& message)
+        const ProtocolCommand& message)
         const
     {
         validate_communicator_ptr__();
@@ -69,7 +69,7 @@ namespace al5d
     
     
     void AL5DBase::transmit_command_(
-        const Command &command)
+        const ProtocolCommand &command)
         const
     {
         transmit__(command);
