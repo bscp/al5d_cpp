@@ -152,6 +152,7 @@ namespace al5d
             joint.move_to_angle(joint_angle, move_duration);
         }
         transmit_command_terminator_();
+        start_timer(move_duration);
     }
 
 
@@ -181,6 +182,7 @@ namespace al5d
             joint.move_to_angle(joint_angle, move_duration);
         }
         transmit_command_terminator_();
+        start_timer(move_duration);
     }
 
 
