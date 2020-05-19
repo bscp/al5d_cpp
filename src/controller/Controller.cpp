@@ -92,15 +92,15 @@ namespace al5d
     
     void Controller::start_next_command()
     {
-        // TODO : command.execute();
+        // TODO : current_command_ptr.execute();
     }
     
     
     void Controller::check_moving_progress()
     {
-        // if (!al5d.is_moving()) // TODO : implement
-        // {
-        //     schedule_event(EVENT_MOVING_FINISHED);
-        // }
+        if (!al5d.is_moving())
+        {
+            schedule_event(EVENT_MOVING_FINISHED);
+        }
     }
 }

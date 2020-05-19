@@ -183,4 +183,23 @@ namespace al5d
         }
         transmit_command_terminator_();
     }
+    
+    
+    void AL5DBase::start_timer(
+        const Duration &move_duration)
+    {
+        timer_ptr = Timer::as_pointer(move_duration.in_milliseconds());
+    }
+    
+    
+    bool AL5DBase::is_moving()
+        const
+    {
+        if (timer_ptr == nullptr)
+        {
+            return false;
+        }
+        
+        return !timer_ptr->has_elapsed();
+    }
 }

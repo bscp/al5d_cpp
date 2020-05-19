@@ -9,6 +9,7 @@
 #include <al5d_cpp/base/configs/AL5DBaseConfig.hpp>
 #include <al5d_cpp/base/settings.hpp>
 #include <al5d_cpp/base/Communicator.hpp>
+#include <al5d_cpp/Timer.hpp>
 
 
 namespace al5d
@@ -49,6 +50,9 @@ namespace al5d
         const JointBase &get_joint(
             const JointName& joint_name)
             const;
+            
+        bool is_moving()
+            const;
 
     protected:
 
@@ -65,7 +69,6 @@ namespace al5d
         JointBases joints_;
 
         CommunicatorPtr communicator_ptr_ = nullptr;
-            
     private:
 
         void validate_communicator_ptr__()
@@ -80,6 +83,9 @@ namespace al5d
             const JointBase& joint,
             const Degree &degree);
 
+        void start_timer( // TODO : rename to start_timer__
+            const Duration &move_duration);
+
         void transmit__(
             const ProtocolCommand& message)
             const;
@@ -88,6 +94,10 @@ namespace al5d
             const JointConfigs& joint_configs);
 
         void set_joint_communicator_ptrs__();
+
+        // timer was used because al5d did not respond to
+        // the position commands
+        TimerPtr timer_ptr;
     };
 }
 

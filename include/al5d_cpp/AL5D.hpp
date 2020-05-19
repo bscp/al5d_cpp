@@ -7,7 +7,6 @@
 
 
 // TRAIT INCLUDES
-#include <al5d_cpp/traits/progressing_trait/ProgressingTrait.hpp>
 #include <al5d_cpp/traits/serial_trait/SerialTrait.hpp>
 #include <al5d_cpp/traits/lambda_trait/LambdaTrait.hpp>
 #include <al5d_cpp/traits/console_trait/ConsoleTrait.hpp>
@@ -17,8 +16,7 @@
 
 namespace al5d
 {
-    typedef ProgressingTrait<AL5DBase> ProgressingAL5D;
-    typedef PoseTrait<ProgressingAL5D> PoseAL5D;
+    typedef PoseTrait<AL5DBase> PoseAL5D;
     typedef ConsoleTrait<PoseAL5D> ConsoleAL5D;
     typedef SerialTrait<PoseAL5D> SerialAL5D;
     typedef LambdaTrait<PoseAL5D> LambdaAL5D;
