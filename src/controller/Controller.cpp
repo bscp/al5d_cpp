@@ -37,6 +37,15 @@ namespace al5d
     }
 
 
+    void Controller::schedule_angles_command(
+        const JointTypeAngles& joint_type_angles,
+        const Duration& move_duration)
+    {
+        scheduled_command_ptrs.push(
+            AnglesCommand::as_ptr(this, joint_type_angles, move_duration));
+    }
+
+
     void Controller::change_to_idling_state()
     {
         change_state(IdlingState::as_pointer(this));

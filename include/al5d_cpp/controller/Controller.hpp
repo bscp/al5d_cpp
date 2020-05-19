@@ -31,12 +31,9 @@ namespace al5d
         void change_to_moving_state();
         void change_to_halting_state();
 
-        // void schedule_angle_command(
-        //     const JointTypeAngle& joint_type_angle,
-        //     const Duration& move_duration);
-        // void schedule_angles_command(
-        //     const JointTypeAngles& joint_type_angles,
-        //     const Duration& move_duration);
+        void schedule_angles_command(
+            const JointTypeAngles& joint_type_angles,
+            const Duration& move_duration);
         void schedule_pose_command(
             const PoseName& pose_name,
             const Duration& move_duration

@@ -13,6 +13,15 @@ namespace al5d
             context_ptr, pose_name, move_duration);
     }
 
+    
+    /*static*/ CommandPtr PoseCommand::as_ptr(
+        Controller* context_ptr,
+        const PoseName& pose_name)
+    {
+        return std::make_shared<PoseCommand>(
+            context_ptr, pose_name);
+    }
+
 
     PoseCommand::PoseCommand(
         Controller* context_ptr,

@@ -1,44 +1,43 @@
-#ifndef AL5D_CPP_POSECOMMAND_HPP
-#define AL5D_CPP_POSECOMMAND_HPP
+#ifndef AL5D_CPP_ANGLESCOMMAND_HPP
+#define AL5D_CPP_ANGLESCOMMAND_HPP
 
 // PROJECT INCLUDES
 #include <al5d_cpp/controller/ContextCommand.hpp>
+#include <al5d_cpp/settings.hpp>
 
 
 namespace al5d
 {
-    // TODO : add interface without move_duration
-    
-    class PoseCommand : public ContextCommand
+    class AnglesCommand : public ContextCommand
     {
     public:
 
-        static CommandPtr as_ptr( // TODO : rename to as_pointer
+        static CommandPtr as_ptr(
             Controller* context_ptr,
-            const PoseName& pose_name,
+            const JointTypeAngles& joint_type_angles,
             const Duration& move_duration);
 
         static CommandPtr as_ptr(
             Controller* context_ptr,
-            const PoseName& pose_name);
+            const JointTypeAngles& joint_type_angles);
 
-        explicit PoseCommand(
+        explicit AnglesCommand(
             Controller* context_ptr,
-            const PoseName& pose_name,
+            const JointTypeAngles& joint_type_angles,
             const Duration& move_duration=
                 Duration::from_milliseconds(MILLISECONDS));
 
-        virtual ~PoseCommand() = default;
+        virtual ~AnglesCommand() = default;
 
         void execute()
             override;
 
     private:
 
-        PoseName pose_name;
+        JointTypeAngles joint_type_angles;
         Duration move_duration;
     };
 }
 
 
-#endif // AL5D_CPP_POSECOMMAND_HPP
+#endif // AL5D_CPP_ANGLESCOMMAND_HPP
