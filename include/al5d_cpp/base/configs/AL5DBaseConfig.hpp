@@ -1,3 +1,5 @@
+// TODO : make file which includes all Config types at once
+
 #ifndef AL5D_CPP_AL5DBASECONFIG_HPP
 #define AL5D_CPP_AL5DBASECONFIG_HPP
 

@@ -27,5 +27,7 @@ namespace al5d
     
     void PoseCommand::execute()
     {
+        auto& al5d = context_ptr->get_al5d();
+        al5d.move_to_pose(pose_name, move_duration);
     }
 }

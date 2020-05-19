@@ -90,6 +90,12 @@ namespace al5d
     }
     
     
+    AL5DBase& Controller::get_al5d()
+    {
+        return al5d;
+    }
+    
+    
     void Controller::check_moving_progress()
     {
         if (!al5d.is_moving())

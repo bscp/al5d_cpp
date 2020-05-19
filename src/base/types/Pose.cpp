@@ -1,5 +1,5 @@
-// HEADER INCLUDE
-#include <al5d_cpp/traits/pose_trait/Pose.hpp>
+// HEADER INCLUDES
+#include <al5d_cpp/base/types/Pose.hpp>
 
 
 namespace al5d

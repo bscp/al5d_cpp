@@ -6,12 +6,14 @@
 #include <vector>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/base/types.hpp>
-#include <al5d_cpp/base/configs/PoseConfig.hpp>
+#include <al5d_cpp/base/types/typedefs.hpp>
+#include <al5d_cpp/base/types/JointTypeAngle.hpp>
 
 
 namespace al5d
 {
+    typedef std::string PoseName;
+
     struct Pose
     {
         Pose(

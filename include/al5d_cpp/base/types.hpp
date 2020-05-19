@@ -14,15 +14,8 @@
 #include <al5d_cpp/base/types/DegreeRange.hpp>
 #include <al5d_cpp/base/types/JointNameAngle.hpp>
 #include <al5d_cpp/base/types/Angle.hpp>
-
-
-namespace al5d
-{
-    typedef std::string JointName;
-    typedef std::string PoseName;
-    typedef std::string ProtocolCommand;
-    typedef unsigned int BoardChannel;
-}
+#include <al5d_cpp/base/types/Pose.hpp>
+#include <al5d_cpp/base/types/typedefs.hpp>
 
 
 #endif // AL5D_CPP_TYPES_HPP

@@ -9,6 +9,9 @@
 #include <al5d_cpp/controller/Context.hpp>
 #include <al5d_cpp/base/AL5DBase.hpp>
 
+// DEFAULT VALUES
+#define MILLISECONDS 3000
+
 
 namespace al5d
 {
@@ -36,12 +39,15 @@ namespace al5d
         //     const Duration& move_duration);
         void schedule_pose_command(
             const PoseName& pose_name,
-            const Duration& move_duration);
+            const Duration& move_duration
+                =Duration::from_milliseconds(MILLISECONDS));
 
         void schedule_next_command_if_available();
         void preempt_scheduled_commands();
         void start_next_command();
         void check_moving_progress();
+
+        AL5DBase& get_al5d(); // TODO : return const type
 
     protected:
 

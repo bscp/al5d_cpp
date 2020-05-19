@@ -10,6 +10,7 @@
 #include <al5d_cpp/base/settings.hpp>
 #include <al5d_cpp/base/Communicator.hpp>
 #include <al5d_cpp/Timer.hpp>
+#include <al5d_cpp/base/configs/PosingConfig.hpp>
 
 
 namespace al5d
@@ -69,6 +70,7 @@ namespace al5d
         JointBases joints_;
 
         CommunicatorPtr communicator_ptr_ = nullptr;
+
     private:
 
         void validate_communicator_ptr__()
@@ -98,6 +100,50 @@ namespace al5d
         // timer was used because al5d did not respond to
         // the position commands
         TimerPtr timer_ptr;
+
+    public: // TODO : restructure code from here (copied from PoseTrait)
+
+        void move_to_pose(
+            const PoseName& pose_name);
+
+        void move_to_pose(
+            const PoseName& pose_name,
+            const Duration &move_duration);
+
+        void add_poses(
+            const PosingConfig& posing_config);
+
+        void set_poses(
+            const PosingConfig& posing_config);
+
+    private:
+
+        JointType construct_poses(
+            const JointName& joint_name);
+
+        JointTypeAngle construct_poses(
+            const JointNameAngle& joint_name_angle);
+
+        JointTypeAngles construct_poses(
+            const JointNameAngles& joint_name_angles);
+            
+        Pose construct_poses(
+            const PoseConfig& pose_config);
+
+        Poses construct_poses(
+            const PoseConfigs& pose_configs);
+
+        void move_to_start_pose();
+        
+        void move_to_finish_pose();
+
+        const Pose& get_pose(
+            const PoseName& pose_name)
+            const;
+
+        Poses poses;
+        PoseName start_pose_name;
+        PoseName finish_pose_name;
     };
 }
 

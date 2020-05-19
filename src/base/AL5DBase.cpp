@@ -11,12 +11,17 @@ namespace al5d
         const AL5DBaseConfig& config)
         : joints_(construct_joints__(config.joint_configs))
         , communicator_ptr_(nullptr)
+        , poses(construct_poses(config.posing_config.pose_configs))
+        , start_pose_name(config.posing_config.start_pose_name)
+        , finish_pose_name(config.posing_config.finish_pose_name)
     {
+        move_to_start_pose();
     }
     
     
     AL5DBase::~AL5DBase()
     {
+        move_to_finish_pose();
     }
     
     
@@ -141,8 +146,10 @@ namespace al5d
     {
         for (const auto &joint_name_angle : joint_name_angles)
         {
-            const auto& joint = get_joint(joint_name_angle.joint_name);
-            joint.move_to_angle(joint_name_angle.angle, move_duration);
+            const auto joint_name = joint_name_angle.joint_name;
+            const auto joint_angle = joint_name_angle.angle;
+            const auto& joint = get_joint(joint_name);
+            joint.move_to_angle(joint_angle, move_duration);
         }
         transmit_command_terminator_();
     }
@@ -153,8 +160,10 @@ namespace al5d
     {
         for (const auto &joint_name_angle : joint_name_angles)
         {
-            const auto& joint = get_joint(joint_name_angle.joint_name);
-            joint.move_to_angle(joint_name_angle.angle);
+            const auto joint_name = joint_name_angle.joint_name;
+            const auto joint_angle = joint_name_angle.angle;
+            const auto& joint = get_joint(joint_name);
+            joint.move_to_angle(joint_angle);
         }
         transmit_command_terminator_();
     }
@@ -166,8 +175,10 @@ namespace al5d
     {
         for (const auto &joint_type_angle : joint_type_angles)
         {
-            const auto& joint = get_joint(joint_type_angle.joint_type);
-            joint.move_to_angle(joint_type_angle.angle, move_duration);
+            const auto joint_type = joint_type_angle.joint_type;
+            const auto joint_angle = joint_type_angle.angle;
+            const auto& joint = get_joint(joint_type);
+            joint.move_to_angle(joint_angle, move_duration);
         }
         transmit_command_terminator_();
     }
@@ -178,8 +189,10 @@ namespace al5d
     {
         for (const auto &joint_type_angle : joint_type_angles)
         {
-            const auto& joint = get_joint(joint_type_angle.joint_type);
-            joint.move_to_angle(joint_type_angle.angle);
+            const auto joint_type = joint_type_angle.joint_type;
+            const auto joint_angle = joint_type_angle.angle;
+            const auto& joint = get_joint(joint_type);
+            joint.move_to_angle(joint_angle);
         }
         transmit_command_terminator_();
     }
@@ -188,7 +201,8 @@ namespace al5d
     void AL5DBase::start_timer(
         const Duration &move_duration)
     {
-        timer_ptr = Timer::as_pointer(move_duration.in_milliseconds());
+        timer_ptr = Timer::as_pointer(
+            move_duration.in_milliseconds());
     }
     
     
@@ -197,6 +211,9 @@ namespace al5d
     {
         if (timer_ptr == nullptr)
         {
+            // No exception thrown like "move never started" because
+            // the al5d would return that the move has finished if you
+            // asked it while never asked to move.
             return false;
         }
         
