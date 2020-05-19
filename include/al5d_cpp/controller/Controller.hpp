@@ -38,7 +38,6 @@ namespace al5d
             const PoseName& pose_name,
             const Duration& move_duration);
 
-        void execute_pose_command();
         void schedule_next_command_if_available();
         void preempt_scheduled_commands();
         void start_next_command();

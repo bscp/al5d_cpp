@@ -32,8 +32,8 @@ namespace al5d
         const PoseName& pose_name,
         const Duration& move_duration)
     {
-        auto command_ptr = PoseCommand::as_ptr(this);
-        scheduled_command_ptrs.push(command_ptr);
+        scheduled_command_ptrs.push(
+            PoseCommand::as_ptr(this, pose_name, move_duration));
     }
 
 
@@ -52,12 +52,6 @@ namespace al5d
     void Controller::change_to_halting_state()
     {
         change_state(HaltingState::as_pointer(this));
-    }
-
-
-    void Controller::execute_pose_command()
-    {
-        // TODO : implement method
     }
     
     
@@ -92,7 +86,7 @@ namespace al5d
     
     void Controller::start_next_command()
     {
-        // TODO : current_command_ptr.execute();
+        current_command_ptr->execute();
     }
     
     

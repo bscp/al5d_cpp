@@ -7,20 +7,31 @@
 
 namespace al5d
 {
+    // TODO : add interface without move_duration
+    
     class PoseCommand : public ContextCommand
     {
     public:
 
         static CommandPtr as_ptr(
-            Controller* context_ptr);
+            Controller* context_ptr,
+            const PoseName& pose_name,
+            const Duration& move_duration);
 
         explicit PoseCommand(
-            Controller* context_ptr);
+            Controller* context_ptr,
+            const PoseName& pose_name,
+            const Duration& move_duration);
 
         virtual ~PoseCommand() = default;
 
         void execute()
             override;
+
+    private:
+
+        PoseName pose_name;
+        Duration move_duration;
     };
 }
 
