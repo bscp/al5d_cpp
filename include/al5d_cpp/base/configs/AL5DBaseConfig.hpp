@@ -1,5 +1,3 @@
-// TODO : make file which includes all Config types at once
-
 #ifndef AL5D_CPP_AL5DBASECONFIG_HPP
 #define AL5D_CPP_AL5DBASECONFIG_HPP
 
@@ -8,10 +6,10 @@
 #include <string>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/base/configs/JointConfig.hpp>
-#include <al5d_cpp/base/types.hpp>
-#include <al5d_cpp/base/configs/SerialConfig.hpp>
 #include <al5d_cpp/base/configs/PosingConfig.hpp>
+#include <al5d_cpp/base/configs/JointConfig.hpp>
+#include <al5d_cpp/base/configs/SerialConfig.hpp>
+#include <al5d_cpp/base/types.hpp>
 
 
 namespace al5d
