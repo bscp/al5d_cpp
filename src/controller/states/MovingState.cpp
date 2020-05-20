@@ -1,9 +1,6 @@
 // HEADER INCLUDE
 #include <al5d_cpp/controller/states/MovingState.hpp>
 
-// PROJECT INCLUDES
-#include <al5d_cpp/controller/events.hpp>
-
 
 namespace al5d
 {

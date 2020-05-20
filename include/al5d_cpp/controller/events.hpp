@@ -10,6 +10,7 @@ namespace al5d
         EVENT_NEW_COMMAND_PLANNED,
         EVENT_EMERGENCY_CLEARED,
         EVENT_HALT_REQUESTED,
+        EVENT_CONNECTING_FINISHED,
     };
 }
 

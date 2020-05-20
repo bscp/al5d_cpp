@@ -27,7 +27,7 @@ namespace al5d
             const std::string& message)
             override;
         
-        bool is_ready()
+        bool is_connected()
             const
             override;
         

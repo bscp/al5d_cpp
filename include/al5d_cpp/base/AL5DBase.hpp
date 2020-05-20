@@ -39,7 +39,7 @@ namespace al5d
         void set_communicator_ptr(
             const CommunicatorPtr& communicator_ptr);
         
-        bool is_ready() // TODO : remove ?
+        bool is_connected()
             const;
 
         const JointBase &get_joint(

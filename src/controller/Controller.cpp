@@ -19,7 +19,7 @@ namespace al5d
 
     void Controller::set_start_state()
     {
-        change_to_idling_state();
+        change_to_connecting_state();
     }
 
 
@@ -38,6 +38,12 @@ namespace al5d
     {
         scheduled_command_ptrs.push(
             AnglesCommand::as_pointer(this, joint_type_angles, move_duration));
+    }
+
+
+    void Controller::change_to_connecting_state()
+    {
+        change_state(ConnectingState::as_pointer(this));
     }
 
 
@@ -106,6 +112,15 @@ namespace al5d
         if (!al5d.is_moving())
         {
             schedule_event(EVENT_MOVING_FINISHED);
+        }
+    }
+    
+    
+    void Controller::check_connecting_progress()
+    {
+        if (al5d.is_connected())
+        {
+            schedule_event(EVENT_CONNECTING_FINISHED);
         }
     }
 }

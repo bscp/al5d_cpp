@@ -8,6 +8,7 @@
 // PROJECT INCLUDES
 #include <al5d_cpp/controller/Controller.hpp>
 #include <al5d_cpp/controller/ContextState.hpp>
+#include <al5d_cpp/controller/events.hpp>
 
 
 namespace al5d

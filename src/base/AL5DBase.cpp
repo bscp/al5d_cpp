@@ -49,11 +49,11 @@ namespace al5d
     }
     
     
-    bool AL5DBase::is_ready()
+    bool AL5DBase::is_connected()
         const
     {
         validate_communicator_ptr__();
-        return communicator_ptr_->is_ready();
+        return communicator_ptr_->is_connected();
     }
     
     

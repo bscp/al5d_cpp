@@ -29,7 +29,7 @@ namespace al5d
     }
     
     
-    bool SerialCommunicator::is_ready()
+    bool SerialCommunicator::is_connected()
         const
     {
         return timer_ptr->has_elapsed();
