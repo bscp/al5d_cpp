@@ -4,19 +4,11 @@ namespace al5d_cpp {
     class AL5DBase #eee
 
     class ConsoleTrait<<AL5DBaseTrait>>
-    class JSONTrait<<AL5DBaseTrait>>
     class LambdaTrait<<AL5DBaseTrait>>
-    class LoggingTrait<<AL5DBaseTrait>>
-    class PoseTrait<<AL5DBaseTrait>>
-    class ProgressingTrait<<AL5DBaseTrait>>
     class SerialTrait<<AL5DBaseTrait>>
 
     AL5DBase <|-- ConsoleTrait
-    AL5DBase <|-- JSONTrait
     AL5DBase <|-- LambdaTrait
-    AL5DBase <|-- LoggingTrait
-    AL5DBase <|-- PoseTrait
-    AL5DBase <|-- ProgressingTrait
     AL5DBase <|-- SerialTrait
 }
 

@@ -2,18 +2,23 @@
 
 'No activation/deactivation boxes because components are concurent and are continuously running. Also when no call is made.
 
-title Halt while moving
+title Multiple commands
 
 participant MoveToDegreeDemo #SkyBlue
 participant CommandSerializer #LimeGreen-Salmon
 participant CommandTransmitter #LimeGreen-Salmon
 
 MoveToDegreeDemo -> CommandSerializer:pose_command_1
-CommandSerializer -> CommandTransmitter:serialized_command_1
-MoveToDegreeDemo -> CommandSerializer:stop_command
 MoveToDegreeDemo -> CommandSerializer:pose_command_2
-MoveToDegreeDemo -> CommandSerializer:continue_command
 MoveToDegreeDemo -> CommandSerializer:pose_command_3
+CommandSerializer -> CommandTransmitter:serialized_command_1
+CommandTransmitter ->] :command_1
+...
+CommandSerializer -> CommandTransmitter:serialized_command_2
+CommandTransmitter ->] :command_2
+...
 CommandSerializer -> CommandTransmitter:serialized_command_3
+CommandTransmitter ->] :command_3
+...
 
 @enduml

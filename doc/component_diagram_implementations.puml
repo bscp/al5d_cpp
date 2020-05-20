@@ -7,12 +7,12 @@ component "<u>CommandTransmitter</u>" <<ROSNode>> as CommandTransmitter #LimeGre
 component MoveToPosesDemo #SkyBlue
 component MoveAndHaltDemo #SkyBlue
 component AL5DSerializer #LimeGreen-Salmon
-component AL5DTransmitter #LimeGreen-Salmon
+component SerialTransmitter #LimeGreen-Salmon
 
 DemoRunner <|-- MoveToPosesDemo
 DemoRunner <|-- MoveAndHaltDemo
 CommandSerializer <|-- AL5DSerializer
-CommandTransmitter <|-- AL5DTransmitter
+CommandTransmitter <|-- SerialTransmitter
 
 legend right
   <b><color:SkyBlue>Demo application</color></b>

@@ -1,13 +1,14 @@
 @startuml
 
+title Pose command handling
+
 participant MoveToDegreeDemo #SkyBlue
-participant CommandScheduler #LimeGreen
+participant CommandSerializer #LimeGreen
 participant CommandSerializer #LimeGreen-Salmon
 participant CommandTransmitter #LimeGreen-Salmon
 
-    MoveToDegreeDemo -> CommandScheduler:pose_command
+    MoveToDegreeDemo -> CommandSerializer:pose_command
 
-    CommandScheduler -> CommandSerializer:scheduled_pose_command
     CommandSerializer -> CommandTransmitter:serialized_command
     CommandTransmitter ->]:transmitted_command
 
