@@ -5,7 +5,7 @@
 #include <al5d_cpp/base/types/PulseWidth.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     class PulseWidthRange
     {   

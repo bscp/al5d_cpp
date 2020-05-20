@@ -12,7 +12,7 @@
 #define INVALID_JOINT_TYPE "invalid joint type"
 
 
-namespace al5d
+namespace al5d_cpp
 {
     InvalidBoardChannel::InvalidBoardChannel(
         const BoardChannel& board_channel)

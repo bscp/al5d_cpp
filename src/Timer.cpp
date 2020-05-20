@@ -2,7 +2,7 @@
 #include <al5d_cpp/Timer.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     TimerPtr Timer::as_pointer(
         long duration)

@@ -10,7 +10,7 @@
 #include <al5d_cpp/base/types/JointTypeAngle.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     typedef std::string PoseName;
 

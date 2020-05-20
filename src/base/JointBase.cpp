@@ -10,7 +10,7 @@
 #include <al5d_cpp/exceptions.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     JointBase::JointBase(
         const JointBaseConfig &joint_config)

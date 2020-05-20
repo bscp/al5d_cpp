@@ -5,7 +5,7 @@
 #include <string>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     typedef std::string JointName;
     typedef std::string PoseName;

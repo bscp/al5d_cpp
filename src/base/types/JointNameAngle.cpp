@@ -2,7 +2,7 @@
 #include <al5d_cpp/base/types/JointNameAngle.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     JointNameAngle::JointNameAngle(
         const std::string& joint_name,

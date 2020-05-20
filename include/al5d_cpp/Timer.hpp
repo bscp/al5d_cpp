@@ -6,7 +6,7 @@
 #include <memory>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     class Timer;
     typedef std::shared_ptr<Timer> TimerPtr;

@@ -6,7 +6,7 @@
 #include <al5d_cpp/exceptions.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     JointBaseConfig::JointBaseConfig(
         const JointName& name,

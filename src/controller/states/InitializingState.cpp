@@ -3,7 +3,7 @@
 #include <al5d_cpp/controller/states/InitializingState.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     /*static*/ ContextStatePtr InitializingState::as_pointer(
         Controller* context_ptr)

@@ -2,7 +2,7 @@
 #include <al5d_cpp/controller/states/IdlingState.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     /*static*/ ContextStatePtr IdlingState::as_pointer(
         Controller *context_ptr)

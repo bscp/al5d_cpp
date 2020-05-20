@@ -9,7 +9,7 @@
 
 typedef std::shared_ptr<class TestableCommunicator> TestableCommunicatorPtr;
 
-class TestableCommunicator : public al5d::Communicator
+class TestableCommunicator : public al5d_cpp::Communicator
 {
 public:
     static TestableCommunicatorPtr as_ptr()
@@ -36,24 +36,24 @@ private:
 };
 
 
-class TestableJointBaseConfig : public al5d::JointBaseConfig
+class TestableJointBaseConfig : public al5d_cpp::JointBaseConfig
 {
 public:
     TestableJointBaseConfig(
-        const al5d::PulseWidthRange& p_range,
-        const al5d::DegreeRange& d_range)
-        : JointBaseConfig("base", al5d::JOINT_BASE, 0, p_range, d_range)
+        const al5d_cpp::PulseWidthRange& p_range,
+        const al5d_cpp::DegreeRange& d_range)
+        : JointBaseConfig("base", al5d_cpp::JOINT_BASE, 0, p_range, d_range)
     {
     }
 };
 
 
-class TestableJointBase : public al5d::JointBase
+class TestableJointBase : public al5d_cpp::JointBase
 {
 public:
     TestableJointBase(
-        const al5d::JointBaseConfig& config,
-        const al5d::CommunicatorPtr& communicator_ptr)
+        const al5d_cpp::JointBaseConfig& config,
+        const al5d_cpp::CommunicatorPtr& communicator_ptr)
         : JointBase(config)
     {
         set_communicator_ptr(communicator_ptr);
@@ -67,13 +67,13 @@ TEST(Joint, move_joint)
     TestableJointBaseConfig config({100, 300}, {1, 3});
     TestableJointBase joint(config, com);
 
-    joint.move_to_angle(al5d::Angle::from_degree(1));
+    joint.move_to_angle(al5d_cpp::Angle::from_degree(1));
     ASSERT_EQ(com->get_transmitted(), "#0P100");
 
-    joint.move_to_angle(al5d::Angle::from_degree(2));
+    joint.move_to_angle(al5d_cpp::Angle::from_degree(2));
     ASSERT_EQ(com->get_transmitted(), "#0P200");
 
-    joint.move_to_angle(al5d::Angle::from_degree(3));
+    joint.move_to_angle(al5d_cpp::Angle::from_degree(3));
     ASSERT_EQ(com->get_transmitted(), "#0P300");
 }
 
@@ -85,12 +85,12 @@ TEST(Joint, move_reversed_joint)
     TestableJointBaseConfig config({100, 300}, {3, 1});
     TestableJointBase joint(config, com);
 
-    joint.move_to_angle(al5d::Angle::from_degree(1));
+    joint.move_to_angle(al5d_cpp::Angle::from_degree(1));
     ASSERT_EQ(com->get_transmitted(), "#0P300");
 
-    joint.move_to_angle(al5d::Angle::from_degree(2));
+    joint.move_to_angle(al5d_cpp::Angle::from_degree(2));
     ASSERT_EQ(com->get_transmitted(), "#0P200");
 
-    joint.move_to_angle(al5d::Angle::from_degree(3));
+    joint.move_to_angle(al5d_cpp::Angle::from_degree(3));
     ASSERT_EQ(com->get_transmitted(), "#0P100");
 }

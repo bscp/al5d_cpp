@@ -2,7 +2,7 @@
 #include <al5d_cpp/traits/lambda_trait/LambdaCommunicator.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     /*static*/ CommunicatorPtr LambdaCommunicator::as_pointer()
     {

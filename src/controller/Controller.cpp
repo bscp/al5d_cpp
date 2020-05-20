@@ -7,7 +7,7 @@
 #include <al5d_cpp/controller/commands.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     Controller::Controller(
         const AL5DBase& al5d)

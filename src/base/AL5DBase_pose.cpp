@@ -6,7 +6,7 @@
 #include <al5d_cpp/settings.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {   
     
     JointTypeAngle AL5DBase::construct_poses(

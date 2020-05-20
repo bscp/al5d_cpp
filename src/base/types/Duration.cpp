@@ -2,7 +2,7 @@
 #include <al5d_cpp/base/types/Duration.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     /*static*/ Duration Duration::from_milliseconds(Milliseconds milliseconds)
     {

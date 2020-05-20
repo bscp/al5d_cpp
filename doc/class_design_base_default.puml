@@ -1,6 +1,6 @@
 @startuml
 
-namespace al5d {
+namespace al5d_cpp {
     class AL5DBase #eee
     
     class JSONTrait<<AL5DTrait>>

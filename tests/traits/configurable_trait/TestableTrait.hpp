@@ -2,7 +2,7 @@
 // #define AL5D_CPP_TESTABLETRAIT_HPP
 
 
-// namespace al5d
+// namespace al5d_cpp
 // {
 //     template <typename BaseType>
 //     class TestableTrait : public BaseType

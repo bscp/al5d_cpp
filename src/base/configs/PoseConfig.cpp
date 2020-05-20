@@ -2,7 +2,7 @@
 #include <al5d_cpp/base/configs/PoseConfig.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     PoseConfig::PoseConfig(
         const PoseName& name,

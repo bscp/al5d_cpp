@@ -2,7 +2,7 @@
 #include <al5d_cpp/controller/states/RunningState.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     RunningState::RunningState(
         const std::string &state_name,

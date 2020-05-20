@@ -11,7 +11,7 @@
 #include <al5d_cpp/base/configs/PosingConfig.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     class AL5DBase
     {

@@ -9,7 +9,7 @@
 #include <al5d_cpp/base/configs/AL5DBaseConfig.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     template <typename BaseType>
     class SerialTrait : public BaseType

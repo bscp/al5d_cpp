@@ -2,7 +2,7 @@
 #include <al5d_cpp/controller/commands/PoseCommand.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     /*static*/ CommandPtr PoseCommand::as_pointer(
         Controller* context_ptr,

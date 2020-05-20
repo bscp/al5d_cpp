@@ -7,7 +7,7 @@
 #include <iostream>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     /*static*/ CommunicatorPtr ConsoleCommunicator::as_pointer()
     {

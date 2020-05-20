@@ -9,7 +9,7 @@
 #include <al5d_cpp/base/types/Angle.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     struct JointTypeAngle
     {

@@ -2,7 +2,7 @@
 #include <al5d_cpp/base/configs/PosingConfig.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     PosingConfig::PosingConfig(
         const PoseConfigs& pose_configs,

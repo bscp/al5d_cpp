@@ -6,7 +6,7 @@
 #include <vector>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     class Command
     {

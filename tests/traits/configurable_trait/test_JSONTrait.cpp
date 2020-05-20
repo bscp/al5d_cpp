@@ -9,17 +9,17 @@
 // #include "TestableTrait.hpp"
 
 
-// namespace al5d
+// namespace al5d_cpp
 // {
 //     typedef JSONTrait<TestableTrait<AL5DBase>>
 //         TestableConfigurableAL5D;
 // }
 
 
-// al5d::TestableConfigurableAL5D load_al5d(
+// al5d_cpp::TestableConfigurableAL5D load_al5d(
 //     const std::string& file_path)
 // {
-//     return al5d::TestableConfigurableAL5D::from_json_file(file_path);    
+//     return al5d_cpp::TestableConfigurableAL5D::from_json_file(file_path);    
 // }
 
 

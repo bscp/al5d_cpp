@@ -11,7 +11,7 @@
 #include <al5d_cpp/base/configs/AL5DBaseConfig.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     AL5DBaseConfig al5d_config_from_json_file(
         const std::string& path);

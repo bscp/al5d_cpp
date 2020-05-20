@@ -2,7 +2,7 @@
 #define AL5D_CPP_JOINTTYPE_HPP
 
 
-namespace al5d
+namespace al5d_cpp
 {
     enum JointType
     {

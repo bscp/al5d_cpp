@@ -5,7 +5,7 @@
 #include <al5d_cpp/traits/serial_trait/SerialCommunicator.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     template <typename BaseType>
     SerialTrait<BaseType>::SerialTrait(

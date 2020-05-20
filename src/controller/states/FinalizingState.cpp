@@ -2,7 +2,7 @@
 #include <al5d_cpp/controller/states/FinalizingState.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     /*static*/ ContextStatePtr FinalizingState::as_pointer(
         Controller* context_ptr)

@@ -5,7 +5,7 @@
 #include <al5d_cpp/exceptions.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {   
     AL5DBase::AL5DBase(
         const AL5DBaseConfig& config)

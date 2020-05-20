@@ -2,7 +2,7 @@
 #define AL5D_CPP_EVENTS_HPP
 
 
-namespace al5d
+namespace al5d_cpp
 {
     enum EventType
     {

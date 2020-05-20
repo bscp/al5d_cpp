@@ -9,7 +9,7 @@
 #include <al5d_cpp/base/types.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     class InvalidBoardChannel : public std::runtime_error
     {

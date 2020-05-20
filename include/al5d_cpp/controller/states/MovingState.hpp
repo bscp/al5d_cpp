@@ -5,7 +5,7 @@
 #include <al5d_cpp/controller/states/RunningState.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     class MovingState : public RunningState
     {

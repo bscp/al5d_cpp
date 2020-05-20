@@ -14,7 +14,7 @@
 #include <al5d_cpp/traits/console_trait/ConsoleTrait.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     // typedef ConsoleTrait<AL5DBase> AL5D;
     typedef SerialTrait<AL5DBase> AL5D;

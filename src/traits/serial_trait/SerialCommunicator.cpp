@@ -2,7 +2,7 @@
 #include <al5d_cpp/traits/serial_trait/SerialCommunicator.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     /*static*/ CommunicatorPtr SerialCommunicator::as_pointer(
         const serial::Port& port,

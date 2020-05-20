@@ -5,7 +5,7 @@
 #include <iostream>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     void log_info(const std::string &line)
     {

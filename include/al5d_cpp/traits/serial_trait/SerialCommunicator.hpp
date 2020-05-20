@@ -9,7 +9,7 @@
 #define SECONDS_TO_CONNECT 2.0
 
 
-namespace al5d
+namespace al5d_cpp
 {
     class SerialCommunicator : public Communicator
     {

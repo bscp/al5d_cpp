@@ -1,6 +1,6 @@
 @startuml
 
-namespace al5d {
+namespace al5d_cpp {
 
     class Communicator <<(I,SkyBlue)>> {
         + transmit(message : String) : void

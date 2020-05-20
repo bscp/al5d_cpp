@@ -2,7 +2,7 @@
 #define	AL5D_CPP_LAMBDATRAIT_TPP
 
 
-namespace al5d
+namespace al5d_cpp
 {
     template <typename BaseType>
     LambdaTrait<BaseType>::LambdaTrait(

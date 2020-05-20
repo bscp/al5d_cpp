@@ -2,7 +2,7 @@
 #include <al5d_cpp/base/configs/SerialConfig.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     SerialConfig::SerialConfig(
         serial::Port port,

@@ -2,7 +2,7 @@
 #include <al5d_cpp/base/types/Pose.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     Pose::Pose(
         const PoseName& name,

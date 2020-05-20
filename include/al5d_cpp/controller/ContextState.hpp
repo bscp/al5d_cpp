@@ -11,11 +11,11 @@
 #include <al5d_cpp/controller/events.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
-    typedef al5d::Event Event;
+    typedef al5d_cpp::Event Event;
     
-    class ContextState : public al5d::State
+    class ContextState : public al5d_cpp::State
     {
     public:
 

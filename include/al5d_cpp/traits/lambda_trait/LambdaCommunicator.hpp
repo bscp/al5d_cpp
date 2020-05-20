@@ -8,7 +8,7 @@
 #include <al5d_cpp/base/Communicator.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     typedef std::function<void(const std::string&)> TransmitFn;
 

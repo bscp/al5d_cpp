@@ -5,7 +5,7 @@
 // SYSTEM INCLUDES
 #include <memory>
 
-namespace al5d
+namespace al5d_cpp
 {
     typedef int Event;
     

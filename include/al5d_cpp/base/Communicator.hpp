@@ -6,7 +6,7 @@
 #include <string>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     class Communicator
     {

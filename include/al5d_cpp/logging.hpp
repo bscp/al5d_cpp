@@ -5,7 +5,7 @@
 #include <string>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     void log_info(const std::string &line);
     void log_debug(const std::string &line);
@@ -14,9 +14,9 @@ namespace al5d
 }
 
 
-#define LOG_INFO al5d::log_info
-#define LOG_DEBUG al5d::log_debug
-#define LOG_WARNING al5d::log_warning
-#define LOG_ERROR al5d::log_error
+#define LOG_INFO al5d_cpp::log_info
+#define LOG_DEBUG al5d_cpp::log_debug
+#define LOG_WARNING al5d_cpp::log_warning
+#define LOG_ERROR al5d_cpp::log_error
 
 #endif // AL5D_CPP_LOGGING_HPP

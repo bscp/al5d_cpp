@@ -8,7 +8,7 @@
 #include <al5d_cpp/traits/console_trait/ConsoleCommunicator.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     template <typename BaseType>
     ConsoleTrait<BaseType>::ConsoleTrait(

@@ -6,7 +6,7 @@
 #include <al5d_cpp/controller/Controller.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     class ContextCommand : public Command
     {

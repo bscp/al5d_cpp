@@ -6,7 +6,7 @@
 #include <al5d_cpp/logging.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     Context::Context()
         : current_state_ptr(nullptr)

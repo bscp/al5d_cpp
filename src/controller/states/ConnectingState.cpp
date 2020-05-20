@@ -2,7 +2,7 @@
 #include <al5d_cpp/controller/states/ConnectingState.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     /*static*/ ContextStatePtr ConnectingState::as_pointer(
         Controller* context_ptr)

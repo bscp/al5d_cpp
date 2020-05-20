@@ -4,7 +4,7 @@
 #include <al5d_cpp/controller/states/HaltingState.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     /*static*/ ContextStatePtr HaltingState::as_pointer(
         Controller *context_ptr)

@@ -10,7 +10,7 @@
 #include <al5d_cpp/logging.hpp>
 
 
-namespace al5d
+namespace al5d_cpp
 {
     class Context
     {
