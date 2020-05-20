@@ -27,6 +27,7 @@ namespace al5d
         void change_to_initializing_state();
         void change_to_idling_state();
         void change_to_moving_state();
+        void change_to_finalizing_state();
         void change_to_halting_state();
 
         void schedule_angles_command(
@@ -43,9 +44,11 @@ namespace al5d
         void preempt_scheduled_commands();
         void start_next_command();
         void start_initializing();
+        void start_finalizing();
         void check_moving_progress();
         void check_connecting_progress();
         void check_initializing_progress();
+        void check_finalizing_progress();
 
         AL5DBase& get_al5d();
 

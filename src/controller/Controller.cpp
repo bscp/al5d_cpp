@@ -65,6 +65,12 @@ namespace al5d
     }
 
 
+    void Controller::change_to_finalizing_state()
+    {
+        change_state(FinalizingState::as_pointer(this));
+    }
+
+
     void Controller::change_to_halting_state()
     {
         change_state(HaltingState::as_pointer(this));
@@ -107,6 +113,12 @@ namespace al5d
     }
     
     
+    void Controller::start_finalizing()
+    {
+        al5d.move_to_finish_pose();
+    }
+    
+    
     void Controller::start_next_command()
     {
         current_command_ptr->execute();
@@ -124,6 +136,15 @@ namespace al5d
         if (!al5d.is_moving())
         {
             schedule_event(EVENT_INITIALIZING_FINISHED);
+        }
+    }
+    
+    
+    void Controller::check_finalizing_progress()
+    {
+        if (!al5d.is_moving())
+        {
+            schedule_event(EVENT_FINALIZING_FINISHED);
         }
     }
     
