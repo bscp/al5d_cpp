@@ -27,12 +27,6 @@ int main()
         "ready", al5d::Duration::from_ms(2000));
 
 
-    // move single joint to angle over time
-    al5d_controller.schedule_angle_command(
-        {al5d::JOINT_BASE, al5d::Angle::from_degree(90)},
-        al5d::Duration::from_ms(2000));
-
-
     while (true)
     {
         al5d_controller.run_once();

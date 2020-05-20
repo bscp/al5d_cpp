@@ -14,7 +14,7 @@ cppcheck \
     -I include/ `# Custom include directory path` \
     --inconclusive \
     --std=c++14 `# Use the C++14 standard` \
-    --suppress=missingIncludeSystem `# Ignore missing system files` \
+    --suppress-xml=./scripts/assessments/cppcheck_suspressions.xml \
     -q `# No output in the terminal` \
     --xml-version=2 \
     --xml \

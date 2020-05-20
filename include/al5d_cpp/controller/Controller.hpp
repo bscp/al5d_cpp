@@ -46,7 +46,8 @@ namespace al5d
 
     protected:
 
-        bool new_command_available();
+        bool new_command_available()
+            const;
 
         void schedule_next_command();
 

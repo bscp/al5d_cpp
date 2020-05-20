@@ -12,8 +12,6 @@ namespace al5d
     class State
     {
     public:
-        virtual ~State() = default;
-        
         virtual void enter();
         
         virtual void do_activity() = 0;
@@ -28,7 +26,7 @@ namespace al5d
 
     protected:
         explicit State(
-            std::string stateName);
+            std::string state_name);
     
         void log_doing_action(
             const std::string& action)

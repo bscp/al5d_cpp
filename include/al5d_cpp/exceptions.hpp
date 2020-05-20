@@ -73,7 +73,7 @@ namespace al5d
     class DegreeOutOfRange : public std::runtime_error
     {
     public:
-        DegreeOutOfRange(
+        explicit DegreeOutOfRange(
             const Degree& degree);
     };
 

@@ -36,13 +36,13 @@ private:
 };
 
 
-class TestableJointConfig : public al5d::JointConfig
+class TestableJointBaseConfig : public al5d::JointBaseConfig
 {
 public:
-    TestableJointConfig(
+    TestableJointBaseConfig(
         const al5d::PulseWidthRange& p_range,
         const al5d::DegreeRange& d_range)
-        : JointConfig("base", al5d::JOINT_BASE, 0, p_range, d_range)
+        : JointBaseConfig("base", al5d::JOINT_BASE, 0, p_range, d_range)
     {
     }
 };
@@ -52,7 +52,7 @@ class TestableJointBase : public al5d::JointBase
 {
 public:
     TestableJointBase(
-        const al5d::JointConfig& config,
+        const al5d::JointBaseConfig& config,
         const al5d::CommunicatorPtr& communicator_ptr)
         : JointBase(config)
     {
@@ -64,7 +64,7 @@ public:
 TEST(Joint, move_joint)
 {
     auto com = TestableCommunicator::as_ptr();
-    TestableJointConfig config({100, 300}, {1, 3});
+    TestableJointBaseConfig config({100, 300}, {1, 3});
     TestableJointBase joint(config, com);
 
     joint.move_to_angle(al5d::Angle::from_degree(1));
@@ -82,7 +82,7 @@ TEST(Joint, move_joint)
 TEST(Joint, move_reversed_joint)
 {
     auto com = TestableCommunicator::as_ptr();
-    TestableJointConfig config({100, 300}, {3, 1});
+    TestableJointBaseConfig config({100, 300}, {3, 1});
     TestableJointBase joint(config, com);
 
     joint.move_to_angle(al5d::Angle::from_degree(1));

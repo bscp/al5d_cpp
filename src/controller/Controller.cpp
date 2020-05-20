@@ -70,6 +70,7 @@ namespace al5d
     
     
     bool Controller::new_command_available()
+        const
     {
         return !scheduled_command_ptrs.empty();
     }

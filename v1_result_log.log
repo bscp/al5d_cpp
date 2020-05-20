@@ -1,0 +1,119 @@
+std::queue<std::string> poses({"park", "up", "ready"});
+    
+    
+    
+    
+    
+INFO :: ConnectingState :: ENTERING
+INFO :: ConnectingState :: ConnectingState :: DOING :: START_CONNECTING
+INFO :: CONNECTING :: Method='SERIAL' Port='/dev/ttyUSB0' Baud='9600'
+INFO :: ConnectingState :: HANDLING_EVENT :: Event='CONNECTING_FINISHED'
+INFO :: ConnectingState :: EXITING
+INFO :: CHANGING_STATE :: ConnectingState -> InitializingState
+INFO :: InitializingState :: InitializingState :: DOING :: START_INITIALIZING
+INFO :: MOVING_JOINT :: Type='0' Angle='1488pwm' Duration='3000ms'
+INFO :: MOVING_JOINT :: Type='1' Angle='1250pwm' Duration='3000ms'
+INFO :: MOVING_JOINT :: Type='2' Angle='1783pwm' Duration='3000ms'
+INFO :: MOVING_JOINT :: Type='3' Angle='1500pwm' Duration='3000ms'
+INFO :: MOVING_JOINT :: Type='4' Angle='2420pwm' Duration='3000ms'
+#0P1488#1P1250#2P1783#3P1500#4P2420T3000
+INFO :: InitializingState :: HANDLING_EVENT :: Event='EVENT_INITIALIZING_FINISHED'
+INFO :: InitializingState :: EXITING
+INFO :: CHANGING_STATE :: InitializingState -> IdlingState
+INFO :: IdlingState :: ENTERING
+INFO :: ROS :: NEW_MESSAGE :: POSE_MESSAGE
+INFO :: ROS :: NEW_MESSAGE :: POSE_MESSAGE
+INFO :: IdlingState :: HANDLING_EVENT :: Event='NEW_COMMAND_PLANNED'
+INFO :: IdlingState :: EXITING
+INFO :: CHANGING_STATE :: IdlingState -> MovingState
+INFO :: MovingState :: ENTERING
+INFO :: MovingState :: MovingState :: DOING :: START_MOVING 
+INFO :: MOVING_JOINT :: Type='0' Angle='1488pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='1' Angle='1250pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='2' Angle='1925pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='3' Angle='744pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='4' Angle='2420pwm' Duration='4000ms'
+#0P1488#1P1250#2P1925#3P744#4P2420T4000
+INFO :: ROS :: NEW_MESSAGE :: POSE_MESSAGE
+INFO :: MovingState :: HANDLING_EVENT :: Event='MOVING_FINISHED'
+INFO :: MovingState :: EXITING
+INFO :: CHANGING_STATE :: MovingState -> IdlingState
+INFO :: IdlingState :: ENTERING
+INFO :: IdlingState :: HANDLING_EVENT :: Event='NEW_COMMAND_PLANNED'
+INFO :: IdlingState :: EXITING
+INFO :: CHANGING_STATE :: IdlingState -> MovingState
+INFO :: MovingState :: ENTERING
+INFO :: MovingState :: MovingState :: DOING :: START_MOVING 
+INFO :: MOVING_JOINT :: Type='0' Angle='1488pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='1' Angle='1462pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='2' Angle='650pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='3' Angle='1500pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='4' Angle='2420pwm' Duration='4000ms'
+#0P1488#1P1462#2P650#3P1500#4P2420T4000
+INFO :: MovingState :: HANDLING_EVENT :: Event='MOVING_FINISHED'
+INFO :: MovingState :: EXITING
+INFO :: CHANGING_STATE :: MovingState -> IdlingState
+INFO :: IdlingState :: ENTERING
+INFO :: IdlingState :: HANDLING_EVENT :: Event='NEW_COMMAND_PLANNED'
+INFO :: IdlingState :: EXITING
+INFO :: CHANGING_STATE :: IdlingState -> MovingState
+INFO :: MovingState :: ENTERING
+INFO :: MovingState :: MovingState :: DOING :: START_MOVING 
+INFO :: MOVING_JOINT :: Type='0' Angle='1488pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='1' Angle='1250pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='2' Angle='1783pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='3' Angle='1500pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='4' Angle='2420pwm' Duration='4000ms'
+#0P1488#1P1250#2P1783#3P1500#4P2420T4000
+INFO :: MovingState :: HANDLING_EVENT :: Event='MOVING_FINISHED'
+INFO :: MovingState :: EXITING
+INFO :: CHANGING_STATE :: MovingState -> IdlingState
+INFO :: IdlingState :: ENTERING
+INFO :: ROS :: NEW_MESSAGE :: POSE_MESSAGE
+INFO :: ROS :: NEW_MESSAGE :: POSE_MESSAGE
+INFO :: IdlingState :: HANDLING_EVENT :: Event='NEW_COMMAND_PLANNED'
+INFO :: IdlingState :: EXITING
+INFO :: CHANGING_STATE :: IdlingState -> MovingState
+INFO :: MovingState :: ENTERING
+INFO :: MovingState :: MovingState :: DOING :: START_MOVING 
+INFO :: MOVING_JOINT :: Type='0' Angle='1488pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='1' Angle='1250pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='2' Angle='1925pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='3' Angle='744pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='4' Angle='2420pwm' Duration='4000ms'
+#0P1488#1P1250#2P1925#3P744#4P2420T4000
+INFO :: ROS :: NEW_MESSAGE :: POSE_MESSAGE
+INFO :: MovingState :: HANDLING_EVENT :: Event='MOVING_FINISHED'
+INFO :: MovingState :: EXITING
+INFO :: CHANGING_STATE :: MovingState -> IdlingState
+INFO :: IdlingState :: ENTERING
+INFO :: IdlingState :: HANDLING_EVENT :: Event='NEW_COMMAND_PLANNED'
+INFO :: IdlingState :: EXITING
+INFO :: CHANGING_STATE :: IdlingState -> MovingState
+INFO :: MovingState :: ENTERING
+INFO :: MovingState :: MovingState :: DOING :: START_MOVING 
+INFO :: MOVING_JOINT :: Type='0' Angle='1488pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='1' Angle='1462pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='2' Angle='650pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='3' Angle='1500pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='4' Angle='2420pwm' Duration='4000ms'
+#0P1488#1P1462#2P650#3P1500#4P2420T4000
+INFO :: MovingState :: HANDLING_EVENT :: Event='MOVING_FINISHED'
+INFO :: MovingState :: EXITING
+INFO :: CHANGING_STATE :: MovingState -> IdlingState
+INFO :: IdlingState :: ENTERING
+INFO :: IdlingState :: HANDLING_EVENT :: Event='NEW_COMMAND_PLANNED'
+INFO :: IdlingState :: EXITING
+INFO :: CHANGING_STATE :: IdlingState -> MovingState
+INFO :: MovingState :: ENTERING
+INFO :: MovingState :: MovingState :: DOING :: START_MOVING 
+INFO :: MOVING_JOINT :: Type='0' Angle='1488pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='1' Angle='1250pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='2' Angle='1783pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='3' Angle='1500pwm' Duration='4000ms'
+INFO :: MOVING_JOINT :: Type='4' Angle='2420pwm' Duration='4000ms'
+#0P1488#1P1250#2P1783#3P1500#4P2420T4000
+INFO :: MovingState :: HANDLING_EVENT :: Event='MOVING_FINISHED'
+INFO :: MovingState :: EXITING
+INFO :: CHANGING_STATE :: MovingState -> IdlingState
+INFO :: IdlingState :: ENTERING

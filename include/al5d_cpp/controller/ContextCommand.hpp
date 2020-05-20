@@ -16,7 +16,8 @@ namespace al5d
 
         virtual ~ContextCommand() = default;
 
-        virtual void execute() = 0;
+        void execute()
+            override = 0;
     
     protected:
 

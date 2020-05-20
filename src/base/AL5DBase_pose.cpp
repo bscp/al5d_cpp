@@ -10,6 +10,7 @@ namespace al5d
     
     JointTypeAngle AL5DBase::construct_poses(
         const JointNameAngle& joint_name_angle)
+        const
     {
         return JointTypeAngle(
             get_joint(joint_name_angle.joint_name).get_type(),
@@ -19,6 +20,7 @@ namespace al5d
     
     JointTypeAngles AL5DBase::construct_poses(
         const JointNameAngles& joint_name_angles)
+        const
     {
         JointTypeAngles joint_type_angles;
 
@@ -34,6 +36,7 @@ namespace al5d
     
     Pose AL5DBase::construct_poses(
         const PoseConfig& pose_config)
+        const
     {
         return Pose(
             pose_config.name,
@@ -43,6 +46,7 @@ namespace al5d
     
     Poses AL5DBase::construct_poses(
         const PoseConfigs& pose_configs)
+        const
     {
         Poses poses;
 

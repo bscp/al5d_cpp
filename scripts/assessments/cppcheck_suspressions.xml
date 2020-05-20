@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions>
+    <suppress>
+        <id>useStlAlgorithm</id>
+    </suppress>
+    <suppress>
+        <id>unusedFunction</id>
+    </suppress>
+    <suppress>
+        <id>missingIncludeSystem</id>
+    </suppress>
+</suppressions>

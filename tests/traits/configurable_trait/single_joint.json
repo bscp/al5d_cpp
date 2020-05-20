@@ -1,0 +1,10 @@
+{
+    "joints": [
+    {
+      "name": "base",
+      "board_channel": 2,
+      "pulse_width_range": [501, 2501],
+      "degree_range": [-91, 91]
+    }
+  ]
+}

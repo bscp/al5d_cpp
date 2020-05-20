@@ -118,19 +118,24 @@ namespace al5d
     private:
 
         JointType construct_poses(
-            const JointName& joint_name);
+            const JointName& joint_name)
+            const;
 
         JointTypeAngle construct_poses(
-            const JointNameAngle& joint_name_angle);
+            const JointNameAngle& joint_name_angle)
+            const;
 
         JointTypeAngles construct_poses(
-            const JointNameAngles& joint_name_angles);
+            const JointNameAngles& joint_name_angles)
+            const;
             
         Pose construct_poses(
-            const PoseConfig& pose_config);
+            const PoseConfig& pose_config)
+            const;
 
         Poses construct_poses(
-            const PoseConfigs& pose_configs);
+            const PoseConfigs& pose_configs)
+            const;
 
         void move_to_start_pose();
         
