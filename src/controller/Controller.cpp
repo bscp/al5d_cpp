@@ -47,6 +47,12 @@ namespace al5d
     }
 
 
+    void Controller::change_to_initializing_state()
+    {
+        change_state(InitializingState::as_pointer(this));
+    }
+
+
     void Controller::change_to_idling_state()
     {
         change_state(IdlingState::as_pointer(this));
@@ -95,6 +101,12 @@ namespace al5d
     }
     
     
+    void Controller::start_initializing()
+    {
+        al5d.move_to_start_pose();
+    }
+    
+    
     void Controller::start_next_command()
     {
         current_command_ptr->execute();
@@ -104,6 +116,15 @@ namespace al5d
     AL5DBase& Controller::get_al5d()
     {
         return al5d;
+    }
+    
+    
+    void Controller::check_initializing_progress()
+    {
+        if (!al5d.is_moving())
+        {
+            schedule_event(EVENT_INITIALIZING_FINISHED);
+        }
     }
     
     

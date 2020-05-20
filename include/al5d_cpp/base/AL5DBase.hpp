@@ -16,10 +16,6 @@ namespace al5d
     class AL5DBase
     {
     public:
-        typedef AL5DBaseConfig Config;
-    
-        virtual ~AL5DBase();
-        
         virtual void move_to_angles(
             const JointNameAngles &joint_name_angles,
             const Duration &move_duration);
@@ -114,6 +110,10 @@ namespace al5d
         void set_poses(
             const PosingConfig& posing_config);
 
+        void move_to_start_pose();
+        
+        void move_to_finish_pose();
+
     private:
 
         JointType construct_poses(
@@ -135,10 +135,6 @@ namespace al5d
         Poses construct_poses(
             const PoseConfigs& pose_configs)
             const;
-
-        void move_to_start_pose();
-        
-        void move_to_finish_pose();
 
         const Pose& get_pose(
             const PoseName& pose_name)

@@ -3,6 +3,7 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/exceptions.hpp>
+#include <al5d_cpp/settings.hpp>
 
 
 namespace al5d
@@ -63,7 +64,9 @@ namespace al5d
     {
         if (start_pose_name != "")
         {
-            move_to_pose(start_pose_name);
+            move_to_pose(
+                start_pose_name,
+                Duration::from_milliseconds(INITIALIZE_MOVE_DURATION));
         }
     }
 
@@ -72,7 +75,9 @@ namespace al5d
     {
         if (finish_pose_name != "")
         {
-            move_to_pose(finish_pose_name);
+            move_to_pose(
+                finish_pose_name,
+                Duration::from_milliseconds(FINALIZE_MOVE_DURATION));
         }
     }
 

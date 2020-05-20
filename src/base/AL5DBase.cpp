@@ -15,13 +15,6 @@ namespace al5d
         , start_pose_name(config.posing_config.start_pose_name)
         , finish_pose_name(config.posing_config.finish_pose_name)
     {
-        move_to_start_pose();
-    }
-    
-    
-    AL5DBase::~AL5DBase()
-    {
-        move_to_finish_pose();
     }
     
     

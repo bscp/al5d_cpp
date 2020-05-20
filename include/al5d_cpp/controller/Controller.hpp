@@ -24,6 +24,7 @@ namespace al5d
             override;
 
         void change_to_connecting_state();
+        void change_to_initializing_state();
         void change_to_idling_state();
         void change_to_moving_state();
         void change_to_halting_state();
@@ -41,8 +42,10 @@ namespace al5d
         void schedule_next_command_if_available();
         void preempt_scheduled_commands();
         void start_next_command();
+        void start_initializing();
         void check_moving_progress();
         void check_connecting_progress();
+        void check_initializing_progress();
 
         AL5DBase& get_al5d();
 

@@ -24,8 +24,6 @@ namespace al5d
         explicit JointBase(
             const JointBaseConfig &joint_config);
         
-        virtual ~JointBase() = default;
-    
         void move_to_angle(
             const Angle& angle)
             const;
