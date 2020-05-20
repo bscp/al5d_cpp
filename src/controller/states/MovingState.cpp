@@ -13,7 +13,7 @@ namespace al5d
     
     MovingState::MovingState(
         Controller *context_ptr)
-        : ContextState("MovingState", context_ptr)
+        : RunningState("MovingState", context_ptr)
         , moving_started(false)
     {
     }

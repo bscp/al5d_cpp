@@ -19,7 +19,22 @@ namespace al5d
     
     void ContextState::handle_event(Event event)
     {
-        LOG_WARNING("Unhandled event '" + std::to_string(event) + "'");
+        switch (event)
+        {
+        case EVENT_HALT_REQUESTED:
+            return on_halt_requested_event();
+            
+        default:
+            LOG_WARNING("Unhandled event '" + std::to_string(event) + "'");
+            break;
+        }
+    }
+    
+    
+    void ContextState::on_halt_requested_event()
+    {
+        log_handling_event("HALT_REQUESTED");
+        context_ptr->change_to_halting_state();
     }
     
     

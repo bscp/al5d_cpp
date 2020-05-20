@@ -13,7 +13,7 @@ namespace al5d
     
     IdlingState::IdlingState(
         Controller *context_ptr)
-        : ContextState("IdlingState", context_ptr)
+        : RunningState("IdlingState", context_ptr)
     {
     }
     
@@ -35,7 +35,7 @@ namespace al5d
             return on_shutdown_requested_event();
             
         default:
-            return ContextState::handle_event(event);
+            return RunningState::handle_event(event);
         }
     }
     

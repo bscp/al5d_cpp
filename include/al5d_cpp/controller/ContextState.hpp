@@ -18,13 +18,15 @@ namespace al5d
     class ContextState : public al5d::State
     {
     public:
-        virtual ~ContextState() = default;
-    
+
         void do_activity() override = 0;
     
-        void handle_event(Event event) override;
+        void handle_event(
+            Event event)
+            override;
 
     protected:
+
         ContextState(
             const std::string& state_name,
             Controller *context_ptr);
@@ -34,6 +36,10 @@ namespace al5d
             const;
     
         Controller* context_ptr;
+
+    private:
+
+        void on_halt_requested_event();
     };
     
     typedef std::shared_ptr<ContextState> ContextStatePtr;

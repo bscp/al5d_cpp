@@ -2,12 +2,12 @@
 #define AL5D_CPP_MOVINGSTATE_HPP
 
 // PROJECT INCLUDES
-#include <al5d_cpp/controller/ContextState.hpp>
+#include <al5d_cpp/controller/states/RunningState.hpp>
 
 
 namespace al5d
 {
-    class MovingState : public ContextState
+    class MovingState : public RunningState
     {
     public:
         static ContextStatePtr as_pointer(
