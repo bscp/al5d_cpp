@@ -59,8 +59,8 @@ namespace al5d_cpp
             const Angle& angle)
             const;
 
-        void transmit_angle__(
-            const Angle& angle)
+        void transmit_pulse_width__(
+            const PulseWidth& pulse_width)
             const;
 
         void transmit_move_duration__(
@@ -76,6 +76,29 @@ namespace al5d_cpp
         
         PulseWidth to_pulse_width__(
             const Angle& angle)
+            const;
+        
+
+        void log_moving__(
+            const Angle& angle,
+            const PulseWidth& pulse_width)
+            const;
+
+        void log_moving__(
+            const Angle& angle,
+            const PulseWidth& pulse_width,
+            const Duration &move_duration)
+            const;
+
+        std::string get_log_moving__(
+            const Angle& angle,
+            const PulseWidth& pulse_width)
+            const;
+
+        std::string get_log_moving__(
+            const Angle& angle,
+            const PulseWidth& pulse_width,
+            const Duration &duration)
             const;
         
         std::string name;

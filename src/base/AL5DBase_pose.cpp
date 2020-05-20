@@ -133,7 +133,5 @@ namespace al5d_cpp
         start_pose_name = posing_config.start_pose_name;
         finish_pose_name = posing_config.finish_pose_name;
         poses = construct_poses(posing_config.pose_configs);
-        
-        move_to_start_pose();
     }
 }

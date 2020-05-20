@@ -1,12 +1,10 @@
 
-// // HEADER INCLUDE
-// #include <al5d_cpp/AL5D_logging.hpp>
+// HEADER INCLUDE
+#include <al5d_cpp/log_lines.hpp>
 
-// // PROJECT INCLUDES
-// #include <al5d_cpp/logging.hpp>
 
-// namespace al5d
-// {
+namespace al5d_cpp
+{
 //     void log_emergency_stop()
 //     {
 //         LOG_INFO("EMERGENCY_STOP");
@@ -84,22 +82,4 @@
 //     {
 //         return "DISCONNECTING_SERIAL";
 //     }
-    
-    
-//     std::string get_moving_joint_log(
-//         const JointTypeAngle &joint_type_angle)
-//     {
-//         const auto type_string = "Type='" + std::to_string(joint_type_angle.joint_type) + "'";
-//         const auto angle_string = "Angle='" + std::to_string(joint_type_angle.joint_angle) + "pwm'";
-//         return "MOVING_JOINT :: " + type_string + " " + angle_string;
-//     }
-    
-    
-//     std::string get_moving_joint_log(
-//         const JointTypeAngle &joint_type_angle,
-//         const Duration &duration)
-//     {
-//         auto log = get_moving_joint_log(joint_type_angle);
-//         return log + " Duration='" + std::to_string(duration.in_milliseconds()) + "ms'";
-//     }
-// }
+}

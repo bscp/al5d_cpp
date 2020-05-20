@@ -43,7 +43,7 @@ namespace al5d_cpp
         const std::string& action)
         const
     {
-        log_action(name + " :: DOING :: " + action);
+        log_action(" :: DOING :: " + action);
     }
     
     

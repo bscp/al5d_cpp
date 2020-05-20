@@ -6,8 +6,9 @@
 #include <cmath>
 
 // PROJECT INCLUDES
-#include <al5d_cpp/logging.hpp>
 #include <al5d_cpp/exceptions.hpp>
+#include <al5d_cpp/logging.hpp>
+#include <al5d_cpp/log_lines.hpp>
 
 
 namespace al5d_cpp
@@ -59,7 +60,9 @@ namespace al5d_cpp
         const Angle& angle)
         const
     {
-        transmit_angle__(angle);
+        const auto pulse_width = to_pulse_width__(angle);
+        transmit_pulse_width__(pulse_width);
+        log_moving__(angle, pulse_width);
     }
     
     
@@ -68,20 +71,19 @@ namespace al5d_cpp
         const Duration& move_duration)
         const
     {
-        transmit_angle__(angle);
+        const auto pulse_width = to_pulse_width__(angle);
+        transmit_pulse_width__(pulse_width);
         transmit_move_duration__(move_duration);
+        log_moving__(angle, pulse_width, move_duration);
     }
     
     
-    void JointBase::transmit_angle__(
-        const Angle& angle)
+    void JointBase::transmit_pulse_width__(
+        const PulseWidth& pulse_width)
         const
     {
-        const auto angle_in_pulse_width = to_pulse_width__(angle);
-
         std::string command("#" + std::to_string(board_channel));
-        command += "P" + std::to_string(angle_in_pulse_width.value);        
-
+        command += "P" + std::to_string(pulse_width.value);
         transmit__(command);
     }
     
@@ -154,5 +156,48 @@ namespace al5d_cpp
     {
         validate_communicator_ptr__();
         communicator_ptr->transmit(message);
+    }
+
+
+    void JointBase::log_moving__(
+        const Angle &angle,
+        const PulseWidth& pulse_width)
+        const
+    {
+        LOG_INFO(get_log_moving__(
+            angle, pulse_width));
+    }
+    
+    
+    void JointBase::log_moving__(
+        const Angle &angle,
+        const PulseWidth& pulse_width,
+        const Duration &move_duration)
+        const
+    {
+        LOG_INFO(get_log_moving__(
+            angle, pulse_width, move_duration));
+    }
+
+
+    std::string JointBase::get_log_moving__(
+        const Angle& angle,
+        const PulseWidth& pulse_width)
+        const
+    {
+        const auto type_string = "Name='" + name + "'";
+        const auto angle_string = "Degree='" + std::to_string(angle.in_degree().value) + "' PulseWidth='" + std::to_string(pulse_width.value) + "'";
+        return "MOVING_JOINT :: " + type_string + " " + angle_string;
+    }
+    
+    
+    std::string JointBase::get_log_moving__(
+        const Angle& angle,
+        const PulseWidth& pulse_width,
+        const Duration &duration)
+        const
+    {
+        auto log_line = get_log_moving__(angle, pulse_width);
+        return log_line + " Duration='" + std::to_string(duration.in_milliseconds()) + "ms'";
     }
 }
