@@ -77,7 +77,6 @@ namespace al5d
         const Angle& angle)
         const
     {
-        validate_reachability__(angle);
         const auto angle_in_pulse_width = to_pulse_width__(angle);
 
         std::string command("#" + std::to_string(board_channel));
@@ -110,7 +109,8 @@ namespace al5d
         const Angle& angle)
         const
     {
-        validate_reachability__(angle); // TODO : remove (if can?)
+        validate_reachability__(angle);
+
         auto abs_degree = std::abs(angle.in_degree().value - degree_range.value_1.value);
         auto abs_pulse_width = abs_degree * convert_ratio;
         auto pulse_width = abs_pulse_width + pulse_width_range.min.value;

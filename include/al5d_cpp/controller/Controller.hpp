@@ -20,8 +20,6 @@ namespace al5d
         explicit Controller(
             const AL5DBase& al5d);
 
-        virtual ~Controller();
-
         void set_start_state()
             override;
 
@@ -50,7 +48,7 @@ namespace al5d
 
         bool new_command_available();
 
-        void schedule_next_command(); // TODO : rename to start_next_command
+        void schedule_next_command();
 
         std::queue<CommandPtr> scheduled_command_ptrs;
         CommandPtr current_command_ptr;

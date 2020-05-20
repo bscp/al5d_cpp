@@ -17,11 +17,6 @@ namespace al5d
     }
 
 
-    Controller::~Controller() // TODO : why needed?
-    {
-    }
-
-
     void Controller::set_start_state()
     {
         change_to_idling_state();

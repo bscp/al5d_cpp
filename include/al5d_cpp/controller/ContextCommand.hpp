@@ -20,7 +20,7 @@ namespace al5d
     
     protected:
 
-        Controller* context_ptr; // TODO : make smart pointer
+        Controller* context_ptr;
     };
 }
 
