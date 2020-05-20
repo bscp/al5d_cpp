@@ -152,7 +152,7 @@ namespace al5d
             joint.move_to_angle(joint_angle, move_duration);
         }
         transmit_command_terminator_();
-        start_timer(move_duration);
+        start_timer__(move_duration);
     }
 
 
@@ -182,7 +182,7 @@ namespace al5d
             joint.move_to_angle(joint_angle, move_duration);
         }
         transmit_command_terminator_();
-        start_timer(move_duration);
+        start_timer__(move_duration);
     }
 
 
@@ -200,10 +200,10 @@ namespace al5d
     }
     
     
-    void AL5DBase::start_timer(
+    void AL5DBase::start_timer__(
         const Duration &move_duration)
     {
-        timer_ptr = Timer::as_pointer(
+        timer_ptr__ = Timer::as_pointer(
             move_duration.in_milliseconds());
     }
     
@@ -211,7 +211,7 @@ namespace al5d
     bool AL5DBase::is_moving()
         const
     {
-        if (timer_ptr == nullptr)
+        if (timer_ptr__ == nullptr)
         {
             // No exception thrown like "move never started" because
             // the al5d would return that the move has finished if you
@@ -219,6 +219,6 @@ namespace al5d
             return false;
         }
         
-        return !timer_ptr->has_elapsed();
+        return !timer_ptr__->has_elapsed();
     }
 }

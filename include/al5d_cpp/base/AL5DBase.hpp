@@ -85,7 +85,7 @@ namespace al5d
             const JointBase& joint,
             const Degree &degree);
 
-        void start_timer( // TODO : rename to start_timer__
+        void start_timer__( // TODO : move to JointBase
             const Duration &move_duration);
 
         void transmit__(
@@ -99,7 +99,7 @@ namespace al5d
 
         // timer was used because al5d did not respond to
         // the position commands
-        TimerPtr timer_ptr;
+        TimerPtr timer_ptr__;
 
     public: // TODO : restructure code from here (copied from PoseTrait)
 
