@@ -2,7 +2,6 @@
 #define AL5D_CPP_AL5DBASE_HPP
 
 // PROJECT INCLUDES
-#include <al5d_cpp/Duration.hpp>
 #include <al5d_cpp/base/JointBase.hpp>
 #include <al5d_cpp/base/types.hpp>
 #include <al5d_cpp/base/configs/JointBaseConfig.hpp>

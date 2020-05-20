@@ -16,6 +16,7 @@
 #include <al5d_cpp/base/types/Angle.hpp>
 #include <al5d_cpp/base/types/Pose.hpp>
 #include <al5d_cpp/base/types/typedefs.hpp>
+#include <al5d_cpp/base/types/Duration.hpp>
 
 
 #endif // AL5D_CPP_TYPES_HPP

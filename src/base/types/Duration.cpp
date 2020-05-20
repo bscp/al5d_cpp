@@ -1,5 +1,5 @@
 // HEADER INCLUDES
-#include <al5d_cpp/Duration.hpp>
+#include <al5d_cpp/base/types/Duration.hpp>
 
 
 namespace al5d

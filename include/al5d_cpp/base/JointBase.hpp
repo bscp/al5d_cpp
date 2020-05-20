@@ -10,7 +10,6 @@
 #include <al5d_cpp/base/configs/JointBaseConfig.hpp>
 #include <al5d_cpp/base/Communicator.hpp>
 #include <al5d_cpp/base/types.hpp>
-#include <al5d_cpp/Duration.hpp>
 
 
 namespace al5d
