@@ -3,7 +3,6 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/controller/ContextCommand.hpp>
-#include <al5d_cpp/settings.hpp>
 
 
 namespace al5d
@@ -17,15 +16,10 @@ namespace al5d
             const JointTypeAngles& joint_type_angles,
             const Duration& move_duration);
 
-        static CommandPtr as_ptr(
-            Controller* context_ptr,
-            const JointTypeAngles& joint_type_angles);
-
         explicit AnglesCommand(
             Controller* context_ptr,
             const JointTypeAngles& joint_type_angles,
-            const Duration& move_duration=
-                Duration::from_milliseconds(MILLISECONDS));
+            const Duration& move_duration);
 
         virtual ~AnglesCommand() = default;
 

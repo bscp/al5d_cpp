@@ -18,15 +18,10 @@ namespace al5d
             const PoseName& pose_name,
             const Duration& move_duration);
 
-        static CommandPtr as_ptr(
-            Controller* context_ptr,
-            const PoseName& pose_name);
-
         explicit PoseCommand(
             Controller* context_ptr,
             const PoseName& pose_name,
-            const Duration& move_duration=
-                Duration::from_milliseconds(MILLISECONDS));
+            const Duration& move_duration);
 
         virtual ~PoseCommand() = default;
 

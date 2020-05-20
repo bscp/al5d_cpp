@@ -7,7 +7,6 @@
 #include <al5d_cpp/base/types.hpp>
 #include <al5d_cpp/base/configs/JointBaseConfig.hpp>
 #include <al5d_cpp/base/configs/AL5DBaseConfig.hpp>
-#include <al5d_cpp/base/settings.hpp>
 #include <al5d_cpp/base/Communicator.hpp>
 #include <al5d_cpp/Timer.hpp>
 #include <al5d_cpp/base/configs/PosingConfig.hpp>
@@ -85,7 +84,7 @@ namespace al5d
             const JointBase& joint,
             const Degree &degree);
 
-        void start_timer__( // TODO : move to JointBase
+        void start_timer__(
             const Duration &move_duration);
 
         void transmit__(

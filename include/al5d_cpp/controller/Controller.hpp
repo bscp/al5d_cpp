@@ -8,9 +8,7 @@
 #include <al5d_cpp/controller/Command.hpp>
 #include <al5d_cpp/controller/Context.hpp>
 #include <al5d_cpp/base/AL5DBase.hpp>
-
-// DEFAULT VALUES
-#define MILLISECONDS 3000
+#include <al5d_cpp/settings.hpp>
 
 
 namespace al5d
@@ -33,18 +31,20 @@ namespace al5d
 
         void schedule_angles_command(
             const JointTypeAngles& joint_type_angles,
-            const Duration& move_duration);
+            const Duration& move_duration
+                =Duration::from_ms(MOVE_DURATION));
+
         void schedule_pose_command(
             const PoseName& pose_name,
             const Duration& move_duration
-                =Duration::from_milliseconds(MILLISECONDS));
+                =Duration::from_ms(MOVE_DURATION));
 
         void schedule_next_command_if_available();
         void preempt_scheduled_commands();
         void start_next_command();
         void check_moving_progress();
 
-        AL5DBase& get_al5d(); // TODO : return const type
+        AL5DBase& get_al5d();
 
     protected:
 

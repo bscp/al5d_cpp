@@ -13,15 +13,6 @@ namespace al5d
             context_ptr, joint_type_angles, move_duration);
     }
 
-    
-    /*static*/ CommandPtr AnglesCommand::as_ptr(
-        Controller* context_ptr,
-        const JointTypeAngles& joint_type_angles)
-    {
-        return std::make_shared<AnglesCommand>(
-            context_ptr, joint_type_angles);
-    }
-
 
     AnglesCommand::AnglesCommand(
         Controller* context_ptr,
