@@ -7,7 +7,7 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/base/configs/PosingConfig.hpp>
-#include <al5d_cpp/base/configs/JointConfig.hpp>
+#include <al5d_cpp/base/configs/JointBaseConfig.hpp>
 #include <al5d_cpp/base/configs/SerialConfig.hpp>
 #include <al5d_cpp/base/types.hpp>
 
@@ -17,14 +17,14 @@ namespace al5d
     struct AL5DBaseConfig
     {
         AL5DBaseConfig(
-            JointConfigs joint_configs,
+            JointBaseConfigs joint_configs,
             SerialConfig serial_config,
             PosingConfig posing_config);
         
         void validate_joint_configs()
             const;
 
-        const JointConfigs joint_configs;
+        const JointBaseConfigs joint_configs;
         const SerialConfig serial_config;
         const PosingConfig posing_config;
     };

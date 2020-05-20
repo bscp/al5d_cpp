@@ -97,7 +97,7 @@ namespace al5d
         #define JOINT_BOARD_CHANNEL_KEY "board_channel"
         #define JOINT_PULSE_WIDTH_RANGE_KEY "pulse_width_range"
         #define JOINT_DEGREES_RANGE_KEY "degree_range"
-        JointConfig load_joint_config(
+        JointBaseConfig load_joint_config(
             const YAML::Node &json_node,
             size_t joint_type)
         {
@@ -106,7 +106,7 @@ namespace al5d
             validate_key(json_node, JOINT_PULSE_WIDTH_RANGE_KEY);
             validate_key(json_node, JOINT_DEGREES_RANGE_KEY);
 
-            return JointConfig(
+            return JointBaseConfig(
                 load_joint_name(json_node[JOINT_NAME_KEY]),
                 JointType(joint_type),
                 load_board_channel(json_node[JOINT_BOARD_CHANNEL_KEY]),
@@ -115,11 +115,11 @@ namespace al5d
         }
 
 
-        JointConfigs load_joint_configs(
+        JointBaseConfigs load_joint_configs(
             const YAML::Node &json_node)
         {
             validate_size(json_node, /*size*/6);
-            JointConfigs joint_configs;
+            JointBaseConfigs joint_configs;
 
             for (size_t i = 0; i < json_node.size(); ++i)
             {

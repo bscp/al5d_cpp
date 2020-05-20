@@ -5,7 +5,7 @@
 #include <al5d_cpp/Duration.hpp>
 #include <al5d_cpp/base/JointBase.hpp>
 #include <al5d_cpp/base/types.hpp>
-#include <al5d_cpp/base/configs/JointConfig.hpp>
+#include <al5d_cpp/base/configs/JointBaseConfig.hpp>
 #include <al5d_cpp/base/configs/AL5DBaseConfig.hpp>
 #include <al5d_cpp/base/settings.hpp>
 #include <al5d_cpp/base/Communicator.hpp>
@@ -93,7 +93,7 @@ namespace al5d
             const;
     
         JointBases construct_joints__(
-            const JointConfigs& joint_configs);
+            const JointBaseConfigs& joint_configs);
 
         void set_joint_communicator_ptrs__();
 

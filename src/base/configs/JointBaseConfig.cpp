@@ -1,5 +1,5 @@
 // HEADER INCLUDE
-#include <al5d_cpp/base/configs/JointConfig.hpp>
+#include <al5d_cpp/base/configs/JointBaseConfig.hpp>
 
 // PROJECT INCLUDES
 #include <al5d_cpp/exceptions.hpp>
@@ -8,7 +8,7 @@
 
 namespace al5d
 {
-    JointConfig::JointConfig(
+    JointBaseConfig::JointBaseConfig(
         const JointName& name,
         const JointType& type,
         const BoardChannel& board_channel,
@@ -24,7 +24,7 @@ namespace al5d
     }
 
 
-    void JointConfig::validate_board_channel_value(
+    void JointBaseConfig::validate_board_channel_value(
         BoardChannel board_channel)
         const
     {

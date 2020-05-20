@@ -26,7 +26,7 @@ namespace al5d
     
     
     JointBases AL5DBase::construct_joints__(
-        const JointConfigs& joint_configs)
+        const JointBaseConfigs& joint_configs)
     {
         JointBases join_bases;
 

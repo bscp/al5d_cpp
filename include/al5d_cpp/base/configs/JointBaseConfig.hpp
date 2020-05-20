@@ -10,9 +10,9 @@
 
 namespace al5d
 {
-    struct JointConfig // TODO : rename to JointBaseConfig
+    struct JointBaseConfig
     {
-        JointConfig(
+        JointBaseConfig(
             const JointName& name,
             const JointType& type,
             const BoardChannel& board_channel,
@@ -30,7 +30,7 @@ namespace al5d
         const DegreeRange degree_range;
     };
     
-    typedef std::vector<JointConfig> JointConfigs;
+    typedef std::vector<JointBaseConfig> JointBaseConfigs;
 }
 
 

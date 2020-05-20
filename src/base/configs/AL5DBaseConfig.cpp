@@ -8,7 +8,7 @@
 namespace al5d
 {
     AL5DBaseConfig::AL5DBaseConfig(
-        JointConfigs joint_configs,
+        JointBaseConfigs joint_configs,
         SerialConfig serial_config,
         PosingConfig posing_config)
         : joint_configs(std::move(joint_configs))

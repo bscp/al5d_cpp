@@ -13,7 +13,7 @@
 namespace al5d
 {
     JointBase::JointBase(
-        const JointConfig &joint_config)
+        const JointBaseConfig &joint_config)
         : name(joint_config.name)
         , type(joint_config.type)
         , board_channel(joint_config.board_channel)
