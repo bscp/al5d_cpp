@@ -4,6 +4,7 @@
 // PROJECT INCLUDES
 #include <al5d_cpp/exceptions.hpp>
 #include <al5d_cpp/settings.hpp>
+#include <al5d_cpp/logging.hpp>
 
 
 namespace al5d_cpp
@@ -101,6 +102,7 @@ namespace al5d_cpp
     void AL5DBase::move_to_pose(
         const PoseName& pose_name)
     {
+        log_moving_to_pose__(pose_name);
         const auto& pose = get_pose(pose_name);
         const auto& joint_type_angles = pose.joint_type_angles;
         move_to_angles(joint_type_angles);
@@ -111,6 +113,7 @@ namespace al5d_cpp
         const PoseName& pose_name,
         const Duration &move_duration)
     {
+        log_moving_to_pose__(pose_name, move_duration);
         const auto& pose = get_pose(pose_name);
         const auto& joint_type_angles = pose.joint_type_angles;
         move_to_angles(joint_type_angles, move_duration);
@@ -133,5 +136,40 @@ namespace al5d_cpp
         start_pose_name = posing_config.start_pose_name;
         finish_pose_name = posing_config.finish_pose_name;
         poses = construct_poses(posing_config.pose_configs);
+    }
+
+
+    void AL5DBase::log_moving_to_pose__(
+        const PoseName& pose_name)
+        const
+    {
+        LOG_INFO(get_log_moving_to_pose__(pose_name));
+    }
+    
+    
+    void AL5DBase::log_moving_to_pose__(
+        const PoseName& pose_name,
+        const Duration &move_duration)
+        const
+    {
+        LOG_INFO(get_log_moving_to_pose__(pose_name, move_duration));
+    }
+
+    
+    std::string AL5DBase::get_log_moving_to_pose__(
+        const PoseName& pose_name)
+        const
+    {
+        return "MOVING_TO_POSE :: Pose='" + pose_name + "'";
+    }
+    
+    
+    std::string AL5DBase::get_log_moving_to_pose__(
+        const PoseName& pose_name,
+        const Duration &duration)
+        const
+    {
+        auto log_line = get_log_moving_to_pose__(pose_name);
+        return log_line + " Duration='" + std::to_string(duration.in_milliseconds()) + "ms'";
     }
 }

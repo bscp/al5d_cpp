@@ -3,6 +3,7 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/exceptions.hpp>
+#include <al5d_cpp/logging.hpp>
 
 
 namespace al5d_cpp
@@ -137,6 +138,9 @@ namespace al5d_cpp
         const JointNameAngles &joint_name_angles,
         const Duration &move_duration)
     {
+        log_moving_to_angles__(
+            joint_name_angles.size(), move_duration);
+
         for (const auto &joint_name_angle : joint_name_angles)
         {
             const auto joint_name = joint_name_angle.joint_name;
@@ -144,6 +148,7 @@ namespace al5d_cpp
             const auto& joint = get_joint(joint_name);
             joint.move_to_angle(joint_angle, move_duration);
         }
+        
         transmit_command_terminator_();
         start_timer__(move_duration);
     }
@@ -152,6 +157,9 @@ namespace al5d_cpp
     void AL5DBase::move_to_angles(
         const JointNameAngles &joint_name_angles)
     {
+        log_moving_to_angles__(
+            joint_name_angles.size());
+
         for (const auto &joint_name_angle : joint_name_angles)
         {
             const auto joint_name = joint_name_angle.joint_name;
@@ -159,6 +167,7 @@ namespace al5d_cpp
             const auto& joint = get_joint(joint_name);
             joint.move_to_angle(joint_angle);
         }
+
         transmit_command_terminator_();
     }
 
@@ -167,6 +176,9 @@ namespace al5d_cpp
         const JointTypeAngles &joint_type_angles,
         const Duration &move_duration)
     {
+        log_moving_to_angles__(
+            joint_type_angles.size(), move_duration);
+
         for (const auto &joint_type_angle : joint_type_angles)
         {
             const auto joint_type = joint_type_angle.joint_type;
@@ -174,6 +186,7 @@ namespace al5d_cpp
             const auto& joint = get_joint(joint_type);
             joint.move_to_angle(joint_angle, move_duration);
         }
+
         transmit_command_terminator_();
         start_timer__(move_duration);
     }
@@ -182,6 +195,9 @@ namespace al5d_cpp
     void AL5DBase::move_to_angles(
         const JointTypeAngles &joint_type_angles)
     {
+        log_moving_to_angles__(
+            joint_type_angles.size());
+
         for (const auto &joint_type_angle : joint_type_angles)
         {
             const auto joint_type = joint_type_angle.joint_type;
@@ -189,6 +205,7 @@ namespace al5d_cpp
             const auto& joint = get_joint(joint_type);
             joint.move_to_angle(joint_angle);
         }
+
         transmit_command_terminator_();
     }
     
@@ -213,5 +230,40 @@ namespace al5d_cpp
         }
         
         return !timer_ptr__->has_elapsed();
+    }
+
+
+    void AL5DBase::log_moving_to_angles__(
+        size_t angle_count)
+        const
+    {
+        LOG_INFO(get_log_moving_to_angles__(angle_count));
+    }
+    
+    
+    void AL5DBase::log_moving_to_angles__(
+        size_t angle_count,
+        const Duration &move_duration)
+        const
+    {
+        LOG_INFO(get_log_moving_to_angles__(angle_count, move_duration));
+    }
+
+
+    std::string AL5DBase::get_log_moving_to_angles__(
+        size_t angle_count)
+        const
+    {
+        return "MOVING_TO_ANGLES :: AngleCount='" + std::to_string(angle_count) + "'";
+    }
+    
+    
+    std::string AL5DBase::get_log_moving_to_angles__(
+        size_t angle_count,
+        const Duration &duration)
+        const
+    {
+        auto log_line = get_log_moving_to_angles__(angle_count);
+        return log_line + " Duration='" + std::to_string(duration.in_milliseconds()) + "ms'";
     }
 }

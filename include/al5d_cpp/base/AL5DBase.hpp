@@ -91,6 +91,24 @@ namespace al5d_cpp
 
         void set_joint_communicator_ptrs__();
 
+        void log_moving_to_angles__(
+            size_t angle_count)
+            const;
+        
+        void log_moving_to_angles__(
+            size_t angle_count,
+            const Duration &move_duration)
+            const;
+
+        std::string get_log_moving_to_angles__(
+            size_t angle_count)
+            const;
+        
+        std::string get_log_moving_to_angles__(
+            size_t angle_count,
+            const Duration &duration)
+            const;
+
         // timer was used because al5d did not respond to
         // the position commands
         TimerPtr timer_ptr__;
@@ -138,6 +156,24 @@ namespace al5d_cpp
 
         const Pose& get_pose(
             const PoseName& pose_name)
+            const;
+
+        void log_moving_to_pose__(
+            const PoseName& pose_name)
+            const;
+
+        void log_moving_to_pose__(
+            const PoseName& pose_name,
+            const Duration &move_duration)
+            const;
+
+        std::string get_log_moving_to_pose__(
+            const PoseName& pose_name)
+            const;
+        
+        std::string get_log_moving_to_pose__(
+            const PoseName& pose_name,
+            const Duration &duration)
             const;
 
         Poses poses;
