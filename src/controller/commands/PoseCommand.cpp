@@ -4,7 +4,7 @@
 
 namespace al5d
 {
-    /*static*/ CommandPtr PoseCommand::as_ptr(
+    /*static*/ CommandPtr PoseCommand::as_pointer(
         Controller* context_ptr,
         const PoseName& pose_name,
         const Duration& move_duration)

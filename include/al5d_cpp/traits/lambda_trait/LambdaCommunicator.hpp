@@ -16,7 +16,7 @@ namespace al5d
     {
     public:
     
-        static CommunicatorPtr as_ptr();
+        static CommunicatorPtr as_pointer();
         
         LambdaCommunicator();
 

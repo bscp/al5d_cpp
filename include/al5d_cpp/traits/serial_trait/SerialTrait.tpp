@@ -27,7 +27,7 @@ namespace al5d
     template <typename BaseType>
     void SerialTrait<BaseType>::connect()
     {
-        auto ptr = SerialCommunicator::as_ptr(serial_port, serial_baud_rate);
+        auto ptr = SerialCommunicator::as_pointer(serial_port, serial_baud_rate);
         BaseType::set_communicator_ptr(ptr);
         sleep(2); // TODO : needed for arduino simulator, but also for real al5d?
     }

@@ -4,7 +4,7 @@
 
 namespace al5d
 {
-    /*static*/ CommandPtr AnglesCommand::as_ptr(
+    /*static*/ CommandPtr AnglesCommand::as_pointer(
         Controller* context_ptr,
         const JointTypeAngles& joint_type_angles,
         const Duration& move_duration)

@@ -9,7 +9,7 @@ namespace al5d
         const AL5DBaseConfig& config)
         : BaseType(config)
     {
-        auto ptr = LambdaCommunicator::as_ptr();
+        auto ptr = LambdaCommunicator::as_pointer();
         BaseType::set_communicator_ptr(ptr);
     }
 

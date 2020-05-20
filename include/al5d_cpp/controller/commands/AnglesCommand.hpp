@@ -11,7 +11,7 @@ namespace al5d
     {
     public:
 
-        static CommandPtr as_ptr(
+        static CommandPtr as_pointer(
             Controller* context_ptr,
             const JointTypeAngles& joint_type_angles,
             const Duration& move_duration);

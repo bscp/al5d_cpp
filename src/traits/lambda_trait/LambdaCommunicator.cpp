@@ -4,7 +4,7 @@
 
 namespace al5d
 {
-    /*static*/ CommunicatorPtr LambdaCommunicator::as_ptr()
+    /*static*/ CommunicatorPtr LambdaCommunicator::as_pointer()
     {
         return std::make_shared<LambdaCommunicator>();
     }

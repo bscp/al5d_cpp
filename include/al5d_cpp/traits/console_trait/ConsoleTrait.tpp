@@ -15,7 +15,7 @@ namespace al5d
         const AL5DBaseConfig& config)
         : BaseType(config)
     {
-        auto ptr = ConsoleCommunicator::as_ptr();
+        auto ptr = ConsoleCommunicator::as_pointer();
         BaseType::set_communicator_ptr(ptr);
     }
 

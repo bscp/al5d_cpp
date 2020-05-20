@@ -7,7 +7,7 @@
 
 namespace al5d
 {
-    /*static*/ CommunicatorPtr ConsoleCommunicator::as_ptr()
+    /*static*/ CommunicatorPtr ConsoleCommunicator::as_pointer()
     {
         return std::make_shared<ConsoleCommunicator>();
     }

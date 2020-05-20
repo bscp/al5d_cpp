@@ -15,7 +15,7 @@ namespace al5d
     {
     public:
     
-        static CommunicatorPtr as_ptr(
+        static CommunicatorPtr as_pointer(
             const serial::Port& port,
             const serial::BaudRate baud_rate);
         
