@@ -1,5 +1,5 @@
 // HEADER INCLUDE
-#include <al5d_cpp/traits/json_trait/json_deserialize.hpp>
+#include <al5d_cpp/readers/json_reader.hpp>
 
 // SYSTEM INCLUDES
 #include <exception>
@@ -279,21 +279,21 @@ namespace al5d
     }
 
 
-    PosingConfig load_posing_config_from_json_file(
+    PosingConfig poses_config_from_json_file(
         const std::string& path)
     {
         return load_posing_config(YAML::LoadFile(path));
     }
 
 
-    PosingConfig load_posing_config_from_json(
+    PosingConfig poses_config_from_json(
         const std::string& json)
     {
         return load_posing_config(YAML::Load(json));
     }
 
 
-    AL5DBaseConfig load_config_from_json_file(
+    AL5DBaseConfig al5d_config_from_json_file(
         const std::string& path)
     {
         auto config = load_config(YAML::LoadFile(path));
@@ -301,7 +301,7 @@ namespace al5d
     }
 
 
-    AL5DBaseConfig load_config_from_json(
+    AL5DBaseConfig al5d_config_from_json(
         const std::string& json)
     {
         return load_config(YAML::Load(json));
