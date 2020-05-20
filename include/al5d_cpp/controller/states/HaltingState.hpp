@@ -1,5 +1,5 @@
-#ifndef SRC_HALTINGSTATE_HPP
-#define SRC_HALTINGSTATE_HPP
+#ifndef AL5D_CPP_HALTINGSTATE_HPP
+#define AL5D_CPP_HALTINGSTATE_HPP
 
 // PROJECT INCLUDES
 #include <al5d_cpp/controller/ContextState.hpp>
@@ -29,4 +29,4 @@ namespace al5d
     };
 }
 
-#endif // SRC_HALTINGSTATE_HPP
+#endif // AL5D_CPP_HALTINGSTATE_HPP

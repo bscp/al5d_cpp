@@ -1,5 +1,5 @@
-#ifndef SRC_IDLINGSTATE_HPP
-#define SRC_IDLINGSTATE_HPP
+#ifndef AL5D_CPP_IDLINGSTATE_HPP
+#define AL5D_CPP_IDLINGSTATE_HPP
 
 // PROJECT INCLUDES
 #include <al5d_cpp/controller/ContextState.hpp>
@@ -28,4 +28,4 @@ namespace al5d
     };
 }
 
-#endif // SRC_IDLINGSTATE_HPP
+#endif // AL5D_CPP_IDLINGSTATE_HPP

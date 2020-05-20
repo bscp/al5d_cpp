@@ -1,5 +1,5 @@
-#ifndef SRC_CONTEXTSTATE_HPP
-#define SRC_CONTEXTSTATE_HPP
+#ifndef AL5D_CPP_CONTEXTSTATE_HPP
+#define AL5D_CPP_CONTEXTSTATE_HPP
 
 // SYSTEM INCLUDES
 #include <string>
@@ -39,4 +39,4 @@ namespace al5d
 }
 
 
-#endif // SRC_CONTEXTSTATE_HPP
+#endif // AL5D_CPP_CONTEXTSTATE_HPP

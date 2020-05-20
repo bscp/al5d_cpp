@@ -1,5 +1,5 @@
-#ifndef SRC_MOVINGSTATE_HPP
-#define SRC_MOVINGSTATE_HPP
+#ifndef AL5D_CPP_MOVINGSTATE_HPP
+#define AL5D_CPP_MOVINGSTATE_HPP
 
 // PROJECT INCLUDES
 #include <al5d_cpp/controller/ContextState.hpp>
@@ -33,4 +33,4 @@ namespace al5d
     };
 }
 
-#endif // SRC_MOVINGSTATE_HPP
+#endif // AL5D_CPP_MOVINGSTATE_HPP

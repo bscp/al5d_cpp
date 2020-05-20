@@ -1,5 +1,5 @@
-#ifndef SRC_EXCEPTIONS_HPP
-#define SRC_EXCEPTIONS_HPP
+#ifndef AL5D_CPP_EXCEPTIONS_HPP
+#define AL5D_CPP_EXCEPTIONS_HPP
 
 // SYSTEM INCLUDES
 #include <stdexcept>
@@ -85,4 +85,4 @@ namespace al5d
 }
 
 
-#endif // SRC_EXCEPTIONS_HPP
+#endif // AL5D_CPP_EXCEPTIONS_HPP

@@ -1,5 +1,5 @@
-#ifndef SERIAL_SERIAL_HPP
-#define	SERIAL_SERIAL_HPP
+#ifndef AL5D_CPP_SERIAL_HPP
+#define	AL5D_CPP_SERIAL_HPP
 
 // SYSTEM INCLUDES
 #include <string>
@@ -53,4 +53,4 @@ namespace serial
 }
 
 
-#endif	/* SERIAL_SERIAL_HPP */
+#endif	/* AL5D_CPP_SERIAL_HPP */

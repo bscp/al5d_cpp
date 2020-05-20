@@ -1,6 +1,6 @@
 
-#ifndef SRC_STATE_HPP
-#define SRC_STATE_HPP
+#ifndef AL5D_CPP_STATE_HPP
+#define AL5D_CPP_STATE_HPP
 
 // SYSTEM INCLUDES
 #include <memory>
@@ -48,4 +48,4 @@ namespace al5d
     typedef std::shared_ptr<State> StatePtr;
 }
 
-#endif // SRC_STATE_HPP
+#endif // AL5D_CPP_STATE_HPP

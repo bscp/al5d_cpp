@@ -1,5 +1,5 @@
-#ifndef AL5D_CPP_JOINT_HPP
-#define AL5D_CPP_JOINT_HPP
+#ifndef AL5D_CPP_JOINTBASE_HPP
+#define AL5D_CPP_JOINTBASE_HPP
 
 // SYSTEM INCLUDES
 #include <string>
@@ -95,4 +95,4 @@ namespace al5d
 }
 
 
-#endif // AL5D_CPP_JOINT_HPP
+#endif // AL5D_CPP_JOINTBASE_HPP

@@ -1,5 +1,5 @@
-#ifndef STATEMACHINE_CONTEXT_HPP
-#define STATEMACHINE_CONTEXT_HPP
+#ifndef AL5D_CPP_CONTEXT_HPP
+#define AL5D_CPP_CONTEXT_HPP
 
 // SYSTEM INCLUDES
 #include <queue>
@@ -59,4 +59,4 @@ namespace al5d
 }
 
 
-#endif // STATEMACHINE_CONTEXT_HPP
+#endif // AL5D_CPP_CONTEXT_HPP
