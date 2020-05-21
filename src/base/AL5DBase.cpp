@@ -46,7 +46,11 @@ namespace al5d_cpp
     bool AL5DBase::is_connected()
         const
     {
-        validate_communicator_ptr__();
+        if (communicator_ptr_ == nullptr)
+        {
+            LOG_WARNING("communicator_ptr equals nullptr");
+            return false;
+        }
         return communicator_ptr_->is_connected();
     }
     

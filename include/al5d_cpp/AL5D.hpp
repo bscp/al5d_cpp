@@ -4,6 +4,7 @@
 // PROJECT INCLUDES
 #include <al5d_cpp/base/AL5DBase.hpp>
 #include <al5d_cpp/controller/Controller.hpp>
+#include <al5d_cpp/controller/commands.hpp>
 
 // CONSTRUCTOR INCLUDES
 #include <al5d_cpp/readers/json_reader.hpp>
