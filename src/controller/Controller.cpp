@@ -27,7 +27,7 @@ namespace al5d_cpp
         const PoseName& pose_name,
         const Duration& move_duration)
     {
-        scheduled_command_ptrs.push(
+        schedule_command(
             PoseCommand::as_pointer(this, pose_name, move_duration));
     }
 
@@ -36,8 +36,15 @@ namespace al5d_cpp
         const JointTypeAngles& joint_type_angles,
         const Duration& move_duration)
     {
-        scheduled_command_ptrs.push(
+        schedule_command(
             AnglesCommand::as_pointer(this, joint_type_angles, move_duration));
+    }
+
+
+    void Controller::schedule_command(
+        const CommandPtr& command_ptr)
+    {
+        scheduled_command_ptrs.push(command_ptr);
     }
 
 

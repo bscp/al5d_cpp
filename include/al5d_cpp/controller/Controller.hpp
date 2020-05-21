@@ -40,6 +40,9 @@ namespace al5d_cpp
             const Duration& move_duration
                 =Duration::from_ms(MOVE_DURATION));
 
+        void schedule_command(
+            const CommandPtr& command_ptr);
+
         void schedule_next_command_if_available();
         void preempt_scheduled_commands();
         void start_next_command();
