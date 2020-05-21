@@ -24,9 +24,6 @@ namespace al5d_cpp
     private:
             
         void connect();
-
-        void log_connecting()
-            const;
         
         serial::Port serial_port;
         serial::BaudRate serial_baud_rate;

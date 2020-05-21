@@ -1,6 +1,9 @@
 // HEADER INCLUDE
 #include <al5d_cpp/traits/serial_trait/SerialCommunicator.hpp>
 
+// PROJECT INCLUDES
+#include <al5d_cpp/logging.hpp>
+
 
 namespace al5d_cpp
 {
@@ -8,7 +11,19 @@ namespace al5d_cpp
         const serial::Port& port,
         const serial::BaudRate baud_rate)
     {
+        log_connecting(port, baud_rate);
         return std::make_shared<SerialCommunicator>(port, baud_rate);
+    }
+
+
+    /*static*/ void SerialCommunicator::log_connecting(
+        const serial::Port& port,
+        const serial::BaudRate baud_rate)
+    {
+        const std::string method_string = "Method='Serial'";
+        const std::string port_string = "Port='" + port + "'";
+        const std::string angle_string = "Baud='" + std::to_string(baud_rate.value()) + "'";
+        LOG_INFO("CONNECTING :: " + method_string + " " + port_string + " " + angle_string);
     }
         
     

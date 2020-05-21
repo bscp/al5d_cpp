@@ -33,6 +33,10 @@ namespace al5d_cpp
         
     private:
 
+        static void log_connecting(
+            const serial::Port& port,
+            const serial::BaudRate baud_rate);
+
         serial::Serial serial;
         TimerPtr timer_ptr;
     };

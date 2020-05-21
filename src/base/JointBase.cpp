@@ -8,7 +8,6 @@
 // PROJECT INCLUDES
 #include <al5d_cpp/exceptions.hpp>
 #include <al5d_cpp/logging.hpp>
-#include <al5d_cpp/log_lines.hpp>
 
 
 namespace al5d_cpp
