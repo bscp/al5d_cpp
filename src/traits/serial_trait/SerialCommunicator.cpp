@@ -25,13 +25,6 @@ namespace al5d_cpp
         const std::string angle_string = "Baud='" + std::to_string(baud_rate.value()) + "'";
         LOG_INFO("CONNECTING :: " + method_string + " " + port_string + " " + angle_string);
     }
-
-
-    /*static*/void SerialCommunicator::log_transmitting(
-        const std::string& message)
-    {
-        LOG_INFO("TRANSMITTING :: Message='" + message + "'");
-    }
         
     
     SerialCommunicator::SerialCommunicator(
@@ -47,7 +40,7 @@ namespace al5d_cpp
     void SerialCommunicator::transmit(
         const std::string& message)
     {
-        log_transmitting(message);
+        log_transmitting_(message);
         serial.transmit(message);
     }
     

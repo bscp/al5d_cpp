@@ -28,6 +28,7 @@ namespace al5d_cpp
     void ConsoleCommunicator::transmit(
         const std::string& message)
     {
+        log_transmitting_(message);
         std::cout << message;
     }
 }

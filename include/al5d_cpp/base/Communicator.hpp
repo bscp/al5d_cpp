@@ -8,23 +8,22 @@
 
 namespace al5d_cpp
 {
-    class Communicator
+    class Communicator // TODO : rename to CommunicatorBase
     {
     public:
     
         virtual void transmit(
             const std::string& message) = 0;
             
-        virtual bool is_connected() const
-        {
-            return true; // is default
-        }
+        virtual bool is_connected()
+            const;
     
     protected:
 
-        Communicator()
-        {
-        }
+        Communicator();
+
+        static void log_transmitting_(
+            const std::string& message);
     };
 
     typedef std::shared_ptr<Communicator> CommunicatorPtr;
