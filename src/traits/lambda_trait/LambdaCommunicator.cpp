@@ -1,11 +1,15 @@
 // HEADER INCLUDE
 #include <al5d_cpp/traits/lambda_trait/LambdaCommunicator.hpp>
 
+// PROJECT INCLUDES
+#include <al5d_cpp/logging.hpp>
+
 
 namespace al5d_cpp
 {
     /*static*/ CommunicatorPtr LambdaCommunicator::as_pointer()
     {
+        log_connecting();
         return std::make_shared<LambdaCommunicator>();
     }
 
@@ -13,6 +17,12 @@ namespace al5d_cpp
     LambdaCommunicator::LambdaCommunicator()
         : Communicator() 
     {
+    }
+
+
+    /*static*/ void LambdaCommunicator::log_connecting()
+    {
+        LOG_INFO("CONNECTING :: Medium='Lambda'");
     }
 
     

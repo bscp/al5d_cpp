@@ -21,6 +21,10 @@ namespace al5d_cpp
         void transmit(
             const std::string& message)
             override;
+
+    private:
+
+        static void log_connecting();
     };
 }
 

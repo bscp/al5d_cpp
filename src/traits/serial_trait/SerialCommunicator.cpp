@@ -20,7 +20,7 @@ namespace al5d_cpp
         const serial::Port& port,
         const serial::BaudRate baud_rate)
     {
-        const std::string method_string = "Method='Serial'";
+        const std::string method_string = "Medium='Serial'";
         const std::string port_string = "Port='" + port + "'";
         const std::string angle_string = "Baud='" + std::to_string(baud_rate.value()) + "'";
         LOG_INFO("CONNECTING :: " + method_string + " " + port_string + " " + angle_string);

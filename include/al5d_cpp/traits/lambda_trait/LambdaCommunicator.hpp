@@ -29,6 +29,8 @@ namespace al5d_cpp
 
     private:
 
+        static void log_connecting();
+
         TransmitFn transmit_fn;
     };
 }
