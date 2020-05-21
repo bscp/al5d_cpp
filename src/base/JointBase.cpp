@@ -60,8 +60,8 @@ namespace al5d_cpp
         const
     {
         const auto pulse_width = to_pulse_width__(angle);
-        transmit_pulse_width__(pulse_width);
         log_moving__(angle, pulse_width);
+        transmit_pulse_width__(pulse_width);
     }
     
     
@@ -71,9 +71,9 @@ namespace al5d_cpp
         const
     {
         const auto pulse_width = to_pulse_width__(angle);
+        log_moving__(angle, pulse_width, move_duration);
         transmit_pulse_width__(pulse_width);
         transmit_move_duration__(move_duration);
-        log_moving__(angle, pulse_width, move_duration);
     }
     
     
