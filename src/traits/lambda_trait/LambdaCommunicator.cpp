@@ -25,12 +25,20 @@ namespace al5d_cpp
         LOG_INFO("CONNECTING :: Medium='Lambda'");
     }
 
+
+    /*static*/ void LambdaCommunicator::log_transmitting(
+        const std::string& message)
+    {
+        LOG_INFO("TRANSMITTING :: Message='" + message + "'");
+    }
+
     
     void LambdaCommunicator::transmit(
         const std::string& message)
     {
         if (transmit_fn != nullptr)
         {
+            log_transmitting(message);
             transmit_fn(message);
         }
     }

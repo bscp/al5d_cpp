@@ -37,6 +37,9 @@ namespace al5d_cpp
             const serial::Port& port,
             const serial::BaudRate baud_rate);
 
+        static void log_transmitting(
+            const std::string& message);
+
         serial::Serial serial;
         TimerPtr timer_ptr;
     };

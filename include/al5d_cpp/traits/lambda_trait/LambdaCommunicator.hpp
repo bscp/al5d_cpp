@@ -31,6 +31,9 @@ namespace al5d_cpp
 
         static void log_connecting();
 
+        static void log_transmitting( // TODO : move to CommunicatorBase class
+            const std::string& message);
+
         TransmitFn transmit_fn;
     };
 }
