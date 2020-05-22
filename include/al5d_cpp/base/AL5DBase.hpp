@@ -18,11 +18,11 @@ namespace al5d_cpp
     public:
         virtual void move_to_angles(
             const JointNameAngles &joint_name_angles,
-            const Duration &move_duration);
+            Duration move_duration);
     
         virtual void move_to_angles(
             const JointTypeAngles &joint_type_angles,
-            const Duration &move_duration);
+            Duration move_duration);
         
         virtual void move_to_angles(
             const JointNameAngles &joint_name_angles);
@@ -69,6 +69,9 @@ namespace al5d_cpp
 
         void validate_communicator_ptr__()
             const;
+
+        Duration default_if_zero(
+            const Duration &move_duration);
     
         static void move_to__(
             const JointBase& joint,
@@ -113,7 +116,7 @@ namespace al5d_cpp
         // the position commands
         TimerPtr timer_ptr__;
 
-    public: // TODO : restructure code from here (copied from PoseTrait)
+    public: // TODO : restructure code from here (copied from removed PoseTrait class)
 
         void move_to_pose(
             const PoseName& pose_name);

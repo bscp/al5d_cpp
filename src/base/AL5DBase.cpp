@@ -4,6 +4,7 @@
 // PROJECT INCLUDES
 #include <al5d_cpp/exceptions.hpp>
 #include <al5d_cpp/logging.hpp>
+#include <al5d_cpp/settings.hpp>
 
 
 namespace al5d_cpp
@@ -140,10 +141,12 @@ namespace al5d_cpp
 
     void AL5DBase::move_to_angles(
         const JointNameAngles &joint_name_angles,
-        const Duration &move_duration)
+        Duration move_duration)
     {
         log_moving_to_angles__(
             joint_name_angles.size(), move_duration);
+
+        move_duration = default_if_zero(move_duration);
 
         for (const auto &joint_name_angle : joint_name_angles)
         {
@@ -178,10 +181,12 @@ namespace al5d_cpp
 
     void AL5DBase::move_to_angles(
         const JointTypeAngles &joint_type_angles,
-        const Duration &move_duration)
+        Duration move_duration)
     {
         log_moving_to_angles__(
             joint_type_angles.size(), move_duration);
+
+        move_duration = default_if_zero(move_duration);
 
         for (const auto &joint_type_angle : joint_type_angles)
         {
@@ -211,6 +216,20 @@ namespace al5d_cpp
         }
 
         transmit_command_terminator_();
+    }
+
+
+    Duration AL5DBase::default_if_zero(
+        const Duration &move_duration)
+    {
+        if (move_duration.in_milliseconds() == 0)
+        {
+            const std::string s(std::to_string(MOVE_DURATION));
+            LOG_INFO("Explicit move duration of 0 given, defaulting to: " + s);
+            return Duration::from_milliseconds(MOVE_DURATION);
+        }
+
+        return move_duration;
     }
     
     
