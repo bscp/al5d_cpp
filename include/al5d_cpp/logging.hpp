@@ -7,6 +7,7 @@
 
 namespace al5d_cpp
 {
+    void log_trace(const std::string &line);
     void log_info(const std::string &line);
     void log_debug(const std::string &line);
     void log_warning(const std::string &line);
@@ -14,6 +15,7 @@ namespace al5d_cpp
 }
 
 
+#define LOG_TRACE al5d_cpp::log_trace
 #define LOG_INFO al5d_cpp::log_info
 #define LOG_DEBUG al5d_cpp::log_debug
 #define LOG_WARNING al5d_cpp::log_warning

@@ -23,6 +23,6 @@ namespace al5d_cpp
     /*static*/ void Communicator::log_transmitting_(
         const std::string& message)
     {
-        LOG_INFO("TRANSMITTING :: Message='" + message + "'");
+        LOG_TRACE("TRANSMITTING :: Message='" + message + "'");
     }
 }

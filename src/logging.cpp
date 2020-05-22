@@ -7,6 +7,12 @@
 
 namespace al5d_cpp
 {
+    void log_trace(const std::string &line)
+    {
+        std::cout << "TRACE :: " << line << "\n";
+    }
+
+
     void log_info(const std::string &line)
     {
         std::cout << "INFO :: " << line << "\n";
