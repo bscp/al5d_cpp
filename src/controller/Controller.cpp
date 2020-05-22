@@ -54,6 +54,12 @@ namespace al5d_cpp
     }
 
 
+    void Controller::change_to_calibrating_state()
+    {
+        change_state(CalibratingState::as_pointer(this));
+    }
+
+
     void Controller::change_to_initializing_state()
     {
         change_state(InitializingState::as_pointer(this));

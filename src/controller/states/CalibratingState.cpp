@@ -63,6 +63,6 @@ namespace al5d_cpp
     void CalibratingState::on_calibrating_finished_event()
     {
         log_handling_event("CALIBRATING_FINISHED");
-        context_ptr->change_to_idling_state();
+        context_ptr->change_to_initializing_state();
     }
 }

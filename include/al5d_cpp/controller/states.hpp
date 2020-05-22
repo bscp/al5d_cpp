@@ -4,6 +4,7 @@
 
 #include <al5d_cpp/controller/states/IdlingState.hpp>
 #include <al5d_cpp/controller/states/ConnectingState.hpp>
+#include <al5d_cpp/controller/states/CalibratingState.hpp>
 #include <al5d_cpp/controller/states/InitializingState.hpp>
 #include <al5d_cpp/controller/states/MovingState.hpp>
 #include <al5d_cpp/controller/states/HaltingState.hpp>

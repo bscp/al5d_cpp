@@ -24,6 +24,7 @@ namespace al5d_cpp
             override;
 
         void change_to_connecting_state();
+        void change_to_calibrating_state();
         void change_to_initializing_state();
         void change_to_idling_state();
         void change_to_moving_state();

@@ -47,6 +47,6 @@ namespace al5d_cpp
     void ConnectingState::on_connecting_finished_event()
     {
         log_handling_event("CONNECTING_FINISHED");
-        context_ptr->change_to_initializing_state();
+        context_ptr->change_to_calibrating_state();
     }
 }
