@@ -23,7 +23,6 @@ namespace al5d_cpp
     void HaltingState::enter()
     {
         ContextState::enter();
-        context_ptr->preempt_scheduled_commands();
     }
     
     

@@ -92,7 +92,9 @@ namespace al5d_cpp
 
     void Controller::halt()
     {
+        al5d.stop();
         change_to_halting_state();
+        preempt_scheduled_commands();
     }
 
 
