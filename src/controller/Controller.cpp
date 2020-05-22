@@ -88,6 +88,18 @@ namespace al5d_cpp
     {
         change_state(HaltingState::as_pointer(this));
     }
+
+
+    void Controller::halt()
+    {
+        change_to_halting_state();
+    }
+
+
+    void Controller::unhalt()
+    {
+        schedule_event(UNHALT_COMMAND_RECEIVED);
+    }
     
     
     void Controller::schedule_next_command_if_available()

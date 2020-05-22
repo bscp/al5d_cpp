@@ -44,6 +44,9 @@ namespace al5d_cpp
         void schedule_command(
             const CommandPtr& command_ptr);
 
+
+        void unhalt();
+        void halt();
         void schedule_next_command_if_available();
         void preempt_scheduled_commands();
         void start_next_command();

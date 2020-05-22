@@ -25,7 +25,7 @@ namespace al5d_cpp
         void handle_event(Event event) override;
 
     private:
-        void on_emergency_cleared_event();
+        void on_unhalt_command_received();
     };
 }
 

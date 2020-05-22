@@ -29,7 +29,7 @@ namespace al5d_cpp
     
     void HaltingState::do_activity()
     {
-        // only waiting for the EMERGENCY_CLEARED event
+        // only waiting for the UNHALT_COMMAND_RECEIVED event
     }
     
     
@@ -37,8 +37,8 @@ namespace al5d_cpp
     {
         switch (event)
         {
-        case EVENT_EMERGENCY_CLEARED:
-            return on_emergency_cleared_event();
+        case UNHALT_COMMAND_RECEIVED:
+            return on_unhalt_command_received();
             
         default:
             return ContextState::handle_event(event);
@@ -46,7 +46,7 @@ namespace al5d_cpp
     }
     
     
-    void HaltingState::on_emergency_cleared_event()
+    void HaltingState::on_unhalt_command_received()
     {
         log_handling_event("EMERGENCY_CLEARED");
         context_ptr->change_to_idling_state();

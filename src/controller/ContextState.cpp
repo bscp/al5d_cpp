@@ -21,9 +21,6 @@ namespace al5d_cpp
     {
         switch (event)
         {
-        case EVENT_HALT_REQUESTED:
-            return on_halt_requested_event();
-            
         default:
             LOG_WARNING("Unhandled event '" + std::to_string(event) + "'");
             break;
