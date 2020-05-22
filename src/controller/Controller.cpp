@@ -114,6 +114,12 @@ namespace al5d_cpp
     }
     
     
+    void Controller::start_calibrating()
+    {
+        al5d.move_to_calibrating_pose();
+    }
+    
+    
     void Controller::start_initializing()
     {
         al5d.move_to_start_pose();
@@ -143,6 +149,16 @@ namespace al5d_cpp
         if (!al5d.is_moving())
         {
             schedule_event(EVENT_INITIALIZING_FINISHED);
+        }
+    }
+    
+    
+    void Controller::check_calibrating_progress()
+    {
+        // TODO : make DRY together with initializing, moving, finalizing
+        if (!al5d.is_moving())
+        {
+            schedule_event(EVENT_CALIBRATING_FINISHED);
         }
     }
     

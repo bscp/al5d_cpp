@@ -127,6 +127,8 @@ namespace al5d_cpp
 
         void set_poses(
             const PosingConfig& posing_config);
+    
+        void move_to_calibrating_pose();
 
         void move_to_start_pose();
         
@@ -177,6 +179,7 @@ namespace al5d_cpp
             const;
 
         Poses poses;
+        PoseName calibrating_pose_name;
         PoseName start_pose_name;
         PoseName finish_pose_name;
     };

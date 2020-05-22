@@ -43,6 +43,7 @@
     }
   ],
   "posing": {
+    "calibrating_pose_name": "up",
     "start_pose_name": "",
     "finish_pose_name": "",
     "poses": []

@@ -1,4 +1,5 @@
 {
+  "calibrating_pose_name": "up",
   "start_pose_name": "ready",
   "finish_pose_name": "park",
   "poses": [

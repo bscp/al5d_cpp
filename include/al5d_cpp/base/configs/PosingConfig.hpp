@@ -11,10 +11,12 @@ namespace al5d_cpp
     {
         PosingConfig(
             const PoseConfigs& pose_configs,
+            const PoseName& calibrating_pose_name,
             const PoseName& start_pose_name,
             const PoseName& finish_pose_name);
         
         const PoseConfigs pose_configs;
+        const PoseName calibrating_pose_name;
         const PoseName start_pose_name;
         const PoseName finish_pose_name;
     };

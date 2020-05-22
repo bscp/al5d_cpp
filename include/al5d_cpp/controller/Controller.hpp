@@ -47,7 +47,9 @@ namespace al5d_cpp
         void preempt_scheduled_commands();
         void start_next_command();
         void start_initializing();
+        void start_calibrating();
         void start_finalizing();
+        void check_calibrating_progress();
         void check_moving_progress();
         void check_connecting_progress();
         void check_initializing_progress();

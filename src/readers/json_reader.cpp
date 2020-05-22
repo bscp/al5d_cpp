@@ -245,17 +245,20 @@ namespace al5d_cpp
 
 
         #define POSES_CONFIG_KEY "poses"
+        #define CALIBRATING_POSE_NAME_KEY "calibrating_pose_name"
         #define START_POSE_NAME_KEY "start_pose_name"
         #define FINISH_POSE_NAME_KEY "finish_pose_name"
         PosingConfig load_posing_config(
             const YAML::Node &json_node)
         {
             validate_key(json_node, POSES_CONFIG_KEY);
+            validate_key(json_node, CALIBRATING_POSE_NAME_KEY);
             validate_key(json_node, START_POSE_NAME_KEY);
             validate_key(json_node, FINISH_POSE_NAME_KEY);
 
             return PosingConfig(
                 load_pose_configs(json_node[POSES_CONFIG_KEY]),
+                load_pose_name(json_node[CALIBRATING_POSE_NAME_KEY]), // TODO : make optional
                 load_pose_name(json_node[START_POSE_NAME_KEY]), // TODO : make optional
                 load_pose_name(json_node[FINISH_POSE_NAME_KEY])); // TODO : make optional
         }
