@@ -34,9 +34,8 @@ namespace al5d_cpp
     }
 
 
-    InvalidNumberOfJoints::InvalidNumberOfJoints(
-        int number_of_given_joints)
-        : runtime_error(std::string("Expected '6' joints but got '") + std::to_string(number_of_given_joints) + "'") // TODO : shrink line size
+    InvalidNumberOfJoints::InvalidNumberOfJoints()
+        : runtime_error(std::string("Expected '6' joints'"))
     {
     }
 

@@ -24,7 +24,7 @@ namespace al5d_cpp
     {
         if (joint_configs.size() != 6)
         {
-            throw InvalidNumberOfJoints((int)joint_configs.size());
+            throw InvalidNumberOfJoints();
         }
     }
 }

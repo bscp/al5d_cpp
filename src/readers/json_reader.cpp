@@ -28,7 +28,7 @@ namespace al5d_cpp
             size_t size)
         {
             if (json_node.size() != size)
-            { // TODO : throw exception class
+            {
                 throw std::runtime_error("List does not have the right size");
             }
         }
@@ -39,7 +39,7 @@ namespace al5d_cpp
             size_t size)
         {
             if (json_node.size() < size)
-            { // TODO : throw exception class
+            {
                 throw std::runtime_error("List does not have the right size");
             }
         }
@@ -258,9 +258,9 @@ namespace al5d_cpp
 
             return PosingConfig(
                 load_pose_configs(json_node[POSES_CONFIG_KEY]),
-                load_pose_name(json_node[CALIBRATING_POSE_NAME_KEY]), // TODO : make optional
-                load_pose_name(json_node[START_POSE_NAME_KEY]), // TODO : make optional
-                load_pose_name(json_node[FINISH_POSE_NAME_KEY])); // TODO : make optional
+                load_pose_name(json_node[CALIBRATING_POSE_NAME_KEY]),
+                load_pose_name(json_node[START_POSE_NAME_KEY]),
+                load_pose_name(json_node[FINISH_POSE_NAME_KEY]));
         }
 
 
@@ -277,7 +277,7 @@ namespace al5d_cpp
             return AL5DBaseConfig(
                 load_joint_configs(json_node[JOINT_CONFIGS_KEY]),
                 load_serial_config(json_node[COMMUNICATOR_CONFIG_KEY]),
-                load_posing_config(json_node[POSING_CONFIG_KEY])); // TODO : make optional
+                load_posing_config(json_node[POSING_CONFIG_KEY]));
         }
     }
 

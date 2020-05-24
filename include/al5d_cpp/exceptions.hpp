@@ -36,8 +36,7 @@ namespace al5d_cpp
     class InvalidNumberOfJoints : public std::runtime_error
     {
     public:
-        explicit InvalidNumberOfJoints(
-            int number_of_given_joints);
+        explicit InvalidNumberOfJoints();
     };
 
 

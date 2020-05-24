@@ -18,3 +18,6 @@ This repository provides a installable library which allows you to execute low l
 
 ## Improvements
 * Add support for the AL5D model without wrist rotation.
+* Throw more detailed exception messages in <code>exceptions.hpp</code>
+* Make some configurations optional
+* Build a specific config based on the given keys in the json file.
