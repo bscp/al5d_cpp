@@ -133,7 +133,7 @@ namespace al5d_cpp
 
 
     void JointBase::set_communicator_ptr(
-        const CommunicatorPtr& communicator_ptr)
+        const CommunicatorBasePtr& communicator_ptr)
     {
         this->communicator_ptr = communicator_ptr;
     }

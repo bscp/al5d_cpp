@@ -82,7 +82,7 @@ namespace al5d_cpp
 
 
     void AL5DBase::set_communicator_ptr(
-        const CommunicatorPtr& communicator_ptr)
+        const CommunicatorBasePtr& communicator_ptr)
     {
         communicator_ptr_ = communicator_ptr;
         set_joint_communicator_ptrs__();

@@ -7,7 +7,7 @@
 
 namespace al5d_cpp
 {
-    /*static*/ CommunicatorPtr SerialCommunicator::as_pointer(
+    /*static*/ CommunicatorBasePtr SerialCommunicator::as_pointer(
         const serial::Port& port,
         const serial::BaudRate baud_rate)
     {

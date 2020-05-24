@@ -2,7 +2,7 @@
 #define	AL5D_CPP_SERIALCOMMUNICATOR_HPP
 
 // PROJECT INCLUDES
-#include <al5d_cpp/base/Communicator.hpp>
+#include <al5d_cpp/base/CommunicatorBase.hpp>
 #include <al5d_cpp/Serial.hpp>
 #include <al5d_cpp/Timer.hpp>
 
@@ -11,11 +11,11 @@
 
 namespace al5d_cpp
 {
-    class SerialCommunicator : public Communicator
+    class SerialCommunicator : public CommunicatorBase
     {
     public:
     
-        static CommunicatorPtr as_pointer(
+        static CommunicatorBasePtr as_pointer(
             const serial::Port& port,
             const serial::BaudRate baud_rate);
         

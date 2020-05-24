@@ -6,7 +6,7 @@
 #include <al5d_cpp/base/types.hpp>
 #include <al5d_cpp/base/configs/JointBaseConfig.hpp>
 #include <al5d_cpp/base/configs/AL5DBaseConfig.hpp>
-#include <al5d_cpp/base/Communicator.hpp>
+#include <al5d_cpp/base/CommunicatorBase.hpp>
 #include <al5d_cpp/Timer.hpp>
 #include <al5d_cpp/base/configs/PosingConfig.hpp>
 
@@ -33,7 +33,7 @@ namespace al5d_cpp
         virtual void stop();
 
         void set_communicator_ptr(
-            const CommunicatorPtr& communicator_ptr);
+            const CommunicatorBasePtr& communicator_ptr);
         
         bool is_connected()
             const;
@@ -63,7 +63,7 @@ namespace al5d_cpp
             
         JointBases joints_;
 
-        CommunicatorPtr communicator_ptr_ = nullptr;
+        CommunicatorBasePtr communicator_ptr_ = nullptr;
 
     private:
 

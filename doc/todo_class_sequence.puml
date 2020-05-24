@@ -2,16 +2,16 @@
 
 participant "AL5DBase\n: al5d" as AL5DBase
 participant "JointBase\n: joint" as JointBase
-participant "CommunicatorPtr\n: communicator_ptr" as CommunicatorPtr
+participant "CommunicatorPtr\n: communicator_ptr" as CommunicatorBasePtr
 
 [-> AL5DBase:move_to_degree(joint_name, degree, duration)
 AL5DBase -> AL5DBase:joint = get_joint(joint_name)
 AL5DBase -> JointBase:move_to_degree(degree, duration)
 JointBase -> JointBase:transmit_degree(degree)
-JointBase -> CommunicatorPtr:transmit("#0P1500")
+JointBase -> CommunicatorBasePtr:transmit("#0P1500")
 JointBase -> JointBase:transmit_duration(duration)
-JointBase -> CommunicatorPtr:transmit("T1000")
+JointBase -> CommunicatorBasePtr:transmit("T1000")
 AL5DBase -> AL5DBase:transmit_terminate_command()
-AL5DBase -> CommunicatorPtr:transmit("\\r")
+AL5DBase -> CommunicatorBasePtr:transmit("\\r")
 
 @enduml

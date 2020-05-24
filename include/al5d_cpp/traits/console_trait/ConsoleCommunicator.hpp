@@ -2,19 +2,19 @@
 #define	AL5D_CPP_CONSOLECOMMUNICATOR_HPP
 
 // PROJECT INCLUDES
-#include <al5d_cpp/base/Communicator.hpp>
+#include <al5d_cpp/base/CommunicatorBase.hpp>
 
 
 namespace al5d_cpp
 {
-    class ConsoleCommunicator : public Communicator
+    class ConsoleCommunicator : public CommunicatorBase
     {
     public:
     
-        static CommunicatorPtr as_pointer();
+        static CommunicatorBasePtr as_pointer();
         
         ConsoleCommunicator()
-            : Communicator()
+            : CommunicatorBase()
         {
         }
 

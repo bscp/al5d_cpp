@@ -12,7 +12,7 @@
 
 namespace al5d_cpp
 {
-    /*static*/ CommunicatorPtr ConsoleCommunicator::as_pointer()
+    /*static*/ CommunicatorBasePtr ConsoleCommunicator::as_pointer()
     {
         log_connecting();
         return std::make_shared<ConsoleCommunicator>();

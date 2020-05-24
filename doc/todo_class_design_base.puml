@@ -2,7 +2,7 @@
 
 namespace al5d_cpp {
 
-    class Communicator <<(I,SkyBlue)>> {
+    class CommunicatorBase <<(I,SkyBlue)>> {
         + transmit(message : String) : void
         + is_ready() : Boolean
     }
@@ -23,7 +23,7 @@ namespace al5d_cpp {
         - move_to_degree__(joint, degree) : void
         - transmit__(message) : void
         # joints__ : JointBases
-        # communicator_ptr__ : CommunicatorPtr
+        # communicator_ptr__ : CommunicatorBasePtr
     }
 
     class JointBase {
@@ -48,14 +48,14 @@ namespace al5d_cpp {
         - degree_range : DegreeRange
         - pulse_width_range : PulseWidthRange
         - convert_ratio : Double
-        - communicator_ptr : CommunicatorPtr
+        - communicator_ptr : CommunicatorBasePtr
     }
 
     class JointBaseConfig <<(S,Orchid)>> #eee
     class AL5DBaseConfig <<(S,Orchid)>> #eee
 
-    Communicator "1" <- "*" JointBase
-    Communicator "1" <-- "*" AL5DBase
+    CommunicatorBase "1" <- "*" JointBase
+    CommunicatorBase "1" <-- "*" AL5DBase
     AL5DBase "1" -> "6" JointBase
     AL5DBase ..> AL5DBaseConfig
     JointBase ..> JointBaseConfig

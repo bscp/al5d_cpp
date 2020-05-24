@@ -1,5 +1,5 @@
-#ifndef AL5D_CPP_COMMUNICATOR_HPP
-#define AL5D_CPP_COMMUNICATOR_HPP
+#ifndef AL5D_CPP_COMMUNICATORBASE_HPP
+#define AL5D_CPP_COMMUNICATORBASE_HPP
 
 // SYSTEM INCLUDES 
 #include <memory> 
@@ -8,7 +8,7 @@
 
 namespace al5d_cpp
 {
-    class Communicator // TODO : rename to CommunicatorBase
+    class CommunicatorBase
     {
     public:
     
@@ -20,14 +20,14 @@ namespace al5d_cpp
     
     protected:
 
-        Communicator();
+        CommunicatorBase();
 
         static void log_transmitting_(
             const std::string& message);
     };
 
-    typedef std::shared_ptr<Communicator> CommunicatorPtr;
+    typedef std::shared_ptr<CommunicatorBase> CommunicatorBasePtr;
 }
 
 
-#endif // AL5D_CPP_COMMUNICATOR_HPP
+#endif // AL5D_CPP_COMMUNICATORBASE_HPP

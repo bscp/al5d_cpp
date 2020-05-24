@@ -8,7 +8,7 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/base/configs/JointBaseConfig.hpp>
-#include <al5d_cpp/base/Communicator.hpp>
+#include <al5d_cpp/base/CommunicatorBase.hpp>
 #include <al5d_cpp/base/types.hpp>
 
 
@@ -48,7 +48,7 @@ namespace al5d_cpp
             const;
 
         void set_communicator_ptr(
-            const CommunicatorPtr& communicator_ptr);
+            const CommunicatorBasePtr& communicator_ptr);
         
     private:
 
@@ -109,7 +109,7 @@ namespace al5d_cpp
         PulseWidthRange pulse_width_range;
         double convert_ratio;
 
-        CommunicatorPtr communicator_ptr;
+        CommunicatorBasePtr communicator_ptr;
     };
     
     typedef std::vector<JointBase> JointBases;

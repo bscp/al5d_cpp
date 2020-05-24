@@ -9,7 +9,7 @@
 
 typedef std::shared_ptr<class TestableCommunicator> TestableCommunicatorPtr;
 
-class TestableCommunicator : public al5d_cpp::Communicator
+class TestableCommunicator : public al5d_cpp::CommunicatorBase
 {
 public:
     static TestableCommunicatorPtr as_ptr()
@@ -53,7 +53,7 @@ class TestableJointBase : public al5d_cpp::JointBase
 public:
     TestableJointBase(
         const al5d_cpp::JointBaseConfig& config,
-        const al5d_cpp::CommunicatorPtr& communicator_ptr)
+        const al5d_cpp::CommunicatorBasePtr& communicator_ptr)
         : JointBase(config)
     {
         set_communicator_ptr(communicator_ptr);

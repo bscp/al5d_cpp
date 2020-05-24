@@ -1,5 +1,5 @@
 // HEADER INCLUDE
-#include <al5d_cpp/base/Communicator.hpp>
+#include <al5d_cpp/base/CommunicatorBase.hpp>
 
 // PROJECT INCLUDES
 #include <al5d_cpp/logging.hpp>
@@ -7,12 +7,12 @@
 
 namespace al5d_cpp
 {
-    Communicator::Communicator()
+    CommunicatorBase::CommunicatorBase()
     {
     }
 
 
-    bool Communicator::is_connected()
+    bool CommunicatorBase::is_connected()
         const
     {
         return true; // is default
@@ -20,7 +20,7 @@ namespace al5d_cpp
 
 
 
-    /*static*/ void Communicator::log_transmitting_(
+    /*static*/ void CommunicatorBase::log_transmitting_(
         const std::string& message)
     {
         LOG_TRACE("TRANSMITTING :: Message='" + message + "'");

@@ -7,7 +7,7 @@
 
 namespace al5d_cpp
 {
-    /*static*/ CommunicatorPtr LambdaCommunicator::as_pointer()
+    /*static*/ CommunicatorBasePtr LambdaCommunicator::as_pointer()
     {
         log_connecting();
         return std::make_shared<LambdaCommunicator>();
@@ -15,7 +15,7 @@ namespace al5d_cpp
 
 
     LambdaCommunicator::LambdaCommunicator()
-        : Communicator() 
+        : CommunicatorBase() 
     {
     }
 
