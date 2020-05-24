@@ -48,6 +48,25 @@ namespace al5d_cpp
             
         bool is_moving()
             const;
+        
+        void move_to_pose(
+            const PoseName& pose_name);
+
+        void move_to_pose(
+            const PoseName& pose_name,
+            const Duration &move_duration);
+
+        void add_poses(
+            const PosingConfig& posing_config);
+
+        void set_poses(
+            const PosingConfig& posing_config);
+    
+        void move_to_calibrating_pose();
+
+        void move_to_start_pose();
+        
+        void move_to_finish_pose();
 
     protected:
 
@@ -111,34 +130,7 @@ namespace al5d_cpp
             size_t angle_count,
             const Duration &duration)
             const;
-
-        // timer was used because al5d did not respond to
-        // the position commands
-        TimerPtr timer_ptr__;
-
-    public: // TODO : restructure code from here (copied from removed PoseTrait class)
-
-        void move_to_pose(
-            const PoseName& pose_name);
-
-        void move_to_pose(
-            const PoseName& pose_name,
-            const Duration &move_duration);
-
-        void add_poses(
-            const PosingConfig& posing_config);
-
-        void set_poses(
-            const PosingConfig& posing_config);
-    
-        void move_to_calibrating_pose();
-
-        void move_to_start_pose();
         
-        void move_to_finish_pose();
-
-    private:
-
         JointType construct_poses(
             const JointName& joint_name)
             const;
@@ -181,6 +173,9 @@ namespace al5d_cpp
             const Duration &duration)
             const;
 
+        // timer is used because al5d did not respond to
+        // the position request commands
+        TimerPtr timer_ptr__;
         Poses poses;
         PoseName calibrating_pose_name;
         PoseName start_pose_name;
