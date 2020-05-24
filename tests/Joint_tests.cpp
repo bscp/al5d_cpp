@@ -67,6 +67,9 @@ TEST(Joint, move_joint)
     TestableJointBaseConfig config({100, 300}, {1, 3});
     TestableJointBase joint(config, com);
 
+    // we do no expect a carriage return here because that
+    // is send by the AL5DBase, not the JointBase.
+
     joint.move_to_angle(al5d_cpp::Angle::from_degree(1));
     ASSERT_EQ(com->get_transmitted(), "#0P100");
 
@@ -84,6 +87,9 @@ TEST(Joint, move_reversed_joint)
     auto com = TestableCommunicator::as_ptr();
     TestableJointBaseConfig config({100, 300}, {3, 1});
     TestableJointBase joint(config, com);
+
+    // we do no expect a carriage return here because that
+    // is send by the AL5DBase, not the JointBase.
 
     joint.move_to_angle(al5d_cpp::Angle::from_degree(1));
     ASSERT_EQ(com->get_transmitted(), "#0P300");
