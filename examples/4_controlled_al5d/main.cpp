@@ -4,15 +4,12 @@
 
 int main()
 {
-    std::string path;
-
-    // Initialize al5d
-    path = "//workspaces//al5d_cpp//examples//4_controlled_al5d//al5d.json";
-    auto al5d = al5d_cpp::AL5D(al5d_cpp::al5d_config_from_json_file(path));
+    // Initialize a al5d with a default configuration
+    al5d_cpp::ConsoleAL5D al5d;
 
 
     // Initialize poses
-    path = "//workspaces//al5d_cpp//examples//4_controlled_al5d//al5d_poses.json";
+    std::string path = "//workspaces//al5d_cpp//examples//4_controlled_al5d//al5d_poses.json";
     al5d.set_poses(al5d_cpp::poses_config_from_json_file(path));
     
 

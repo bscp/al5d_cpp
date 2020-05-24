@@ -1,4 +1,4 @@
-SET(EXAMPLE_NAME controlled_al5d)
+SET(EXAMPLE_NAME move_to_pose)
 
 FILE(GLOB_RECURSE ${EXAMPLE_NAME}_SRCS
         *.cpp)

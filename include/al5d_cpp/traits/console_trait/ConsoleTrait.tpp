@@ -21,16 +21,10 @@ namespace al5d_cpp
 
 
     template <typename BaseType>
-    ConsoleTrait<BaseType>::~ConsoleTrait()
-    {
-    }
-
-
-    template <typename BaseType>
-    void ConsoleTrait<BaseType>::terminate_command()
+    void ConsoleTrait<BaseType>::transmit_command_terminator_()
         const
     {
-        BaseType::terminate_command();
+        BaseType::transmit_command_terminator_();
         std::cout << std::endl; // otherwise nothing gets printed...
     }
 }

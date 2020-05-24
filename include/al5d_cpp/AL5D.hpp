@@ -11,7 +11,7 @@
 
 namespace al5d_cpp
 {
-    // typedef ConsoleTrait<AL5DBase> AL5D;
+    typedef ConsoleTrait<AL5DBase> ConsoleAL5D;
     typedef SerialTrait<AL5DBase> AL5D;
     // typedef LambdaTrait<AL5DBase> AL5D;
 }

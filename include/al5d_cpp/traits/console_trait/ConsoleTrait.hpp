@@ -3,6 +3,7 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/base/configs/AL5DBaseConfig.hpp>
+#include <al5d_cpp/settings.hpp>
 
 
 namespace al5d_cpp
@@ -12,11 +13,10 @@ namespace al5d_cpp
     {
     public:
         explicit ConsoleTrait(
-            const AL5DBaseConfig& config);
+            const AL5DBaseConfig& config=
+                al5d_cpp::al5d_config_from_json_file(DEFAULT_AL5D_JSON_FILE_PATH));
 
-        virtual ~ConsoleTrait();
-
-        void terminate_command()
+        void transmit_command_terminator_()
             const
             override;
     };
