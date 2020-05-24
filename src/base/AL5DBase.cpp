@@ -227,7 +227,7 @@ namespace al5d_cpp
     }
 
 
-    Duration AL5DBase::default_if_zero(
+    /*static*/ Duration AL5DBase::default_if_zero(
         const Duration &move_duration)
     {
         if (move_duration.in_milliseconds() == 0)
@@ -266,35 +266,31 @@ namespace al5d_cpp
     }
 
 
-    void AL5DBase::log_moving_to_angles__(
+    /*static*/ void AL5DBase::log_moving_to_angles__(
         size_t angle_count)
-        const
     {
         LOG_INFO(get_log_moving_to_angles__(angle_count));
     }
     
     
-    void AL5DBase::log_moving_to_angles__(
+    /*static*/ void AL5DBase::log_moving_to_angles__(
         size_t angle_count,
         const Duration &move_duration)
-        const
     {
         LOG_INFO(get_log_moving_to_angles__(angle_count, move_duration));
     }
 
 
-    std::string AL5DBase::get_log_moving_to_angles__(
+    /*static*/ std::string AL5DBase::get_log_moving_to_angles__(
         size_t angle_count)
-        const
     {
         return "MOVING_TO_ANGLES :: AngleCount='" + std::to_string(angle_count) + "'";
     }
     
     
-    std::string AL5DBase::get_log_moving_to_angles__(
+    /*static*/ std::string AL5DBase::get_log_moving_to_angles__(
         size_t angle_count,
         const Duration &duration)
-        const
     {
         auto log_line = get_log_moving_to_angles__(angle_count);
         return log_line + " Duration='" + std::to_string(duration.in_milliseconds()) + "ms'";

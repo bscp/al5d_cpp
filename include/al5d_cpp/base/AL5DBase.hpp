@@ -89,7 +89,7 @@ namespace al5d_cpp
         void validate_communicator_ptr__()
             const;
 
-        Duration default_if_zero(
+        static Duration default_if_zero(
             const Duration &move_duration);
     
         static void move_to__(
@@ -113,23 +113,19 @@ namespace al5d_cpp
 
         void set_joint_communicator_ptrs__();
 
-        void log_moving_to_angles__(
-            size_t angle_count)
-            const;
+        static void log_moving_to_angles__(
+            size_t angle_count);
         
-        void log_moving_to_angles__(
+        static void log_moving_to_angles__(
             size_t angle_count,
-            const Duration &move_duration)
-            const;
+            const Duration &move_duration);
 
-        std::string get_log_moving_to_angles__(
-            size_t angle_count)
-            const;
+        static std::string get_log_moving_to_angles__(
+            size_t angle_count);
         
-        std::string get_log_moving_to_angles__(
+        static std::string get_log_moving_to_angles__(
             size_t angle_count,
-            const Duration &duration)
-            const;
+            const Duration &duration);
         
         JointType construct_poses(
             const JointName& joint_name)
@@ -155,23 +151,19 @@ namespace al5d_cpp
             const PoseName& pose_name)
             const;
 
-        void log_moving_to_pose__(
-            const PoseName& pose_name)
-            const;
+        static void log_moving_to_pose__(
+            const PoseName& pose_name);
 
-        void log_moving_to_pose__(
+        static void log_moving_to_pose__(
             const PoseName& pose_name,
-            const Duration &move_duration)
-            const;
+            const Duration &move_duration);
 
-        std::string get_log_moving_to_pose__(
-            const PoseName& pose_name)
-            const;
+        static std::string get_log_moving_to_pose__(
+            const PoseName& pose_name);
         
-        std::string get_log_moving_to_pose__(
+        static std::string get_log_moving_to_pose__(
             const PoseName& pose_name,
-            const Duration &duration)
-            const;
+            const Duration &duration);
 
         // timer is used because al5d did not respond to
         // the position request commands

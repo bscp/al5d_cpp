@@ -151,35 +151,31 @@ namespace al5d_cpp
     }
 
 
-    void AL5DBase::log_moving_to_pose__(
+    /*static*/ void AL5DBase::log_moving_to_pose__(
         const PoseName& pose_name)
-        const
     {
         LOG_INFO(get_log_moving_to_pose__(pose_name));
     }
     
     
-    void AL5DBase::log_moving_to_pose__(
+    /*static*/ void AL5DBase::log_moving_to_pose__(
         const PoseName& pose_name,
         const Duration &move_duration)
-        const
     {
         LOG_INFO(get_log_moving_to_pose__(pose_name, move_duration));
     }
 
     
-    std::string AL5DBase::get_log_moving_to_pose__(
+    /*static*/ std::string AL5DBase::get_log_moving_to_pose__(
         const PoseName& pose_name)
-        const
     {
         return "MOVING_TO_POSE :: Pose='" + pose_name + "'";
     }
     
     
-    std::string AL5DBase::get_log_moving_to_pose__(
+    /*static*/ std::string AL5DBase::get_log_moving_to_pose__(
         const PoseName& pose_name,
         const Duration &duration)
-        const
     {
         auto log_line = get_log_moving_to_pose__(pose_name);
         return log_line + " Duration='" + std::to_string(duration.in_milliseconds()) + "ms'";
