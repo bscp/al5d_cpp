@@ -21,3 +21,4 @@ This repository provides a installable library which allows you to execute low l
 * Throw more detailed exception messages in <code>exceptions.hpp</code>
 * Make some configurations optional
 * Build a specific config based on the given keys in the json file.
+* Add more static code checkers like Clang-tidy to <code>scripts/assess.sh</code> file

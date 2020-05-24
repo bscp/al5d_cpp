@@ -29,7 +29,7 @@ namespace al5d_cpp
     {
         auto ptr = SerialCommunicator::as_pointer(serial_port, serial_baud_rate);
         BaseType::set_communicator_ptr(ptr);
-        sleep(2); // TODO : needed for arduino simulator, but also for real al5d?
+        sleep(2); // TODO : needed for arduino serial simulator, but also for real al5d?
     }
 }
 
