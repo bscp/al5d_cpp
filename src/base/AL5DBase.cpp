@@ -1,6 +1,9 @@
 // HEADER INCLUDE
 #include <al5d_cpp/base/AL5DBase.hpp>
 
+// SYSTEM INCLUDES
+#include <algorithm>
+
 // PROJECT INCLUDES
 #include <al5d_cpp/exceptions.hpp>
 #include <al5d_cpp/logging.hpp>
@@ -99,11 +102,16 @@ namespace al5d_cpp
     
     
     const JointBase &AL5DBase::get_joint(
-        const JointName& joint_name)
+        JointName joint_name)
         const
     {
-        // TODO : strip spaces
-        // TODO : to lowercase
+        // Remove all spaces
+        joint_name.erase(
+            std::remove(joint_name.begin(), joint_name.end(), ' '),
+            joint_name.end());
+
+        // Change all uppercase character to lowercase
+        transform(joint_name.begin(), joint_name.end(), joint_name.begin(), ::tolower);
         
         for (const auto& joint : joints_)
         {

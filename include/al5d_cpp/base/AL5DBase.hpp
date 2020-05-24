@@ -43,7 +43,7 @@ namespace al5d_cpp
             const;
     
         const JointBase &get_joint(
-            const JointName& joint_name)
+            JointName joint_name)
             const;
             
         bool is_moving()
