@@ -1,4 +1,3 @@
 ADD_SUBDIRECTORY(1_move_to_angle)
 ADD_SUBDIRECTORY(2_move_to_pose)
-# ADD_SUBDIRECTORY(3_configuration)
-ADD_SUBDIRECTORY(4_controlled_al5d)
+ADD_SUBDIRECTORY(3_controlled_al5d)

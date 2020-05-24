@@ -29,7 +29,7 @@
             "name": "controlled_al5d_example",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/examples/4_controlled_al5d/controlled_al5d_app",
+            "program": "${workspaceFolder}/build/examples/3_controlled_al5d/controlled_al5d_app",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

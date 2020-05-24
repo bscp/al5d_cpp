@@ -9,7 +9,7 @@ int main()
 
 
     // Initialize poses
-    std::string path = "//workspaces//al5d_cpp//examples//4_controlled_al5d//al5d_poses.json";
+    std::string path = "//workspaces//al5d_cpp//examples//3_controlled_al5d//al5d_poses.json";
     al5d.set_poses(al5d_cpp::poses_config_from_json_file(path));
     
 
