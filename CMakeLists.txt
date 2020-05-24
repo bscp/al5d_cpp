@@ -8,6 +8,12 @@ SET(CMAKE_CXX_STANDARD 14)
 
 ADD_COMPILE_OPTIONS(
         -std=c++14 -Wall -Wconversion -Wextra)
+        
+# USE COMMAND: 'cmake .. -DAL5D_CPP_BUILD_TESTS=ON'
+OPTION(AL5D_CPP_BUILD_TESTS "Enable test building" OFF)
+
+# USE COMMAND: 'cmake .. -DAL5D_CPP_BUILD_EXAMPLES=ON'
+OPTION(AL5D_CPP_BUILD_EXAMPLES "Enable example building" OFF)
 
 FIND_PACKAGE(Boost REQUIRED COMPONENTS
         thread
@@ -67,13 +73,15 @@ INSTALL(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/include/
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 # ----------------------------------------
-# TEST TARGETS
+# OTHER TARGETS
 # ----------------------------------------
 
-ADD_SUBDIRECTORY(tests)
+IF(AL5D_CPP_BUILD_TESTS)
+        MESSAGE("BUILDING TESTS..............")
+        ADD_SUBDIRECTORY(tests)
+ENDIF()
 
-# ----------------------------------------
-# EXAMPLE TARGETS
-# ----------------------------------------
-
-ADD_SUBDIRECTORY(examples)
+IF(AL5D_CPP_BUILD_EXAMPLES)
+        MESSAGE("BUILDING EXAMPLES..............")
+        ADD_SUBDIRECTORY(examples)
+ENDIF()
