@@ -1,5 +1,3 @@
-// TODO : add ConnectingState because SerialCommunicator does not connect instantly
-
 // HEADER INCLUDE
 #include <al5d_cpp/controller/states/HaltingState.hpp>
 

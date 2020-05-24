@@ -1,5 +1,3 @@
-// TODO : make traits.hpp file in root which includes all traits
-
 // HEADER INCLUDE
 #include <al5d_cpp/traits/console_trait/ConsoleCommunicator.hpp>
 

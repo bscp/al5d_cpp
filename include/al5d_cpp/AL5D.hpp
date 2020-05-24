@@ -5,14 +5,8 @@
 #include <al5d_cpp/base/AL5DBase.hpp>
 #include <al5d_cpp/controller/Controller.hpp>
 #include <al5d_cpp/controller/commands.hpp>
-
-// CONSTRUCTOR INCLUDES
-#include <al5d_cpp/readers/json_reader.hpp>
-
-// TRAIT INCLUDES
-#include <al5d_cpp/traits/serial_trait/SerialTrait.hpp>
-#include <al5d_cpp/traits/lambda_trait/LambdaTrait.hpp>
-#include <al5d_cpp/traits/console_trait/ConsoleTrait.hpp>
+#include <al5d_cpp/readers.hpp>
+#include <al5d_cpp/traits.hpp>
 
 
 namespace al5d_cpp
