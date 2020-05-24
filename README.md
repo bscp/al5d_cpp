@@ -1,8 +1,6 @@
 # al5d_cpp
 
-This repository provides a installable library which allows you to execute low level functionality on the Lynxmotion AL5D robot arm.
-
-The following code snippet provides a minimal example. To discover the many capabilities of this library, take a look at the examples in the <code>/examples</code> directory.
+This repository provides a installable library which allows you to execute low level functionality on the Lynxmotion AL5D robot arm. The following code snippet provides a minimal example. To discover the many capabilities of this library, take a look at the examples in the <code>/examples</code> directory.
 
 ```cpp
 #include <al5d_cpp/AL5D.hpp>
