@@ -21,9 +21,5 @@ cppcheck \
     src/ include/ main.cpp `# Places to look for code` \
     2> "$CPPCHECK_REPORT_FILE" `# Output result to a file`
 
-ERROR_COUNT=$(grep -c "<error" "$CPPCHECK_REPORT_FILE")
+ERROR_COUNT=$(grep -c "<error id" "$CPPCHECK_REPORT_FILE")
 echo "cppcheck found '$ERROR_COUNT' errors"
-
-# if [ "$ERROR_COUNT" -gt 0 ] ; then
-#     echo "See file './$CPPCHECK_REPORT_FILE' for details"
-# fi
