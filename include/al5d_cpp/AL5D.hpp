@@ -11,9 +11,11 @@
 
 namespace al5d_cpp
 {
+    // ConsoleAL5D prints the commands in the console
     typedef ConsoleTrait<AL5DBase> ConsoleAL5D;
+
+    // SerialAL5D prints the commands to a serial port
     typedef SerialTrait<AL5DBase> AL5D;
-    // typedef LambdaTrait<AL5DBase> AL5D;
 }
 
 

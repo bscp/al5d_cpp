@@ -1,12 +1,13 @@
 {
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "controlled_al5d_example",
+            "name": "move_to_angle_example",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/examples/4_controlled_al5d/controlled_al5d_app",
+            "program": "${workspaceFolder}/build/examples/1_move_to_angle/move_to_angle_app",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -18,6 +19,17 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/examples/2_move_to_pose/move_to_pose_app",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "externalConsole": false,
+            "MIMode": "gdb"
+        },
+        {
+            "name": "controlled_al5d_example",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/examples/4_controlled_al5d/controlled_al5d_app",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

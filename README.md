@@ -13,6 +13,8 @@ int main()
     auto angle = Angle::from_degree(90);
 
     al5d.move_to_angle({joint, angle});
+
+    return 0;
 }
 ```
 
@@ -34,3 +36,4 @@ int main()
 * Build a specific config based on the given keys in the json file.
 * Add more static code checkers like Clang-tidy to <code>scripts/assess.sh</code> file.
 * A command line tool to manipulate the al5d would be nice for testing new poses.
+* Print a literal carriage return in the logs instead of the carriage return itself. Its messes up the log right now.
