@@ -3,10 +3,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "example_app_1",
+            "name": "controlled_al5d_example",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/al5d_cpp_app",
+            "program": "${workspaceFolder}/build/examples/4_controlled_al5d/al5d_cpp_controlled_al5d_app",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

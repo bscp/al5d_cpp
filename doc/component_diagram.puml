@@ -20,8 +20,8 @@ unhalt_command -- CommandSerializer
 pose_command -- CommandSerializer
 degree_command -- CommandSerializer
 CommandTransmitter #--( command
-CommandSerializer --( serialized_command
-serialized_command -up- CommandTransmitter
+CommandSerializer -- serialized_command
+CommandTransmitter --( serialized_command
 
 legend right
   <b><color:SkyBlue>Demo application</color></b>
