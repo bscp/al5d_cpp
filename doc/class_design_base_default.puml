@@ -8,6 +8,8 @@ namespace al5d_cpp {
     SerialTrait <|-- SerialAL5D
     AL5DBase <|- SerialAL5D
     SerialAL5D <|-- AL5D
+    ConsoleAL5D -|> AL5DBase
+    ConsoleTrait <|-- ConsoleAL5D
 }
 
 @enduml

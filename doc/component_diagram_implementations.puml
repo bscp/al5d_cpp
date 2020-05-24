@@ -2,12 +2,14 @@
 
 component "<u>DemoRunner</u>" <<ROSNode>> as DemoRunner #SkyBlue
 component "<u>CommandSerializer</u>" <<ROSNode>> as CommandSerializer #LimeGreen-Salmon
-component "<u>CommandTransmitter</u>" <<ROSNode>> as CommandTransmitter #LimeGreen-Salmon
+component "<u>CommandTransmitter</u>" <<ROSNode>> as CommandTransmitter #LimeGreen
 
 component MoveToPosesDemo #SkyBlue
 component MoveAndHaltDemo #SkyBlue
 component AL5DSerializer #LimeGreen-Salmon
 component SerialTransmitter #LimeGreen-Salmon
+
+note bottom of CommandTransmitter : There could also be no\nCommandTransmitter\nin the system.
 
 DemoRunner <|-- MoveToPosesDemo
 DemoRunner <|-- MoveAndHaltDemo

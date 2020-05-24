@@ -5,26 +5,40 @@ left to right direction
 actor "Robot operator" as robot_operator
 
 rectangle "**Demo application**" <<subsystem>> {
-    (Move to poses) as demo_move_to_poses
-    (Move to degrees) as demo_move_to_degrees
-    (Move and stop) as demo_move_and_stop
+    (Move to poses) as demo_move_to_poses #SkyBlue
+    (Move to degrees) as demo_move_to_degrees #SkyBlue
+    (Move and stop) as demo_move_and_stop #SkyBlue
 }
 
 rectangle "**High level interface**" <<subsystem>> {
-    (Move to pose) as hl_move_to_pose
-    (Move to degree) as hl_move_to_degree
-    (Halt) as hl_halt
-    (Unhalt) as hl_unhalt
-
-    note "{Should be reached in 2.3 seconds}" as move_time_contraint_note
-
-    note "{Should finished in 0.1 seconds}" as stop_time_contraint_note
+    (Move to pose) as hl_move_to_pose #LimeGreen
+    (Move to degree) as hl_move_to_degree #LimeGreen
+    (Halt) as hl_halt #LimeGreen
+    (Unhalt) as hl_unhalt #LimeGreen
 }
 
-rectangle "**Low level interface**" <<subsystem>> {
-    (Move to pose) as ll_move_to_pose
-    (Move to degree) as ll_move_to_degree
-    (Stop robot) as ll_stop_robot
+rectangle "**Low level interface**\n**controller**" <<subsystem>> {
+    (Move to pose) as llc_move_to_pose #Salmon
+    (Move to degree) as llc_move_to_degree #Salmon
+    (Halt) as llc_halt #Salmon
+    (Unhalt) as llc_unhalt #Salmon
+
+    note "{Should be reached in 2.3 seconds}" as degree_move_time_contraint_note
+
+    note "{Should be reached in 2.3 seconds}" as pose_move_time_contraint_note
+
+    note "{Should finished in 0.1 seconds}" as stop_time_contraint_note
+
+    pose_move_time_contraint_note . llc_move_to_pose
+    degree_move_time_contraint_note . llc_move_to_degree
+    stop_time_contraint_note . llc_halt
+
+}
+
+rectangle "**Low level interface**\n**base**" <<subsystem>> {
+    (Move to pose) as llb_move_to_pose #Salmon
+    (Move to degree) as llb_move_to_degree #Salmon
+    (Stop robot) as llb_stop_robot #Salmon
 }
 
 robot_operator -- demo_move_to_poses
@@ -35,11 +49,18 @@ demo_move_to_degrees ..> hl_move_to_degree:<<include>>
 demo_move_and_stop ..> hl_move_to_pose:<<include>>
 demo_move_and_stop ..> hl_halt:<<include>>
 demo_move_and_stop ..> hl_unhalt:<<include>>
-hl_move_to_pose ..> ll_move_to_pose:<<include>>
-hl_move_to_degree ..> ll_move_to_degree:<<include>>
-hl_halt ..> ll_stop_robot:<<include>>
-move_time_contraint_note . hl_move_to_degree
-hl_move_to_pose . move_time_contraint_note
-stop_time_contraint_note . hl_halt
+llc_move_to_pose ..> llb_move_to_pose:<<include>>
+llc_move_to_degree ..> llb_move_to_degree:<<include>>
+llc_halt ..> llb_stop_robot:<<include>>
+hl_move_to_degree ..> llc_move_to_degree:<<include>>
+hl_move_to_pose ..> llc_move_to_pose:<<include>>
+hl_halt ..> llc_halt:<<include>>
+hl_unhalt ..> llc_unhalt:<<include>>
+
+legend right
+  <b><color:SkyBlue>Demo application</color></b>
+  <b><color:LimeGreen>High-level interface</color></b>
+  <b><color:Salmon>Low-level interface</color></b>
+endlegend
 
 @enduml

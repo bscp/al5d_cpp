@@ -5,18 +5,21 @@ package al5d_ros <<RosPackageBundle>> #LimeGreen
 package ros #Gray
 package boost #Gray
 package yaml_cpp#Gray
-package world1_demo <<RosWorkspace>> #SkyBlue
+package roboticsgroup_gazebo_plugins#Gray
+package wor_world1 <<RosWorkspace>> #SkyBlue
 
 al5d_cpp <-- al5d_ros
 boost <-- al5d_cpp
 yaml_cpp <-- al5d_cpp
 ros <-- al5d_ros
-ros <-- world1_demo
-al5d_ros <- world1_demo
+ros <-- wor_world1
+al5d_ros <- wor_world1
+roboticsgroup_gazebo_plugins <-- al5d_ros
 
 note left of al5d_cpp : Implementation of the\nlow-level interface.
 note left of al5d_ros : Implementation of the\nhigh-level interface.
-note right of world1_demo : Implementation of the\ndemo application.
+note right of wor_world1 : Implementation of the\ndemo application.
+note top of roboticsgroup_gazebo_plugins : Mirror joint plugin for the \nal5d gripper simulation.
 
 legend right
   <b><color:SkyBlue>Demo application</color></b>

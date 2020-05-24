@@ -9,7 +9,7 @@ interface serialized_command <<StringMsg>>
 
 component "<u>DemoRunner</u>" <<ROSNode>> as DemoRunner #SkyBlue
 component "<u>CommandSerializer</u>" <<ROSNode>> as CommandSerializer #LimeGreen-Salmon
-component "<u>CommandTransmitter</u>" <<ROSNode>> as CommandTransmitter #LimeGreen-Salmon
+component "<u>CommandTransmitter</u>" <<ROSNode>> as CommandTransmitter #LimeGreen
 
 DemoRunner --( halt_command
 DemoRunner --( degree_command
