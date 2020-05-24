@@ -113,7 +113,7 @@ namespace al5d_cpp
             }
         }
 
-        throw "Joint not found"; // TODO : throw class
+        throw InvalidJointName();
     }
     
     
@@ -236,7 +236,7 @@ namespace al5d_cpp
     void AL5DBase::start_timer__(
         const Duration &move_duration)
     {
-        // TODO : +1500ms is to commpensate for the incorrect
+        // +1500ms is to commpensate for the incorrect
         // gazebo model that does move to slow
         timer_ptr__ = Timer::as_pointer(
             move_duration.in_milliseconds() + 1500);

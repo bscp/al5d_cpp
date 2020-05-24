@@ -82,6 +82,12 @@ namespace al5d_cpp
     public:
         InvalidJointType();
     };
+
+    class InvalidJointName : public std::runtime_error
+    {
+    public:
+        InvalidJointName();
+    };
 }
 
 

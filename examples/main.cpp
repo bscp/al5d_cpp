@@ -32,7 +32,7 @@ int main()
     sleep(2);
 
     // move single joint to degree
-    auto& base_joint = al5d.get_joint(al5d_cpp::JOINT_BASE); // TODO : make const
+    auto& base_joint = al5d.get_joint(al5d_cpp::JOINT_BASE);
     base_joint.move_to_angle(Angle::from_degree(90), Duration::from_ms(2000));
     sleep(2);
 

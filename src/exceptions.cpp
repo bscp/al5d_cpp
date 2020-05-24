@@ -10,6 +10,7 @@
 #define MISSING_COMMUNICATOR "communicator_ptr is nullptr. Use a trait like SerialTrait to set its value."
 #define DEGREES_OUT_OF_RANGE "degree out of range: "
 #define INVALID_JOINT_TYPE "invalid joint type"
+#define INVALID_JOINT_NAME "invalid joint name"
 
 
 namespace al5d_cpp
@@ -74,6 +75,12 @@ namespace al5d_cpp
 
     InvalidJointType::InvalidJointType()
         : runtime_error(INVALID_JOINT_TYPE)
+    {
+    }
+
+
+    InvalidJointName::InvalidJointName()
+        : runtime_error(INVALID_JOINT_NAME)
     {
     }
 }
