@@ -1,21 +1,44 @@
 @startuml
 
+state "**Connecting**" as Connecting
+Connecting: **do**: check_connecting_progress()
+
+state "**Calibrating**" as Calibrating
+Calibrating: **enter**: start_calibrating()
+Calibrating: **do**: check_calibrating_progress()
+
+state "**Initializing**" as Initializing
+Initializing: **enter**: start_initializing()
+Initializing: **do**: check_initializing_progress()
+
+
 state "**Running**" as Running{
     state "**Idling**" as Idling
-    state "**Working**" as Working
+    Idling: **do**: schedule_next_command_if_available()
 
-    Idling:**do**: start_next_command()
-    Working:**do**: check_if_done()
+    state "**Moving**" as Moving
+    Moving: **enter**: start_next_command()
+    Moving: **do**: check_moving_progress()
 
-    [*] -right-> Idling
-    Idling -right-> Working:1
-    Working -left-> Idling:2
+    [*] -down-> Idling
+    Idling -right-> Moving
+    Moving -left-> Idling
+    Idling -down-> [*]
 }
 
 state "**Halting**" as Halting
 
-[*] -right-> Running
-Running -right-> Halting:3
-Halting -left-> Running:4
+state "**Finalizing**" as Finalizing
+Finalizing: **enter**: start_finalizing()
+Finalizing: **do**: check_finalizing_progress()
+
+[*] -right-> Connecting
+Connecting -down-> Calibrating
+Calibrating -right-> Initializing
+Initializing -down-> Running
+Running -left-> Halting
+Halting -right-> Running
+Running -down-> Finalizing
+Finalizing -right-> [*]
 
 @enduml

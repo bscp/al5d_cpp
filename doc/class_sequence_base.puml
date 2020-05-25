@@ -1,0 +1,48 @@
+@startuml
+
+participant "AL5DBase : al5d" as AL5DBase
+participant "JointBase : joint" as JointBase
+participant "CommunicatorPtr : communicator_ptr" as CommunicatorBasePtr
+
+[-> AL5DBase:move_to_angles(\n    joint_name_angles,\n    move_duration)
+activate AL5DBase
+
+AL5DBase -> AL5DBase:joint = get_joint(joint_name)
+activate AL5DBase
+deactivate AL5DBase
+
+AL5DBase -> JointBase:move_to_angle(    angle,    move_duration)
+activate JointBase
+
+JointBase -> JointBase:pulse_width =     to_pulse_width__(angle)
+activate JointBase
+deactivate JointBase
+
+JointBase -> JointBase:transmit_pulse_width__(    pulse_width)
+activate JointBase
+
+JointBase -> CommunicatorBasePtr:transmit("#0P1500")
+activate CommunicatorBasePtr
+deactivate CommunicatorBasePtr
+deactivate JointBase
+
+JointBase -> JointBase:transmit_move_duration__(    move_duration)
+activate JointBase
+
+JointBase -> CommunicatorBasePtr:transmit("T1000")
+activate CommunicatorBasePtr
+deactivate CommunicatorBasePtr
+deactivate JointBase
+deactivate JointBase
+
+AL5DBase -> AL5DBase:transmit_command_terminator_()
+activate AL5DBase
+deactivate AL5DBase
+
+AL5DBase -> CommunicatorBasePtr:transmit("\\r")
+activate CommunicatorBasePtr
+deactivate CommunicatorBasePtr
+
+deactivate AL5DBase
+
+@enduml

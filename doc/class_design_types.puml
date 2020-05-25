@@ -1,0 +1,99 @@
+@startuml
+
+namespace al5d_cpp {
+
+    class Angle {
+		+ in_degree() : Degree
+		+ {static} from_degree(Degree::degree_value : Value) : Angle
+		+ {static} from_degree(degree : Degree) : Angle
+		- Angle(value : Value)
+		- value : Value
+	}
+
+    class Degree <<(S,Orchid)>> {
+		+ Degree(value : Value)
+		+ value : Value
+		- validate() : void
+	}
+    
+    class DegreeRange <<(S,Orchid)>> {
+		+ DegreeRange(...)
+		+ get_difference() : double
+		+ is_within_range(degrees : Degree) : bool
+		+ max : Degree
+		+ min : Degree
+		+ value_1 : Degree
+		+ value_2 : Degree
+		- validate() : void
+	}
+
+    class Duration {
+		+ in_milliseconds() : Milliseconds
+		+ in_seconds() : Seconds
+		+ {static} from_milliseconds(milliseconds : Milliseconds) : Duration
+		+ {static} from_ms(ms : Milliseconds) : Duration
+		+ {static} from_s(s : Seconds) : Duration
+		+ {static} from_seconds(seconds : Seconds) : Duration
+		- Duration(milliseconds : Milliseconds)
+		- milliseconds : Milliseconds
+	}
+
+    class JointNameAngle <<(S,Orchid)>> {
+		+ JointNameAngle(...)
+		+ angle : Angle
+		+ joint_name : String
+	}
+
+    class JointType <<(E,Orange)>> {
+        + JOINT_BASE=0,
+        + JOINT_SHOULDER=1,
+        + JOINT_ELBOW=2,
+        + JOINT_WRIST=3,
+        + JOINT_GRIPPER=4,
+        + JOINT_WRIST_ROTATE=5,
+    }
+
+    class JointTypeAngle <<(S,Orchid)>> {
+		+ JointTypeAngle(...)
+		+ angle : Angle
+		+ joint_type : JointType
+	}
+
+
+	class Pose <<(S,Orchid)>> {
+		+ Pose(...)
+		+ joint_type_angles : JointTypeAngles
+		+ name : String
+	}
+
+    class PulseWidth <<(S,Orchid)>> {
+		+ PulseWidth(value : Value)
+		+ value : Value
+		- validate() : void
+	}
+
+    class PulseWidthRange <<(S,Orchid)>> {
+		+ PulseWidthRange(...)
+		+ get_difference() : double
+		+ max : PulseWidth
+		+ min : PulseWidth
+		- validate() : void
+	}
+
+    Angle ..> Degree
+    Angle ..> PulseWidth
+    Degree "2" <-- "1" DegreeRange
+    Degree "1" <-- "1" JointNameAngle
+    JointType "1" <-- "1" JointTypeAngle
+    Degree "1" <-- "1" JointTypeAngle
+    PulseWidth "2" <-- "1" PulseWidthRange
+    JointTypeAngle <- Pose
+}
+
+legend right
+  <b><color:Orchid>S Struct</color></b>
+  <b><color:DarkCyan>C Class</color></b>
+  <b><color:Orange>E Enum</color></b>
+endlegend
+
+@enduml

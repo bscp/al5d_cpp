@@ -1,15 +1,52 @@
 @startuml
 
 namespace al5d_cpp {
-    class AL5DBase #eee
+	class ConsoleTrait <<AL5DBaseTrait>> {
+		+ ConsoleTrait(config : AL5DBaseConfig)
+		+ transmit_command_terminator_() : void
+	}
 
-    class ConsoleTrait<<AL5DBaseTrait>>
-    class LambdaTrait<<AL5DBaseTrait>>
-    class SerialTrait<<AL5DBaseTrait>>
+	class ConsoleCommunicator <<CommunicatorBase>> {
+		+ ConsoleCommunicator()
+		+ transmit(message : String) : void
+		+ {static} as_pointer() : CommunicatorBase
+		- {static} log_connecting() : void
+	}
 
-    AL5DBase <|-- ConsoleTrait
-    AL5DBase <|-- LambdaTrait
-    AL5DBase <|-- SerialTrait
+    class LambdaTrait <<AL5DBaseTrait>> {
+		+ LambdaTrait(config : AL5DBaseConfig)
+		+ set_transmit_fn(transmit_fn : al5d_cpp::TransmitFn) : void
+	}
+
+	class LambdaCommunicator <<CommunicatorBase>> {
+		+ LambdaCommunicator()
+		+ set_transmit_fn(transmit_fn : al5d_cpp::TransmitFn) : void
+		+ transmit(message : String) : void
+		+ {static} as_pointer() : CommunicatorBase
+		- transmit_fn : al5d_cpp::TransmitFn
+		- {static} log_connecting() : void
+	}
+
+	class SerialCommunicator <<CommunicatorBase>> {
+		+ SerialCommunicator(...)
+		+ is_connected() : bool
+		+ transmit(message : String) : void
+		+ {static} as_pointer(...) : CommunicatorBase
+		- serial : serial::Serial
+		- timer_ptr : Timer
+		- {static} log_connecting(...) : void
+	}
+
+    class SerialTrait <<AL5DBaseTrait>> {
+		+ SerialTrait(config : AL5DBaseConfig)
+		- connect() : void
+		- serial_baud_rate : serial::BaudRate
+		- serial_port : serial::Port
+	}
+
+    ConsoleTrait ..> ConsoleCommunicator
+    LambdaTrait ..> LambdaCommunicator
+    SerialTrait ..> SerialCommunicator
 }
 
 @enduml
