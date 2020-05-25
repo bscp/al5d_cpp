@@ -20,10 +20,10 @@ state "**Running**" as Running{
     Moving: **enter**: start_next_command()
     Moving: **do**: check_moving_progress()
 
-    [*] -down-> Idling
-    Idling -right-> Moving
-    Moving -left-> Idling
-    Idling -down-> [*]
+    [*] -down-> Idling:3
+    Idling -right-> Moving:8
+    Moving -left-> Idling:9
+    Idling -down-> [*]:6
 }
 
 state "**Halting**" as Halting
@@ -33,12 +33,12 @@ Finalizing: **enter**: start_finalizing()
 Finalizing: **do**: check_finalizing_progress()
 
 [*] -right-> Connecting
-Connecting -down-> Calibrating
-Calibrating -right-> Initializing
-Initializing -down-> Running
-Running -left-> Halting
-Halting -right-> Running
-Running -down-> Finalizing
-Finalizing -right-> [*]
+Connecting -down-> Calibrating:1
+Calibrating -right-> Initializing:2
+Initializing -down-> Running:3
+Running -left-> Halting:4
+Halting -right-> Running:5
+Running -down-> Finalizing:6
+Finalizing -right-> [*]:7
 
 @enduml
