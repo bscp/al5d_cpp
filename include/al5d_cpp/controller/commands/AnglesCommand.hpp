@@ -13,12 +13,12 @@ namespace al5d_cpp
 
         static CommandPtr as_pointer(
             Controller* context_ptr,
-            const JointTypeAngles& joint_type_angles,
+            const JointNameAngles& joint_name_angles,
             const Duration& move_duration);
 
         explicit AnglesCommand(
             Controller* context_ptr,
-            const JointTypeAngles& joint_type_angles,
+            const JointNameAngles& joint_name_angles,
             const Duration& move_duration);
 
         void execute()
@@ -26,7 +26,7 @@ namespace al5d_cpp
 
     private:
 
-        JointTypeAngles joint_type_angles;
+        JointNameAngles joint_name_angles;
         Duration move_duration;
     };
 }

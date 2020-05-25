@@ -33,11 +33,11 @@ namespace al5d_cpp
 
 
     void Controller::schedule_angles_command(
-        const JointTypeAngles& joint_type_angles,
+        const JointNameAngles& joint_name_angles,
         const Duration& move_duration)
     {
         schedule_command(
-            AnglesCommand::as_pointer(this, joint_type_angles, move_duration));
+            AnglesCommand::as_pointer(this, joint_name_angles, move_duration));
     }
 
 

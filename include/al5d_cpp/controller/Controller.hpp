@@ -32,7 +32,7 @@ namespace al5d_cpp
         void change_to_halting_state();
 
         void schedule_angles_command(
-            const JointTypeAngles& joint_type_angles,
+            const JointNameAngles& joint_name_angles,
             const Duration& move_duration
                 =Duration::from_ms(MOVE_DURATION));
 
