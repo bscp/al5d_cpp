@@ -16,8 +16,6 @@ namespace al5d_cpp
         explicit MovingState(
             Controller *context_ptr);
 
-        virtual ~MovingState() = default;
-
         void enter()
             override;
             

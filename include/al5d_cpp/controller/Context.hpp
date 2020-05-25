@@ -18,8 +18,6 @@ namespace al5d_cpp
     
         Context();
         
-        virtual ~Context() = default;
-        
         void run_once();
         
         void stop_running();

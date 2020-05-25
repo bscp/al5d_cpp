@@ -30,10 +30,7 @@ namespace al5d_cpp
         {
         case EVENT_NEW_COMMAND_PLANNED:
             return on_new_command_planned_event();
-            
-        case EVENT_SHUTDOWN_REQUESTED:
-            return on_shutdown_requested_event();
-            
+        
         default:
             return RunningState::handle_event(event);
         }
@@ -44,12 +41,5 @@ namespace al5d_cpp
     {
         log_handling_event("NEW_COMMAND_PLANNED");
         context_ptr->change_to_moving_state();
-    }
-    
-    
-    void IdlingState::on_shutdown_requested_event()
-    {
-        log_handling_event("SHUTDOWN_REQUESTED");
-        context_ptr->change_to_finalizing_state();
     }
 }

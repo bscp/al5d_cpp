@@ -13,8 +13,6 @@ namespace al5d_cpp
     public:
         Command() {}
 
-        virtual ~Command() = default;
-
         virtual void execute() = 0;
     };
 

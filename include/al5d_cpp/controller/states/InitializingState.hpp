@@ -16,8 +16,6 @@ namespace al5d_cpp
         explicit InitializingState(
             Controller *context_ptr);
 
-        virtual ~InitializingState() = default;
-    
         void enter()
             override;
     

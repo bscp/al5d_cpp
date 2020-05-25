@@ -16,8 +16,6 @@ namespace al5d_cpp
         explicit CalibratingState(
             Controller *context_ptr);
 
-        virtual ~CalibratingState() = default;
-
         void enter()
             override;
 

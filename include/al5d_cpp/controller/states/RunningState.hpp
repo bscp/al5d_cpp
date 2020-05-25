@@ -10,7 +10,6 @@ namespace al5d_cpp
     class RunningState : public ContextState
     {
     public:
-        virtual ~RunningState() = default;
     
         void do_activity() override = 0;
         

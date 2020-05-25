@@ -16,8 +16,6 @@ namespace al5d_cpp
         explicit FinalizingState(
             Controller *context_ptr);
 
-        virtual ~FinalizingState() = default;
-        
         void enter()
             override;
             

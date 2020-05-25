@@ -39,7 +39,7 @@ namespace al5d_cpp
             return on_moving_finished_event();
     
         default:
-            return ContextState::handle_event(event);
+            return RunningState::handle_event(event);
         }
     }
     

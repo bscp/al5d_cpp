@@ -16,8 +16,6 @@ namespace al5d_cpp
         explicit HaltingState(
             Controller *context_ptr);
 
-        virtual ~HaltingState() = default;
-    
         void do_activity() override;
     
         void handle_event(Event event) override;

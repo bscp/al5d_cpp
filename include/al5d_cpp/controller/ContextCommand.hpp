@@ -14,8 +14,6 @@ namespace al5d_cpp
         explicit ContextCommand(
             Controller* context_ptr);
 
-        virtual ~ContextCommand() = default;
-
         void execute()
             override = 0;
     

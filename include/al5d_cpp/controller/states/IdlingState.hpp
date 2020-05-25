@@ -16,15 +16,13 @@ namespace al5d_cpp
         explicit IdlingState(
             Controller *context_ptr);
 
-        virtual ~IdlingState() = default;
-    
         void do_activity() override;
     
         void handle_event(Event event) override;
         
     private:
+    
         void on_new_command_planned_event();
-        void on_shutdown_requested_event();
     };
 }
 

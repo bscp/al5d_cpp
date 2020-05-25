@@ -7,15 +7,13 @@
 
 // PROJECT INCLUDES
 #include <al5d_cpp/controller/Controller.hpp>
-#include <al5d_cpp/controller/ContextState.hpp>
+#include <al5d_cpp/controller/State.hpp>
 #include <al5d_cpp/controller/events.hpp>
 
 
 namespace al5d_cpp
 {
-    typedef al5d_cpp::Event Event;
-    
-    class ContextState : public al5d_cpp::State
+    class ContextState : public State
     {
     public:
 

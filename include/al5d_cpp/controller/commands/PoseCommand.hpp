@@ -21,8 +21,6 @@ namespace al5d_cpp
             const PoseName& pose_name,
             const Duration& move_duration);
 
-        virtual ~PoseCommand() = default;
-
         void execute()
             override;
 

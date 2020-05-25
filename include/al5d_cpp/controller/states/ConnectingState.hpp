@@ -16,8 +16,6 @@ namespace al5d_cpp
         explicit ConnectingState(
             Controller* context_ptr);
 
-        virtual ~ConnectingState() = default;
-    
         void do_activity() override;
     
         void handle_event(Event event) override;

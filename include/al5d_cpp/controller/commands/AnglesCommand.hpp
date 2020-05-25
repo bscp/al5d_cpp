@@ -21,8 +21,6 @@ namespace al5d_cpp
             const JointTypeAngles& joint_type_angles,
             const Duration& move_duration);
 
-        virtual ~AnglesCommand() = default;
-
         void execute()
             override;
 
