@@ -4,23 +4,23 @@ interface halt_command <<EmptySrv>>
 interface degree_command <<DegreeCommandMsg>>
 interface unhalt_command <<EmptySrv>>
 interface pose_command <<PoseCommandMsg>>
-interface command
+interface transmitted_command
 interface serialized_command <<StringMsg>>
 
 component "<u>DemoRunner</u>" <<ROSNode>> as DemoRunner #SkyBlue
-component "<u>CommandSerializer</u>" <<ROSNode>> as CommandSerializer #LimeGreen-Salmon
+component "<u>RobotCommander</u>" <<ROSNode>> as RobotCommander #LimeGreen-Salmon
 component "<u>CommandTransmitter</u>" <<ROSNode>> as CommandTransmitter #LimeGreen
 
 DemoRunner --( halt_command
 DemoRunner --( degree_command
 DemoRunner --( unhalt_command
 DemoRunner --( pose_command
-halt_command -- CommandSerializer
-unhalt_command -- CommandSerializer
-pose_command -- CommandSerializer
-degree_command -- CommandSerializer
-CommandTransmitter #--( command
-CommandSerializer -- serialized_command
+halt_command -- RobotCommander
+unhalt_command -- RobotCommander
+pose_command -- RobotCommander
+degree_command -- RobotCommander
+CommandTransmitter #--( transmitted_command
+RobotCommander -- serialized_command
 CommandTransmitter --( serialized_command
 
 legend right

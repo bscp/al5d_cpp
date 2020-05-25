@@ -3,17 +3,17 @@
 'No activation/deactivation boxes because components are concurent and are continuously running. Also when no call is made.
 
 participant MoveDemo #SkyBlue
-participant CommandSerializer #LimeGreen-Salmon
+participant RobotCommander #LimeGreen-Salmon
 participant CommandTransmitter #LimeGreen-Salmon
 
-MoveDemo -> CommandSerializer:pose_command_1
-MoveDemo -> CommandSerializer:degree_command_2
-MoveDemo -> CommandSerializer:pose_command_3
-CommandSerializer -> CommandTransmitter:move_command_1
-CommandTransmitter ->] :command_1
-CommandSerializer -> CommandTransmitter:move_command_2
-CommandTransmitter ->] :command_2
-CommandSerializer -> CommandTransmitter:move_command_3
-CommandTransmitter ->] :command_3
+MoveDemo -> RobotCommander:pose_command_1
+MoveDemo -> RobotCommander:degree_command_2
+MoveDemo -> RobotCommander:pose_command_3
+RobotCommander -> CommandTransmitter:move_command_1
+CommandTransmitter ->] :move_command_1
+RobotCommander -> CommandTransmitter:move_command_2
+CommandTransmitter ->] :move_command_2
+RobotCommander -> CommandTransmitter:move_command_3
+CommandTransmitter ->] :move_command_3
 
 @enduml
