@@ -14,10 +14,6 @@
 
 namespace al5d_cpp
 {
-    typedef std::function<void(const std::string&)>
-        Transmit;
-
-
     class JointBase
     {
     public:
@@ -101,15 +97,15 @@ namespace al5d_cpp
             const Duration &duration)
             const;
         
-        std::string name;
-        JointType type;
-        BoardChannel board_channel;
+        std::string name__;
+        JointType type__;
+        BoardChannel board_channel__;
         
-        DegreeRange degree_range;
-        PulseWidthRange pulse_width_range;
-        double convert_ratio;
+        DegreeRange degree_range__;
+        PulseWidthRange pulse_width_range__;
+        double convert_ratio__;
 
-        CommunicatorBasePtr communicator_ptr;
+        CommunicatorBasePtr communicator_ptr__;
     };
     
     typedef std::vector<JointBase> JointBases;

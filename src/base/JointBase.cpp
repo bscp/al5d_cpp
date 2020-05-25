@@ -14,13 +14,13 @@ namespace al5d_cpp
 {
     JointBase::JointBase(
         const JointBaseConfig &joint_config)
-        : name(joint_config.name)
-        , type(joint_config.type)
-        , board_channel(joint_config.board_channel)
-        , degree_range(joint_config.degree_range)
-        , pulse_width_range(joint_config.pulse_width_range)
-        , convert_ratio(calculate_convert_ratio__())
-        , communicator_ptr(nullptr)
+        : name__(joint_config.name)
+        , type__(joint_config.type)
+        , board_channel__(joint_config.board_channel)
+        , degree_range__(joint_config.degree_range)
+        , pulse_width_range__(joint_config.pulse_width_range)
+        , convert_ratio__(calculate_convert_ratio__())
+        , communicator_ptr__(nullptr)
     {
     }
 
@@ -28,7 +28,7 @@ namespace al5d_cpp
     double JointBase::calculate_convert_ratio__()
         const
     {
-        return pulse_width_range.get_difference() / degree_range.get_difference();
+        return pulse_width_range__.get_difference() / degree_range__.get_difference();
     }
 
 
@@ -36,7 +36,7 @@ namespace al5d_cpp
         const JointName& name)
         const
     {
-        return this->name == name;
+        return this->name__ == name;
     }
 
 
@@ -44,14 +44,14 @@ namespace al5d_cpp
         const JointType &type)
         const
     {
-        return this->type == type;
+        return this->type__ == type;
     }
 
 
     JointType JointBase::get_type()
         const
     {
-        return type;
+        return type__;
     }
 
     
@@ -81,7 +81,7 @@ namespace al5d_cpp
         const PulseWidth& pulse_width)
         const
     {
-        std::string command("#" + std::to_string(board_channel));
+        std::string command("#" + std::to_string(board_channel__));
         command += "P" + std::to_string(pulse_width.value);
         transmit__(command);
     }
@@ -90,7 +90,7 @@ namespace al5d_cpp
     void JointBase::stop()
         const
     {
-        transmit__("STOP " + std::to_string(board_channel) + "\r");
+        transmit__("STOP " + std::to_string(board_channel__) + "\r");
     }
     
     
@@ -112,9 +112,9 @@ namespace al5d_cpp
     {
         validate_reachability__(angle);
 
-        auto abs_degree = std::abs(angle.in_degree().value - degree_range.value_1.value);
-        auto abs_pulse_width = abs_degree * convert_ratio;
-        auto pulse_width = abs_pulse_width + pulse_width_range.min.value;
+        auto abs_degree = std::abs(angle.in_degree().value - degree_range__.value_1.value);
+        auto abs_pulse_width = abs_degree * convert_ratio__;
+        auto pulse_width = abs_pulse_width + pulse_width_range__.min.value;
         return PulseWidth((PulseWidth::Value)pulse_width);
     }
     
@@ -124,7 +124,7 @@ namespace al5d_cpp
         const
     {
         const auto degree = angle.in_degree();
-        if (!degree_range.is_within_range(degree))
+        if (!degree_range__.is_within_range(degree))
         {
             LOG_ERROR("degree out of range");
             throw DegreeOutOfRange(degree);
@@ -135,14 +135,14 @@ namespace al5d_cpp
     void JointBase::set_communicator_ptr(
         const CommunicatorBasePtr& communicator_ptr)
     {
-        this->communicator_ptr = communicator_ptr;
+        this->communicator_ptr__ = communicator_ptr;
     }
 
 
     void JointBase::validate_communicator_ptr__()
         const
     {
-        if (communicator_ptr == nullptr)
+        if (communicator_ptr__ == nullptr)
         {
             throw MissingCommunicator();
         }
@@ -154,7 +154,7 @@ namespace al5d_cpp
         const
     {
         validate_communicator_ptr__();
-        communicator_ptr->transmit(message);
+        communicator_ptr__->transmit(message);
     }
 
 
@@ -184,7 +184,7 @@ namespace al5d_cpp
         const PulseWidth& pulse_width)
         const
     {
-        const auto type_string = "Name='" + name + "'";
+        const auto type_string = "Name='" + name__ + "'";
         const auto angle_string = "Degree='" + std::to_string(angle.in_degree().value) + "' PulseWidth='" + std::to_string(pulse_width.value) + "'";
         return "MOVING_JOINT :: " + type_string + " " + angle_string;
     }
