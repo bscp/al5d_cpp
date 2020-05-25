@@ -89,7 +89,7 @@ namespace al5d_cpp
         void validate_communicator_ptr__()
             const;
 
-        static Duration default_if_zero(
+        static Duration default_if_zero__(
             const Duration &move_duration);
     
         static void move_to__(
@@ -127,27 +127,27 @@ namespace al5d_cpp
             size_t angle_count,
             const Duration &duration);
         
-        JointType construct_poses(
+        JointType construct_poses__(
             const JointName& joint_name)
             const;
 
-        JointTypeAngle construct_poses(
+        JointTypeAngle construct_poses__(
             const JointNameAngle& joint_name_angle)
             const;
 
-        JointTypeAngles construct_poses(
+        JointTypeAngles construct_poses__(
             const JointNameAngles& joint_name_angles)
             const;
             
-        Pose construct_poses(
+        Pose construct_poses__(
             const PoseConfig& pose_config)
             const;
 
-        Poses construct_poses(
+        Poses construct_poses__(
             const PoseConfigs& pose_configs)
             const;
 
-        const Pose& get_pose(
+        const Pose& get_pose__(
             const PoseName& pose_name)
             const;
 
@@ -168,10 +168,10 @@ namespace al5d_cpp
         // timer is used because al5d did not respond to
         // the position request commands
         TimerPtr timer_ptr__;
-        Poses poses;
-        PoseName calibrating_pose_name;
-        PoseName start_pose_name;
-        PoseName finish_pose_name;
+        Poses poses__;
+        PoseName calibrating_pose_name__;
+        PoseName start_pose_name__;
+        PoseName finish_pose_name__;
     };
 }
 

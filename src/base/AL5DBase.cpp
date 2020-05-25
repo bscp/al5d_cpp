@@ -16,9 +16,10 @@ namespace al5d_cpp
         const AL5DBaseConfig& config)
         : joints_(construct_joints__(config.joint_configs))
         , communicator_ptr_(nullptr)
-        , poses(construct_poses(config.posing_config.pose_configs))
-        , start_pose_name(config.posing_config.start_pose_name)
-        , finish_pose_name(config.posing_config.finish_pose_name)
+        , poses__(construct_poses__(config.posing_config.pose_configs))
+        , calibrating_pose_name__(config.posing_config.calibrating_pose_name)
+        , start_pose_name__(config.posing_config.start_pose_name)
+        , finish_pose_name__(config.posing_config.finish_pose_name)
     {
     }
     
@@ -154,7 +155,7 @@ namespace al5d_cpp
         log_moving_to_angles__(
             joint_name_angles.size(), move_duration);
 
-        move_duration = default_if_zero(move_duration);
+        move_duration = default_if_zero__(move_duration);
 
         for (const auto &joint_name_angle : joint_name_angles)
         {
@@ -194,7 +195,7 @@ namespace al5d_cpp
         log_moving_to_angles__(
             joint_type_angles.size(), move_duration);
 
-        move_duration = default_if_zero(move_duration);
+        move_duration = default_if_zero__(move_duration);
 
         for (const auto &joint_type_angle : joint_type_angles)
         {
@@ -227,7 +228,7 @@ namespace al5d_cpp
     }
 
 
-    /*static*/ Duration AL5DBase::default_if_zero(
+    /*static*/ Duration AL5DBase::default_if_zero__(
         const Duration &move_duration)
     {
         if (move_duration.in_milliseconds() == 0)

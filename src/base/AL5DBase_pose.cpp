@@ -10,7 +10,7 @@
 namespace al5d_cpp
 {   
     
-    JointTypeAngle AL5DBase::construct_poses(
+    JointTypeAngle AL5DBase::construct_poses__(
         const JointNameAngle& joint_name_angle)
         const
     {
@@ -20,7 +20,7 @@ namespace al5d_cpp
     }
     
     
-    JointTypeAngles AL5DBase::construct_poses(
+    JointTypeAngles AL5DBase::construct_poses__(
         const JointNameAngles& joint_name_angles)
         const
     {
@@ -29,24 +29,24 @@ namespace al5d_cpp
         for (const auto& joint_name_angle : joint_name_angles)
         {
             joint_type_angles.push_back(
-                construct_poses(joint_name_angle));
+                construct_poses__(joint_name_angle));
         }
 
         return joint_type_angles;
     }
     
     
-    Pose AL5DBase::construct_poses(
+    Pose AL5DBase::construct_poses__(
         const PoseConfig& pose_config)
         const
     {
         return Pose(
             pose_config.name,
-            construct_poses(pose_config.joint_name_angles));
+            construct_poses__(pose_config.joint_name_angles));
     }
     
     
-    Poses AL5DBase::construct_poses(
+    Poses AL5DBase::construct_poses__(
         const PoseConfigs& pose_configs)
         const
     {
@@ -54,7 +54,7 @@ namespace al5d_cpp
 
         for (const auto& pose_config : pose_configs)
         {
-            poses.push_back(construct_poses(pose_config));
+            poses.push_back(construct_poses__(pose_config));
         }
 
         return poses;
@@ -63,10 +63,10 @@ namespace al5d_cpp
 
     void AL5DBase::move_to_calibrating_pose()
     {
-        if (calibrating_pose_name != "")
+        if (calibrating_pose_name__ != "")
         {
             move_to_pose(
-                calibrating_pose_name,
+                calibrating_pose_name__,
                 Duration::from_milliseconds(CALIBRATING_MOVE_DURATION));
         }
     }
@@ -74,10 +74,10 @@ namespace al5d_cpp
 
     void AL5DBase::move_to_start_pose()
     {
-        if (start_pose_name != "")
+        if (start_pose_name__ != "")
         {
             move_to_pose(
-                start_pose_name,
+                start_pose_name__,
                 Duration::from_milliseconds(INITIALIZE_MOVE_DURATION));
         }
     }
@@ -85,20 +85,20 @@ namespace al5d_cpp
 
     void AL5DBase::move_to_finish_pose()
     {
-        if (finish_pose_name != "")
+        if (finish_pose_name__ != "")
         {
             move_to_pose(
-                finish_pose_name,
+                finish_pose_name__,
                 Duration::from_milliseconds(FINALIZE_MOVE_DURATION));
         }
     }
 
 
-    const Pose& AL5DBase::get_pose(
+    const Pose& AL5DBase::get_pose__(
         const PoseName& pose_name)
         const
     {
-        for (const auto& pose : poses)
+        for (const auto& pose : poses__)
         {
             if (pose.name == pose_name)
             {
@@ -114,7 +114,7 @@ namespace al5d_cpp
         const PoseName& pose_name)
     {
         log_moving_to_pose__(pose_name);
-        const auto& pose = get_pose(pose_name);
+        const auto& pose = get_pose__(pose_name);
         const auto& joint_type_angles = pose.joint_type_angles;
         move_to_angles(joint_type_angles);
     }
@@ -125,7 +125,7 @@ namespace al5d_cpp
         const Duration &move_duration)
     {
         log_moving_to_pose__(pose_name, move_duration);
-        const auto& pose = get_pose(pose_name);
+        const auto& pose = get_pose__(pose_name);
         const auto& joint_type_angles = pose.joint_type_angles;
         move_to_angles(joint_type_angles, move_duration);
     }
@@ -136,7 +136,7 @@ namespace al5d_cpp
     {
         for (const auto& pose_config : posing_config.pose_configs)
         {
-            poses.push_back(construct_poses(pose_config));
+            poses__.push_back(construct_poses__(pose_config));
         }
     }
 
@@ -144,10 +144,10 @@ namespace al5d_cpp
     void AL5DBase::set_poses(
         const PosingConfig& posing_config)
     {
-        start_pose_name = posing_config.start_pose_name;
-        finish_pose_name = posing_config.finish_pose_name;
-        calibrating_pose_name = posing_config.calibrating_pose_name;
-        poses = construct_poses(posing_config.pose_configs);
+        start_pose_name__ = posing_config.start_pose_name;
+        finish_pose_name__ = posing_config.finish_pose_name;
+        calibrating_pose_name__ = posing_config.calibrating_pose_name;
+        poses__ = construct_poses__(posing_config.pose_configs);
     }
 
 
