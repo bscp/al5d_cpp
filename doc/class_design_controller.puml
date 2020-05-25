@@ -1,42 +1,115 @@
 @startuml
 
-class Context {
-    + run_once() : void
+namespace al5d_cpp {
+
+    class AL5DBase #eee
+    class ConnectingState #eee
+    class PoseCommand #eee
+
+    abstract class State {
+        + enter() : void
+        + exit() : void
+        + get_name() : String
+        + {abstract} do_activity() : void
+        + {abstract} handle_event(event : int) : void
+        # State(state_name : String)
+        # log_action(action : String) : void
+        # log_doing_action(action : String) : void
+        # log_entering_action() : void
+        # log_exiting_action() : void
+        # name : String
+    }
+
+    abstract class Context {
+        + Context()
+        + change_state(new_state_ptr : State) : void
+        + get_is_running() : bool
+        + is_current_state() : bool
+        + preempt_events() : void
+        + run_once() : void
+        + schedule_event(event : Event) : void
+        + start_running() : void
+        + stop_running() : void
+        + {abstract} set_start_state() : void
+        - current_state_ptr : State
+        - events : std::queue<Event>
+        - handle_all_events() : void
+        - is_running : bool
+        - log_state_change(new_state_ptr : State) : void
+    }
+
+    interface Command {
+        + Command()
+        + {abstract} execute() : void
+    }
+
+    abstract class ContextCommand {
+        + ContextCommand(context_ptr : Controller)
+        + {abstract} execute() : void
+        # context_ptr : Controller
+    }
+
+    class Controller {
+        + Controller(al5d : AL5DBase)
+        + change_to_calibrating_state() : void
+        + change_to_connecting_state() : void
+        + change_to_finalizing_state() : void
+        + change_to_halting_state() : void
+        + change_to_idling_state() : void
+        + change_to_initializing_state() : void
+        + change_to_moving_state() : void
+        + check_calibrating_progress() : void
+        + check_connecting_progress() : void
+        + check_finalizing_progress() : void
+        + check_initializing_progress() : void
+        + check_moving_progress() : void
+        + get_al5d() : AL5DBase
+        + halt() : void
+        + preempt_scheduled_commands() : void
+        + schedule_angles_command(...) : void
+        + schedule_command(command_ptr : Command) : void
+        + schedule_next_command_if_available() : void
+        + schedule_pose_command(...) : void
+        + set_start_state() : void
+        + start_calibrating() : void
+        + start_finalizing() : void
+        + start_initializing() : void
+        + start_next_command() : void
+        + unhalt() : void
+        # current_command_ptr : Command
+        # new_command_available() : bool
+        # schedule_next_command() : void
+        # scheduled_command_ptrs : std::queue<Command>
+        - al5d : AL5DBase
+    }
+
+    abstract class ContextState {
+        + handle_event(event : Event) : void
+        + {abstract} do_activity() : void
+        # ContextState(state_name : String, context_ptr : Controller)
+        # context_ptr : Controller
+        # log_handling_event(event_string : String) : void
+        - on_halt_requested_event() : void
+    }
+
+    Command <|-- ContextCommand
+    Context <|-- Controller
+    Controller "1" <- "*" ContextCommand
+    Controller .> PoseCommand
+    ContextCommand <|-- PoseCommand
+    Command "*" <-- "1" Controller
+    State "1" <- "1" Context
+    State <|-- ContextState
+    ContextState "1" -> "1" Controller
+    ContextState <|-- ConnectingState
+    Controller ..> ConnectingState
+    Controller "1" --> "1" AL5DBase
 }
 
-interface Command {
-    + execute() : void
-}
-
-class ContextCommand {
-    + execute() : void
-}
-
-class CommandableContext {
-    + execute_pose_command() : void
-}
-
-class Controller {
-    + schedule_pose_command() : void
-}
-
-class PoseCommand {
-    + execute() : void
-}
-
-Command <|-- ContextCommand
-Context <|-- CommandableContext
-CommandableContext <- ContextCommand
-CommandableContext <|-- Controller
-Controller .> PoseCommand
-ContextCommand <|-- PoseCommand
-Command <-- CommandableContext
-State <- Context
-State <|-- ContextState
-ContextState -> CommandableContext
-ContextState <|-- IdlingState
-CommandableContext <.. IdlingState
-CommandableContext <.. PoseCommand
-IdlingState <. Controller
+legend right
+  <b><color:Cyan>A Abstract</color></b>
+  <b><color:MediumPurple>I Interface</color></b>
+  <b><color:DarkCyan>C Class</color></b>
+endlegend
 
 @enduml

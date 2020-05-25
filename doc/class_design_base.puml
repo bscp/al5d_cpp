@@ -104,7 +104,7 @@ namespace al5d_cpp {
 legend right
   <b><color:Orchid>S Struct</color></b>
   <b><color:DarkCyan>C Class</color></b>
-  <b><color:SkyBlue>I Interface</color></b>
+  <b><color:SkyBlue>A Abstract</color></b>
 endlegend
 
 @enduml

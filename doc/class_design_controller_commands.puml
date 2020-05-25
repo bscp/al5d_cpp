@@ -1,0 +1,32 @@
+@startuml
+
+namespace al5d_cpp {
+	
+	abstract class ContextCommand #eee
+
+	class PoseCommand {
+		+ PoseCommand(...)
+		+ execute() : void
+		+ {static} as_pointer(...) : Command
+		- move_duration : Duration
+		- pose_name : PoseName
+	}
+
+	class AnglesCommand {
+		+ AnglesCommand(...)
+		+ execute() : void
+		+ {static} as_pointer(...) : Command
+		- joint_type_angles : JointTypeAngles
+		- move_duration : Duration
+	}
+	
+	ContextCommand <|-- PoseCommand
+	ContextCommand <|-- AnglesCommand
+}
+
+legend right
+  <b><color:DarkCyan>C Class</color></b>
+  <b><color:SkyBlue>A Abstract</color></b>
+endlegend
+
+@enduml

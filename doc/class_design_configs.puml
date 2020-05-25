@@ -44,7 +44,7 @@ namespace al5d_cpp {
 	}
 
     AL5DBase ..> AL5DBaseConfig
-    AL5DBaseConfig --> SerialConfig
+    AL5DBaseConfig "1" --> "1" SerialConfig
     JointBase ..> JointBaseConfig
     AL5DBaseConfig "1" -> "6" JointBaseConfig
     PosingConfig "1" <- "1" AL5DBaseConfig

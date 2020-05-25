@@ -1,0 +1,90 @@
+@startuml
+
+namespace al5d_cpp {
+	
+	abstract class ContextState #eee
+
+	class CalibratingState {
+		+ CalibratingState(context_ptr : Controller)
+		+ do_activity() : void
+		+ enter() : void
+		+ handle_event(event : Event) : void
+		+ {static} as_pointer(context_ptr : Controller) : ContextState
+		+ ~CalibratingState()
+		- on_calibrating_finished_event() : void
+	}
+
+	class ConnectingState {
+		+ ConnectingState(context_ptr : Controller)
+		+ do_activity() : void
+		+ handle_event(event : Event) : void
+		+ {static} as_pointer(context_ptr : Controller) : ContextState
+		- on_connecting_finished_event() : void
+	}
+
+	class FinalizingState {
+		+ FinalizingState(context_ptr : Controller)
+		+ do_activity() : void
+		+ enter() : void
+		+ handle_event(event : Event) : void
+		+ {static} as_pointer(context_ptr : Controller) : ContextState
+		- on_finalizing_finished_event() : void
+	}
+
+	class HaltingState {
+		+ HaltingState(context_ptr : Controller)
+		+ do_activity() : void
+		+ handle_event(event : Event) : void
+		+ {static} as_pointer(context_ptr : Controller) : ContextState
+		- on_unhalt_command_received() : void
+	}
+
+	class IdlingState {
+		+ IdlingState(context_ptr : Controller)
+		+ do_activity() : void
+		+ handle_event(event : Event) : void
+		+ {static} as_pointer(context_ptr : Controller) : ContextState
+		- on_new_command_planned_event() : void
+	}
+
+	class InitializingState {
+		+ InitializingState(context_ptr : Controller)
+		+ do_activity() : void
+		+ enter() : void
+		+ handle_event(event : Event) : void
+		+ {static} as_pointer(context_ptr : Controller) : ContextState
+		- on_initializing_finished_event() : void
+	}
+
+	class MovingState {
+		+ MovingState(context_ptr : Controller)
+		+ do_activity() : void
+		+ enter() : void
+		+ handle_event(event : Event) : void
+		+ {static} as_pointer(context_ptr : Controller) : ContextState
+		- on_moving_finished_event() : void
+	}
+
+	abstract class RunningState {
+		+ handle_event(event : Event) : void
+		+ {abstract} do_activity() : void
+		# RunningState(state_name : String, context_ptr : Controller)
+		- on_shutdown_requested_event() : void
+	}
+
+	ContextState <|-- ConnectingState
+	ContextState <|-- RunningState
+	ContextState <|-- InitializingState
+	RunningState <|-- IdlingState
+	RunningState <|-- MovingState
+	CalibratingState --|> ContextState
+	HaltingState --|> ContextState
+	FinalizingState --|> ContextState
+}
+
+legend right
+  <b><color:DarkCyan>C Class</color></b>
+  <b><color:SkyBlue>A Abstract</color></b>
+endlegend
+
+@enduml
