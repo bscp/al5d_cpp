@@ -18,6 +18,9 @@ namespace al5d_cpp
 
         virtual ~InitializingState() = default;
     
+        void enter()
+            override;
+    
         void do_activity()
             override;
     
@@ -25,13 +28,8 @@ namespace al5d_cpp
             override;
 
     private:
-        void start_initializing_if_not_already();
-    
-        void check_initializing_progress_if_started();
-        
+
         void on_initializing_finished_event();
-        
-        bool initializing_started;
     };
 }
 

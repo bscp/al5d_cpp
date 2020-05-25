@@ -14,15 +14,20 @@ namespace al5d_cpp
     MovingState::MovingState(
         Controller *context_ptr)
         : RunningState("MovingState", context_ptr)
-        , moving_started(false)
     {
     }
     
     
+    void MovingState::enter()
+    {
+        log_doing_action("ENTERING :: START_MOVING ");
+        context_ptr->start_next_command();
+    }
+
+
     void MovingState::do_activity()
     {
-        start_moving_if_not_already();
-        check_moving_progress_if_started();
+        context_ptr->check_moving_progress();
     }
     
     
@@ -35,26 +40,6 @@ namespace al5d_cpp
     
         default:
             return ContextState::handle_event(event);
-        }
-    }
-    
-    
-    void MovingState::start_moving_if_not_already()
-    {
-        if (!moving_started)
-        {
-            log_doing_action("START_MOVING ");
-            context_ptr->start_next_command();
-            moving_started = true;
-        }
-    }
-    
-    
-    void MovingState::check_moving_progress_if_started()
-    {
-        if (moving_started)
-        {
-            context_ptr->check_moving_progress();
         }
     }
     

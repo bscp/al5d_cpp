@@ -15,15 +15,20 @@ namespace al5d_cpp
     InitializingState::InitializingState(
         Controller* context_ptr)
         : ContextState("InitializingState", context_ptr)
-        , initializing_started(false)
     {
+    }
+
+
+    void InitializingState::enter()
+    {
+        log_doing_action("ENTERING :: START_INITIALIZING");
+        context_ptr->start_initializing();
     }
 
 
     void InitializingState::do_activity()
     {
-        start_initializing_if_not_already();
-        check_initializing_progress_if_started();
+        context_ptr->check_initializing_progress();
     }
 
 
@@ -36,26 +41,6 @@ namespace al5d_cpp
             
         default:
             return ContextState::handle_event(event);
-        }
-    }
-    
-    
-    void InitializingState::start_initializing_if_not_already()
-    {
-        if (!initializing_started)
-        {
-            log_doing_action("START_INITIALIZING");
-            context_ptr->start_initializing();
-            initializing_started = true;
-        }
-    }
-    
-    
-    void InitializingState::check_initializing_progress_if_started()
-    {
-        if (initializing_started)
-        {
-            context_ptr->check_initializing_progress();
         }
     }
     

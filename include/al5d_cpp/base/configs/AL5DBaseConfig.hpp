@@ -20,13 +20,15 @@ namespace al5d_cpp
             JointBaseConfigs joint_configs,
             SerialConfig serial_config,
             PosingConfig posing_config);
-        
-        void validate_joint_configs()
-            const;
 
         const JointBaseConfigs joint_configs;
         const SerialConfig serial_config;
         const PosingConfig posing_config;
+
+    private:
+        
+        void validate_joint_configs()
+            const;
     };
 }
 

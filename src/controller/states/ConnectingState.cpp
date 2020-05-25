@@ -21,7 +21,7 @@ namespace al5d_cpp
     void ConnectingState::do_activity()
     {
         // Connecting progress is started from AL5DBase constructor
-        check_connecting_progress();
+        context_ptr->check_connecting_progress();
     }
 
 
@@ -35,12 +35,6 @@ namespace al5d_cpp
         default:
             return ContextState::handle_event(event);
         }
-    }
-    
-    
-    void ConnectingState::check_connecting_progress()
-    {
-        context_ptr->check_connecting_progress();
     }
     
     

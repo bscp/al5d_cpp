@@ -15,15 +15,20 @@ namespace al5d_cpp
     CalibratingState::CalibratingState(
         Controller* context_ptr)
         : ContextState("CalibratingState", context_ptr)
-        , calibrating_started(false)
     {
+    }
+
+
+    void CalibratingState::enter()
+    {
+        log_action("ENTERING :: START_CALIBRATING");
+        context_ptr->start_calibrating();
     }
 
 
     void CalibratingState::do_activity()
     {
-        start_calibrating_if_not_already();
-        check_calibrating_progress_if_started();
+        context_ptr->check_calibrating_progress();
     }
 
 
@@ -36,26 +41,6 @@ namespace al5d_cpp
             
         default:
             return ContextState::handle_event(event);
-        }
-    }
-    
-    
-    void CalibratingState::start_calibrating_if_not_already()
-    {
-        if (!calibrating_started)
-        {
-            log_doing_action("START_CALIBRATING");
-            context_ptr->start_calibrating();
-            calibrating_started = true;
-        }
-    }
-    
-    
-    void CalibratingState::check_calibrating_progress_if_started()
-    {
-        if (calibrating_started)
-        {
-            context_ptr->check_calibrating_progress();
         }
     }
     

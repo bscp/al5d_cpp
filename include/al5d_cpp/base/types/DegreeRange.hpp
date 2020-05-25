@@ -7,10 +7,14 @@
 
 namespace al5d_cpp
 {
-    class DegreeRange
+    struct DegreeRange
     {
-    public:
+        const Degree value_1;
+        const Degree value_2;
 
+        const Degree min;
+        const Degree max;
+        
         DegreeRange(
             const Degree& value_1,
             const Degree& value_2);
@@ -19,20 +23,12 @@ namespace al5d_cpp
             const Degree::Value& value_1,
             const Degree::Value& value_2);
 
-        virtual ~DegreeRange() = default;
-
         bool is_within_range(
             const Degree& degrees)
             const;
 
         double get_difference()
             const;
-
-        const Degree value_1;
-        const Degree value_2;
-
-        const Degree min;
-        const Degree max;
 
     private:
 

@@ -17,7 +17,10 @@ namespace al5d_cpp
             Controller *context_ptr);
 
         virtual ~CalibratingState() = default;
-    
+
+        void enter()
+            override;
+
         void do_activity()
             override;
     
@@ -25,13 +28,8 @@ namespace al5d_cpp
             override;
 
     private:
-        void start_calibrating_if_not_already();
-    
-        void check_calibrating_progress_if_started();
         
         void on_calibrating_finished_event();
-        
-        bool calibrating_started;
     };
 }
 

@@ -14,15 +14,20 @@ namespace al5d_cpp
     FinalizingState::FinalizingState(
         Controller* context_ptr)
         : ContextState("FinalizingState", context_ptr)
-        , finalizing_started(false)
     {
+    }
+
+
+    void FinalizingState::enter()
+    {
+        log_doing_action("ENTERING :: START_FINILIZING");
+        context_ptr->start_finalizing();
     }
 
 
     void FinalizingState::do_activity()
     {
-        start_finalizing_if_not_already();
-        check_finalizing_progress_if_started();
+        context_ptr->check_finalizing_progress();
     }
 
 
@@ -35,26 +40,6 @@ namespace al5d_cpp
             
         default:
             return ContextState::handle_event(event);
-        }
-    }
-    
-    
-    void FinalizingState::start_finalizing_if_not_already()
-    {
-        if (!finalizing_started)
-        {
-            log_doing_action("START_FINILIZING");
-            context_ptr->start_finalizing();
-            finalizing_started = true;
-        }
-    }
-    
-    
-    void FinalizingState::check_finalizing_progress_if_started()
-    {
-        if (finalizing_started)
-        {
-            context_ptr->check_finalizing_progress();
         }
     }
     

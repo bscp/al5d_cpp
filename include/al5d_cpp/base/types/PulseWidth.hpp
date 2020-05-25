@@ -4,18 +4,14 @@
 
 namespace al5d_cpp
 {
-    class PulseWidth
+    struct PulseWidth
     {
-    public:
-
         typedef unsigned int Value;
         
+        Value value;
+
         explicit PulseWidth(
             Value value);
-
-        virtual ~PulseWidth() = default;
-        
-        Value value;
         
     private:
 

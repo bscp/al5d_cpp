@@ -18,12 +18,6 @@ namespace al5d_cpp
     }
     
     
-    void HaltingState::enter()
-    {
-        ContextState::enter();
-    }
-    
-    
     void HaltingState::do_activity()
     {
         // only waiting for the UNHALT_COMMAND_RECEIVED event

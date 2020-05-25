@@ -18,6 +18,9 @@ namespace al5d_cpp
 
         virtual ~FinalizingState() = default;
         
+        void enter()
+            override;
+            
         void do_activity()
             override;
     
@@ -25,13 +28,8 @@ namespace al5d_cpp
             override;
 
     private:
-        void start_finalizing_if_not_already();
-    
-        void check_finalizing_progress_if_started();
         
         void on_finalizing_finished_event();
-        
-        bool finalizing_started;
     };
 }
 

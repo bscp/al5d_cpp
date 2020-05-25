@@ -21,8 +21,6 @@ namespace al5d_cpp
         static Angle from_degree(
             const Degree::Value& degree_value);
 
-        virtual ~Angle() = default;
-
         Degree in_degree()
             const;
         

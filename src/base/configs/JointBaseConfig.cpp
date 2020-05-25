@@ -20,16 +20,15 @@ namespace al5d_cpp
         , pulse_width_range(pulse_width_range)
         , degree_range(degree_range)
     {
-        validate_board_channel_value(board_channel);
+        validate_board_channel();
     }
 
 
-    void JointBaseConfig::validate_board_channel_value(
-        BoardChannel board_channel)
+    void JointBaseConfig::validate_board_channel()
         const
     {
         // BoardChannel is an unsigned type and thus always larger then zero
-        if (board_channel > (BoardChannel)10)
+        if (board_channel > BoardChannel(10))
         {
             throw InvalidBoardChannel(board_channel);
         }

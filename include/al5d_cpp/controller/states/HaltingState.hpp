@@ -18,13 +18,12 @@ namespace al5d_cpp
 
         virtual ~HaltingState() = default;
     
-        void enter() override;
-        
         void do_activity() override;
     
         void handle_event(Event event) override;
 
     private:
+    
         void on_unhalt_command_received();
     };
 }

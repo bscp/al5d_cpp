@@ -17,19 +17,19 @@ namespace al5d_cpp
             Controller *context_ptr);
 
         virtual ~MovingState() = default;
+
+        void enter()
+            override;
+            
+        void do_activity()
+            override;
     
-        void do_activity() override;
-    
-        void handle_event(Event event) override;
+        void handle_event(Event event)
+            override;
 
     private:
-        void start_moving_if_not_already();
-    
-        void check_moving_progress_if_started();
-    
+
         void on_moving_finished_event();
-    
-        bool moving_started;
     };
 }
 

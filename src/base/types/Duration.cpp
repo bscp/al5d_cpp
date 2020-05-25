@@ -17,15 +17,15 @@ namespace al5d_cpp
     }
 
 
-    /*static*/ Duration Duration::from_ms(Milliseconds milliseconds)
+    /*static*/ Duration Duration::from_ms(Milliseconds ms)
     {
-        return Duration::from_milliseconds(milliseconds);
+        return Duration::from_milliseconds(ms);
     }
     
     
-    /*static*/ Duration Duration::from_s(Seconds seconds)
+    /*static*/ Duration Duration::from_s(Seconds s)
     {
-        return Duration::from_seconds(seconds);
+        return Duration::from_seconds(s);
     }
     
     

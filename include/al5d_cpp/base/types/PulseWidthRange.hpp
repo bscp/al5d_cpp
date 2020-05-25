@@ -7,10 +7,11 @@
 
 namespace al5d_cpp
 {
-    class PulseWidthRange
-    {   
-    public:
-
+    struct PulseWidthRange
+    {
+        const PulseWidth min;
+        const PulseWidth max;
+        
         PulseWidthRange(
             const PulseWidth& min,
             const PulseWidth& max);
@@ -19,13 +20,8 @@ namespace al5d_cpp
             const PulseWidth::Value& min,
             const PulseWidth::Value& max);
 
-        virtual ~PulseWidthRange() = default;
-
         double get_difference()
             const;
-
-        const PulseWidth min;
-        const PulseWidth max;
 
     private:
 

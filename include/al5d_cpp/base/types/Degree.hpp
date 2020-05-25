@@ -4,18 +4,14 @@
 
 namespace al5d_cpp
 {
-    class Degree
+    struct Degree
     {
-    public:
-
         typedef int Value;
+
+        Value value;
         
         explicit Degree(
             Value value);
-
-        virtual ~Degree() = default;
-        
-        Value value;
         
     private:
 

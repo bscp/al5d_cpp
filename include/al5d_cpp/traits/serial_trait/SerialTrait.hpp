@@ -19,8 +19,6 @@ namespace al5d_cpp
         explicit SerialTrait(
             const AL5DBaseConfig& config);
         
-        virtual ~SerialTrait();
-        
     private:
             
         void connect();

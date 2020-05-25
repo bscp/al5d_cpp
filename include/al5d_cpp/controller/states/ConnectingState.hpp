@@ -23,8 +23,7 @@ namespace al5d_cpp
         void handle_event(Event event) override;
 
     private:
-        void check_connecting_progress();
-        
+    
         void on_connecting_finished_event();
     };
 }

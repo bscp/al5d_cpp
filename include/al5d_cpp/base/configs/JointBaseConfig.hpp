@@ -19,15 +19,16 @@ namespace al5d_cpp
             const PulseWidthRange& pulse_width_range,
             const DegreeRange &degree_range);
         
-        void validate_board_channel_value(
-            BoardChannel board_channel)
-            const;
-        
         const JointName name;
         const JointType type;
         const BoardChannel board_channel;
         const PulseWidthRange pulse_width_range;
         const DegreeRange degree_range;
+    
+    private:
+        
+        void validate_board_channel()
+            const;
     };
     
     typedef std::vector<JointBaseConfig> JointBaseConfigs;

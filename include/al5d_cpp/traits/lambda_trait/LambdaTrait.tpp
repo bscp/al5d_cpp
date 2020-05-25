@@ -15,12 +15,6 @@ namespace al5d_cpp
 
 
     template <typename BaseType>
-    LambdaTrait<BaseType>::~LambdaTrait()
-    {
-    }
-
-
-    template <typename BaseType>
     void LambdaTrait<BaseType>::set_transmit_fn(
         const TransmitFn& transmit_fn)
     {

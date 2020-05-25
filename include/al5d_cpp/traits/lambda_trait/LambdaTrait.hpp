@@ -21,8 +21,6 @@ namespace al5d_cpp
         explicit LambdaTrait(
             const AL5DBaseConfig& config);
 
-        virtual ~LambdaTrait();
-        
         void set_transmit_fn(
             const TransmitFn& transmit_fn);
     };

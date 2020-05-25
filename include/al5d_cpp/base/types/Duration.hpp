@@ -7,8 +7,8 @@ namespace al5d_cpp
     class Duration
     {
     private:
-        using Milliseconds = long;
-        using Seconds = double;
+        typedef long Milliseconds;
+        typedef double Seconds;
         
     public:
         static Duration from_milliseconds(
@@ -18,13 +18,11 @@ namespace al5d_cpp
             Seconds seconds);
 
         static Duration from_ms(
-            Milliseconds milliseconds);
+            Milliseconds ms);
 
         static Duration from_s(
-            Seconds seconds);
+            Seconds s);
 
-        virtual ~Duration() = default;
-        
         Seconds in_seconds() const;
     
         Milliseconds in_milliseconds() const;

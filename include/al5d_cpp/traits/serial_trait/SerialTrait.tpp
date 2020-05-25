@@ -17,12 +17,6 @@ namespace al5d_cpp
         connect();
     }
 
-
-    template <typename BaseType>
-    SerialTrait<BaseType>::~SerialTrait()
-    {
-    }
-
     
     template <typename BaseType>
     void SerialTrait<BaseType>::connect()
