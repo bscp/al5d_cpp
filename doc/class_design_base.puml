@@ -1,0 +1,103 @@
+@startuml
+
+namespace al5d_cpp {
+
+    class CommunicatorBase <<(I,SkyBlue)>> {
+        + transmit(message : String) : void
+        + is_ready() : Boolean
+    }
+
+    class AL5DBase {
+		+ add_poses(posing_config : PosingConfig) : void
+		+ get_joint(joint_name : JointName) : JointBase
+		+ get_joint(joint_type : JointType) : JointBase
+		+ is_connected() : bool
+		+ is_moving() : bool
+		+ move_to_angles(joint_name_angles : JointNameAngles) : void
+		+ move_to_angles(joint_name_angles : JointNameAngles, move_duration : Duration) : void
+		+ move_to_angles(joint_type_angles : JointTypeAngles) : void
+		+ move_to_angles(joint_type_angles : JointTypeAngles, move_duration : Duration) : void
+		+ move_to_calibrating_pose() : void
+		+ move_to_finish_pose() : void
+		+ move_to_pose(pose_name : PoseName) : void
+		+ move_to_pose(pose_name : PoseName, move_duration : Duration) : void
+		+ move_to_start_pose() : void
+		+ set_communicator_ptr(communicator_ptr : CommunicatorBase) : void
+		+ set_poses(posing_config : PosingConfig) : void
+		+ stop() : void
+		# AL5DBase(config : AL5DBaseConfig)
+		# communicator_ptr_ : CommunicatorBase
+		# joints_ : JointBases
+		# transmit_command_(command : ProtocolCommand) : void
+		# transmit_command_terminator_() : void
+		- calibrating_pose_name__ : PoseName
+		- construct_joints__(joint_configs : JointBaseConfigs) : JointBases
+		- construct_poses__(joint_name : JointName) : JointType
+		- construct_poses__(joint_name_angle : JointNameAngle) : JointTypeAngle
+		- construct_poses__(joint_name_angles : JointNameAngles) : JointTypeAngles
+		- construct_poses__(pose_config : PoseConfig) : Pose
+		- construct_poses__(pose_configs : PoseConfigs) : Poses
+		- finish_pose_name__ : PoseName
+		- get_pose__(pose_name : PoseName) : Pose
+		- poses__ : Poses
+		- set_joint_communicator_ptrs__() : void
+		- start_pose_name__ : PoseName
+		- start_timer__(move_duration : Duration) : void
+		- timer_ptr__ : Timer
+		- transmit__(message : ProtocolCommand) : void
+		- validate_communicator_ptr__() : void
+		- {static} default_if_zero__(move_duration : Duration) : Duration
+		- {static} get_log_moving_to_angles__(angle_count : size_t) : std::string
+		- {static} get_log_moving_to_angles__(angle_count : size_t, duration : Duration) : std::string
+		- {static} get_log_moving_to_pose__(pose_name : PoseName) : std::string
+		- {static} get_log_moving_to_pose__(pose_name : PoseName, duration : Duration) : std::string
+		- {static} log_moving_to_angles__(angle_count : size_t) : void
+		- {static} log_moving_to_angles__(angle_count : size_t, move_duration : Duration) : void
+		- {static} log_moving_to_pose__(pose_name : PoseName) : void
+		- {static} log_moving_to_pose__(pose_name : PoseName, move_duration : Duration) : void
+		- {static} move_to__(joint : JointBase, degree : Degree) : void
+		- {static} move_to__(joint : JointBase, degree : Degree, move_duration : Duration) : void
+	}
+
+    class JointBase {
+        + JointBase(joint_base_config)
+        + move_to_degree(joint_name, degree,move_duration) : void
+        + move_to_degree(joint_type, degree, move_duration) : void
+        + move_to_degree(joint_name, degree) : void
+        + move_to_degree(joint_type, degree) : void
+        + move_to_degrees(joint_name_degrees, move_duration) : void
+        + move_to_degrees(joint_type_degrees,move_duration) : void
+        + move_to_degrees(joint_name_degrees) : void
+        + move_to_degrees(joint_type_degrees) : void
+        + stop() : void
+        + is_ready() : Boolean
+        - transmit_degree__(degree : Degree) : void
+        - transmit_move_duration__(duration : Duration) : void
+        - transmit__(message : String) : void
+        - to_pulse_width__(degree : Degree) : PulseWidth
+        - name : String
+        - type : JointType
+        - board_channel : BoardChannel
+        - degree_range : DegreeRange
+        - pulse_width_range : PulseWidthRange
+        - convert_ratio : Double
+        - communicator_ptr : CommunicatorBasePtr
+    }
+
+    class JointBaseConfig <<(S,Orchid)>> #eee
+    class AL5DBaseConfig <<(S,Orchid)>> #eee
+
+    CommunicatorBase "1" <- "*" JointBase
+    CommunicatorBase "1" <-- "*" AL5DBase
+    AL5DBase "1" -> "6" JointBase
+    AL5DBase ..> AL5DBaseConfig
+    JointBase ..> JointBaseConfig
+}
+
+legend right
+  <b><color:Orchid>S Struct</color></b>
+  <b><color:DarkCyan>C Class</color></b>
+  <b><color:SkyBlue>I Interface</color></b>
+endlegend
+
+@enduml
