@@ -8,13 +8,13 @@ package yaml_cpp#Gray
 package roboticsgroup_gazebo_plugins#Gray
 package wor_world1 <<RosWorkspace>> #SkyBlue
 
-al5d_cpp <-- al5d_ros
-boost <-- al5d_cpp
-yaml_cpp <-- al5d_cpp
-ros <-- al5d_ros
-ros <-- wor_world1
-al5d_ros <- wor_world1
-roboticsgroup_gazebo_plugins <-- al5d_ros
+al5d_cpp <.. al5d_ros
+boost <.. al5d_cpp
+yaml_cpp <.. al5d_cpp
+ros <.. al5d_ros
+ros <.. wor_world1
+al5d_ros <. wor_world1
+roboticsgroup_gazebo_plugins <.. al5d_ros
 
 note left of al5d_cpp : Implementation of the\nlow-level interface.
 note left of al5d_ros : Implementation of the\nhigh-level interface.
